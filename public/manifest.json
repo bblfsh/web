@@ -1,0 +1,15 @@
+{
+  "short_name": "Babelfish Dashboard",
+  "name": "Babelfish Dashboard",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#EB7422",
+  "background_color": "#ffffff"
+}
