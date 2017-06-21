@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import 'normalize.css';
+import SplitPane from 'react-split-pane';
 
 import Header from './components/Header';
 import Editor from './components/Editor';
@@ -29,12 +30,16 @@ export default class App extends Component {
   }
 
   render() {
+    const { innerWidth: width } = window;
+
     return (
       <Wrap>
         <Header />
         <Content>
-          <Editor />
-          <UASTViewer />
+          <SplitPane split='vertical' minSize={width * 0.25} defaultSize='50%' maxSize={width * 0.75}>
+            <Editor />
+            <UASTViewer />
+          </SplitPane>
         </Content>
       </Wrap>
     );

@@ -13,7 +13,8 @@ injectGlobal`
 `
 
 const Container = styled.div`
-  width: 50%;
+  height: 100%;
+  min-width: 25%;
 `
 
 export default function Editor() {
