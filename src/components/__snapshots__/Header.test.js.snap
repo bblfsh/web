@@ -2,46 +2,56 @@
 
 exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
 <div
-  className="sc-gzVnrw ipAWFv"
+  className="sc-dnqmqq itLWpz"
 >
-  <img
-    alt="GitHub"
-    src="github.svg"
-  />
   <a
-    className="sc-htoDjs cqFtEe"
+    className="sc-gqjmRU icUzDC"
     href="Python.driver"
     target="_blank"
   >
-    Driver Code
+    <img
+      alt="GitHub"
+      className="sc-iwsKbI bbcOHy"
+      src="github.svg"
+    />
+    <span
+      className="sc-gZMcBi inpfcO"
+    >
+      Driver Code
+    </span>
   </a>
 </div>
 `;
 
 exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] = `
 <div
-  className="sc-gzVnrw ipAWFv"
+  className="sc-dnqmqq itLWpz"
 >
-  <img
-    alt="GitHub"
-    src="github.svg"
-  />
   <a
-    className="sc-htoDjs cqFtEe"
+    className="sc-gqjmRU icUzDC"
     href="Java.driver"
     target="_blank"
   >
-    Driver Code
+    <img
+      alt="GitHub"
+      className="sc-iwsKbI bbcOHy"
+      src="github.svg"
+    />
+    <span
+      className="sc-gZMcBi inpfcO"
+    >
+      Driver Code
+    </span>
   </a>
 </div>
 `;
 
-exports[`Header has the button disabled if is loading 1`] = `
+exports[`Header has the button disabled if is loading, even if user has typed 1`] = `
 <header
-  className="sc-bdVaJa NEwed"
+  className="sc-bdVaJa kFviGb"
 >
   <h1
-    className="sc-bwzfXH fNOhzS"
+    className="sc-bwzfXH gRdHVw"
   >
     <img
       alt="bblfsh"
@@ -49,21 +59,25 @@ exports[`Header has the button disabled if is loading 1`] = `
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb djfHVK"
+      className="sc-bxivhb fGUeFM"
     >
       Dashboard
     </span>
   </h1>
   <div
-    className="sc-ifAKCX jZWuLM"
+    className="sc-ifAKCX gkhDQm"
   >
     <div
-      className="sc-EHOje kQCbIR"
+      className="sc-bZQynM eJfGpj"
     >
-      <label>
-        Language:
+      <label
+        className="sc-EHOje iUXYdf"
+      >
+        Language
       </label>
       <select
+        className="sc-gzVnrw buVHMZ"
+        id="language-selector"
         onChange={undefined}
         value="auto"
       >
@@ -84,27 +98,208 @@ exports[`Header has the button disabled if is loading 1`] = `
         </option>
       </select>
       <div
-        className="sc-gzVnrw ipAWFv"
+        className="sc-dnqmqq itLWpz"
       >
-        <img
-          alt="GitHub"
-          src="github.svg"
-        />
         <a
-          className="sc-htoDjs cqFtEe"
+          className="sc-gqjmRU icUzDC"
           href="Python.driver"
           target="_blank"
         >
-          Driver Code
+          <img
+            alt="GitHub"
+            className="sc-iwsKbI bbcOHy"
+            src="github.svg"
+          />
+          <span
+            className="sc-gZMcBi inpfcO"
+          >
+            Driver Code
+          </span>
         </a>
       </div>
     </div>
     <div
-      className="sc-EHOje kQCbIR"
+      className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-bZQynM dwMcDi"
+        className="sc-htoDjs dSXvxR"
         disabled={true}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Header has the button disabled if is not loading but user has not typed 1`] = `
+<header
+  className="sc-bdVaJa kFviGb"
+>
+  <h1
+    className="sc-bwzfXH gRdHVw"
+  >
+    <img
+      alt="bblfsh"
+      className="sc-htpNat iZWaVz"
+      src="babelfish_logo.svg"
+    />
+    <span
+      className="sc-bxivhb fGUeFM"
+    >
+      Dashboard
+    </span>
+  </h1>
+  <div
+    className="sc-ifAKCX gkhDQm"
+  >
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+      >
+        Language
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="language-selector"
+        onChange={undefined}
+        value="auto"
+      >
+        <option
+          value="auto"
+        >
+          Python auto
+        </option>
+        <option
+          value="python"
+        >
+          Python
+        </option>
+        <option
+          value="java"
+        >
+          Java
+        </option>
+      </select>
+      <div
+        className="sc-dnqmqq itLWpz"
+      >
+        <a
+          className="sc-gqjmRU icUzDC"
+          href="Python.driver"
+          target="_blank"
+        >
+          <img
+            alt="GitHub"
+            className="sc-iwsKbI bbcOHy"
+            src="github.svg"
+          />
+          <span
+            className="sc-gZMcBi inpfcO"
+          >
+            Driver Code
+          </span>
+        </a>
+      </div>
+    </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <button
+        className="sc-htoDjs dSXvxR"
+        disabled={true}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Header has the button enabled if user has typed and is not loading 1`] = `
+<header
+  className="sc-bdVaJa kFviGb"
+>
+  <h1
+    className="sc-bwzfXH gRdHVw"
+  >
+    <img
+      alt="bblfsh"
+      className="sc-htpNat iZWaVz"
+      src="babelfish_logo.svg"
+    />
+    <span
+      className="sc-bxivhb fGUeFM"
+    >
+      Dashboard
+    </span>
+  </h1>
+  <div
+    className="sc-ifAKCX gkhDQm"
+  >
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+      >
+        Language
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="language-selector"
+        onChange={undefined}
+        value="auto"
+      >
+        <option
+          value="auto"
+        >
+          Python auto
+        </option>
+        <option
+          value="python"
+        >
+          Python
+        </option>
+        <option
+          value="java"
+        >
+          Java
+        </option>
+      </select>
+      <div
+        className="sc-dnqmqq itLWpz"
+      >
+        <a
+          className="sc-gqjmRU icUzDC"
+          href="Python.driver"
+          target="_blank"
+        >
+          <img
+            alt="GitHub"
+            className="sc-iwsKbI bbcOHy"
+            src="github.svg"
+          />
+          <span
+            className="sc-gZMcBi inpfcO"
+          >
+            Driver Code
+          </span>
+        </a>
+      </div>
+    </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <button
+        className="sc-htoDjs dSXvxR"
+        disabled={false}
         id="run-parser"
         onClick={undefined}
       >
@@ -117,10 +312,10 @@ exports[`Header has the button disabled if is loading 1`] = `
 
 exports[`Header renders correctly 1`] = `
 <header
-  className="sc-bdVaJa NEwed"
+  className="sc-bdVaJa kFviGb"
 >
   <h1
-    className="sc-bwzfXH fNOhzS"
+    className="sc-bwzfXH gRdHVw"
   >
     <img
       alt="bblfsh"
@@ -128,21 +323,25 @@ exports[`Header renders correctly 1`] = `
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb djfHVK"
+      className="sc-bxivhb fGUeFM"
     >
       Dashboard
     </span>
   </h1>
   <div
-    className="sc-ifAKCX jZWuLM"
+    className="sc-ifAKCX gkhDQm"
   >
     <div
-      className="sc-EHOje kQCbIR"
+      className="sc-bZQynM eJfGpj"
     >
-      <label>
-        Language:
+      <label
+        className="sc-EHOje iUXYdf"
+      >
+        Language
       </label>
       <select
+        className="sc-gzVnrw buVHMZ"
+        id="language-selector"
         onChange={undefined}
         value="auto"
       >
@@ -163,27 +362,32 @@ exports[`Header renders correctly 1`] = `
         </option>
       </select>
       <div
-        className="sc-gzVnrw ipAWFv"
+        className="sc-dnqmqq itLWpz"
       >
-        <img
-          alt="GitHub"
-          src="github.svg"
-        />
         <a
-          className="sc-htoDjs cqFtEe"
+          className="sc-gqjmRU icUzDC"
           href="Java.driver"
           target="_blank"
         >
-          Driver Code
+          <img
+            alt="GitHub"
+            className="sc-iwsKbI bbcOHy"
+            src="github.svg"
+          />
+          <span
+            className="sc-gZMcBi inpfcO"
+          >
+            Driver Code
+          </span>
         </a>
       </div>
     </div>
     <div
-      className="sc-EHOje kQCbIR"
+      className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-bZQynM dwMcDi"
-        disabled={undefined}
+        className="sc-htoDjs dSXvxR"
+        disabled={true}
         id="run-parser"
         onClick={undefined}
       >

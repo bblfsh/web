@@ -11,6 +11,11 @@ injectGlobal`
   * {
     box-sizing: border-box;
   }
+
+  body, html {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+  }
 `;
 
 ReactDOM.render(<App />, document.getElementById('root'));

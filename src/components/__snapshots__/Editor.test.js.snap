@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Editor renders without crashing 1`] = `
+<styled.div>
+  <Component
+    autoFocus={true}
+    onCursorActivity={[Function]}
+    options={
+      Object {
+        "lineNumbers": true,
+        "mode": "python",
+        "theme": "solarized light",
+      }
+    }
+    preserveScrollPosition={false}
+    value="foo = 1"
+  />
+</styled.div>
+`;

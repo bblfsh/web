@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Header, { DriverCode } from './Header';
 import renderer from 'react-test-renderer';
@@ -50,7 +49,7 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    wrapper.find('select').simulate('change', {
+    wrapper.find('#language-selector').simulate('change', {
       target: { value: 'python' },
     });
     expect(onLanguageChangedSpy.mock.calls.length).toBe(1);
@@ -71,11 +70,38 @@ describe('Header', () => {
     expect(onRunParserSpy.mock.calls.length).toBe(1);
   });
 
-  it('has the button disabled if is loading', () => {
+  it('has the button disabled if is loading, even if user has typed', () => {
     const component = renderer.create(
       <Header 
         languages={testLanguages}
         loading={true}
+        userHasTyped={true}
+        actualLanguage='python'
+        selectedLanguage='auto' />
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('has the button disabled if is not loading but user has not typed', () => {
+    const component = renderer.create(
+      <Header 
+        languages={testLanguages}
+        loading={false}
+        userHasTyped={false}
+        actualLanguage='python'
+        selectedLanguage='auto' />
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('has the button enabled if user has typed and is not loading', () => {
+    const component = renderer.create(
+      <Header 
+        languages={testLanguages}
+        loading={false}
+        userHasTyped={true}
         actualLanguage='python'
         selectedLanguage='auto' />
     );
