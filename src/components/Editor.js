@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/python/python';
+import 'codemirror/mode/clike/clike';
 
 // eslint-disable-next-line
 injectGlobal`
@@ -14,16 +15,61 @@ injectGlobal`
 
 const Container = styled.div`
   height: 100%;
-  min-width: 25%;
 `
 
-export default function Editor() {
-  return (
-    <Container>
-      <CodeMirror options={{
-        mode: 'python',
-        lineNumbers: true,
-      }} />
-    </Container>
-  );
+export default class Editor extends Component {
+  get document() {
+    return this.refs.codemirror.getCodeMirror().getDoc();
+  }
+
+  selectCode(from, to) {
+    return this.document.markText(from, to, {
+      css: 'background: yellow',
+    });
+  }
+
+  onCursorActivity(editor) {
+    if (!this.props.onCursorChanged) {
+      return;
+    }
+
+    const doc = editor.getDoc();
+    const selection = doc.listSelections().slice(0, 1).pop();
+    const positions = [selection.head, selection.anchor];
+    positions.sort(comparePos);
+    const [ start, end ] = positions;
+    this.props.onCursorChanged({ start, end });
+  }
+
+  render() {
+    const {
+      code,
+      languageMode,
+      onChange,
+    } = this.props;
+
+    const options = {
+      mode: languageMode,
+      lineNumbers: true,
+    };
+
+    return (
+      <Container>
+        <CodeMirror 
+          ref='codemirror'
+          autoFocus={true}
+          onChange={onChange}
+          value={code}
+          onCursorActivity={editor => this.onCursorActivity(editor)}
+          options={options} />
+      </Container>
+    );
+  }
+}
+
+export function comparePos(a, b) {
+  if (a.line === b.line) {
+    return a.ch - b.ch;
+  }
+  return a.line - b.line;
 }
