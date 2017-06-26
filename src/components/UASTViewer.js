@@ -5,8 +5,8 @@ const Container = styled.div`
 `
 
 export default class UASTViewer extends Component {
-  selectNodes(start, end) {
-    throw new Error("UASTViewer.selectNodes not implemented yet");
+  selectNode({ line, ch }) {
+    throw new Error("UASTViewer.selectNode not implemented yet");
   }
 
   render() {

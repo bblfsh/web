@@ -30,9 +30,8 @@ describe('Editor', () => {
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
-    const [ start, end ] = spy.mock.calls[1];
-    expect(start).toEqual(mkPos(0, 2));
-    expect(end).toEqual(mkPos(0, 4));
+    const [ pos ] = spy.mock.calls[1];
+    expect(pos).toEqual(mkPos(0, 2));
   });
 
   it('calls onCursorChanged when the cursor position changes', () => {
@@ -47,9 +46,8 @@ describe('Editor', () => {
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
-    const [ start, end ] = spy.mock.calls[1];
-    expect(start).toEqual(mkPos(0, 4));
-    expect(end).toEqual(mkPos(0, 4));
+    const [ pos ] = spy.mock.calls[1];
+    expect(pos).toEqual(mkPos(0, 4));
   });
 
   it('calls onChange when the content changes', () => {
@@ -82,21 +80,5 @@ describe('Editor', () => {
 
     mark.clear();
     assertMarks(0);
-  });
-});
-
-describe('comparePos', () => {
-  it('should correctly compare positions', () => {
-    const cases = [
-      { a: mkPos(1, 1), b: mkPos(1, 1), expected: 0 },
-      { a: mkPos(1, 2), b: mkPos(1, 1), expected: 1 },
-      { a: mkPos(1, 1), b: mkPos(1, 2), expected: -1 },
-      { a: mkPos(2, 1), b: mkPos(1, 1), expected: 1 },
-      { a: mkPos(1, 1), b: mkPos(2, 1), expected: -1 },
-    ];
-
-    cases.forEach(c => {
-      expect(comparePos(c.a, c.b)).toBe(c.expected);
-    });
   });
 });

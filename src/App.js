@@ -45,6 +45,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = Object.assign({}, initialState);
+    this.mark = null;
   }
 
   onLanguageChanged(e) {
@@ -64,11 +65,21 @@ export default class App extends Component {
   }
 
   onNodeSelected(from, to) {
-    return this.refs.editor.selectCode(from, to);
+    if (this.mark) {
+      this.mark.clear();
+    }
+
+    this.mark = this.refs.editor.selectCode(from, to);
   }
 
-  onCursorChanged(start, end) {
-    this.refs.viewer.selectNodes(start, end);
+  clearNodeSelection() {
+    if (this.mark) {
+      this.mark.clear();
+    }
+  }
+
+  onCursorChanged(pos) {
+    this.refs.viewer.selectNode(pos);
   }
 
   onCodeChange(code) {
@@ -110,10 +121,11 @@ export default class App extends Component {
               code={code}
               languageMode={languages[actualLanguage].mode}
               onChange={code => this.onCodeChange(code)}
-              onCursorChanged={editor => this.onCursorChanged(editor)} />
+              onCursorChanged={pos => this.onCursorChanged(pos)} />
 
             <UASTViewer 
               ref='viewer'
+              clearNodeSelection={() => this.clearNodeSelection()}
               onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
               ast={ast}
               loading={loading} />
