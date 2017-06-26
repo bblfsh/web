@@ -108,8 +108,9 @@ export default function Header({
 
       <Actions>
         <InputGroup>
-          <label>Language:</label>
+          <label htmlFor='language'>Language:</label>
           <select 
+            id='language'
             onChange={onLanguageChanged}
             value={selectedLanguage}>
             {languageOptions}

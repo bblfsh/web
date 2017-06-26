@@ -60,10 +60,13 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
@@ -139,10 +142,13 @@ exports[`Header has the button disabled if is not loading but user has not typed
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
@@ -218,10 +224,13 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
@@ -297,10 +306,13 @@ exports[`Header renders correctly 1`] = `
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
