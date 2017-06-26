@@ -47,6 +47,10 @@ export default class App extends Component {
     this.state = Object.assign({}, initialState);
   }
 
+  componentDidUpdate() {
+    this.refs.editor.setMode(this.languageMode());
+  }
+
   onLanguageChanged(e) {
     let selectedLanguage = e.target.value;
     if (!this.hasLanguage(selectedLanguage)) {
@@ -73,6 +77,16 @@ export default class App extends Component {
 
   onCodeChange(code) {
     this.setState({ code, userHasTyped: true });
+  }
+
+  languageMode() {
+    let { selectedLanguage, actualLanguage } = this.state;
+
+    if (selectedLanguage === 'auto') {
+      selectedLanguage = actualLanguage;
+    }
+
+    return this.state.languages[selectedLanguage].mode;
   }
 
   render() {
@@ -108,7 +122,7 @@ export default class App extends Component {
             <Editor
               ref='editor'
               code={code}
-              languageMode={languages[actualLanguage].mode}
+              languageMode={this.languageMode()}
               onChange={code => this.onCodeChange(code)}
               onCursorChanged={editor => this.onCursorChanged(editor)} />
 

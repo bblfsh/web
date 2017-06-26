@@ -22,10 +22,18 @@ export default class Editor extends Component {
     return this.refs.codemirror.getCodeMirror().getDoc();
   }
 
+  get editor() {
+    return this.refs.codemirror.getCodeMirror();
+  }
+
   selectCode(from, to) {
     return this.document.markText(from, to, {
       css: 'background: yellow',
     });
+  }
+
+  setMode(mode) {
+    this.editor.setOption('mode', mode);
   }
 
   onCursorActivity(editor) {
