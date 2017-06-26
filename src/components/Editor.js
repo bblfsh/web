@@ -38,7 +38,7 @@ export default class Editor extends Component {
     const positions = [selection.head, selection.anchor];
     positions.sort(comparePos);
     const [ start, end ] = positions;
-    this.props.onCursorChanged({ start, end });
+    this.props.onCursorChanged(start, end);
   }
 
   render() {

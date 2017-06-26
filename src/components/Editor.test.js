@@ -30,8 +30,9 @@ describe('Editor', () => {
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
-    const selection = spy.mock.calls[1][0];
-    expect(selection).toEqual({ start: mkPos(0, 2), end: mkPos(0, 4) });
+    const [ start, end ] = spy.mock.calls[1];
+    expect(start).toEqual(mkPos(0, 2));
+    expect(end).toEqual(mkPos(0, 4));
   });
 
   it('calls onCursorChanged when the cursor position changes', () => {
@@ -46,8 +47,9 @@ describe('Editor', () => {
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
-    const selection = spy.mock.calls[1][0];
-    expect(selection).toEqual({ start: mkPos(0, 4), end: mkPos(0, 4) });
+    const [ start, end ] = spy.mock.calls[1];
+    expect(start).toEqual(mkPos(0, 4));
+    expect(end).toEqual(mkPos(0, 4));
   });
 
   it('calls onChange when the content changes', () => {

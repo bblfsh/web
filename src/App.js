@@ -64,11 +64,11 @@ export default class App extends Component {
   }
 
   onNodeSelected(from, to) {
-    this.refs.editor.selectCode(from, to);
+    return this.refs.editor.selectCode(from, to);
   }
 
-  onCursorChanged(editor) {
-    // TODO
+  onCursorChanged(start, end) {
+    this.refs.viewer.selectNodes(start, end);
   }
 
   onCodeChange(code) {
@@ -113,6 +113,7 @@ export default class App extends Component {
               onCursorChanged={editor => this.onCursorChanged(editor)} />
 
             <UASTViewer 
+              ref='viewer'
               onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
               ast={ast}
               loading={loading} />
@@ -122,4 +123,3 @@ export default class App extends Component {
     );
   }
 }
-
