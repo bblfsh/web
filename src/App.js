@@ -34,7 +34,7 @@ const initialState = {
   selectedLanguage: 'auto',
   code: '',
   ast: undefined,
-  userHasTyped: false,
+  dirty: false,
 };
 
 export default class App extends Component {
@@ -64,7 +64,7 @@ export default class App extends Component {
   }
 
   onCodeChange(code) {
-    this.setState({ code, userHasTyped: true });
+    this.setState({ code, dirty: true });
   }
 
   render() {
@@ -76,7 +76,7 @@ export default class App extends Component {
       ast, 
       loading, 
       actualLanguage,
-      userHasTyped,
+      dirty,
     } = this.state;
 
     return (
@@ -87,7 +87,7 @@ export default class App extends Component {
           actualLanguage={actualLanguage}
           onLanguageChanged={e => this.onLanguageChanged(e)}
           onRunParser={e => this.onRunParser(e)}
-          userHasTyped={userHasTyped}
+          dirty={dirty}
           loading={loading} />
 
         <Content>

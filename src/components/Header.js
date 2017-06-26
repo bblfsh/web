@@ -150,7 +150,7 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
       <DriverCodeLink
         href={languages[driver].url} 
         target='_blank'>
-        <DriverCodeIcon src={githubIcon} alt='GitHub' />
+        <DriverCodeIcon src={githubIcon} alt='Driver Code on GitHub' />
         <DriverCodeText>Driver Code</DriverCodeText>
       </DriverCodeLink>
     </DriverCodeBox>
@@ -164,7 +164,7 @@ export default function Header({
   onRunParser,
   loading,
   actualLanguage,
-  userHasTyped,
+  dirty,
 }) {
   const languageOptions = Object.keys(languages)
     .map(k => {
@@ -203,7 +203,7 @@ export default function Header({
           <RunButton 
             id='run-parser'
             onClick={onRunParser}
-            disabled={loading || !userHasTyped}>
+            disabled={loading || !dirty}>
             Run parser
           </RunButton>
         </InputGroup>

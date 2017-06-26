@@ -10,7 +10,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
     target="_blank"
   >
     <img
-      alt="GitHub"
+      alt="Driver Code on GitHub"
       className="sc-iwsKbI bbcOHy"
       src="github.svg"
     />
@@ -33,7 +33,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
     target="_blank"
   >
     <img
-      alt="GitHub"
+      alt="Driver Code on GitHub"
       className="sc-iwsKbI bbcOHy"
       src="github.svg"
     />
@@ -106,7 +106,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
           target="_blank"
         >
           <img
-            alt="GitHub"
+            alt="Driver Code on GitHub"
             className="sc-iwsKbI bbcOHy"
             src="github.svg"
           />
@@ -194,7 +194,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
           target="_blank"
         >
           <img
-            alt="GitHub"
+            alt="Driver Code on GitHub"
             className="sc-iwsKbI bbcOHy"
             src="github.svg"
           />
@@ -282,7 +282,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
           target="_blank"
         >
           <img
-            alt="GitHub"
+            alt="Driver Code on GitHub"
             className="sc-iwsKbI bbcOHy"
             src="github.svg"
           />
@@ -370,7 +370,7 @@ exports[`Header renders correctly 1`] = `
           target="_blank"
         >
           <img
-            alt="GitHub"
+            alt="Driver Code on GitHub"
             className="sc-iwsKbI bbcOHy"
             src="github.svg"
           />
