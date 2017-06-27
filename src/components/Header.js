@@ -87,6 +87,7 @@ export default function Header({
   onRunParser,
   loading,
   actualLanguage,
+  userHasTyped,
 }) {
   const languageOptions = Object.keys(languages)
     .map(k => {
@@ -107,8 +108,9 @@ export default function Header({
 
       <Actions>
         <InputGroup>
-          <label>Language:</label>
+          <label htmlFor='language'>Language:</label>
           <select 
+            id='language'
             onChange={onLanguageChanged}
             value={selectedLanguage}>
             {languageOptions}
@@ -124,7 +126,7 @@ export default function Header({
           <RunButton 
             id='run-parser'
             onClick={onRunParser}
-            disabled={loading}>
+            disabled={loading || !userHasTyped}>
             Run parser
           </RunButton>
         </InputGroup>

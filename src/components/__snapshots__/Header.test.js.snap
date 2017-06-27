@@ -36,7 +36,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
 </div>
 `;
 
-exports[`Header has the button disabled if is loading 1`] = `
+exports[`Header has the button disabled if is loading, even if user has typed 1`] = `
 <header
   className="sc-bdVaJa NEwed"
 >
@@ -60,10 +60,13 @@ exports[`Header has the button disabled if is loading 1`] = `
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
@@ -115,6 +118,170 @@ exports[`Header has the button disabled if is loading 1`] = `
 </header>
 `;
 
+exports[`Header has the button disabled if is not loading but user has not typed 1`] = `
+<header
+  className="sc-bdVaJa NEwed"
+>
+  <h1
+    className="sc-bwzfXH fNOhzS"
+  >
+    <img
+      alt="bblfsh"
+      className="sc-htpNat iZWaVz"
+      src="babelfish_logo.svg"
+    />
+    <span
+      className="sc-bxivhb djfHVK"
+    >
+      Dashboard
+    </span>
+  </h1>
+  <div
+    className="sc-ifAKCX jZWuLM"
+  >
+    <div
+      className="sc-EHOje kQCbIR"
+    >
+      <label
+        htmlFor="language"
+      >
+        Language:
+      </label>
+      <select
+        id="language"
+        onChange={undefined}
+        value="auto"
+      >
+        <option
+          value="auto"
+        >
+          Python auto
+        </option>
+        <option
+          value="python"
+        >
+          Python
+        </option>
+        <option
+          value="java"
+        >
+          Java
+        </option>
+      </select>
+      <div
+        className="sc-gzVnrw ipAWFv"
+      >
+        <img
+          alt="GitHub"
+          src="github.svg"
+        />
+        <a
+          className="sc-htoDjs cqFtEe"
+          href="Python.driver"
+          target="_blank"
+        >
+          Driver Code
+        </a>
+      </div>
+    </div>
+    <div
+      className="sc-EHOje kQCbIR"
+    >
+      <button
+        className="sc-bZQynM dwMcDi"
+        disabled={true}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
+    </div>
+  </div>
+</header>
+`;
+
+exports[`Header has the button enabled if user has typed and is not loading 1`] = `
+<header
+  className="sc-bdVaJa NEwed"
+>
+  <h1
+    className="sc-bwzfXH fNOhzS"
+  >
+    <img
+      alt="bblfsh"
+      className="sc-htpNat iZWaVz"
+      src="babelfish_logo.svg"
+    />
+    <span
+      className="sc-bxivhb djfHVK"
+    >
+      Dashboard
+    </span>
+  </h1>
+  <div
+    className="sc-ifAKCX jZWuLM"
+  >
+    <div
+      className="sc-EHOje kQCbIR"
+    >
+      <label
+        htmlFor="language"
+      >
+        Language:
+      </label>
+      <select
+        id="language"
+        onChange={undefined}
+        value="auto"
+      >
+        <option
+          value="auto"
+        >
+          Python auto
+        </option>
+        <option
+          value="python"
+        >
+          Python
+        </option>
+        <option
+          value="java"
+        >
+          Java
+        </option>
+      </select>
+      <div
+        className="sc-gzVnrw ipAWFv"
+      >
+        <img
+          alt="GitHub"
+          src="github.svg"
+        />
+        <a
+          className="sc-htoDjs cqFtEe"
+          href="Python.driver"
+          target="_blank"
+        >
+          Driver Code
+        </a>
+      </div>
+    </div>
+    <div
+      className="sc-EHOje kQCbIR"
+    >
+      <button
+        className="sc-bZQynM dwMcDi"
+        disabled={false}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
+    </div>
+  </div>
+</header>
+`;
+
 exports[`Header renders correctly 1`] = `
 <header
   className="sc-bdVaJa NEwed"
@@ -139,10 +306,13 @@ exports[`Header renders correctly 1`] = `
     <div
       className="sc-EHOje kQCbIR"
     >
-      <label>
+      <label
+        htmlFor="language"
+      >
         Language:
       </label>
       <select
+        id="language"
         onChange={undefined}
         value="auto"
       >
@@ -183,7 +353,7 @@ exports[`Header renders correctly 1`] = `
     >
       <button
         className="sc-bZQynM dwMcDi"
-        disabled={undefined}
+        disabled={true}
         id="run-parser"
         onClick={undefined}
       >

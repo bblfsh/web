@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "react-scripts": "1.0.7",
     "react-test-renderer": "^15.6.1"
   },

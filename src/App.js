@@ -6,6 +6,7 @@ import SplitPane from 'react-split-pane';
 import Header from './components/Header';
 import Editor from './components/Editor';
 import UASTViewer from './components/UASTViewer';
+import languages from './languages';
 
 const Wrap = styled.div`
   position: absolute;
@@ -19,28 +20,25 @@ const Wrap = styled.div`
 
 const Content = styled.div`
   display: flex;
-  height: 100%;
   flex-direction: row;
   position: relative;
+  height: 100%;
 `
 
 const initialState = {
-  languages: {
+  languages: Object.assign({
     auto: { name: '(auto)' },
-    python: {
-      name: 'Python',
-      url: '#',
-    },
-    java: {
-      name: 'Java',
-      url: '#',
-    },
-  },
+  }, languages),
+  // babelfish tells us which language is active at the moment, but it
+  // won't be used unless the selectedLanguage is auto.
   actualLanguage: 'python',
   loading: false,
+  // this is the language that is selected by the user. It overrides the
+  // actualLanguage except when it is 'auto'.
   selectedLanguage: 'auto',
   code: '',
   ast: undefined,
+  userHasTyped: false,
 };
 
 export default class App extends Component {
@@ -49,21 +47,59 @@ export default class App extends Component {
     this.state = Object.assign({}, initialState);
   }
 
+  componentDidUpdate() {
+    this.refs.editor.setMode(this.languageMode());
+  }
+
   onLanguageChanged(e) {
     let selectedLanguage = e.target.value;
-    if (!this.state.languages.hasOwnProperty(selectedLanguage)) {
+    if (!this.hasLanguage(selectedLanguage)) {
       selectedLanguage = 'auto';
     }
     this.setState({ selectedLanguage });
+  }
+
+  hasLanguage(lang) {
+    return this.state.languages.hasOwnProperty(lang);
   }
 
   onRunParser(e) {
     throw new Error('run parser not implemented yet!');
   }
 
+  onNodeSelected(from, to) {
+    this.refs.editor.selectCode(from, to);
+  }
+
+  onCursorChanged(editor) {
+    // TODO
+  }
+
+  onCodeChange(code) {
+    this.setState({ code, userHasTyped: true });
+  }
+
+  languageMode() {
+    let { selectedLanguage, actualLanguage } = this.state;
+
+    if (selectedLanguage === 'auto') {
+      selectedLanguage = actualLanguage;
+    }
+
+    return this.state.languages[selectedLanguage].mode;
+  }
+
   render() {
     const { innerWidth: width } = window;
-    const { languages, selectedLanguage, code, ast, loading, actualLanguage } = this.state;
+    const { 
+      languages, 
+      selectedLanguage, 
+      code, 
+      ast, 
+      loading, 
+      actualLanguage,
+      userHasTyped,
+    } = this.state;
 
     return (
       <Wrap>
@@ -73,6 +109,7 @@ export default class App extends Component {
           actualLanguage={actualLanguage}
           onLanguageChanged={e => this.onLanguageChanged(e)}
           onRunParser={e => this.onRunParser(e)}
+          userHasTyped={userHasTyped}
           loading={loading} />
 
         <Content>
@@ -83,10 +120,14 @@ export default class App extends Component {
             maxSize={width * 0.75}>
 
             <Editor
+              ref='editor'
               code={code}
-              loading={loading} />
+              languageMode={this.languageMode()}
+              onChange={code => this.onCodeChange(code)}
+              onCursorChanged={editor => this.onCursorChanged(editor)} />
 
             <UASTViewer 
+              onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
               ast={ast}
               loading={loading} />
           </SplitPane>
