@@ -43,10 +43,7 @@ export default class Editor extends Component {
 
     const doc = editor.getDoc();
     const selection = doc.listSelections().slice(0, 1).pop();
-    const positions = [selection.head, selection.anchor];
-    positions.sort(comparePos);
-    const [ start, end ] = positions;
-    this.props.onCursorChanged({ start, end });
+    this.props.onCursorChanged(selection.head);
   }
 
   render() {
@@ -73,11 +70,4 @@ export default class Editor extends Component {
       </Container>
     );
   }
-}
-
-export function comparePos(a, b) {
-  if (a.line === b.line) {
-    return a.ch - b.ch;
-  }
-  return a.line - b.line;
 }
