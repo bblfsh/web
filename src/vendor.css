@@ -48,3 +48,16 @@
 .Resizer.disabled:hover {
   border-color: transparent;
 }
+
+.CodeMirror {
+  font-family: Inconsolata, monospace;
+  font-size: 1.2rem;
+}
+
+.cm-s-solarized.cm-s-light { 
+  background-color: #fffdfa;
+}
+
+.cm-s-solarized.cm-s-light .CodeMirror-gutters {
+    background-color: #f1f0ed;
+}

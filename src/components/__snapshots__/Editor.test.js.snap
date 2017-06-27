@@ -9,6 +9,7 @@ exports[`Editor renders without crashing 1`] = `
       Object {
         "lineNumbers": true,
         "mode": "python",
+        "theme": "solarized light",
       }
     }
     preserveScrollPosition={false}

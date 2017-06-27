@@ -49,7 +49,7 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    wrapper.find('select').simulate('change', {
+    wrapper.find('#language-selector').simulate('change', {
       target: { value: 'python' },
     });
     expect(onLanguageChangedSpy.mock.calls.length).toBe(1);
@@ -75,7 +75,7 @@ describe('Header', () => {
       <Header 
         languages={testLanguages}
         loading={true}
-        userHasTyped={true}
+        dirty={true}
         actualLanguage='python'
         selectedLanguage='auto' />
     );
@@ -88,7 +88,7 @@ describe('Header', () => {
       <Header 
         languages={testLanguages}
         loading={false}
-        userHasTyped={false}
+        dirty={false}
         actualLanguage='python'
         selectedLanguage='auto' />
     );
@@ -101,7 +101,7 @@ describe('Header', () => {
       <Header 
         languages={testLanguages}
         loading={false}
-        userHasTyped={true}
+        dirty={true}
         actualLanguage='python'
         selectedLanguage='auto' />
     );
