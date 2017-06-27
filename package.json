@@ -7,10 +7,13 @@
     "react": "^15.6.1",
     "react-codemirror": "^1.0.0",
     "react-dom": "^15.6.1",
+    "react-split-pane": "^0.1.63",
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "enzyme": "^2.8.2",
+    "react-scripts": "1.0.7",
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
