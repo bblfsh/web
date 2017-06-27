@@ -72,6 +72,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
     >
       <label
         className="sc-EHOje iUXYdf"
+        htmlFor="language-selector"
       >
         Language
       </label>
@@ -160,6 +161,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
     >
       <label
         className="sc-EHOje iUXYdf"
+        htmlFor="language-selector"
       >
         Language
       </label>
@@ -248,6 +250,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
     >
       <label
         className="sc-EHOje iUXYdf"
+        htmlFor="language-selector"
       >
         Language
       </label>
@@ -336,6 +339,7 @@ exports[`Header renders correctly 1`] = `
     >
       <label
         className="sc-EHOje iUXYdf"
+        htmlFor="language-selector"
       >
         Language
       </label>
