@@ -20,9 +20,9 @@ const Wrap = styled.div`
 
 const Content = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: row;
   position: relative;
-  height: 100%;
 `
 
 const initialState = {
@@ -38,7 +38,7 @@ const initialState = {
   selectedLanguage: 'auto',
   code: '',
   ast: undefined,
-  userHasTyped: false,
+  dirty: false,
 };
 
 export default class App extends Component {
@@ -49,7 +49,7 @@ export default class App extends Component {
   }
 
   componentDidUpdate() {
-    this.refs.editor.setMode(this.languageMode());
+    this.refs.editor.setMode(this.languageMode);
   }
 
   onLanguageChanged(e) {
@@ -87,10 +87,10 @@ export default class App extends Component {
   }
 
   onCodeChange(code) {
-    this.setState({ code, userHasTyped: true });
+    this.setState({ code, dirty: true });
   }
 
-  languageMode() {
+  get languageMode() {
     let { selectedLanguage, actualLanguage } = this.state;
 
     if (selectedLanguage === 'auto') {
@@ -109,7 +109,7 @@ export default class App extends Component {
       ast, 
       loading, 
       actualLanguage,
-      userHasTyped,
+      dirty,
     } = this.state;
 
     return (
@@ -120,7 +120,7 @@ export default class App extends Component {
           actualLanguage={actualLanguage}
           onLanguageChanged={e => this.onLanguageChanged(e)}
           onRunParser={e => this.onRunParser(e)}
-          userHasTyped={userHasTyped}
+          dirty={dirty}
           loading={loading} />
 
         <Content>
@@ -133,7 +133,7 @@ export default class App extends Component {
             <Editor
               ref='editor'
               code={code}
-              languageMode={this.languageMode()}
+              languageMode={this.languageMode}
               onChange={code => this.onCodeChange(code)}
               onCursorChanged={pos => this.onCursorChanged(pos)} />
 

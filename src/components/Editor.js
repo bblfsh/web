@@ -3,6 +3,7 @@ import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
 
 import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/solarized.css';
 import 'codemirror/mode/python/python';
 import 'codemirror/mode/clike/clike';
 
@@ -19,7 +20,7 @@ const Container = styled.div`
 
 export default class Editor extends Component {
   get document() {
-    return this.refs.codemirror.getCodeMirror().getDoc();
+    return this.editor.getDoc();
   }
 
   get editor() {
@@ -56,6 +57,7 @@ export default class Editor extends Component {
     const options = {
       mode: languageMode,
       lineNumbers: true,
+      theme: 'solarized light',
     };
 
     return (
