@@ -1,6 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <div
   className="sc-dnqmqq itLWpz"
 >
@@ -24,6 +73,55 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
 `;
 
 exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] = `
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <div
   className="sc-dnqmqq itLWpz"
 >
@@ -47,6 +145,175 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
 `;
 
 exports[`Header has the button disabled if is loading, even if user has typed 1`] = `
+.kFviGb {
+  height: 70px;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  z-index: 9999;
+  box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
+}
+
+.gRdHVw {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.iZWaVz {
+  height: 40px;
+}
+
+.fGUeFM {
+  margin-left: .8rem;
+}
+
+.gkhDQm {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1rem;
+  height: 100%;
+}
+
+.iUXYdf {
+  color: grey;
+  margin-right: 1em;
+  font-size: .8rem;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  color: #636262;
+}
+
+.eJfGpj {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.eJfGpj + .eJfGpj {
+  margin-left: 1rem;
+}
+
+.eJfGpj:last-child {
+  border-right: none;
+}
+
+.buVHMZ {
+  border-radius: 3px;
+  border: 1px solid #dad7d0;
+  background: white;
+  padding: .5em .5em;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.dSXvxR {
+  padding: .7rem 1.8rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background: #F54F00;
+  color: white;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: .8rem;
+  -webkit-letter-spacing: .05em;
+  -moz-letter-spacing: .05em;
+  -ms-letter-spacing: .05em;
+  letter-spacing: .05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.dSXvxR:hover {
+  box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
+}
+
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <header
   className="sc-bdVaJa kFviGb"
 >
@@ -136,6 +403,175 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
 `;
 
 exports[`Header has the button disabled if is not loading but user has not typed 1`] = `
+.kFviGb {
+  height: 70px;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  z-index: 9999;
+  box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
+}
+
+.gRdHVw {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.iZWaVz {
+  height: 40px;
+}
+
+.fGUeFM {
+  margin-left: .8rem;
+}
+
+.gkhDQm {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1rem;
+  height: 100%;
+}
+
+.iUXYdf {
+  color: grey;
+  margin-right: 1em;
+  font-size: .8rem;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  color: #636262;
+}
+
+.eJfGpj {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.eJfGpj + .eJfGpj {
+  margin-left: 1rem;
+}
+
+.eJfGpj:last-child {
+  border-right: none;
+}
+
+.buVHMZ {
+  border-radius: 3px;
+  border: 1px solid #dad7d0;
+  background: white;
+  padding: .5em .5em;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.dSXvxR {
+  padding: .7rem 1.8rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background: #F54F00;
+  color: white;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: .8rem;
+  -webkit-letter-spacing: .05em;
+  -moz-letter-spacing: .05em;
+  -ms-letter-spacing: .05em;
+  letter-spacing: .05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.dSXvxR:hover {
+  box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
+}
+
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <header
   className="sc-bdVaJa kFviGb"
 >
@@ -225,6 +661,175 @@ exports[`Header has the button disabled if is not loading but user has not typed
 `;
 
 exports[`Header has the button enabled if user has typed and is not loading 1`] = `
+.kFviGb {
+  height: 70px;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  z-index: 9999;
+  box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
+}
+
+.gRdHVw {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.iZWaVz {
+  height: 40px;
+}
+
+.fGUeFM {
+  margin-left: .8rem;
+}
+
+.gkhDQm {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1rem;
+  height: 100%;
+}
+
+.iUXYdf {
+  color: grey;
+  margin-right: 1em;
+  font-size: .8rem;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  color: #636262;
+}
+
+.eJfGpj {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.eJfGpj + .eJfGpj {
+  margin-left: 1rem;
+}
+
+.eJfGpj:last-child {
+  border-right: none;
+}
+
+.buVHMZ {
+  border-radius: 3px;
+  border: 1px solid #dad7d0;
+  background: white;
+  padding: .5em .5em;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.dSXvxR {
+  padding: .7rem 1.8rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background: #F54F00;
+  color: white;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: .8rem;
+  -webkit-letter-spacing: .05em;
+  -moz-letter-spacing: .05em;
+  -ms-letter-spacing: .05em;
+  letter-spacing: .05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.dSXvxR:hover {
+  box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
+}
+
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <header
   className="sc-bdVaJa kFviGb"
 >
@@ -314,6 +919,175 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
 `;
 
 exports[`Header renders correctly 1`] = `
+.kFviGb {
+  height: 70px;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  z-index: 9999;
+  box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
+}
+
+.gRdHVw {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.iZWaVz {
+  height: 40px;
+}
+
+.fGUeFM {
+  margin-left: .8rem;
+}
+
+.gkhDQm {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 1rem;
+  height: 100%;
+}
+
+.iUXYdf {
+  color: grey;
+  margin-right: 1em;
+  font-size: .8rem;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  color: #636262;
+}
+
+.eJfGpj {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+}
+
+.eJfGpj + .eJfGpj {
+  margin-left: 1rem;
+}
+
+.eJfGpj:last-child {
+  border-right: none;
+}
+
+.buVHMZ {
+  border-radius: 3px;
+  border: 1px solid #dad7d0;
+  background: white;
+  padding: .5em .5em;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.dSXvxR {
+  padding: .7rem 1.8rem;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background: #F54F00;
+  color: white;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: .8rem;
+  -webkit-letter-spacing: .05em;
+  -moz-letter-spacing: .05em;
+  -ms-letter-spacing: .05em;
+  letter-spacing: .05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+}
+
+.dSXvxR:hover {
+  box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
+}
+
+.itLWpz {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: .5rem;
+}
+
+.bbcOHy {
+  width: 20px;
+  opacity: .7;
+  margin-right: .3rem;
+}
+
+.inpfcO {
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+}
+
+.icUzDC {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.icUzDC:hover {
+  color: #F54F00;
+}
+
+.icUzDC:hover .sc-gZMcBi {
+  border-bottom-color: #F54F00;
+}
+
+.icUzDC:hover .sc-iwsKbI {
+  opacity: 1;
+}
+
 <header
   className="sc-bdVaJa kFviGb"
 >

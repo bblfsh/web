@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ReactDOM from 'react-dom';
 import toJson from 'enzyme-to-json';
+import 'jest-styled-components';
 import Editor, { comparePos } from './Editor';
 
 const mkPos = (line, ch) => ({ line, ch });
@@ -12,7 +13,7 @@ describe('Editor', () => {
       <Editor code='foo = 1' languageMode='python' />
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+    expect(toJson(wrapper)).toMatchStyledComponentsSnapshot();
   });
 
   it('calls onCursorChanged when the selection changes', () => {
