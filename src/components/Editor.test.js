@@ -24,7 +24,7 @@ describe('Editor', () => {
     );
 
     component.document.setSelection(
-      mkPos(0, 4),      
+      mkPos(0, 4),
       mkPos(0, 2),
     );
 
