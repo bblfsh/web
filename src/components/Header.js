@@ -128,7 +128,7 @@ const DriverCodeLink = styled.a`
   font-size: .9rem;
 
   &:hover {
-    color: ${accentColor}; 
+    color: ${accentColor};
   }
 
   &:hover ${DriverCodeText} {
@@ -141,14 +141,14 @@ const DriverCodeLink = styled.a`
 `
 
 export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
-  const driver = selectedLanguage === 'auto' 
+  const driver = selectedLanguage === 'auto'
     ? actualLanguage
     : selectedLanguage;
 
   return (
     <DriverCodeBox>
       <DriverCodeLink
-        href={languages[driver].url} 
+        href={languages[driver].url}
         target='_blank'>
         <DriverCodeIcon src={githubIcon} alt='Driver Code on GitHub' />
         <DriverCodeText>Driver Code</DriverCodeText>
@@ -158,8 +158,8 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
 }
 
 export default function Header({
-  selectedLanguage, 
-  languages, 
+  selectedLanguage,
+  languages,
   onLanguageChanged,
   onRunParser,
   loading,
@@ -168,7 +168,7 @@ export default function Header({
 }) {
   const languageOptions = Object.keys(languages)
     .map(k => {
-      const name = k === 'auto' 
+      const name = k === 'auto'
         ? `${languages[actualLanguage].name} ${languages[k].name}`
         : languages[k].name;
       return (
@@ -186,21 +186,21 @@ export default function Header({
       <Actions>
         <InputGroup>
           <Label htmlFor='language-selector'>Language</Label>
-          <Select 
+          <Select
             id='language-selector'
             onChange={onLanguageChanged}
             value={selectedLanguage}>
             {languageOptions}
           </Select>
 
-          <DriverCode 
+          <DriverCode
             languages={languages}
             selectedLanguage={selectedLanguage}
             actualLanguage={actualLanguage} />
         </InputGroup>
 
         <InputGroup>
-          <RunButton 
+          <RunButton
             id='run-parser'
             onClick={onRunParser}
             disabled={loading || !dirty}>

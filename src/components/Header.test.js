@@ -31,7 +31,7 @@ describe('DriverCode', () => {
 describe('Header', () => {
   it('renders correctly', () => {
     const component = renderer.create(
-      <Header 
+      <Header
         languages={testLanguages}
         actualLanguage='java'
         selectedLanguage='auto' />
@@ -43,7 +43,7 @@ describe('Header', () => {
   it('calls onLanguageChanged when the dropdown is changed', () => {
     const onLanguageChangedSpy = jest.fn();
     const wrapper = shallow(
-      <Header 
+      <Header
         languages={testLanguages}
         onLanguageChanged={onLanguageChangedSpy}
         actualLanguage='java'
@@ -60,7 +60,7 @@ describe('Header', () => {
   it('calls onRunParser when the button is clicked', () => {
     const onRunParserSpy = jest.fn();
     const wrapper = shallow(
-      <Header 
+      <Header
         languages={testLanguages}
         onRunParser={onRunParserSpy}
         actualLanguage='java'
@@ -73,7 +73,7 @@ describe('Header', () => {
 
   it('has the button disabled if is loading, even if user has typed', () => {
     const component = renderer.create(
-      <Header 
+      <Header
         languages={testLanguages}
         loading={true}
         dirty={true}
@@ -86,7 +86,7 @@ describe('Header', () => {
 
   it('has the button disabled if is not loading but user has not typed', () => {
     const component = renderer.create(
-      <Header 
+      <Header
         languages={testLanguages}
         loading={false}
         dirty={false}
@@ -99,7 +99,7 @@ describe('Header', () => {
 
   it('has the button enabled if user has typed and is not loading', () => {
     const component = renderer.create(
-      <Header 
+      <Header
         languages={testLanguages}
         loading={false}
         dirty={true}

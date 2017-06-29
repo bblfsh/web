@@ -54,7 +54,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   className="sc-dnqmqq itLWpz"
 >
   <a
-    className="sc-gqjmRU icUzDC"
+    className="sc-gqjmRU hATlZE"
     href="Python.driver"
     target="_blank"
   >
@@ -126,7 +126,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   className="sc-dnqmqq itLWpz"
 >
   <a
-    className="sc-gqjmRU icUzDC"
+    className="sc-gqjmRU hATlZE"
     href="Java.driver"
     target="_blank"
   >
@@ -369,7 +369,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU icUzDC"
+          className="sc-gqjmRU hATlZE"
           href="Python.driver"
           target="_blank"
         >
@@ -627,7 +627,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU icUzDC"
+          className="sc-gqjmRU hATlZE"
           href="Python.driver"
           target="_blank"
         >
@@ -885,7 +885,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU icUzDC"
+          className="sc-gqjmRU hATlZE"
           href="Python.driver"
           target="_blank"
         >
@@ -1143,7 +1143,7 @@ exports[`Header renders correctly 1`] = `
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU icUzDC"
+          className="sc-gqjmRU hATlZE"
           href="Java.driver"
           target="_blank"
         >
