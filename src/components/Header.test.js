@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import 'jest-styled-components';
 import Header, { DriverCode } from './Header';
 import renderer from 'react-test-renderer';
 
@@ -15,7 +16,7 @@ describe('DriverCode', () => {
       <DriverCode languages={testLanguages} actualLanguage='java' selectedLanguage='java' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 
   it('contains the actualLanguage URL if is auto', () => {
@@ -23,7 +24,7 @@ describe('DriverCode', () => {
       <DriverCode languages={testLanguages} actualLanguage='python' selectedLanguage='auto' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 });
 
@@ -36,7 +37,7 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 
   it('calls onLanguageChanged when the dropdown is changed', () => {
@@ -80,7 +81,7 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 
   it('has the button disabled if is not loading but user has not typed', () => {
@@ -93,7 +94,7 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 
   it('has the button enabled if user has typed and is not loading', () => {
@@ -106,6 +107,6 @@ describe('Header', () => {
         selectedLanguage='auto' />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 });
