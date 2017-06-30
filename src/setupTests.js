@@ -1,3 +1,7 @@
+import fetchMock from 'jest-fetch-mock';
+
+global.fetch = fetchMock;
+
 // CodeMirror needs all of this in order to work.
 // see: https://discuss.codemirror.net/t/working-in-jsdom-or-node-js-natively/138/5
 global.document.body.createTextRange = function() {
@@ -13,6 +17,6 @@ global.document.body.createTextRange = function() {
         left: 0,
         right: 0
       };
-    },
+    }
   };
 };

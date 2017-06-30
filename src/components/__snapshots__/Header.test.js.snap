@@ -23,7 +23,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,15 +38,15 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -95,7 +95,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,15 +110,15 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -181,11 +181,11 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.jSEybS {
   height: 40px;
 }
 
-.fGUeFM {
+.jaIsHC {
   margin-left: .8rem;
 }
 
@@ -287,7 +287,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -302,15 +302,15 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -322,11 +322,11 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-htpNat jSEybS"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb fGUeFM"
+      className="sc-bxivhb jaIsHC"
     >
       Dashboard
     </span>
@@ -439,11 +439,11 @@ exports[`Header has the button disabled if is not loading but user has not typed
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.jSEybS {
   height: 40px;
 }
 
-.fGUeFM {
+.jaIsHC {
   margin-left: .8rem;
 }
 
@@ -545,7 +545,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -560,15 +560,15 @@ exports[`Header has the button disabled if is not loading but user has not typed
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -580,11 +580,11 @@ exports[`Header has the button disabled if is not loading but user has not typed
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-htpNat jSEybS"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb fGUeFM"
+      className="sc-bxivhb jaIsHC"
     >
       Dashboard
     </span>
@@ -697,11 +697,11 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.jSEybS {
   height: 40px;
 }
 
-.fGUeFM {
+.jaIsHC {
   margin-left: .8rem;
 }
 
@@ -803,7 +803,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -818,15 +818,15 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -838,11 +838,11 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-htpNat jSEybS"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb fGUeFM"
+      className="sc-bxivhb jaIsHC"
     >
       Dashboard
     </span>
@@ -955,11 +955,11 @@ exports[`Header renders correctly 1`] = `
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.jSEybS {
   height: 40px;
 }
 
-.fGUeFM {
+.jaIsHC {
   margin-left: .8rem;
 }
 
@@ -1061,7 +1061,7 @@ exports[`Header renders correctly 1`] = `
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.icUzDC {
+.hATlZE {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1076,15 +1076,15 @@ exports[`Header renders correctly 1`] = `
   font-size: .9rem;
 }
 
-.icUzDC:hover {
+.hATlZE:hover {
   color: #F54F00;
 }
 
-.icUzDC:hover .sc-gZMcBi {
+.hATlZE:hover .sc-gZMcBi {
   border-bottom-color: #F54F00;
 }
 
-.icUzDC:hover .sc-iwsKbI {
+.hATlZE:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -1096,11 +1096,11 @@ exports[`Header renders correctly 1`] = `
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-htpNat jSEybS"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb fGUeFM"
+      className="sc-bxivhb jaIsHC"
     >
       Dashboard
     </span>

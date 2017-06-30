@@ -2,11 +2,11 @@ export default {
   python: {
     name: 'Python',
     url: '#',
-    mode: 'python',
+    mode: 'python'
   },
   java: {
     name: 'Java',
     url: '#',
-    mode: 'text/x-java',
-  },
+    mode: 'text/x-java'
+  }
 };

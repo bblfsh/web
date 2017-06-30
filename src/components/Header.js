@@ -17,7 +17,7 @@ const Container = styled.header`
   border-bottom: 1px solid ${borderColor};
   z-index: 9999;
   box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
-`
+`;
 
 const Title = styled.h1`
   display: flex;
@@ -29,22 +29,18 @@ const Title = styled.h1`
   height: 100%;
   border-right: 1px solid ${borderColor};
   padding-right: 1rem;
-`
+`;
 
-const TitleImage = styled.img`
-  height: 40px;
-`
+const TitleImage = styled.img`height: 40px;`;
 
-const DashboardTitle = styled.span`
-  margin-left: .8rem;
-`
+const DashboardTitle = styled.span`margin-left: .8rem;`;
 
 const Actions = styled.div`
   width: 100%;
   display: flex;
   margin-left: 1rem;
   height: 100%;
-`
+`;
 
 const Label = styled.label`
   color: grey;
@@ -53,7 +49,7 @@ const Label = styled.label`
   font-weight: bold;
   text-transform: uppercase;
   color: #636262;
-`
+`;
 
 const InputGroup = styled.div`
   display: flex;
@@ -69,7 +65,7 @@ const InputGroup = styled.div`
   &:last-child {
     border-right: none;
   }
-`
+`;
 
 const Select = styled.select`
   border-radius: 3px;
@@ -79,7 +75,7 @@ const Select = styled.select`
   text-transform: uppercase;
   font-weight: bold;
   font-size: .7rem;
-`
+`;
 
 const RunButton = styled.button`
   padding: .7rem 1.8rem;
@@ -102,23 +98,23 @@ const RunButton = styled.button`
   &:hover {
     box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
   }
-`
+`;
 
 const DriverCodeBox = styled.div`
   display: flex;
   align-items: center;
   margin-left: .5rem;
-`
+`;
 
 const DriverCodeIcon = styled.img`
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
-`
+`;
 
 const DriverCodeText = styled.span`
   border-bottom: 1px solid rgba(0, 0, 0, .05);
-`
+`;
 
 const DriverCodeLink = styled.a`
   display: flex;
@@ -138,19 +134,16 @@ const DriverCodeLink = styled.a`
   &:hover ${DriverCodeIcon} {
     opacity: 1;
   }
-`
+`;
 
 export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
-  const driver = selectedLanguage === 'auto'
-    ? actualLanguage
-    : selectedLanguage;
+  const driver =
+    selectedLanguage === 'auto' ? actualLanguage : selectedLanguage;
 
   return (
     <DriverCodeBox>
-      <DriverCodeLink
-        href={languages[driver].url}
-        target='_blank'>
-        <DriverCodeIcon src={githubIcon} alt='Driver Code on GitHub' />
+      <DriverCodeLink href={languages[driver].url} target="_blank">
+        <DriverCodeIcon src={githubIcon} alt="Driver Code on GitHub" />
         <DriverCodeText>Driver Code</DriverCodeText>
       </DriverCodeLink>
     </DriverCodeBox>
@@ -164,46 +157,51 @@ export default function Header({
   onRunParser,
   loading,
   actualLanguage,
-  dirty,
+  dirty
 }) {
-  const languageOptions = Object.keys(languages)
-    .map(k => {
-      const name = k === 'auto'
+  const languageOptions = Object.keys(languages).map(k => {
+    const name =
+      k === 'auto'
         ? `${languages[actualLanguage].name} ${languages[k].name}`
         : languages[k].name;
-      return (
-        <option value={k} key={k}>{name}</option>
-      );
-    });
+    return (
+      <option value={k} key={k}>
+        {name}
+      </option>
+    );
+  });
 
   return (
     <Container>
       <Title>
-        <TitleImage src={bblfshLogo} alt='bblfsh' />
+        <TitleImage src={bblfshLogo} alt="bblfsh" />
         <DashboardTitle>Dashboard</DashboardTitle>
       </Title>
 
       <Actions>
         <InputGroup>
-          <Label htmlFor='language-selector'>Language</Label>
+          <Label htmlFor="language-selector">Language</Label>
           <Select
-            id='language-selector'
+            id="language-selector"
             onChange={onLanguageChanged}
-            value={selectedLanguage}>
+            value={selectedLanguage}
+          >
             {languageOptions}
           </Select>
 
           <DriverCode
             languages={languages}
             selectedLanguage={selectedLanguage}
-            actualLanguage={actualLanguage} />
+            actualLanguage={actualLanguage}
+          />
         </InputGroup>
 
         <InputGroup>
           <RunButton
-            id='run-parser'
+            id="run-parser"
             onClick={onRunParser}
-            disabled={loading || !dirty}>
+            disabled={loading || !dirty}
+          >
             Run parser
           </RunButton>
         </InputGroup>
