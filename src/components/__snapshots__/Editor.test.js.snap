@@ -15,5 +15,8 @@ exports[`Editor renders without crashing 1`] = `
     preserveScrollPosition={false}
     value="foo = 1"
   />
+  <styled.div
+    innerRef={[Function]}
+  />
 </styled.div>
 `;

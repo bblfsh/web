@@ -10,6 +10,17 @@ const testLanguages = {
   java: { name: 'Java', url: 'Java.driver' }
 };
 
+const testExamples = {
+  python: {
+    code: '',
+    uast: {}
+  },
+  java: {
+    code: '',
+    uast: {}
+  }
+};
+
 describe('DriverCode', () => {
   it('contains the driver URL if selectedLanguage is not auto', () => {
     const component = renderer.create(
@@ -17,6 +28,7 @@ describe('DriverCode', () => {
         languages={testLanguages}
         actualLanguage="java"
         selectedLanguage="java"
+        examples={testExamples}
       />
     );
 
@@ -29,6 +41,7 @@ describe('DriverCode', () => {
         languages={testLanguages}
         actualLanguage="python"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -43,6 +56,7 @@ describe('Header', () => {
         languages={testLanguages}
         actualLanguage="java"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -57,6 +71,7 @@ describe('Header', () => {
         onLanguageChanged={onLanguageChangedSpy}
         actualLanguage="java"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -75,6 +90,7 @@ describe('Header', () => {
         onRunParser={onRunParserSpy}
         actualLanguage="java"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -90,6 +106,7 @@ describe('Header', () => {
         dirty={true}
         actualLanguage="python"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -104,6 +121,7 @@ describe('Header', () => {
         dirty={false}
         actualLanguage="python"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
@@ -118,6 +136,7 @@ describe('Header', () => {
         dirty={true}
         actualLanguage="python"
         selectedLanguage="auto"
+        examples={testExamples}
       />
     );
 
