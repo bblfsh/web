@@ -82,6 +82,26 @@ describe('Header', () => {
     expect(onLanguageChangedSpy.mock.calls[0][0].target.value).toBe('python');
   });
 
+  it('calls onExampleChanged when the dropdown is changed', () => {
+    const spy = jest.fn();
+    const wrapper = shallow(
+      <Header
+        languages={testLanguages}
+        onExampleChanged={spy}
+        actualLanguage="java"
+        selectedLanguage="auto"
+        selectedExample="python"
+        examples={testExamples}
+      />
+    );
+
+    wrapper.find('#examples-selector').simulate('change', {
+      target: { value: 'java' }
+    });
+    expect(spy.mock.calls.length).toBe(1);
+    expect(spy.mock.calls[0][0].target.value).toBe('java');
+  });
+
   it('calls onRunParser when the button is clicked', () => {
     const onRunParserSpy = jest.fn();
     const wrapper = shallow(

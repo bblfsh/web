@@ -405,7 +405,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
         className="sc-EHOje iUXYdf"
         htmlFor="examples-selector"
       >
-        Examples:
+        Examples
       </label>
       <select
         className="sc-gzVnrw buVHMZ"
@@ -690,7 +690,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
         className="sc-EHOje iUXYdf"
         htmlFor="examples-selector"
       >
-        Examples:
+        Examples
       </label>
       <select
         className="sc-gzVnrw buVHMZ"
@@ -975,7 +975,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
         className="sc-EHOje iUXYdf"
         htmlFor="examples-selector"
       >
-        Examples:
+        Examples
       </label>
       <select
         className="sc-gzVnrw buVHMZ"
@@ -1260,7 +1260,7 @@ exports[`Header renders correctly 1`] = `
         className="sc-EHOje iUXYdf"
         htmlFor="examples-selector"
       >
-        Examples:
+        Examples
       </label>
       <select
         className="sc-gzVnrw buVHMZ"

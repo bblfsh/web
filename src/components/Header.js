@@ -160,7 +160,7 @@ export default function Header({
   loading,
   actualLanguage,
   selectedExample,
-  dirty,
+  dirty
 }) {
   const languageOptions = Object.keys(languages).map(k => {
     const name =
@@ -174,12 +174,11 @@ export default function Header({
     );
   });
 
-  const examplesOptions = Object.keys(examples)
-    .map((name, k) => {
-      return (
-        <option value={name} key={k}>{name}</option>
-      );
-    });
+  const examplesOptions = Object.keys(examples).map((name, k) =>
+    <option value={name} key={k}>
+      {name}
+    </option>
+  );
 
   return (
     <Container>
@@ -217,11 +216,12 @@ export default function Header({
         </InputGroup>
 
         <InputGroup>
-          <Label htmlFor='examples-selector'>Examples:</Label>
+          <Label htmlFor="examples-selector">Examples</Label>
           <Select
-            id='examples-selector'
+            id="examples-selector"
             onChange={onExampleChanged}
-            value={selectedExample}>
+            value={selectedExample}
+          >
             {examplesOptions}
           </Select>
         </InputGroup>
