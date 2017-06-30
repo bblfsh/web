@@ -3,7 +3,6 @@ import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
 import { background } from '../styling/variables';
 
-
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
 import 'codemirror/mode/python/python';
@@ -31,7 +30,7 @@ const BookMark = styled.div`
     left: -2px;
     width: 3px;
     height: 19px;
-    border: 1px solid #EA7024;
+    border: 1px solid #ea7024;
     border-right-width: 0 !important;
   }
 `;
@@ -60,7 +59,9 @@ export default class Editor extends Component {
   }
 
   updateCode() {
+    const cursor = this.cursor();
     this.document.setValue(this.props.code);
+    this.document.setCursor(cursor);
   }
 
   onCursorActivity(editor) {
@@ -68,9 +69,11 @@ export default class Editor extends Component {
       return;
     }
 
-    const doc = editor.getDoc();
-    const selection = doc.listSelections().slice(0, 1).pop();
-    this.props.onCursorChanged(selection.head);
+    this.props.onCursorChanged(this.cursor(editor));
+  }
+
+  cursor(editor = this.editor) {
+    return editor.getDoc().listSelections().slice(0, 1).pop().head;
   }
 
   render() {
@@ -92,7 +95,11 @@ export default class Editor extends Component {
           onCursorActivity={editor => this.onCursorActivity(editor)}
           options={options}
         />
-        <BookMark innerRef={elem => { this.bookmark = elem }} />
+        <BookMark
+          innerRef={elem => {
+            this.bookmark = elem;
+          }}
+        />
       </Container>
     );
   }

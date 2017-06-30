@@ -47,7 +47,7 @@ function getInitialState(lang) {
   return {
     languages: Object.assign(
       {
-        auto: { name: '(auto)' },
+        auto: { name: '(auto)' }
       },
       languages
     ),
@@ -176,11 +176,11 @@ export default class App extends Component {
         />
         <Content>
           <SplitPane
-            split='vertical'
+            split="vertical"
             minSize={width * 0.25}
-            defaultSize='50%'
-            maxSize={width * 0.75}>
-
+            defaultSize="50%"
+            maxSize={width * 0.75}
+          >
             <Editor
               ref="editor"
               code={code}
@@ -190,7 +190,7 @@ export default class App extends Component {
             />
 
             <UASTViewer
-              ref='viewer'
+              ref="viewer"
               clearNodeSelection={() => this.clearNodeSelection()}
               onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
               ast={ast}
