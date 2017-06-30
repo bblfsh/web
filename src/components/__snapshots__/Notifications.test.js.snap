@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error should render correctly 1`] = `
+.fbizxx {
+  position: relative;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+  background: #f44336;
+  color: white;
+  box-shadow: 0 4px 20px rgba(148, 12, 12, 0.38);
+}
+
+.fbizxx .sc-bxivhb {
+  color: white;
+}
+
+.iApsGL {
+  font-size: 1.5rem;
+  position: absolute;
+  right: .5rem;
+  top: .2rem;
+  padding: .3rem .5rem;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cqPsd {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dFkWwO {
+  padding: 0;
+  margin: 0;
+}
+
+.dFkWwO + .dFkWwO {
+  margin-top: .5rem;
+}
+
+<div
+  className="sc-ifAKCX fbizxx"
+>
+  <button
+    className="sc-bxivhb iApsGL"
+    onClick={undefined}
+  >
+    ×
+  </button>
+  <h5
+    className="sc-EHOje cqPsd"
+  >
+    Error
+  </h5>
+  <p
+    className="sc-htpNat dFkWwO"
+  >
+    Foo bar
+  </p>
+  <p
+    className="sc-htpNat dFkWwO"
+  >
+    Baz qux
+  </p>
+</div>
+`;

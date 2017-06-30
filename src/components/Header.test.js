@@ -7,13 +7,17 @@ import renderer from 'react-test-renderer';
 const testLanguages = {
   auto: { name: 'auto' },
   python: { name: 'Python', url: 'Python.driver' },
-  java: { name: 'Java', url: 'Java.driver' },
+  java: { name: 'Java', url: 'Java.driver' }
 };
 
 describe('DriverCode', () => {
   it('contains the driver URL if selectedLanguage is not auto', () => {
     const component = renderer.create(
-      <DriverCode languages={testLanguages} actualLanguage='java' selectedLanguage='java' />
+      <DriverCode
+        languages={testLanguages}
+        actualLanguage="java"
+        selectedLanguage="java"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
@@ -21,7 +25,11 @@ describe('DriverCode', () => {
 
   it('contains the actualLanguage URL if is auto', () => {
     const component = renderer.create(
-      <DriverCode languages={testLanguages} actualLanguage='python' selectedLanguage='auto' />
+      <DriverCode
+        languages={testLanguages}
+        actualLanguage="python"
+        selectedLanguage="auto"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
@@ -33,8 +41,9 @@ describe('Header', () => {
     const component = renderer.create(
       <Header
         languages={testLanguages}
-        actualLanguage='java'
-        selectedLanguage='auto' />
+        actualLanguage="java"
+        selectedLanguage="auto"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
@@ -46,12 +55,13 @@ describe('Header', () => {
       <Header
         languages={testLanguages}
         onLanguageChanged={onLanguageChangedSpy}
-        actualLanguage='java'
-        selectedLanguage='auto' />
+        actualLanguage="java"
+        selectedLanguage="auto"
+      />
     );
 
     wrapper.find('#language-selector').simulate('change', {
-      target: { value: 'python' },
+      target: { value: 'python' }
     });
     expect(onLanguageChangedSpy.mock.calls.length).toBe(1);
     expect(onLanguageChangedSpy.mock.calls[0][0].target.value).toBe('python');
@@ -63,8 +73,9 @@ describe('Header', () => {
       <Header
         languages={testLanguages}
         onRunParser={onRunParserSpy}
-        actualLanguage='java'
-        selectedLanguage='auto' />
+        actualLanguage="java"
+        selectedLanguage="auto"
+      />
     );
 
     wrapper.find('#run-parser').simulate('click');
@@ -77,8 +88,9 @@ describe('Header', () => {
         languages={testLanguages}
         loading={true}
         dirty={true}
-        actualLanguage='python'
-        selectedLanguage='auto' />
+        actualLanguage="python"
+        selectedLanguage="auto"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
@@ -90,8 +102,9 @@ describe('Header', () => {
         languages={testLanguages}
         loading={false}
         dirty={false}
-        actualLanguage='python'
-        selectedLanguage='auto' />
+        actualLanguage="python"
+        selectedLanguage="auto"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
@@ -103,8 +116,9 @@ describe('Header', () => {
         languages={testLanguages}
         loading={false}
         dirty={true}
-        actualLanguage='python'
-        selectedLanguage='auto' />
+        actualLanguage="python"
+        selectedLanguage="auto"
+      />
     );
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();

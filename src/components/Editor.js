@@ -12,11 +12,9 @@ injectGlobal`
   .ReactCodeMirror, .CodeMirror {
     height: 100%;
   }
-`
+`;
 
-const Container = styled.div`
-  height: 100%;
-`
+const Container = styled.div`height: 100%;`;
 
 export default class Editor extends Component {
   get document() {
@@ -29,7 +27,7 @@ export default class Editor extends Component {
 
   selectCode(from, to) {
     return this.document.markText(from, to, {
-      css: 'background: yellow',
+      css: 'background: yellow'
     });
   }
 
@@ -48,27 +46,24 @@ export default class Editor extends Component {
   }
 
   render() {
-    const {
-      code,
-      languageMode,
-      onChange,
-    } = this.props;
+    const { code, languageMode, onChange } = this.props;
 
     const options = {
       mode: languageMode,
       lineNumbers: true,
-      theme: 'solarized light',
+      theme: 'solarized light'
     };
 
     return (
       <Container>
         <CodeMirror
-          ref='codemirror'
+          ref="codemirror"
           autoFocus={true}
           onChange={onChange}
           value={code}
           onCursorActivity={editor => this.onCursorActivity(editor)}
-          options={options} />
+          options={options}
+        />
       </Container>
     );
   }
