@@ -1,0 +1,129 @@
+uast {
+  internal_type: "Module"
+  children {
+    internal_type: "Import"
+    properties {
+      key: "internalRole"
+      value: "body"
+    }
+    children {
+      internal_type: "Import.names"
+      properties {
+        key: "promotedPropertyList"
+        value: "true"
+      }
+      children {
+        internal_type: "alias"
+        properties {
+          key: "asname"
+          value: "<nil>"
+        }
+        token: "sys"
+        roles: FUNCTION_DECLARATION
+        roles: QUALIFIED_IDENTIFIER
+      }
+    }
+    start_position {
+      line: 1
+      col: 1
+    }
+    roles: IMPORT_PATH
+  }
+  children {
+    internal_type: "Expr"
+    properties {
+      key: "internalRole"
+      value: "body"
+    }
+    children {
+      internal_type: "Call"
+      properties {
+        key: "internalRole"
+        value: "value"
+      }
+      children {
+        internal_type: "StringLiteral"
+        properties {
+          key: "internalRole"
+          value: "args"
+        }
+        token: "Hello world!\n"
+        start_position {
+          line: 2
+          col: 18
+        }
+        roles: TUPLE_LITERAL
+        roles: CALL_NAMED_ARGUMENT
+      }
+      children {
+        internal_type: "Attribute"
+        properties {
+          key: "ctx"
+          value: "Load"
+        }
+        properties {
+          key: "internalRole"
+          value: "func"
+        }
+        children {
+          internal_type: "Attribute"
+          properties {
+            key: "ctx"
+            value: "Load"
+          }
+          properties {
+            key: "internalRole"
+            value: "value"
+          }
+          children {
+            internal_type: "Name"
+            properties {
+              key: "ctx"
+              value: "Load"
+            }
+            properties {
+              key: "internalRole"
+              value: "value"
+            }
+            token: "sys"
+            start_position {
+              line: 2
+              col: 1
+            }
+            roles: QUALIFIED_IDENTIFIER
+          }
+          token: "stdout"
+          start_position {
+            line: 2
+            col: 1
+          }
+          roles: BINARY_EXPRESSION
+        }
+        token: "write"
+        start_position {
+          line: 2
+          col: 1
+        }
+        roles: CALL_POSITIONAL_ARGUMENT
+        roles: CALL_POSITIONAL_ARGUMENT
+        roles: BINARY_EXPRESSION
+      }
+      start_position {
+        line: 2
+        col: 1
+      }
+      roles: CALL_RECEIVER
+    }
+    start_position {
+      line: 2
+      col: 1
+    }
+    roles: STATEMENT
+  }
+  start_position {
+    line: 1
+    col: 1
+  }
+  roles: OP_BOOLEAN_AND
+}
+

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
+import { background } from '../styling/variables';
+
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
@@ -16,6 +18,24 @@ injectGlobal`
 
 const Container = styled.div`height: 100%;`;
 
+const BookMark = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: -2px;
+    width: 3px;
+    height: 19px;
+    border: 1px solid #EA7024;
+    border-right-width: 0 !important;
+  }
+`;
+
 export default class Editor extends Component {
   get document() {
     return this.editor.getDoc();
@@ -26,13 +46,21 @@ export default class Editor extends Component {
   }
 
   selectCode(from, to) {
-    return this.document.markText(from, to, {
-      css: 'background: yellow'
-    });
+    if (from && to) {
+      return this.document.markText(from, to, {
+        css: 'background: ' + background.highlight
+      });
+    } else if (from) {
+      return this.document.setBookmark(from, { widget: this.bookmark });
+    }
   }
 
   setMode(mode) {
     this.editor.setOption('mode', mode);
+  }
+
+  updateCode() {
+    this.document.setValue(this.props.code);
   }
 
   onCursorActivity(editor) {
@@ -64,6 +92,7 @@ export default class Editor extends Component {
           onCursorActivity={editor => this.onCursorActivity(editor)}
           options={options}
         />
+        <BookMark innerRef={elem => { this.bookmark = elem }} />
       </Container>
     );
   }
