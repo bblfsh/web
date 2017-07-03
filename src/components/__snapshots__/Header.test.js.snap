@@ -398,6 +398,33 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
         Run parser
       </button>
     </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+        htmlFor="examples-selector"
+      >
+        Examples
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="examples-selector"
+        onChange={undefined}
+        value={undefined}
+      >
+        <option
+          value="python"
+        >
+          python
+        </option>
+        <option
+          value="java"
+        >
+          java
+        </option>
+      </select>
+    </div>
   </div>
 </header>
 `;
@@ -655,6 +682,33 @@ exports[`Header has the button disabled if is not loading but user has not typed
       >
         Run parser
       </button>
+    </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+        htmlFor="examples-selector"
+      >
+        Examples
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="examples-selector"
+        onChange={undefined}
+        value={undefined}
+      >
+        <option
+          value="python"
+        >
+          python
+        </option>
+        <option
+          value="java"
+        >
+          java
+        </option>
+      </select>
     </div>
   </div>
 </header>
@@ -914,6 +968,33 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
         Run parser
       </button>
     </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+        htmlFor="examples-selector"
+      >
+        Examples
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="examples-selector"
+        onChange={undefined}
+        value={undefined}
+      >
+        <option
+          value="python"
+        >
+          python
+        </option>
+        <option
+          value="java"
+        >
+          java
+        </option>
+      </select>
+    </div>
   </div>
 </header>
 `;
@@ -1171,6 +1252,33 @@ exports[`Header renders correctly 1`] = `
       >
         Run parser
       </button>
+    </div>
+    <div
+      className="sc-bZQynM eJfGpj"
+    >
+      <label
+        className="sc-EHOje iUXYdf"
+        htmlFor="examples-selector"
+      >
+        Examples
+      </label>
+      <select
+        className="sc-gzVnrw buVHMZ"
+        id="examples-selector"
+        onChange={undefined}
+        value={undefined}
+      >
+        <option
+          value="python"
+        >
+          python
+        </option>
+        <option
+          value="java"
+        >
+          java
+        </option>
+      </select>
     </div>
   </div>
 </header>

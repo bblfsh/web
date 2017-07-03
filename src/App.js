@@ -10,6 +10,22 @@ import { Notifications, Error } from './components/Notifications';
 import languages from './languages';
 import * as api from './services/api';
 
+import { codePy } from './examples/example.py.js';
+import codePyUast from './examples/example.py.uast.json';
+import { codeJava } from './examples/example.java.js';
+import codeJavaUast from './examples/example.java.uast.json';
+
+const examples = {
+  python: {
+    code: codePy,
+    uast: codePyUast
+  },
+  java: {
+    code: codeJava,
+    uast: codeJavaUast
+  }
+};
+
 const Wrap = styled.div`
   position: absolute;
   top: 0;
@@ -27,35 +43,39 @@ const Content = styled.div`
   position: relative;
 `;
 
-const initialState = {
-  languages: Object.assign(
-    {
-      auto: { name: '(auto)' }
-    },
-    languages
-  ),
-  // babelfish tells us which language is active at the moment, but it
-  // won't be used unless the selectedLanguage is auto.
-  actualLanguage: 'python',
-  loading: false,
-  // this is the language that is selected by the user. It overrides the
-  // actualLanguage except when it is 'auto'.
-  selectedLanguage: 'auto',
-  code: '',
-  ast: undefined,
-  dirty: false,
-  errors: []
-};
+function getInitialState(lang) {
+  return {
+    languages: Object.assign(
+      {
+        auto: { name: '(auto)' }
+      },
+      languages
+    ),
+    // babelfish tells us which language is active at the moment, but it
+    // won't be used unless the selectedLanguage is auto.
+    actualLanguage: lang,
+    loading: false,
+    // this is the language that is selected by the user. It overrides the
+    // actualLanguage except when it is 'auto'.
+    selectedLanguage: 'auto',
+    selectedExample: lang,
+    code: examples[lang].code,
+    ast: examples[lang].uast,
+    dirty: false,
+    errors: []
+  };
+}
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, initialState);
+    this.state = Object.assign({}, getInitialState('python'));
     this.mark = null;
   }
 
   componentDidUpdate() {
     this.refs.editor.setMode(this.languageMode);
+    this.refs.editor.updateCode();
   }
 
   onLanguageChanged(e) {
@@ -64,6 +84,10 @@ export default class App extends Component {
       selectedLanguage = 'auto';
     }
     this.setState({ selectedLanguage });
+  }
+
+  onExampleChanged(e) {
+    this.setState(getInitialState(e.target.value));
   }
 
   hasLanguage(lang) {
@@ -99,9 +123,11 @@ export default class App extends Component {
   }
 
   onCursorChanged(pos) {
-    if (this.state.ast) {
-      this.refs.viewer.selectNode(pos);
+    if (!this.refs.viewer || !this.state.ast) {
+      return;
     }
+
+    this.refs.viewer.selectNode(pos);
   }
 
   onCodeChange(code) {
@@ -142,11 +168,12 @@ export default class App extends Component {
           selectedLanguage={selectedLanguage}
           actualLanguage={actualLanguage}
           onLanguageChanged={e => this.onLanguageChanged(e)}
+          onExampleChanged={e => this.onExampleChanged(e)}
           onRunParser={e => this.onRunParser(e)}
           dirty={dirty}
+          examples={examples}
           loading={loading}
         />
-
         <Content>
           <SplitPane
             split="vertical"

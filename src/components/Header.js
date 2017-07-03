@@ -153,10 +153,13 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
 export default function Header({
   selectedLanguage,
   languages,
+  examples,
   onLanguageChanged,
+  onExampleChanged,
   onRunParser,
   loading,
   actualLanguage,
+  selectedExample,
   dirty
 }) {
   const languageOptions = Object.keys(languages).map(k => {
@@ -170,6 +173,12 @@ export default function Header({
       </option>
     );
   });
+
+  const examplesOptions = Object.keys(examples).map((name, k) =>
+    <option value={name} key={k}>
+      {name}
+    </option>
+  );
 
   return (
     <Container>
@@ -204,6 +213,17 @@ export default function Header({
           >
             Run parser
           </RunButton>
+        </InputGroup>
+
+        <InputGroup>
+          <Label htmlFor="examples-selector">Examples</Label>
+          <Select
+            id="examples-selector"
+            onChange={onExampleChanged}
+            value={selectedExample}
+          >
+            {examplesOptions}
+          </Select>
         </InputGroup>
       </Actions>
     </Container>
