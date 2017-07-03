@@ -1,0 +1,265 @@
+uast {
+  internal_type: "CompilationUnit"
+  children {
+    internal_type: "TypeDeclaration"
+    properties {
+      key: "interface"
+      value: "false"
+    }
+    properties {
+      key: "internalRole"
+      value: "types"
+    }
+    children {
+      internal_type: "Modifier"
+      properties {
+        key: "internalRole"
+        value: "modifiers"
+      }
+      token: "public"
+      start_position {
+        line: 1
+      }
+    }
+    children {
+      internal_type: "SimpleName"
+      properties {
+        key: "internalRole"
+        value: "name"
+      }
+      token: "HelloWorld"
+      start_position {
+        offset: 13
+        line: 1
+      }
+      roles: QUALIFIED_IDENTIFIER
+    }
+    children {
+      internal_type: "MethodDeclaration"
+      properties {
+        key: "constructor"
+        value: "false"
+      }
+      properties {
+        key: "internalRole"
+        value: "bodyDeclarations"
+      }
+      children {
+        internal_type: "Modifier"
+        properties {
+          key: "internalRole"
+          value: "modifiers"
+        }
+        token: "public"
+        start_position {
+          offset: 27
+          line: 3
+        }
+      }
+      children {
+        internal_type: "Modifier"
+        properties {
+          key: "internalRole"
+          value: "modifiers"
+        }
+        token: "static"
+        start_position {
+          offset: 34
+          line: 3
+        }
+      }
+      children {
+        internal_type: "PrimitiveType"
+        properties {
+          key: "internalRole"
+          value: "returnType2"
+        }
+        token: "void"
+        start_position {
+          offset: 41
+          line: 3
+        }
+      }
+      children {
+        internal_type: "SimpleName"
+        properties {
+          key: "internalRole"
+          value: "name"
+        }
+        token: "main"
+        start_position {
+          offset: 46
+          line: 3
+        }
+        roles: QUALIFIED_IDENTIFIER
+        roles: FUNCTION_DECLARATION_RECEIVER
+      }
+      children {
+        internal_type: "SingleVariableDeclaration"
+        properties {
+          key: "internalRole"
+          value: "parameters"
+        }
+        properties {
+          key: "varargs"
+          value: "false"
+        }
+        children {
+          internal_type: "ArrayType"
+          properties {
+            key: "internalRole"
+            value: "type"
+          }
+          children {
+            internal_type: "SimpleType"
+            properties {
+              key: "internalRole"
+              value: "elementType"
+            }
+            children {
+              internal_type: "SimpleName"
+              properties {
+                key: "internalRole"
+                value: "name"
+              }
+              token: "String"
+              start_position {
+                offset: 51
+                line: 3
+              }
+              roles: QUALIFIED_IDENTIFIER
+            }
+          }
+          children {
+            internal_type: "Dimension"
+            properties {
+              key: "internalRole"
+              value: "dimensions"
+            }
+          }
+        }
+        children {
+          internal_type: "SimpleName"
+          properties {
+            key: "internalRole"
+            value: "name"
+          }
+          token: "args"
+          start_position {
+            offset: 60
+            line: 3
+          }
+          roles: QUALIFIED_IDENTIFIER
+          roles: FUNCTION_DECLARATION_ARGUMENT_DEFAULT_VALUE
+        }
+        start_position {
+          offset: 51
+          line: 3
+        }
+        roles: FUNCTION_DECLARATION_ARGUMENT_NAME
+      }
+      children {
+        internal_type: "Block"
+        properties {
+          key: "internalRole"
+          value: "body"
+        }
+        children {
+          internal_type: "ExpressionStatement"
+          properties {
+            key: "internalRole"
+            value: "statements"
+          }
+          children {
+            internal_type: "MethodInvocation"
+            properties {
+              key: "internalRole"
+              value: "expression"
+            }
+            children {
+              internal_type: "QualifiedName"
+              properties {
+                key: "internalRole"
+                value: "expression"
+              }
+              children {
+                internal_type: "SimpleName"
+                properties {
+                  key: "internalRole"
+                  value: "qualifier"
+                }
+                token: "System"
+                start_position {
+                  offset: 71
+                  line: 5
+                }
+                roles: QUALIFIED_IDENTIFIER
+              }
+              children {
+                internal_type: "SimpleName"
+                properties {
+                  key: "internalRole"
+                  value: "name"
+                }
+                token: "out"
+                start_position {
+                  offset: 78
+                  line: 5
+                }
+                roles: QUALIFIED_IDENTIFIER
+              }
+              roles: BINARY_EXPRESSION
+              roles: CALL_CALLEE
+            }
+            children {
+              internal_type: "SimpleName"
+              properties {
+                key: "internalRole"
+                value: "name"
+              }
+              token: "println"
+              start_position {
+                offset: 82
+                line: 5
+              }
+              roles: QUALIFIED_IDENTIFIER
+              roles: CALL_POSITIONAL_ARGUMENT
+            }
+            children {
+              internal_type: "StringLiteral"
+              properties {
+                key: "internalRole"
+                value: "arguments"
+              }
+              token: "\"Hello world!\""
+              start_position {
+                offset: 90
+                line: 5
+              }
+              roles: TUPLE_LITERAL
+              roles: CALL_NAMED_ARGUMENT
+            }
+            roles: CALL_RECEIVER
+          }
+          roles: OP_EQUAL
+        }
+        roles: FUNCTION_DECLARATION_NAME
+        roles: RETURN
+        roles: BLOCK_SCOPE
+      }
+      start_position {
+        offset: 27
+        line: 3
+      }
+      roles: IF
+      roles: FUNCTION_DECLARATION_BODY
+    }
+    start_position {
+      line: 1
+    }
+    roles: IF
+    roles: TYPE_DECLARATION_BODY
+  }
+  roles: OP_BOOLEAN_AND
+}
+

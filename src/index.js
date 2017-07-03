@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import './vendor.css';
 import { polyfill as es6PromisesPolyfill } from 'es6-promise';
 import 'isomorphic-fetch';
+import { font } from './styling/variables';
 
 es6PromisesPolyfill();
 
@@ -17,8 +18,8 @@ injectGlobal`
   }
 
   body, html {
-    font-size: 16px;
-    font-family: 'Lato', sans-serif;
+    font-size: ${font.size.html};
+    font-family: ${font.family.prose};
   }
 `;
 

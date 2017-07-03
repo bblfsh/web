@@ -15,7 +15,7 @@ indent_size = 4
 [*.hbs]
 insert_final_newline = false
 
-[*.{js,ts,jsx,yml}]
+[*.{diff,js,ts,jsx,yml,json}]
 indent_size = 2
 
 [*.{diff,md}]
@@ -23,10 +23,6 @@ trim_trailing_whitespace = false
 
 [*.go]
 indent_style = tab
-
-[{package.json,.travis.yml}]
-indent_style = space
-indent_size = 2
 
 [{Makefile, makefile}]
 indent_style = tab

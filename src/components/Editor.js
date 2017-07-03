@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
+import { background } from '../styling/variables';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
@@ -16,6 +17,24 @@ injectGlobal`
 
 const Container = styled.div`height: 100%;`;
 
+const BookMark = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: -2px;
+    width: 3px;
+    height: 19px;
+    border: 1px solid #ea7024;
+    border-right-width: 0 !important;
+  }
+`;
+
 export default class Editor extends Component {
   get document() {
     return this.editor.getDoc();
@@ -26,13 +45,23 @@ export default class Editor extends Component {
   }
 
   selectCode(from, to) {
-    return this.document.markText(from, to, {
-      css: 'background: yellow'
-    });
+    if (from && to) {
+      return this.document.markText(from, to, {
+        css: 'background: ' + background.highlight
+      });
+    } else if (from) {
+      return this.document.setBookmark(from, { widget: this.bookmark });
+    }
   }
 
   setMode(mode) {
     this.editor.setOption('mode', mode);
+  }
+
+  updateCode() {
+    const cursor = this.cursor();
+    this.document.setValue(this.props.code);
+    this.document.setCursor(cursor);
   }
 
   onCursorActivity(editor) {
@@ -40,9 +69,11 @@ export default class Editor extends Component {
       return;
     }
 
-    const doc = editor.getDoc();
-    const selection = doc.listSelections().slice(0, 1).pop();
-    this.props.onCursorChanged(selection.head);
+    this.props.onCursorChanged(this.cursor(editor));
+  }
+
+  cursor(editor = this.editor) {
+    return editor.getDoc().listSelections().slice(0, 1).pop().head;
   }
 
   render() {
@@ -63,6 +94,11 @@ export default class Editor extends Component {
           value={code}
           onCursorActivity={editor => this.onCursorActivity(editor)}
           options={options}
+        />
+        <BookMark
+          innerRef={elem => {
+            this.bookmark = elem;
+          }}
         />
       </Container>
     );
