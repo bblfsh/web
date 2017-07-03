@@ -78,16 +78,16 @@ export default class App extends Component {
     this.refs.editor.updateCode();
   }
 
-  onLanguageChanged(e) {
-    let selectedLanguage = e.target.value;
+  onLanguageChanged(language) {
+    let selectedLanguage = language;
     if (!this.hasLanguage(selectedLanguage)) {
       selectedLanguage = 'auto';
     }
     this.setState({ selectedLanguage });
   }
 
-  onExampleChanged(e) {
-    this.setState(getInitialState(e.target.value));
+  onExampleChanged(lang) {
+    this.setState(getInitialState(lang));
   }
 
   hasLanguage(lang) {
@@ -119,6 +119,7 @@ export default class App extends Component {
   clearNodeSelection() {
     if (this.mark) {
       this.mark.clear();
+      this.mark = null;
     }
   }
 
@@ -167,8 +168,8 @@ export default class App extends Component {
           languages={languages}
           selectedLanguage={selectedLanguage}
           actualLanguage={actualLanguage}
-          onLanguageChanged={e => this.onLanguageChanged(e)}
-          onExampleChanged={e => this.onExampleChanged(e)}
+          onLanguageChanged={e => this.onLanguageChanged(e.target.value)}
+          onExampleChanged={e => this.onExampleChanged(e.target.value)}
           onRunParser={e => this.onRunParser(e)}
           dirty={dirty}
           examples={examples}
