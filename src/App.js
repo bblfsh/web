@@ -207,7 +207,7 @@ export default class App extends Component {
                   <Error
                     message={err}
                     key={i}
-                    onRemoved={() => this.onErrorRemoved(i)}
+                    onRemove={() => this.onErrorRemoved(i)}
                   />
                 );
               })}
