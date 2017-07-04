@@ -1,5 +1,5 @@
 const defaultServerUrl =
-  process.env.REACT_APP_SERVER_URL || 'http://0.0.0.0:9432';
+  process.env.REACT_APP_SERVER_URL || 'http://0.0.0.0:9999';
 
 const unexpectedErrorMsg =
   'Unexpected error contacting babelfish server. Please, try again.';

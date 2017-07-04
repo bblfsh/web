@@ -28,3 +28,28 @@ if you just want to run the tests and exit, run:
 ### Build the project
 
 ```yarn build```
+
+## Server
+
+For actually parsing the input of the user, you'll need to run the server as well.
+
+### Install
+
+```
+go get ./server/...
+go install ./server/...
+```
+
+### Run the server
+
+```
+dashboard-server -bblfsh-addr=0.0.0.0:9432
+```
+
+This requires a babelfish server running on the specified address. Please, refer to the [server project documentation](https://github.com/bblfsh/server) for instructions on how to run it.
+
+### Test the server
+
+```
+go test ./server/...
+```
