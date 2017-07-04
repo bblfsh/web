@@ -1,4 +1,22 @@
-language: node_js
-node_js:
-  - node
-script: yarn test
+language: go
+
+go:
+  - 1.8
+  - tip
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - go: tip
+
+install:
+  - . $HOME/.nvm/nvm.sh
+  - nvm install 8
+  - nvm use 8
+  - npm install -g yarn
+  - yarn
+  - go get -t -u -v ./server/...
+
+script:
+  - go test -v ./server/...
+  - yarn test
