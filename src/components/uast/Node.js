@@ -5,6 +5,7 @@ import { font, border, background } from '../../styling/variables';
 const INDENT_SIZE = 20;
 const WHITE_SPACE = 5;
 const LINE_HEIGHT  = 29;
+const MAX_EXPANDED_DEPTH = 2; // Last level that will be expanded by default
 
 const PROPERTY_VALUE_SEPARATOR = '\':\'';
 const STRING_LIMITER = '\'\\27\'';
@@ -134,6 +135,10 @@ export default class Node extends Component {
     return this.props.tree.EndPosition;
   }
 
+  get depth() {
+    return this.props.depth || 0;
+  }
+
   highlight() {
     this.setState({ highlighted: true });
   }
@@ -148,12 +153,16 @@ export default class Node extends Component {
     return (
       <CollapsibleItem
         label="Node"
+        depth={this.depth}
         onNodeSelected={this.selectedNodeTrigger.bind(this)}
         highlighted={this.state.highlighted}
       >
         <Property name="internal_type" value={tree.InternalType} />
         <Properties properties={tree.Properties} />
-        <Children children={tree.Children} onNodeSelected={onNodeSelected} onMount={onMount} />
+        <Children children={tree.Children}
+                  depth={this.depth + 1}
+                  onNodeSelected={onNodeSelected}
+                  onMount={onMount} />
         <Property name="token" value={tree.Token} />
         <Position name="start_position" position={tree.StartPosition} />
         <Position name="end_position" position={tree.EndPosition} />
@@ -193,12 +202,16 @@ function Property({ name, value }) {
   return null;
 }
 
-function Children({ children, onNodeSelected, onMount }) {
+function Children({ children, depth, onNodeSelected, onMount }) {
   if (Array.isArray(children)) {
     return (
       <CollapsibleItem name="children" label="[]Node">
         {children.map((node, i) => (
-          <Node key={i} tree={node} onNodeSelected={onNodeSelected} onMount={onMount} />
+          <Node key={i}
+                tree={node}
+                depth={depth}
+                onNodeSelected={onNodeSelected}
+                onMount={onMount} />
         ))}
       </CollapsibleItem>
     );
@@ -250,7 +263,7 @@ export class CollapsibleItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: false
+      collapsed: this.props.depth > MAX_EXPANDED_DEPTH,
     };
   }
 
