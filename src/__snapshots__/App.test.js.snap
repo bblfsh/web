@@ -533,12 +533,12 @@ exports[`renders without crashing 1`] = `
         "java": Object {
           "mode": "text/x-java",
           "name": "Java",
-          "url": "#",
+          "url": "https://github.com/bblfsh/java-driver",
         },
         "python": Object {
           "mode": "python",
           "name": "Python",
-          "url": "#",
+          "url": "https://github.com/bblfsh/python-driver",
         },
       }
     }
