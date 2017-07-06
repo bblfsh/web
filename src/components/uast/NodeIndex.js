@@ -3,32 +3,30 @@ export default class NodeIndex {
     this.index = [];
   }
 
-  reset() {
-    this.index = [];
-  }
-
   add(node) {
     if (!node.end || !node.end.Line || !node.end.Col) {
       return;
     }
 
+    const { Line: line, Col: col } = node.start;
     const idx = this.index;
-    if (!idx[node.start.Line]) {
-      idx[node.start.Line] = [];
-      idx[node.start.Line][node.start.Col] = [node];
+
+    if (!idx[line]) {
+      idx[line] = [];
+      idx[line][col] = [node];
       return;
     }
 
-    if (!idx[node.start.Line][node.start.Col]) {
-      idx[node.start.Line][node.start.Col] = [node];
+    if (!idx[line][col]) {
+      idx[line][col] = [node];
       return;
     }
 
-    idx[node.start.Line][node.start.Col].push(node);
+    idx[line][col].push(node);
   }
 
-  get(position) {
-    return findContainer(this.index, position.Line, position.Col)
+  get({ Line: line, Col: col }) {
+    return findContainer(this.index, line, col);
   }
 }
 
@@ -40,7 +38,12 @@ function findContainer(idx, targetLine, targetCol) {
       continue;
     }
 
-    candidate = findContainerInLineNodes(idx[line], targetLine, targetCol, firstLookup);
+    candidate = findContainerInLineNodes(
+      idx[line],
+      targetLine,
+      targetCol,
+      firstLookup
+    );
     if (candidate) {
       return candidate;
     }
@@ -49,14 +52,27 @@ function findContainer(idx, targetLine, targetCol) {
   }
 }
 
-function findContainerInLineNodes(lineNodes, targetLine, targetCol, startFromTargetCol) {
+function findContainerInLineNodes(
+  lineNodes,
+  targetLine,
+  targetCol,
+  startFromTargetCol
+) {
   let candidate;
-  for (let col = (startFromTargetCol ? targetCol : lineNodes.length - 1); col > 0; col--) {
+  for (
+    let col = startFromTargetCol ? targetCol : lineNodes.length - 1;
+    col > 0;
+    col--
+  ) {
     if (!lineNodes[col]) {
       continue;
     }
 
-    candidate = findSmallerContainerInColNodes(lineNodes[col], targetLine, targetCol);
+    candidate = findSmallerContainerInColNodes(
+      lineNodes[col],
+      targetLine,
+      targetCol
+    );
     if (candidate) {
       return candidate;
     }
@@ -96,5 +112,3 @@ function endsAfter(node, targetLine, targetCol) {
 function hasEndPosition(node) {
   return node.end && node.end.Line && node.end.Col;
 }
-
-export const nodeIndex = new NodeIndex();
