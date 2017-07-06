@@ -102,12 +102,12 @@ export default class Node extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      highlighted: false
+      highlighted: false,
     }
     this.props.onMount(this);
   }
 
-  selectedNodeTrigger(e) {
+  onNodeSelected(e) {
     let from, to;
     if (this.start && this.start.Line && this.start.Col) {
       from = {
@@ -139,6 +139,10 @@ export default class Node extends Component {
     return this.props.depth || 0;
   }
 
+  get path() {
+    return this.props.path || [];
+  }
+
   highlight() {
     this.setState({ highlighted: true });
   }
@@ -147,20 +151,27 @@ export default class Node extends Component {
     this.setState({ highlighted: false });
   }
 
+  expand() {
+    this.refs.collapsible.expand();
+    this.path.forEach(node => node.expand());
+  }
+
   render() {
-    const {tree, onNodeSelected, onMount} = this.props;
+    const { tree, onNodeSelected, onMount } = this.props;
 
     return (
       <CollapsibleItem
         label="Node"
+        ref="collapsible"
         depth={this.depth}
-        onNodeSelected={this.selectedNodeTrigger.bind(this)}
+        onNodeSelected={this.onNodeSelected.bind(this)}
         highlighted={this.state.highlighted}
       >
         <Property name="internal_type" value={tree.InternalType} />
         <Properties properties={tree.Properties} />
         <Children children={tree.Children}
                   depth={this.depth + 1}
+                  path={(this.path).concat([this])}
                   onNodeSelected={onNodeSelected}
                   onMount={onMount} />
         <Property name="token" value={tree.Token} />
@@ -202,22 +213,31 @@ function Property({ name, value }) {
   return null;
 }
 
-function Children({ children, depth, onNodeSelected, onMount }) {
-  if (Array.isArray(children)) {
-    return (
-      <CollapsibleItem name="children" label="[]Node">
-        {children.map((node, i) => (
-          <Node key={i}
-                tree={node}
-                depth={depth}
-                onNodeSelected={onNodeSelected}
-                onMount={onMount} />
-        ))}
-      </CollapsibleItem>
-    );
+class Children extends Component {
+  expand() {
+    this.refs.collapsible.expand();
+    this.props.path.forEach(node => node.expand());
   }
 
-  return null;
+  render() {
+    const { children, depth, onNodeSelected, onMount, path } = this.props;
+    if (Array.isArray(children)) {
+      return (
+        <CollapsibleItem name="children" ref="collapsible" label="[]Node">
+          {children.map((node, i) => (
+            <Node key={i}
+                  tree={node}
+                  depth={depth}
+                  path={path.concat([this])}
+                  onNodeSelected={onNodeSelected}
+                  onMount={onMount} />
+          ))}
+        </CollapsibleItem>
+      );
+    }
+
+    return null;
+  }
 }
 
 function coordinates(position) {
@@ -269,6 +289,10 @@ export class CollapsibleItem extends Component {
 
   toggle() {
     this.setState({ collapsed: !this.state.collapsed });
+  }
+
+  expand() {
+    this.setState({ collapsed: false });
   }
 
   render() {
