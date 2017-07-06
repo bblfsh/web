@@ -10,7 +10,6 @@ export default class NodeIndex {
 
     const { Line: line, Col: col } = node.start;
     const idx = this.index;
-
     if (!idx[line]) {
       idx[line] = [];
       idx[line][col] = [node];
