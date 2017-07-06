@@ -24,9 +24,15 @@ export default class UASTViewer extends Component {
   }
 
   selectNode({ line, ch }) {
-    this.activeNode && this.activeNode.unHighlight();
+    if (this.activeNode) {
+      this.activeNode.unHighlight();
+    }
+
     this.activeNode = this.index.get({ Line: line + 1, Col: ch + 1 });
-    this.activeNode && this.activeNode.highlight();
+    if (this.activeNode) {
+      this.activeNode.expand();
+      this.activeNode.highlight();
+    }
   }
 
   render() {
