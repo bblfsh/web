@@ -23,7 +23,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,15 +38,15 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -54,7 +54,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   className="sc-dnqmqq itLWpz"
 >
   <a
-    className="sc-gqjmRU hATlZE"
+    className="sc-gqjmRU ieScAd"
     href="Python.driver"
     target="_blank"
   >
@@ -95,7 +95,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,15 +110,15 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
@@ -126,7 +126,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   className="sc-dnqmqq itLWpz"
 >
   <a
-    className="sc-gqjmRU hATlZE"
+    className="sc-gqjmRU ieScAd"
     href="Java.driver"
     target="_blank"
   >
@@ -145,7 +145,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
 `;
 
 exports[`Header has the button disabled if is loading, even if user has typed 1`] = `
-.kFviGb {
+.dfgKLf {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -156,7 +156,6 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid black;
   background: #f9f7f5;
   border-bottom: 1px solid #dad7d0;
   z-index: 9999;
@@ -242,12 +241,12 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   font-size: .7rem;
 }
 
-.dSXvxR {
+.dmeEWi {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  background: #F54F00;
+  background: #EB7422;
   color: white;
   font-weight: bold;
   -webkit-text-transform: uppercase;
@@ -261,7 +260,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dSXvxR:hover {
+.dmeEWi:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
@@ -287,7 +286,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -302,20 +301,20 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
 <header
-  className="sc-bdVaJa kFviGb"
+  className="sc-bdVaJa dfgKLf"
 >
   <h1
     className="sc-bwzfXH gRdHVw"
@@ -369,7 +368,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU hATlZE"
+          className="sc-gqjmRU ieScAd"
           href="Python.driver"
           target="_blank"
         >
@@ -390,7 +389,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
       className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-htoDjs dSXvxR"
+        className="sc-htoDjs dmeEWi"
         disabled={true}
         id="run-parser"
         onClick={undefined}
@@ -430,7 +429,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
 `;
 
 exports[`Header has the button disabled if is not loading but user has not typed 1`] = `
-.kFviGb {
+.dfgKLf {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -441,7 +440,6 @@ exports[`Header has the button disabled if is not loading but user has not typed
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid black;
   background: #f9f7f5;
   border-bottom: 1px solid #dad7d0;
   z-index: 9999;
@@ -527,12 +525,12 @@ exports[`Header has the button disabled if is not loading but user has not typed
   font-size: .7rem;
 }
 
-.dSXvxR {
+.dmeEWi {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  background: #F54F00;
+  background: #EB7422;
   color: white;
   font-weight: bold;
   -webkit-text-transform: uppercase;
@@ -546,7 +544,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dSXvxR:hover {
+.dmeEWi:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
@@ -572,7 +570,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -587,20 +585,20 @@ exports[`Header has the button disabled if is not loading but user has not typed
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
 <header
-  className="sc-bdVaJa kFviGb"
+  className="sc-bdVaJa dfgKLf"
 >
   <h1
     className="sc-bwzfXH gRdHVw"
@@ -654,7 +652,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU hATlZE"
+          className="sc-gqjmRU ieScAd"
           href="Python.driver"
           target="_blank"
         >
@@ -675,7 +673,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
       className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-htoDjs dSXvxR"
+        className="sc-htoDjs dmeEWi"
         disabled={true}
         id="run-parser"
         onClick={undefined}
@@ -715,7 +713,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
 `;
 
 exports[`Header has the button enabled if user has typed and is not loading 1`] = `
-.kFviGb {
+.dfgKLf {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -726,7 +724,6 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid black;
   background: #f9f7f5;
   border-bottom: 1px solid #dad7d0;
   z-index: 9999;
@@ -812,12 +809,12 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   font-size: .7rem;
 }
 
-.dSXvxR {
+.dmeEWi {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  background: #F54F00;
+  background: #EB7422;
   color: white;
   font-weight: bold;
   -webkit-text-transform: uppercase;
@@ -831,7 +828,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dSXvxR:hover {
+.dmeEWi:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
@@ -857,7 +854,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -872,20 +869,20 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
 <header
-  className="sc-bdVaJa kFviGb"
+  className="sc-bdVaJa dfgKLf"
 >
   <h1
     className="sc-bwzfXH gRdHVw"
@@ -939,7 +936,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU hATlZE"
+          className="sc-gqjmRU ieScAd"
           href="Python.driver"
           target="_blank"
         >
@@ -960,7 +957,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
       className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-htoDjs dSXvxR"
+        className="sc-htoDjs dmeEWi"
         disabled={false}
         id="run-parser"
         onClick={undefined}
@@ -1000,7 +997,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
 `;
 
 exports[`Header renders correctly 1`] = `
-.kFviGb {
+.dfgKLf {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -1011,7 +1008,6 @@ exports[`Header renders correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid black;
   background: #f9f7f5;
   border-bottom: 1px solid #dad7d0;
   z-index: 9999;
@@ -1097,12 +1093,12 @@ exports[`Header renders correctly 1`] = `
   font-size: .7rem;
 }
 
-.dSXvxR {
+.dmeEWi {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  background: #F54F00;
+  background: #EB7422;
   color: white;
   font-weight: bold;
   -webkit-text-transform: uppercase;
@@ -1116,7 +1112,7 @@ exports[`Header renders correctly 1`] = `
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dSXvxR:hover {
+.dmeEWi:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
@@ -1142,7 +1138,7 @@ exports[`Header renders correctly 1`] = `
   border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 
-.hATlZE {
+.ieScAd {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1157,20 +1153,20 @@ exports[`Header renders correctly 1`] = `
   font-size: .9rem;
 }
 
-.hATlZE:hover {
-  color: #F54F00;
+.ieScAd:hover {
+  color: #EB7422;
 }
 
-.hATlZE:hover .sc-gZMcBi {
-  border-bottom-color: #F54F00;
+.ieScAd:hover .sc-gZMcBi {
+  border-bottom-color: #EB7422;
 }
 
-.hATlZE:hover .sc-iwsKbI {
+.ieScAd:hover .sc-iwsKbI {
   opacity: 1;
 }
 
 <header
-  className="sc-bdVaJa kFviGb"
+  className="sc-bdVaJa dfgKLf"
 >
   <h1
     className="sc-bwzfXH gRdHVw"
@@ -1224,7 +1220,7 @@ exports[`Header renders correctly 1`] = `
         className="sc-dnqmqq itLWpz"
       >
         <a
-          className="sc-gqjmRU hATlZE"
+          className="sc-gqjmRU ieScAd"
           href="Java.driver"
           target="_blank"
         >
@@ -1245,7 +1241,7 @@ exports[`Header renders correctly 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <button
-        className="sc-htoDjs dSXvxR"
+        className="sc-htoDjs dmeEWi"
         disabled={true}
         id="run-parser"
         onClick={undefined}
