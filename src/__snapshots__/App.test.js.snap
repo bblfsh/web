@@ -973,5 +973,6 @@ exports[`renders without crashing 1`] = `
       />
     </SplitPane>
   </styled.div>
+  <Footer />
 </styled.div>
 `;

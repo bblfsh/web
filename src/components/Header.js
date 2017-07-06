@@ -1,22 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { shadow, font, background, border } from '../styling/variables';
 
 import bblfshLogo from '../img/babelfish_logo.svg';
 import githubIcon from '../img/github.svg';
-
-const borderColor = '#dad7d0';
-const accentColor = '#F54F00';
 
 const Container = styled.header`
   height: 70px;
   padding: 0 1rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
-  background: #f9f7f5;
-  border-bottom: 1px solid ${borderColor};
+  background: ${background.light};
+  border-bottom: 1px solid ${border.smooth};
   z-index: 9999;
-  box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
+  box-shadow: 0 5px 25px ${shadow.topbar};
 `;
 
 const Title = styled.h1`
@@ -27,7 +24,7 @@ const Title = styled.h1`
   padding: 0;
   margin: 0;
   height: 100%;
-  border-right: 1px solid ${borderColor};
+  border-right: 1px solid ${border.smooth};
   padding-right: 1rem;
 `;
 
@@ -55,7 +52,7 @@ const InputGroup = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  border-right: 1px solid ${borderColor};
+  border-right: 1px solid ${border.smooth};
   padding-right: 1rem;
 
   & + & {
@@ -69,7 +66,7 @@ const InputGroup = styled.div`
 
 const Select = styled.select`
   border-radius: 3px;
-  border: 1px solid ${borderColor};
+  border: 1px solid ${border.smooth};
   background: white;
   padding: .5em .5em;
   text-transform: uppercase;
@@ -82,7 +79,7 @@ const RunButton = styled.button`
   border-radius: 3px;
   border: none;
   cursor: pointer;
-  background: ${accentColor};
+  background: ${background.accent};
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -96,7 +93,7 @@ const RunButton = styled.button`
   }
 
   &:hover {
-    box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
+    box-shadow: 0 5px 15px ${shadow.primaryButton};
   }
 `;
 
@@ -124,11 +121,11 @@ const DriverCodeLink = styled.a`
   font-size: .9rem;
 
   &:hover {
-    color: ${accentColor};
+    color: ${font.color.accentDark};
   }
 
   &:hover ${DriverCodeText} {
-    border-bottom-color: ${accentColor};
+    border-bottom-color: ${border.accent};
   }
 
   &:hover ${DriverCodeIcon} {
