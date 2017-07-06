@@ -4,18 +4,18 @@ import { font, border, background } from '../../styling/variables';
 
 const INDENT_SIZE = 20;
 const WHITE_SPACE = 5;
-const LINE_HEIGHT  = 29;
-const MAX_EXPANDED_DEPTH = 2; // Last level that will be expanded by default
+const LINE_HEIGHT = 29;
+export const MAX_EXPANDED_DEPTH = 2; // Last level that will be expanded by default
 
-const PROPERTY_VALUE_SEPARATOR = '\':\'';
-const STRING_LIMITER = '\'\\27\'';
-const COLLAPSIBLE_COLLAPSED = '\'+\'';
-const COLLAPSIBLE_EXTENDED = '\'-\'';
+const PROPERTY_VALUE_SEPARATOR = "':'";
+const STRING_LIMITER = "'\\27'";
+const COLLAPSIBLE_COLLAPSED = "'+'";
+const COLLAPSIBLE_EXTENDED = "'-'";
 
-const StyledItem = styled.div`
+export const StyledItem = styled.div`
   margin-left: ${INDENT_SIZE}px;
   min-width: 400px;
-  background: ${props => props.highlighted ? background.highlight : 'none'};
+  background: ${props => (props.highlighted ? background.highlight : 'none')};
 `;
 
 const StyledTitle = styled.div`
@@ -28,12 +28,14 @@ const StyledTitle = styled.div`
   }
 `;
 
-const StyledCollapsibleTitle = StyledTitle.extend`
+export const StyledCollapsibleTitle = StyledTitle.extend`
   cursor: pointer;
 
   &::before {
-    content: ${props => props.collapsed ? COLLAPSIBLE_COLLAPSED : COLLAPSIBLE_EXTENDED};
-    color: ${props => props.collapsed ? font.color.accentDark : font.color.accentLight};
+    content: ${props =>
+      props.collapsed ? COLLAPSIBLE_COLLAPSED : COLLAPSIBLE_EXTENDED};
+    color: ${props =>
+      props.collapsed ? font.color.accentDark : font.color.accentLight};
   }
 
   &:hover > span {
@@ -41,31 +43,30 @@ const StyledCollapsibleTitle = StyledTitle.extend`
   }
 `;
 
-const StyledCollapsibleContent = styled.div`
-  display: ${props => props.collapsed ? 'none' : 'block'};
+export const StyledCollapsibleContent = styled.div`
+  display: ${props => (props.collapsed ? 'none' : 'block')};
   border-left: 1px solid ${border.smooth};
   margin-left: 4px;
 `;
 
-const StyledLabel = styled.summary`
+const Label = styled.summary`
   display: inline;
   font-family: ${font.family.prose};
   color: ${font.color.light};
 `;
 
 const StyledValue = styled.span`
-  color: ${
-    props => props.type === 'number' || props.type === 'object'
+  color: ${props =>
+    props.type === 'number' || props.type === 'object'
       ? font.color.accentDark
-      : props.type === 'string' ? font.color.accentLight : font.color.dark
-    };
+      : props.type === 'string' ? font.color.accentLight : font.color.dark};
 
-  &::before{
-    content: ${props => props.type === 'string' ? STRING_LIMITER : ''};
+  &::before {
+    content: ${props => (props.type === 'string' ? STRING_LIMITER : '')};
   }
 
   &::after {
-    content: ${props => props.type === 'string' ? STRING_LIMITER : ''};
+    content: ${props => (props.type === 'string' ? STRING_LIMITER : '')};
   }
 `;
 
@@ -78,33 +79,32 @@ const StyledPropertyName = styled.span`
   }
 `;
 
-function Value({value}) {
+export function Value({ value }) {
   return (
-    <StyledValue type={typeof value}>{ value !== null ? value : 'null'}</StyledValue>
+    <StyledValue type={typeof value}>
+      {value !== null ? value : 'null'}
+    </StyledValue>
   );
 }
 
-function Label({name}) {
-  return (
-    <StyledLabel>{name}</StyledLabel>
-  );
-}
-
-function PropertyName({name}) {
-  return (
-    name
-      ? <StyledPropertyName>{name}</StyledPropertyName>
-      : null
-  );
+export function PropertyName({ name }) {
+  return name
+    ? <StyledPropertyName>
+        {name}
+      </StyledPropertyName>
+    : null;
 }
 
 export default class Node extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      highlighted: false,
+      highlighted: false
+    };
+
+    if (this.props.onMount) {
+      this.props.onMount(this);
     }
-    this.props.onMount(this);
   }
 
   onNodeSelected(e) {
@@ -169,11 +169,13 @@ export default class Node extends Component {
       >
         <Property name="internal_type" value={tree.InternalType} />
         <Properties properties={tree.Properties} />
-        <Children children={tree.Children}
-                  depth={this.depth + 1}
-                  path={(this.path).concat([this])}
-                  onNodeSelected={onNodeSelected}
-                  onMount={onMount} />
+        <Children
+          children={tree.Children}
+          depth={this.depth + 1}
+          path={this.path.concat([this])}
+          onNodeSelected={onNodeSelected}
+          onMount={onMount}
+        />
         <Property name="token" value={tree.Token} />
         <Position name="start_position" position={tree.StartPosition} />
         <Position name="end_position" position={tree.EndPosition} />
@@ -183,14 +185,13 @@ export default class Node extends Component {
   }
 }
 
-function Properties({ properties }) {
+export function Properties({ properties }) {
   if (properties && Object.keys(properties).length > 0) {
     return (
       <CollapsibleItem name="properties" label="map<string, string>">
-        {
-          Object.keys(properties)
-            .map((name, i) => <Property key={i} name={name} value={properties[name]} />)
-        }
+        {Object.keys(properties).map((name, i) =>
+          <Property key={i} name={name} value={properties[name]} />
+        )}
       </CollapsibleItem>
     );
   }
@@ -198,22 +199,22 @@ function Properties({ properties }) {
   return null;
 }
 
-function Property({ name, value }) {
-  if (typeof value !== "undefined") {
+export function Property({ name, value }) {
+  if (typeof value !== 'undefined') {
     return (
       <StyledItem>
         <StyledTitle>
-          { name ? <PropertyName name={name} /> : null}
+          {name ? <PropertyName name={name} /> : null}
           <Value value={value} />
         </StyledTitle>
       </StyledItem>
-    )
+    );
   }
 
   return null;
 }
 
-class Children extends Component {
+export class Children extends Component {
   expand() {
     this.refs.collapsible.expand();
     this.props.path.forEach(node => node.expand());
@@ -224,14 +225,16 @@ class Children extends Component {
     if (Array.isArray(children)) {
       return (
         <CollapsibleItem name="children" ref="collapsible" label="[]Node">
-          {children.map((node, i) => (
-            <Node key={i}
-                  tree={node}
-                  depth={depth}
-                  path={path.concat([this])}
-                  onNodeSelected={onNodeSelected}
-                  onMount={onMount} />
-          ))}
+          {children.map((node, i) =>
+            <Node
+              key={i}
+              tree={node}
+              depth={depth}
+              path={path.concat([this])}
+              onNodeSelected={onNodeSelected}
+              onMount={onMount}
+            />
+          )}
         </CollapsibleItem>
       );
     }
@@ -248,28 +251,28 @@ function coordinates(position) {
   const values = ['Offset', 'Line', 'Col'];
 
   return values
-     .filter(name => typeof position[name] !== 'undefined')
-     .map((name, i) => <Property key={i} name={name.toLowerCase()} value={position[name]} />);
+    .filter(name => typeof position[name] !== 'undefined')
+    .map((name, i) =>
+      <Property key={i} name={name.toLowerCase()} value={position[name]} />
+    );
 }
 
-function Position({ name, position }) {
+export function Position({ name, position }) {
   const coords = coordinates(position);
   if (position && coordinates.length > 0) {
     return (
       <CollapsibleItem name={name} label="Position">
-        { coords }
+        {coords}
       </CollapsibleItem>
     );
   }
 
-  return (
-    <Property name={name} value={null} />
-  );
+  return <Property name={name} value={null} />;
 }
 
-function Roles({ roles }) {
+export function Roles({ roles }) {
   if (Array.isArray(roles)) {
-    return(
+    return (
       <CollapsibleItem name="roles" label="[]Role">
         {roles.map((role, i) => <Property key={i} value={role} />)}
       </CollapsibleItem>
@@ -283,7 +286,7 @@ export class CollapsibleItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: this.props.depth > MAX_EXPANDED_DEPTH,
+      collapsed: this.props.depth > MAX_EXPANDED_DEPTH
     };
   }
 
@@ -304,7 +307,9 @@ export class CollapsibleItem extends Component {
           onClick={this.toggle.bind(this)}
         >
           <PropertyName name={name} />
-          <Label name={label} />
+          <Label>
+            {label}
+          </Label>
         </StyledCollapsibleTitle>
         <StyledCollapsibleContent collapsed={this.state.collapsed}>
           {children}
