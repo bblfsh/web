@@ -1,12 +1,12 @@
 export default {
   python: {
     name: 'Python',
-    url: '#',
+    url: 'https://github.com/bblfsh/python-driver',
     mode: 'python'
   },
   java: {
     name: 'Java',
-    url: '#',
+    url: 'https://github.com/bblfsh/java-driver',
     mode: 'text/x-java'
   }
 };
