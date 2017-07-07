@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import ReactDOM from 'react-dom';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import 'jest-styled-components';
 import Editor, { comparePos } from './Editor';
@@ -16,13 +15,11 @@ describe('Editor', () => {
 
   it('calls onCursorChanged when the selection changes', () => {
     const spy = jest.fn();
-    const elem = document.createElement('div');
-    const component = ReactDOM.render(
-      <Editor code="foo = 1" languageMode="python" onCursorChanged={spy} />,
-      elem
+    const wrapper = mount(
+      <Editor code="foo = 1" languageMode="python" onCursorChanged={spy} />
     );
 
-    component.document.setSelection(mkPos(0, 4), mkPos(0, 2));
+    wrapper.instance().document.setSelection(mkPos(0, 4), mkPos(0, 2));
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
@@ -32,13 +29,11 @@ describe('Editor', () => {
 
   it('calls onCursorChanged when the cursor position changes', () => {
     const spy = jest.fn();
-    const elem = document.createElement('div');
-    const component = ReactDOM.render(
-      <Editor code="foo = 1" languageMode="python" onCursorChanged={spy} />,
-      elem
+    const wrapper = mount(
+      <Editor code="foo = 1" languageMode="python" onCursorChanged={spy} />
     );
 
-    component.document.setCursor(mkPos(0, 4));
+    wrapper.instance().document.setCursor(mkPos(0, 4));
 
     // NOTE: there is an initial call when the CodeMirror is rendered.
     expect(spy.mock.calls.length).toBe(2);
@@ -48,31 +43,27 @@ describe('Editor', () => {
 
   it('calls onChange when the content changes', () => {
     const spy = jest.fn();
-    const elem = document.createElement('div');
-    const component = ReactDOM.render(
-      <Editor code="foo = 1" languageMode="python" onChange={spy} />,
-      elem
+    const wrapper = mount(
+      <Editor code="foo = 1" languageMode="python" onChange={spy} />
     );
 
-    component.document.replaceRange('changed', mkPos(0, 0), mkPos(0, 3));
+    wrapper
+      .instance()
+      .document.replaceRange('changed', mkPos(0, 0), mkPos(0, 3));
 
     expect(spy.mock.calls.length).toBe(1);
     expect(spy.mock.calls[0][0]).toBe('changed = 1');
   });
 
   it('selects the code when selectCode is called', () => {
-    const elem = document.createElement('div');
-    const component = ReactDOM.render(
-      <Editor code="foo = 1" languageMode="python" />,
-      elem
-    );
+    const wrapper = mount(<Editor code="foo = 1" languageMode="python" />);
 
     const assertMarks = n =>
-      expect(component.document.getAllMarks().length).toBe(n);
+      expect(wrapper.instance().document.getAllMarks().length).toBe(n);
 
     assertMarks(0);
 
-    const mark = component.selectCode(mkPos(0, 0), mkPos(0, 4));
+    const mark = wrapper.instance().selectCode(mkPos(0, 0), mkPos(0, 4));
     assertMarks(1);
 
     mark.clear();

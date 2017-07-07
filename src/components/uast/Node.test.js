@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 
@@ -18,10 +17,6 @@ import Node, {
   PropertyName,
   Position
 } from './Node';
-
-function render(component) {
-  return ReactDOM.render(component, document.createElement('div'));
-}
 
 const shouldMatchSnapshot = comp => {
   const wrapper = renderer.create(comp);
@@ -66,9 +61,9 @@ describe('CollapsibleItem', () => {
   });
 
   it('expand expands the node', () => {
-    const comp = render(<CollapsibleItem depth={MAX_EXPANDED_DEPTH + 1} />);
-    comp.expand();
-    expect(comp.state.collapsed).toBe(false);
+    const wrapper = shallow(<CollapsibleItem depth={MAX_EXPANDED_DEPTH + 1} />);
+    wrapper.instance().expand();
+    expect(wrapper.state('collapsed')).toBe(false);
   });
 
   it('renders correctly', () => {
@@ -112,12 +107,12 @@ describe('Children', () => {
   it('expands itself and its ancestors when expand is called', () => {
     const path = [{ expand: jest.fn() }, { expand: jest.fn() }];
 
-    const component = render(
+    const wrapper = mount(
       <Children path={path} children={[]} depth={MAX_EXPANDED_DEPTH + 1} />
     );
 
-    component.expand();
-    expect(component.refs.collapsible.state.collapsed).toBe(false);
+    wrapper.instance().expand();
+    expect(wrapper.ref('collapsible').get(0).state.collapsed).toBe(false);
     path.map(i => i.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
   });
 });
@@ -155,34 +150,35 @@ test('PropertyName renders correctly', () => {
 describe('Node', () => {
   it('calls onMount when it is constructed', () => {
     const spy = jest.fn();
-    const component = render(<Node onMount={spy} tree={{}} />);
+    const component = mount(<Node onMount={spy} tree={{}} />);
     expect(spy.mock.calls.length).toBe(1);
   });
 
   it('expands itself and all its ancestors', () => {
     const path = [{ expand: jest.fn() }, { expand: jest.fn() }];
-    const component = render(
+    const wrapper = mount(
       <Node tree={{}} path={path} depth={MAX_EXPANDED_DEPTH + 1} />
     );
 
-    component.expand();
-    expect(component.refs.collapsible.state.collapsed).toBe(false);
+    wrapper.instance().expand();
+    expect(wrapper.ref('collapsible').get(0).state.collapsed).toBe(false);
     path.map(i => i.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
   });
 
   it('highlights itself when highlight is called', () => {
-    const component = render(<Node tree={{}} />);
+    const wrapper = shallow(<Node tree={{}} />);
 
-    component.highlight();
-    expect(component.state.highlighted).toBe(true);
+    wrapper.instance().highlight();
+    expect(wrapper.state('highlighted')).toBe(true);
   });
 
   it('unhighlights itself when unHighlight is called', () => {
-    const component = render(<Node tree={{}} />);
+    const wrapper = shallow(<Node tree={{}} />);
+    const component = wrapper.instance();
 
     component.highlight();
     component.unHighlight();
-    expect(component.state.highlighted).toBe(false);
+    expect(wrapper.state('highlighted')).toBe(false);
   });
 
   it('renders correctly', () => {
