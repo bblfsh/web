@@ -30,6 +30,7 @@ func main() {
 
 	r := gin.Default()
 	r.POST("/parse", s.HandleParse)
+	r.GET("/drivers", s.ListDrivers)
 
 	logrus.Info("starting REST server")
 	w := logrus.StandardLogger().Writer()

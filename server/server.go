@@ -45,6 +45,10 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 	ctx.JSON(toHTTPStatus(resp.Status), resp)
 }
 
+func (s *Server) ListDrivers(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, driverList)
+}
+
 func toHTTPStatus(status protocol.Status) int {
 	switch status {
 	case protocol.Ok:
