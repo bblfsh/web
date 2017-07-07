@@ -351,7 +351,7 @@ exports[`Header has the button disabled if is loading, even if user has typed 1`
         <option
           value="auto"
         >
-          Python auto
+          Python (auto)
         </option>
         <option
           value="python"
@@ -635,7 +635,7 @@ exports[`Header has the button disabled if is not loading but user has not typed
         <option
           value="auto"
         >
-          Python auto
+          Python (auto)
         </option>
         <option
           value="python"
@@ -919,7 +919,7 @@ exports[`Header has the button enabled if user has typed and is not loading 1`] 
         <option
           value="auto"
         >
-          Python auto
+          Python (auto)
         </option>
         <option
           value="python"
@@ -1203,7 +1203,7 @@ exports[`Header renders correctly 1`] = `
         <option
           value="auto"
         >
-          Java auto
+          Java (auto)
         </option>
         <option
           value="python"

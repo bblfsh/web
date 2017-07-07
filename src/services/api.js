@@ -31,6 +31,21 @@ export function parse(language, code, serverUrl = defaultServerUrl) {
   });
 }
 
+export function listDrivers(serverUrl = defaultServerUrl) {
+  return fetch(`${serverUrl}/drivers`)
+    .then(checkStatus)
+    .then(resp => resp.json());
+}
+
+function checkStatus(resp) {
+  if (resp.status < 200 || resp.status >= 300) {
+    const error = new Error(resp.statusText);
+    error.response = resp;
+    throw error;
+  }
+  return resp;
+}
+
 function normalizeError(err) {
   if (typeof err === 'object' && err.hasOwnProperty('message')) {
     return err.message;

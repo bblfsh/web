@@ -30,13 +30,13 @@ func New(addr string) (*Server, error) {
 }
 
 func (s *Server) HandleParse(ctx *gin.Context) {
-	var req protocol.ParseUASTRequest
+	var req protocol.ParseRequest
 	if err := ctx.BindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
 		return
 	}
 
-	resp, err := s.client.ParseUAST(ctx.Request.Context(), &req)
+	resp, err := s.client.Parse(ctx.Request.Context(), &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))
 		return

@@ -139,7 +139,10 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
 
   return (
     <DriverCodeBox>
-      <DriverCodeLink href={languages[driver].url} target="_blank">
+      <DriverCodeLink
+        href={languages[driver] && languages[driver].url}
+        target="_blank"
+      >
         <DriverCodeIcon src={githubIcon} alt="Driver Code on GitHub" />
         <DriverCodeText>Driver Code</DriverCodeText>
       </DriverCodeLink>
@@ -160,10 +163,13 @@ export default function Header({
   dirty
 }) {
   const languageOptions = Object.keys(languages).map(k => {
-    const name =
-      k === 'auto'
-        ? `${languages[actualLanguage].name} ${languages[k].name}`
-        : languages[k].name;
+    let name = '(auto)';
+    if (k === 'auto' && languages[actualLanguage]) {
+      name = `${languages[actualLanguage].name} ${name}`;
+    } else if (languages[k] && k !== 'auto') {
+      name = languages[k].name;
+    }
+
     return (
       <option value={k} key={k}>
         {name}
