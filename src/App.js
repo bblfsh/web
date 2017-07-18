@@ -8,7 +8,7 @@ import Header from './components/Header';
 import Editor from './components/Editor';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
-import languages from './languages';
+import { indexDrivers } from './drivers';
 import * as api from './services/api';
 
 import { codePy } from './examples/example.py.js';
@@ -46,12 +46,9 @@ const Content = styled.div`
 
 function getInitialState(lang) {
   return {
-    languages: Object.assign(
-      {
-        auto: { name: '(auto)' }
-      },
-      languages
-    ),
+    languages: {
+      auto: { name: '(auto)' }
+    },
     // babelfish tells us which language is active at the moment, but it
     // won't be used unless the selectedLanguage is auto.
     actualLanguage: lang,
@@ -72,6 +69,26 @@ export default class App extends Component {
     super(props);
     this.state = Object.assign({}, getInitialState('python'));
     this.mark = null;
+  }
+
+  componentDidMount() {
+    this.setState({ loading: true });
+
+    this.loaded = api
+      .listDrivers()
+      .then(indexDrivers)
+      .then(languages =>
+        this.setState({
+          languages: Object.assign(this.state.languages, languages)
+        })
+      )
+      .catch(err => {
+        console.error(err);
+        this.setState({
+          loading: false,
+          errors: ['Unable to load the list of available drivers.']
+        });
+      });
   }
 
   componentDidUpdate() {
@@ -147,7 +164,11 @@ export default class App extends Component {
   }
 
   get languageMode() {
-    return this.state.languages[this.currentLanguage].mode;
+    if (this.state.languages[this.currentLanguage]) {
+      return this.state.languages[this.currentLanguage].mode;
+    }
+
+    return '';
   }
 
   render() {
@@ -227,16 +248,37 @@ const FooterContainer = styled.footer`
   text-align: center;
   border-top: 1px solid ${border.smooth};
   background: ${background.light};
-`
+`;
 
-const Link = styled.a`
-  color: ${font.color.dark};
-`
+const Link = styled.a`color: ${font.color.dark};`;
 
 function Footer() {
   return (
     <FooterContainer>
-      Built with <Link href="https://github.com/bblfsh/documentation" target="_blank">Babelfish</Link> (see <Link href="https://doc.bblf.sh" target="_blank">documentation</Link>), <Link href="http://codemirror.net/" target="_blank">CodeMirror</Link>, and <Link href="https://facebook.github.io/react" target="_blank">React</Link> under GPLv3 license. Fork <Link href="https://github.com/bblfsh/dashboard/#fork-destination-box" target="_blank">this demo</Link>. Coded by <Link href="https://sourced.tech" target="_blank">{"source{d}"}</Link>.
+      Built with{' '}
+      <Link href="https://github.com/bblfsh/documentation" target="_blank">
+        Babelfish
+      </Link>{' '}
+      (see{' '}
+      <Link href="https://doc.bblf.sh" target="_blank">
+        documentation
+      </Link>),{' '}
+      <Link href="http://codemirror.net/" target="_blank">
+        CodeMirror
+      </Link>, and{' '}
+      <Link href="https://facebook.github.io/react" target="_blank">
+        React
+      </Link>{' '}
+      under GPLv3 license. Fork{' '}
+      <Link
+        href="https://github.com/bblfsh/dashboard/#fork-destination-box"
+        target="_blank"
+      >
+        this demo
+      </Link>. Coded by{' '}
+      <Link href="https://sourced.tech" target="_blank">
+        {'source{d}'}
+      </Link>.
     </FooterContainer>
   );
 }
