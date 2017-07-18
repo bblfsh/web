@@ -105,7 +105,9 @@ export default class App extends Component {
   }
 
   onExampleChanged(lang) {
-    this.setState(getInitialState(lang));
+    this.clearNodeSelection();
+    const { languages } = this.state;
+    this.setState({ ...getInitialState(lang), languages });
   }
 
   hasLanguage(lang) {

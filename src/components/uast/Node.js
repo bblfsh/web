@@ -105,6 +105,21 @@ export default class Node extends Component {
     if (this.props.onMount) {
       this.props.onMount(this);
     }
+
+    this.tree = this.props.tree;
+  }
+
+  componentWillUpdate({ tree }) {
+    if (this.tree !== tree) {
+      this.setState({ highlighted: false });
+      this.tree = tree;
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.onMount) {
+      this.props.onMount(this);
+    }
   }
 
   onNodeSelected(e) {
