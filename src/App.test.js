@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
 import 'jest-styled-components';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import renderer from 'react-test-renderer';
 
@@ -14,17 +13,17 @@ async function renderApp(state) {
     ])
   );
 
-  const elem = document.createElement('div');
-  const component = ReactDOM.render(<App />, elem);
+  const wrapper = mount(<App />);
   if (state) {
-    component.setState(state);
+    wrapper.setState(state);
   }
 
-  if (component.loaded) {
-    await component.loaded;
+  const promise = wrapper.instance().loaded;
+  if (promise) {
+    await promise;
   }
 
-  return component;
+  return wrapper.instance();
 }
 
 it('renders without crashing', () => {
