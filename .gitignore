@@ -58,3 +58,11 @@ typings/
 # dotenv environment variables file
 .env
 .env.local
+
+# assets file
+server/asset
+
+# ci files
+Makefile.main
+.ci
+bin
