@@ -15,8 +15,19 @@ install:
   - nvm use 8
   - npm install -g yarn
   - yarn
+  - make assets
   - go get -t -u -v ./server/...
 
 script:
   - go test -v ./server/...
   - yarn test
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file: build/*.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+    go: 1.8

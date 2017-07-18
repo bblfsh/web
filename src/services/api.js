@@ -6,7 +6,7 @@ const unexpectedErrorMsg =
 
 export function parse(language, code, serverUrl = defaultServerUrl) {
   return new Promise((resolve, reject) => {
-    return fetch(`${serverUrl}/parse`, {
+    return fetch(`${serverUrl}/api/parse`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ export function parse(language, code, serverUrl = defaultServerUrl) {
 }
 
 export function listDrivers(serverUrl = defaultServerUrl) {
-  return fetch(`${serverUrl}/drivers`)
+  return fetch(`${serverUrl}/api/drivers`)
     .then(checkStatus)
     .then(resp => resp.json());
 }
