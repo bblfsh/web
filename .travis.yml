@@ -1,5 +1,10 @@
 language: go
 
+services:
+  - docker
+
+sudo: required
+
 go:
   - 1.8
   - tip
@@ -31,3 +36,6 @@ deploy:
   on:
     tags: true
     go: 1.8
+
+after_deploy:
+  - make docker-push
