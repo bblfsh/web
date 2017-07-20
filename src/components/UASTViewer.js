@@ -14,13 +14,26 @@ const Container = styled.div`
   background: ${background.main};
   line-height: ${font.lineHeight.large};
   padding: 4px;
-`
+`;
 
 export default class UASTViewer extends Component {
   constructor(props) {
     super(props);
     this.index = new NodeIndex();
+    this.addToIndex = node => this.index.add(node);
+    this.resetIndex(props);
+  }
+
+  resetIndex({ ast }) {
+    this.index.clear();
     this.activeNode = null;
+    this.ast = ast;
+  }
+
+  componentWillUpdate(nextProps) {
+    if (this.ast !== nextProps.ast) {
+      this.resetIndex(nextProps);
+    }
   }
 
   selectNode({ line, ch }) {
@@ -41,7 +54,7 @@ export default class UASTViewer extends Component {
         <Node
           tree={this.props.ast}
           onNodeSelected={this.props.onNodeSelected}
-          onMount={this.index.add.bind(this.index)}
+          onMount={this.addToIndex}
         />
       </Container>
     );

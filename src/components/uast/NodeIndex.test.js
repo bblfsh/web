@@ -32,6 +32,17 @@ describe('NodeIndex', () => {
       expect(index.index[1][1].length).toBe(1);
     });
 
+    it('does not add a duplicated node', () => {
+      const node = {
+        start: { Line: 1, Col: 1 },
+        end: { Line: 1, Col: 1 }
+      };
+      const index = new NodeIndex();
+      index.add(node);
+      index.add(node);
+      expect(index.index[1][1].length).toBe(1);
+    });
+
     it('adds a node to the line if there are other nodes already', () => {
       const index = new NodeIndex();
       index.add(mkNode(mkPos(1, 1), mkPos(1, 1)));

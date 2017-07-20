@@ -3,6 +3,10 @@ export default class NodeIndex {
     this.index = [];
   }
 
+  clear() {
+    this.index = [];
+  }
+
   add(node) {
     if (!node.end || !node.end.Line || !node.end.Col) {
       return;
@@ -19,6 +23,11 @@ export default class NodeIndex {
 
     if (!idx[line][col]) {
       idx[line][col] = [node];
+      return;
+    }
+
+    // prevent duplicates on the index
+    if (idx[line][col].indexOf(node) >= 0) {
       return;
     }
 

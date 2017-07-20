@@ -154,6 +154,14 @@ describe('Node', () => {
     expect(spy.mock.calls.length).toBe(1);
   });
 
+  it("calls onMount when it's updated", () => {
+    const spy = jest.fn();
+    const component = mount(<Node onMount={spy} tree={{}} />);
+    component.instance().forceUpdate(() => {
+      expect(spy.mock.calls.length).toBe(2);
+    });
+  });
+
   it('expands itself and all its ancestors', () => {
     const path = [{ expand: jest.fn() }, { expand: jest.fn() }];
     const wrapper = mount(
