@@ -1,18 +1,21 @@
 const defaultServerUrl =
-  process.env.REACT_APP_SERVER_URL || 'http://0.0.0.0:9999';
+  process.env.REACT_APP_SERVER_URL || 'http://0.0.0.0:9999/api';
+
+const apiUrl = url => `${defaultServerUrl}${url}`;
 
 const unexpectedErrorMsg =
   'Unexpected error contacting babelfish server. Please, try again.';
 
-export function parse(language, code, serverUrl = defaultServerUrl) {
+export function parse(language, code, serverUrl) {
   return new Promise((resolve, reject) => {
-    return fetch(`${serverUrl}/api/parse`, {
+    return fetch(apiUrl('/parse'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        Language: language,
+        server_url: serverUrl,
+        language,
         content: code
       })
     })
@@ -31,10 +34,8 @@ export function parse(language, code, serverUrl = defaultServerUrl) {
   });
 }
 
-export function listDrivers(serverUrl = defaultServerUrl) {
-  return fetch(`${serverUrl}/api/drivers`)
-    .then(checkStatus)
-    .then(resp => resp.json());
+export function listDrivers() {
+  return fetch(apiUrl('/drivers')).then(checkStatus).then(resp => resp.json());
 }
 
 function checkStatus(resp) {

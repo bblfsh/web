@@ -172,7 +172,7 @@ export default class Node extends Component {
   }
 
   render() {
-    const { tree, onNodeSelected, onMount } = this.props;
+    const { tree, onNodeSelected, onMount, showLocations } = this.props;
 
     return (
       <CollapsibleItem
@@ -190,10 +190,15 @@ export default class Node extends Component {
           path={this.path.concat([this])}
           onNodeSelected={onNodeSelected}
           onMount={onMount}
+          showLocations={showLocations}
         />
         <Property name="token" value={tree.Token} />
-        <Position name="start_position" position={tree.StartPosition} />
-        <Position name="end_position" position={tree.EndPosition} />
+        {showLocations
+          ? <Position name="start_position" position={tree.StartPosition} />
+          : null}
+        {showLocations
+          ? <Position name="end_position" position={tree.EndPosition} />
+          : null}
         <Roles roles={tree.Roles} />
       </CollapsibleItem>
     );
@@ -236,7 +241,15 @@ export class Children extends Component {
   }
 
   render() {
-    const { children, depth, onNodeSelected, onMount, path } = this.props;
+    const {
+      children,
+      depth,
+      onNodeSelected,
+      onMount,
+      path,
+      showLocations
+    } = this.props;
+
     if (Array.isArray(children)) {
       return (
         <CollapsibleItem name="children" ref="collapsible" label="[]Node">
@@ -248,6 +261,7 @@ export class Children extends Component {
               path={path.concat([this])}
               onNodeSelected={onNodeSelected}
               onMount={onMount}
+              showLocations={showLocations}
             />
           )}
         </CollapsibleItem>

@@ -4,7 +4,7 @@ exports[`renders without crashing 1`] = `
 <styled.div>
   <Header
     actualLanguage="python"
-    dirty={false}
+    canParse={false}
     examples={
       Object {
         "java": Object {
@@ -753,214 +753,226 @@ exports[`renders without crashing 1`] = `
         onChange={[Function]}
         onCursorChanged={[Function]}
       />
-      <UASTViewer
-        ast={
-          Object {
-            "Children": Array [
-              Object {
-                "Children": Array [
-                  Object {
-                    "Children": Array [
-                      Object {
-                        "EndPosition": Object {
-                          "Col": 11,
-                          "Line": 1,
-                          "Offset": 10,
-                        },
-                        "InternalType": "alias",
-                        "Properties": Object {
-                          "asname": "<nil>",
-                        },
-                        "Roles": Array [
-                          "FUNCTION_DECLARATION",
-                          "QUALIFIED_IDENTIFIER",
-                        ],
-                        "StartPosition": Object {
-                          "Col": 8,
-                          "Line": 1,
-                          "Offset": 7,
-                        },
-                        "Token": "sys",
-                      },
-                    ],
-                    "InternalType": "Import.names",
-                    "Properties": Object {
-                      "promotedPropertyList": "true",
-                    },
-                  },
-                ],
-                "EndPosition": Object {
-                  "Col": 11,
-                  "Line": 1,
-                  "Offset": 10,
-                },
-                "InternalType": "Import",
-                "Properties": Object {
-                  "internalRole": "body",
-                },
-                "Roles": Array [
-                  "IMPORT_PATH",
-                ],
-                "StartPosition": Object {
-                  "Col": 1,
-                  "Line": 1,
-                  "Offset": 1,
-                },
-              },
-              Object {
-                "Children": Array [
-                  Object {
-                    "Children": Array [
-                      Object {
-                        "EndPosition": Object {
-                          "Col": 34,
-                          "Line": 2,
-                          "Offset": 44,
-                        },
-                        "InternalType": "StringLiteral",
-                        "Properties": Object {
-                          "internalRole": "args",
-                        },
-                        "Roles": Array [
-                          "TUPLE_LITERAL",
-                          "CALL_NAMED_ARGUMENT",
-                        ],
-                        "StartPosition": Object {
-                          "Col": 18,
-                          "Line": 2,
-                          "Offset": 28,
-                        },
-                        "Token": "Hello world!
-          ",
-                      },
-                      Object {
-                        "Children": Array [
-                          Object {
-                            "Children": Array [
-                              Object {
-                                "EndPosition": Object {
-                                  "Col": 4,
-                                  "Line": 2,
-                                  "Offset": 14,
-                                },
-                                "InternalType": "Name",
-                                "Properties": Object {
-                                  "ctx": "Load",
-                                  "internalRole": "value",
-                                },
-                                "Roles": Array [
-                                  "QUALIFIED_IDENTIFIER",
-                                ],
-                                "StartPosition": Object {
-                                  "Col": 1,
-                                  "Line": 2,
-                                  "Offset": 11,
-                                },
-                                "Token": "sys",
-                              },
-                            ],
-                            "EndPosition": Object {
-                              "Col": 11,
-                              "Line": 2,
-                              "Offset": 21,
-                            },
-                            "InternalType": "Attribute",
-                            "Properties": Object {
-                              "ctx": "Load",
-                              "internalRole": "value",
-                            },
-                            "Roles": Array [
-                              "BINARY_EXPRESSION",
-                            ],
-                            "StartPosition": Object {
-                              "Col": 5,
-                              "Line": 2,
-                              "Offset": 15,
-                            },
-                            "Token": "stdout",
+      <styled.div>
+        <Options
+          customServer={false}
+          customServerUrl=""
+          onCustomServerToggle={[Function]}
+          onCustomServerUrlChange={[Function]}
+          onLocationsToggle={[Function]}
+          serverUrlIsValid={false}
+          showLocations={false}
+        />
+        <UASTViewer
+          ast={
+            Object {
+              "Children": Array [
+                Object {
+                  "Children": Array [
+                    Object {
+                      "Children": Array [
+                        Object {
+                          "EndPosition": Object {
+                            "Col": 11,
+                            "Line": 1,
+                            "Offset": 10,
                           },
-                        ],
-                        "EndPosition": Object {
-                          "Col": 17,
-                          "Line": 2,
-                          "Offset": 27,
+                          "InternalType": "alias",
+                          "Properties": Object {
+                            "asname": "<nil>",
+                          },
+                          "Roles": Array [
+                            "FUNCTION_DECLARATION",
+                            "QUALIFIED_IDENTIFIER",
+                          ],
+                          "StartPosition": Object {
+                            "Col": 8,
+                            "Line": 1,
+                            "Offset": 7,
+                          },
+                          "Token": "sys",
                         },
-                        "InternalType": "Attribute",
-                        "Properties": Object {
-                          "ctx": "Load",
-                          "internalRole": "func",
-                        },
-                        "Roles": Array [
-                          "CALL_POSITIONAL_ARGUMENT",
-                          "CALL_POSITIONAL_ARGUMENT",
-                          "BINARY_EXPRESSION",
-                        ],
-                        "StartPosition": Object {
-                          "Col": 12,
-                          "Line": 2,
-                          "Offset": 22,
-                        },
-                        "Token": "write",
+                      ],
+                      "InternalType": "Import.names",
+                      "Properties": Object {
+                        "promotedPropertyList": "true",
                       },
-                    ],
-                    "EndPosition": Object {
-                      "Col": 34,
-                      "Line": 2,
-                      "Offset": 44,
                     },
-                    "InternalType": "Call",
-                    "Properties": Object {
-                      "internalRole": "value",
-                    },
-                    "Roles": Array [
-                      "CALL_RECEIVER",
-                    ],
-                    "StartPosition": Object {
-                      "Col": 18,
-                      "Line": 2,
-                      "Offset": 28,
-                    },
+                  ],
+                  "EndPosition": Object {
+                    "Col": 11,
+                    "Line": 1,
+                    "Offset": 10,
                   },
-                ],
-                "EndPosition": Object {
-                  "Col": 35,
-                  "Line": 2,
-                  "Offset": 45,
+                  "InternalType": "Import",
+                  "Properties": Object {
+                    "internalRole": "body",
+                  },
+                  "Roles": Array [
+                    "IMPORT_PATH",
+                  ],
+                  "StartPosition": Object {
+                    "Col": 1,
+                    "Line": 1,
+                    "Offset": 1,
+                  },
                 },
-                "InternalType": "Expr",
-                "Properties": Object {
-                  "internalRole": "body",
+                Object {
+                  "Children": Array [
+                    Object {
+                      "Children": Array [
+                        Object {
+                          "EndPosition": Object {
+                            "Col": 34,
+                            "Line": 2,
+                            "Offset": 44,
+                          },
+                          "InternalType": "StringLiteral",
+                          "Properties": Object {
+                            "internalRole": "args",
+                          },
+                          "Roles": Array [
+                            "TUPLE_LITERAL",
+                            "CALL_NAMED_ARGUMENT",
+                          ],
+                          "StartPosition": Object {
+                            "Col": 18,
+                            "Line": 2,
+                            "Offset": 28,
+                          },
+                          "Token": "Hello world!
+            ",
+                        },
+                        Object {
+                          "Children": Array [
+                            Object {
+                              "Children": Array [
+                                Object {
+                                  "EndPosition": Object {
+                                    "Col": 4,
+                                    "Line": 2,
+                                    "Offset": 14,
+                                  },
+                                  "InternalType": "Name",
+                                  "Properties": Object {
+                                    "ctx": "Load",
+                                    "internalRole": "value",
+                                  },
+                                  "Roles": Array [
+                                    "QUALIFIED_IDENTIFIER",
+                                  ],
+                                  "StartPosition": Object {
+                                    "Col": 1,
+                                    "Line": 2,
+                                    "Offset": 11,
+                                  },
+                                  "Token": "sys",
+                                },
+                              ],
+                              "EndPosition": Object {
+                                "Col": 11,
+                                "Line": 2,
+                                "Offset": 21,
+                              },
+                              "InternalType": "Attribute",
+                              "Properties": Object {
+                                "ctx": "Load",
+                                "internalRole": "value",
+                              },
+                              "Roles": Array [
+                                "BINARY_EXPRESSION",
+                              ],
+                              "StartPosition": Object {
+                                "Col": 5,
+                                "Line": 2,
+                                "Offset": 15,
+                              },
+                              "Token": "stdout",
+                            },
+                          ],
+                          "EndPosition": Object {
+                            "Col": 17,
+                            "Line": 2,
+                            "Offset": 27,
+                          },
+                          "InternalType": "Attribute",
+                          "Properties": Object {
+                            "ctx": "Load",
+                            "internalRole": "func",
+                          },
+                          "Roles": Array [
+                            "CALL_POSITIONAL_ARGUMENT",
+                            "CALL_POSITIONAL_ARGUMENT",
+                            "BINARY_EXPRESSION",
+                          ],
+                          "StartPosition": Object {
+                            "Col": 12,
+                            "Line": 2,
+                            "Offset": 22,
+                          },
+                          "Token": "write",
+                        },
+                      ],
+                      "EndPosition": Object {
+                        "Col": 34,
+                        "Line": 2,
+                        "Offset": 44,
+                      },
+                      "InternalType": "Call",
+                      "Properties": Object {
+                        "internalRole": "value",
+                      },
+                      "Roles": Array [
+                        "CALL_RECEIVER",
+                      ],
+                      "StartPosition": Object {
+                        "Col": 18,
+                        "Line": 2,
+                        "Offset": 28,
+                      },
+                    },
+                  ],
+                  "EndPosition": Object {
+                    "Col": 35,
+                    "Line": 2,
+                    "Offset": 45,
+                  },
+                  "InternalType": "Expr",
+                  "Properties": Object {
+                    "internalRole": "body",
+                  },
+                  "Roles": Array [
+                    "STATEMENT",
+                  ],
+                  "StartPosition": Object {
+                    "Col": 1,
+                    "Line": 2,
+                    "Offset": 11,
+                  },
                 },
-                "Roles": Array [
-                  "STATEMENT",
-                ],
-                "StartPosition": Object {
-                  "Col": 1,
-                  "Line": 2,
-                  "Offset": 11,
-                },
+              ],
+              "EndPosition": Object {
+                "Col": 35,
+                "Line": 2,
+                "Offset": 45,
               },
-            ],
-            "EndPosition": Object {
-              "Col": 35,
-              "Line": 2,
-              "Offset": 45,
-            },
-            "InternalType": "Module",
-            "Roles": Array [
-              "OP_BOOLEAN_AND",
-            ],
-            "StartPosition": Object {
-              "Col": 1,
-              "Line": 1,
-              "Offset": 1,
-            },
+              "InternalType": "Module",
+              "Roles": Array [
+                "OP_BOOLEAN_AND",
+              ],
+              "StartPosition": Object {
+                "Col": 1,
+                "Line": 1,
+                "Offset": 1,
+              },
+            }
           }
-        }
-        clearNodeSelection={[Function]}
-        loading={false}
-        onNodeSelected={[Function]}
-      />
+          clearNodeSelection={[Function]}
+          loading={false}
+          onNodeSelected={[Function]}
+          showLocations={false}
+        />
+      </styled.div>
     </SplitPane>
   </styled.div>
   <Footer />

@@ -118,12 +118,11 @@ describe('Header', () => {
     expect(onRunParserSpy.mock.calls.length).toBe(1);
   });
 
-  it('has the button disabled if is loading, even if user has typed', () => {
+  it('has the button disabled if canParse is false', () => {
     const component = renderer.create(
       <Header
         languages={testLanguages}
-        loading={true}
-        dirty={true}
+        canParse={false}
         actualLanguage="python"
         selectedLanguage="auto"
         examples={testExamples}
@@ -133,27 +132,11 @@ describe('Header', () => {
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
 
-  it('has the button disabled if is not loading but user has not typed', () => {
+  it('has the button enabled if canParse is true', () => {
     const component = renderer.create(
       <Header
         languages={testLanguages}
-        loading={false}
-        dirty={false}
-        actualLanguage="python"
-        selectedLanguage="auto"
-        examples={testExamples}
-      />
-    );
-
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
-  });
-
-  it('has the button enabled if user has typed and is not loading', () => {
-    const component = renderer.create(
-      <Header
-        languages={testLanguages}
-        loading={false}
-        dirty={true}
+        canParse={true}
         actualLanguage="python"
         selectedLanguage="auto"
         examples={testExamples}
