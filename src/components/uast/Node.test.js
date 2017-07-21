@@ -234,4 +234,24 @@ describe('Node', () => {
     expect(line).toBe(1);
     expect(ch).toBe(1);
   });
+
+  it('when showLocations is false, it does not display the locations', () => {
+    const node = {
+      StartPosition: { Col: 2, Line: 2, Offset: 1 },
+      EndPosition: { Col: 6, Line: 2, Offset: 6 }
+    };
+    const wrapper = mount(<Node tree={node} showLocations={false} />);
+
+    expect(wrapper.find(Position).length).toBe(0);
+  });
+
+  it('when showLocations is true, it does display them', () => {
+    const node = {
+      StartPosition: { Col: 2, Line: 2, Offset: 1 },
+      EndPosition: { Col: 6, Line: 2, Offset: 6 }
+    };
+    const wrapper = mount(<Node tree={node} showLocations={true} />);
+
+    expect(wrapper.find(Position).length).toBe(2);
+  });
 });

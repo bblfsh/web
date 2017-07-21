@@ -160,7 +160,7 @@ export default function Header({
   loading,
   actualLanguage,
   selectedExample,
-  dirty
+  canParse
 }) {
   const languageOptions = Object.keys(languages).map(k => {
     let name = '(auto)';
@@ -209,12 +209,8 @@ export default function Header({
         </InputGroup>
 
         <InputGroup>
-          <RunButton
-            id="run-parser"
-            onClick={onRunParser}
-            disabled={loading || !dirty}
-          >
-            Run parser
+          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
+            {loading ? 'Parsing...' : 'Run parser'}
           </RunButton>
         </InputGroup>
 

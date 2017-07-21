@@ -12,6 +12,8 @@ YARN = yarn
 REMOVE = rm -rf
 BINDATA = go-bindata
 
+SERVER_URL="/api"
+
 $(MAKEFILE):
 	@git clone --quiet $(CI_REPOSITORY) $(CI_FOLDER); \
 	cp $(CI_FOLDER)/$(MAKEFILE) .;
@@ -25,7 +27,7 @@ assets: build install-bindata
 	$(BINDATA) -pkg asset -o ./server/asset/asset.go `find ./build -type d`
 
 build: clean-server
-	$(YARN) build
+	REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
 
 clean-server:
 	$(REMOVE) build ./server/asset/asset.go

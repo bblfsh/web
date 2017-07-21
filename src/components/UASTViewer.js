@@ -5,7 +5,6 @@ import NodeIndex from './uast/NodeIndex';
 import { font, background } from '../styling/variables';
 
 const Container = styled.div`
-  position: absolute;
   height: 100%;
   width: 100%;
   overflow: auto;
@@ -53,6 +52,7 @@ export default class UASTViewer extends Component {
       <Container onMouseOut={this.props.clearNodeSelection}>
         <Node
           tree={this.props.ast}
+          showLocations={this.props.showLocations}
           onNodeSelected={this.props.onNodeSelected}
           onMount={this.addToIndex}
         />

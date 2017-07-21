@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+.nejLS {
+  padding: .5rem 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  min-height: 2.5rem;
+}
+
+.ejAJGS {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ejAJGS + .ejAJGS {
+  margin-left: 1.5rem;
+}
+
+.gkGdtY {
+  color: #212121;
+  padding-left: .5rem;
+  font-size: .8rem;
+}
+
+<div
+  className="sc-bdVaJa nejLS"
+>
+  <div
+    className="sc-bwzfXH ejAJGS"
+  >
+    <input
+      checked={undefined}
+      name="show-locations"
+      onChange={undefined}
+      type="checkbox"
+    />
+    <label
+      className="sc-htpNat gkGdtY"
+      htmlFor="show-locations"
+    >
+      Show locations
+    </label>
+  </div>
+  <div
+    className="sc-bwzfXH ejAJGS"
+  >
+    <input
+      checked={undefined}
+      name="custom-server"
+      onChange={undefined}
+      type="checkbox"
+    />
+    <label
+      className="sc-htpNat gkGdtY"
+      htmlFor="custom-server"
+    >
+      Custom babelfish server
+    </label>
+  </div>
+</div>
+`;

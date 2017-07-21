@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import 'normalize.css';
 import SplitPane from 'react-split-pane';
 
-import { background, border, font } from './styling/variables';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Editor from './components/Editor';
+import Options from './components/Options';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
 import { indexDrivers } from './drivers';
@@ -44,6 +45,13 @@ const Content = styled.div`
   position: relative;
 `;
 
+const RightPanel = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  position: relative;
+`;
+
 function getInitialState(lang) {
   return {
     languages: {
@@ -60,6 +68,9 @@ function getInitialState(lang) {
     code: examples[lang].code,
     ast: examples[lang].uast,
     dirty: false,
+    showLocations: false,
+    customServer: false,
+    customServerUrl: '',
     errors: []
   };
 }
@@ -79,6 +90,7 @@ export default class App extends Component {
       .then(indexDrivers)
       .then(languages =>
         this.setState({
+          loading: false,
           languages: Object.assign(this.state.languages, languages)
         })
       )
@@ -115,9 +127,14 @@ export default class App extends Component {
   }
 
   onRunParser() {
+    const { code, customServer, customServerUrl } = this.state;
     this.setState({ loading: true, errors: [] });
     api
-      .parse(this.currentLanguage, this.state.code)
+      .parse(
+        this.currentLanguage,
+        code,
+        customServer ? customServerUrl : undefined
+      )
       .then(ast => this.setState({ loading: false, ast }))
       .catch(errors => this.setState({ loading: false, errors }));
   }
@@ -173,6 +190,21 @@ export default class App extends Component {
     return '';
   }
 
+  onLocationsToggle() {
+    this.setState({ showLocations: !this.state.showLocations });
+  }
+
+  onCustomServerToggle() {
+    this.setState({
+      customServer: !this.state.customServer,
+      customServerUrl: this.state.customServer ? '' : '0.0.0.0:9432'
+    });
+  }
+
+  onCustomServerUrlChange(customServerUrl) {
+    this.setState({ customServerUrl });
+  }
+
   render() {
     const { innerWidth: width } = window;
     const {
@@ -183,8 +215,13 @@ export default class App extends Component {
       loading,
       actualLanguage,
       dirty,
-      errors
+      errors,
+      showLocations,
+      customServer,
+      customServerUrl
     } = this.state;
+
+    const validServerUrl = isUrl(customServerUrl);
 
     return (
       <Wrap>
@@ -195,9 +232,9 @@ export default class App extends Component {
           onLanguageChanged={e => this.onLanguageChanged(e.target.value)}
           onExampleChanged={e => this.onExampleChanged(e.target.value)}
           onRunParser={e => this.onRunParser(e)}
-          dirty={dirty}
           examples={examples}
           loading={loading}
+          canParse={!loading && (validServerUrl || !customServer) && dirty}
         />
         <Content>
           <SplitPane
@@ -214,13 +251,26 @@ export default class App extends Component {
               onCursorChanged={pos => this.onCursorChanged(pos)}
             />
 
-            <UASTViewer
-              ref="viewer"
-              clearNodeSelection={() => this.clearNodeSelection()}
-              onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
-              ast={ast}
-              loading={loading}
-            />
+            <RightPanel>
+              <Options
+                showLocations={showLocations}
+                customServer={customServer}
+                customServerUrl={customServerUrl}
+                serverUrlIsValid={validServerUrl}
+                onLocationsToggle={() => this.onLocationsToggle()}
+                onCustomServerToggle={() => this.onCustomServerToggle()}
+                onCustomServerUrlChange={e =>
+                  this.onCustomServerUrlChange(e.target.value)}
+              />
+              <UASTViewer
+                ref="viewer"
+                clearNodeSelection={() => this.clearNodeSelection()}
+                onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
+                ast={ast}
+                showLocations={showLocations}
+                loading={loading}
+              />
+            </RightPanel>
           </SplitPane>
         </Content>
 
@@ -244,43 +294,4 @@ export default class App extends Component {
   }
 }
 
-const FooterContainer = styled.footer`
-  padding: .5rem;
-  font-size: .9rem;
-  text-align: center;
-  border-top: 1px solid ${border.smooth};
-  background: ${background.light};
-`;
-
-const Link = styled.a`color: ${font.color.dark};`;
-
-function Footer() {
-  return (
-    <FooterContainer>
-      Built with{' '}
-      <Link href="https://github.com/bblfsh/documentation" target="_blank">
-        Babelfish
-      </Link>{' '}
-      (see{' '}
-      <Link href="https://doc.bblf.sh" target="_blank">
-        documentation
-      </Link>),{' '}
-      <Link href="http://codemirror.net/" target="_blank">
-        CodeMirror
-      </Link>, and{' '}
-      <Link href="https://facebook.github.io/react" target="_blank">
-        React
-      </Link>{' '}
-      under GPLv3 license. Fork{' '}
-      <Link
-        href="https://github.com/bblfsh/dashboard/#fork-destination-box"
-        target="_blank"
-      >
-        this demo
-      </Link>. Coded by{' '}
-      <Link href="https://sourced.tech" target="_blank">
-        {'source{d}'}
-      </Link>.
-    </FooterContainer>
-  );
-}
+const isUrl = url => /^[a-zA-Z0-9][^/]+$/.test(url);
