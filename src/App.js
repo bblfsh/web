@@ -135,8 +135,10 @@ export default class App extends Component {
         code,
         customServer ? customServerUrl : undefined
       )
-      .then(ast => this.setState({ loading: false, ast }))
-      .catch(errors => this.setState({ loading: false, errors }));
+      .then(
+        ast => this.setState({ loading: false, ast }),
+        errors => this.setState({ loading: false, errors })
+      );
   }
 
   onErrorRemoved(idx) {
