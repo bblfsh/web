@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/bblfsh/sdk/protocol"
+	"github.com/bblfsh/sdk/uast"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
@@ -31,7 +33,6 @@ func newClient(addr string) (protocol.ProtocolServiceClient, io.Closer, error) {
 }
 
 func New(addr string) (*Server, error) {
-	fmt.Println("addr is", addr)
 	client, _, err := newClient(addr)
 	if err != nil {
 		return nil, err
@@ -76,7 +77,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), resp)
+	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
 }
 
 func (s *Server) clientForRequest(req parseRequest) (protocol.ProtocolServiceClient, io.Closer, error) {
@@ -111,4 +112,44 @@ func jsonError(msg string, args ...interface{}) gin.H {
 			},
 		},
 	}
+}
+
+type ParseResponse protocol.ParseResponse
+
+func (r *ParseResponse) MarshalJSON() ([]byte, error) {
+	resp := struct {
+		*protocol.ParseResponse
+		UAST *Node `json:"uast"`
+	}{
+		(*protocol.ParseResponse)(r),
+		(*Node)(r.UAST),
+	}
+
+	return json.Marshal(resp)
+}
+
+type Node uast.Node
+
+func (n *Node) MarshalJSON() ([]byte, error) {
+	var nodes = make([]*Node, len(n.Children))
+	for i, n := range n.Children {
+		nodes[i] = (*Node)(n)
+	}
+
+	var roles = make([]string, len(n.Roles))
+	for i, r := range n.Roles {
+		roles[i] = r.String()
+	}
+
+	node := struct {
+		*uast.Node
+		Roles    []string
+		Children []*Node
+	}{
+		(*uast.Node)(n),
+		roles,
+		nodes,
+	}
+
+	return json.Marshal(node)
 }
