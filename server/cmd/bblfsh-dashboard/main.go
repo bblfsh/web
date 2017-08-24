@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,17 +17,26 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func flags() (addr, bblfshAddr string, debug bool) {
+const VERSION = "v0.1.0"
+
+func flags() (addr, bblfshAddr string, debug, version bool) {
 	flag.StringVar(&addr, "addr", ":9999", "address in which the server will run")
 	flag.StringVar(&bblfshAddr, "bblfsh-addr", "0.0.0.0:9432", "address of the babelfish server")
 	flag.BoolVar(&debug, "debug", false, "run in debug mode")
+	flag.BoolVar(&version, "version", false, "show version and exits")
 	flag.Parse()
 
 	return
 }
 
 func main() {
-	addr, bblfshAddr, debug := flags()
+	addr, bblfshAddr, debug, version := flags()
+
+	if version {
+		fmt.Printf("bblfsh-dashboard %s\n", VERSION)
+		return
+	}
+
 	if !debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
