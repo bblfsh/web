@@ -1,6 +1,8 @@
 # Package configuration
 PROJECT = dashboard
 COMMANDS = server/cmd/bblfsh-dashboard
+DEPENDENCIES = \
+	github.com/jteeuwen/go-bindata
 
 # Including ci Makefile
 MAKEFILE = Makefile.main
@@ -20,16 +22,14 @@ $(MAKEFILE):
 
 -include $(MAKEFILE)
 
-install-bindata:
-	go get github.com/jteeuwen/go-bindata/...
+dependencies-frontend: dependencies
+	$(YARN)	install
 
-assets: build install-bindata
+test-frontend: dependencies-frontend
+	$(YARN) test
+
+assets: build dependencies-frontend
 	$(BINDATA) -pkg asset -o ./server/asset/asset.go `find ./build -type d`
 
-build: clean-server
+build: dependencies-frontend
 	REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
-
-clean-server:
-	$(REMOVE) build ./server/asset/asset.go
-
-package: assets packages

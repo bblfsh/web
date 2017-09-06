@@ -6,26 +6,28 @@ services:
 sudo: required
 
 go:
-  - 1.8
-  - tip
+  - 1.9
 
-matrix:
-  fast_finish: true
-  allow_failures:
-    - go: tip
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
 
-install:
   - . $HOME/.nvm/nvm.sh
   - nvm install 8
   - nvm use 8
   - npm install -g yarn
-  - yarn
-  - make assets
-  - go get -t -u -v ./server/...
+
+install:
+  - go get -v -t ./...
 
 script:
-  - go test -v ./server/...
-  - yarn test
+  - make test-coverage
+  - make test-frontend
+
+before_deploy:
+  - make packages
 
 deploy:
   provider: releases
@@ -35,7 +37,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    go: 1.8
+    go: 1.9
 
 after_deploy:
   - make docker-push
