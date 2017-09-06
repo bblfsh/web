@@ -1,55 +1,25 @@
-# Babelfish Dashboard
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+# Dashboard [![GitHub version](https://badge.fury.io/gh/bblfsh%2Fdashboard.svg)](https://github.com/bblfsh/dashboard/releases) [![Build Status](https://travis-ci.org/bblfsh/dashboard.svg?branch=master)](https://travis-ci.org/bblfsh/dashboard)
 
 
-## Build, serve and test
+## Installation
 
-Before running the build, serve or test commands, you need to install all dependencies running:
+The easiest way to deploy **dashboard** is using *Docker*.
 
-```yarn install```
-
-### Run site server locally
-
-for development purposes:
-
-```yarn start```
-
-### Run site tests
-
-```yarn test```
-
-if you just want to run the tests and exit, run:
-
-```CI=true yarn test```
-
-### Build the project
-
-```yarn build```
-
-## Server
-
-For actually parsing the input of the user, you'll need to run the server as well.
-
-### Install
-
-```
-go get ./server/...
-go install ./server/...
+```sh
+docker run -p 8080:80 bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
 ```
 
-### Run the server
+If you don't have a bblfsh server running you can execute the dashboard and the server using the following command:
 
-```
-dashboard-server -bblfsh-addr=0.0.0.0:9432
+```sh
+docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/server
+docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
 ```
 
-This requires a babelfish server running on the specified address. Please, refer to the [server project documentation](https://github.com/bblfsh/server) for instructions on how to run it.
+Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
 
-### Test the server
+If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard) page.
 
-```
-go test ./server/...
-```
+## License
+
+GPLv3, see [LICENSE](LICENSE)
