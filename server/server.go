@@ -9,10 +9,10 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/bblfsh/sdk/protocol"
-	"github.com/bblfsh/sdk/uast"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	"gopkg.in/bblfsh/sdk.v0/protocol"
+	"gopkg.in/bblfsh/sdk.v0/uast"
 )
 
 type Server struct {
