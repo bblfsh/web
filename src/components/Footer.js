@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <Container>
       Built with{' '}
-      <Link href="https://github.com/bblfsh/documentation" target="_blank">
+      <Link href="https://github.com/bblfsh" target="_blank">
         Babelfish
       </Link>{' '}
       (see{' '}
