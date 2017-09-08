@@ -32,7 +32,8 @@ it('renders without crashing', () => {
 });
 
 it('removes the error when onErrorRemoved is called', async () => {
-  const wrapper = await renderApp({ errors: ['1', '2', '3'] });
+  const wrapper = await renderApp();
+  wrapper.setState({ errors: ['1', '2', '3'] });
   wrapper.onErrorRemoved(1);
   expect(wrapper.state.errors).toEqual(['1', '3']);
 });
@@ -74,4 +75,39 @@ it('clearNodeSelection clears the current mark', async () => {
 
   expect(clear.mock.calls.length).toBe(1);
   expect(wrapper.mark).toBeNull();
+});
+
+class MockedApp extends App {
+  constructor(props) {
+    super(props);
+    this.onRunParser = props.onRunParser;
+  }
+}
+
+async function renderMockedApp(onRunParser) {
+  const wrapper = mount(<MockedApp onRunParser={onRunParser} />);
+
+  const promise = wrapper.instance().loaded;
+  if (promise) {
+    await promise;
+  }
+
+  return wrapper.instance();
+}
+
+it('Parser is ran when the dashboard is loaded', async () => {
+  const wrapper = await renderMockedApp(jest.fn());
+  expect(wrapper.onRunParser.mock.calls.length).toBe(1);
+});
+
+it('Parser is ran when an example is selected', async () => {
+  const wrapper = await renderMockedApp(jest.fn());
+  wrapper.onExampleChanged('java_example_1');
+  expect(wrapper.onRunParser.mock.calls.length).toBe(2);
+});
+
+it('Parser is ran when a language is selected', async () => {
+  const wrapper = await renderMockedApp(jest.fn());
+  wrapper.onLanguageChanged('python');
+  expect(wrapper.onRunParser.mock.calls.length).toBe(2);
 });

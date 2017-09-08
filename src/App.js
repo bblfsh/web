@@ -121,7 +121,7 @@ export default class App extends Component {
         this.setState({
           loading: false,
           languages: Object.assign(this.state.languages, languages)
-        })
+        }, this.onRunParser)
       )
       .catch(err => {
         console.error(err);
@@ -142,13 +142,13 @@ export default class App extends Component {
     if (!this.hasLanguage(selectedLanguage)) {
       selectedLanguage = 'auto';
     }
-    this.setState({ selectedLanguage });
+    this.setState({ selectedLanguage }, this.onRunParser);
   }
 
   onExampleChanged(exampleKey) {
     this.clearNodeSelection();
     const { languages } = this.state;
-    this.setState({ ...getExampleState(exampleKey), languages });
+    this.setState({ ...getExampleState(exampleKey), languages }, this.onRunParser);
   }
 
   hasLanguage(lang) {
