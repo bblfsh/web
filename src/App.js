@@ -13,18 +13,14 @@ import { indexDrivers } from './drivers';
 import * as api from './services/api';
 
 import { codePy } from './examples/example.py.js';
-import codePyUast from './examples/example.py.uast.json';
 import { codeJava } from './examples/example.java.js';
-import codeJavaUast from './examples/example.java.uast.json';
 
 const examples = {
   python: {
-    code: codePy,
-    uast: codePyUast
+    code: codePy
   },
   java: {
-    code: codeJava,
-    uast: codeJavaUast
+    code: codeJava
   }
 };
 
@@ -66,7 +62,7 @@ function getInitialState(lang) {
     selectedLanguage: 'auto',
     selectedExample: lang,
     code: examples[lang].code,
-    ast: examples[lang].uast,
+    ast: {},
     dirty: false,
     showLocations: false,
     customServer: false,
