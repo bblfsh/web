@@ -414,14 +414,10 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
     </div>
   </div>
@@ -698,14 +694,10 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
     </div>
   </div>
@@ -982,14 +974,10 @@ exports[`Header renders correctly 1`] = `
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
     </div>
   </div>

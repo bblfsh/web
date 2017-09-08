@@ -3,24 +3,104 @@
 exports[`renders without crashing 1`] = `
 <styled.div>
   <Header
-    actualLanguage="python"
-    canParse={false}
+    actualLanguage="java"
+    canParse={true}
     examples={
       Object {
-        "java": Object {
-          "code": "public class HelloWorld
-      {
-       public static void main(String[] args)
-       {
-        System.out.println(\\"Hello world!\\");
-       }
+        "java_example_1": Object {
+          "code": "// hello.java
+      import java.io.*;
+      import javax.servlet.*;
+      
+      public class Hello extends GenericServlet {
+          public void service(final ServletRequest request, final ServletResponse response)
+          throws ServletException, IOException {
+              response.setContentType(\\"text/html\\");
+              final PrintWriter pw = response.getWriter();
+              try {
+                  pw.println(\\"Hello, world!\\");
+              } finally {
+                  pw.close();
+              }
+          }
       }
       ",
+          "language": "java",
+          "name": "hello.java",
         },
-        "python": Object {
-          "code": "import sys
-      sys.stdout.write(\\"Hello world!\\")
+        "java_example_2": Object {
+          "code": "public class SwapElementsExample {
+      
+               public static void main(String[] args) {
+      
+                       int num1 = 10;
+                       int num2 = 20;
+      
+                       System.out.println(\\"Before Swapping\\");
+                       System.out.println(\\"Value of num1 is :\\" + num1);
+                       System.out.println(\\"Value of num2 is :\\" +num2);
+      
+                       //swap the value
+                       swap(num1, num2);
+               }
+      
+               private static void swap(int num1, int num2) {
+      
+                       int temp = num1;
+                       num1 = num2;
+                       num2 = temp;
+      
+                       System.out.println(\\"After Swapping\\");
+                       System.out.println(\\"Value of num1 is :\\" + num1);
+                       System.out.println(\\"Value of num2 is :\\" +num2);
+      
+               }
+       }
       ",
+          "language": "java",
+          "name": "swap.java",
+        },
+        "python_example_1": Object {
+          "code": "def fizzbuzz(n):
+      
+          if n % 3 == 0 and n % 5 == 0:
+              return 'FizzBuzz'
+          elif n % 3 == 0:
+              return 'Fizz'
+          elif n % 5 == 0:
+              return 'Buzz'
+          else:
+              return str(n)
+      
+      print \\"\\\\n\\".join(fizzbuzz(n) for n in xrange(1, 21))
+      ",
+          "language": "python",
+          "name": "fizzbuzz.py",
+        },
+        "python_example_2": Object {
+          "code": "class Animal:
+          def __init__(self):
+              self._a = 1
+              b = 2
+      
+          def method(self, arg1):
+              pass
+      
+          @property
+          def a():
+              return self._a
+      
+          @a.setter
+          def a(newa):
+              self._a = newa
+      
+      a = Animal()
+      a.b = 3
+      a.b.c.d.e.f.g = 6
+      a.method(5)
+      ",
+          "language": "python",
+          "name": "classdef.py",
         },
       }
     }
@@ -245,8 +325,22 @@ exports[`renders without crashing 1`] = `
       split="vertical"
     >
       <Editor
-        code="import sys
-      sys.stdout.write(\\"Hello world!\\")
+        code="// hello.java
+      import java.io.*;
+      import javax.servlet.*;
+      
+      public class Hello extends GenericServlet {
+          public void service(final ServletRequest request, final ServletResponse response)
+          throws ServletException, IOException {
+              response.setContentType(\\"text/html\\");
+              final PrintWriter pw = response.getWriter();
+              try {
+                  pw.println(\\"Hello, world!\\");
+              } finally {
+                  pw.close();
+              }
+          }
+      }
       "
         languageMode=""
         onChange={[Function]}

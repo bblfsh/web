@@ -177,9 +177,9 @@ export default function Header({
     );
   });
 
-  const examplesOptions = Object.keys(examples).map((name, k) =>
-    <option value={name} key={k}>
-      {name}
+  const examplesOptions = Object.keys(examples).map((key, k) =>
+    <option value={key} key={k}>
+      {examples[key].name}
     </option>
   );
 
