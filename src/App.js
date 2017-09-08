@@ -240,7 +240,7 @@ export default class App extends Component {
   onGistLoaded(gistUrl) {
     api.getGist(gistUrl)
       .then(content => {
-        this.setState({...getResetCodeState(content), cleanGist: true});
+        this.setState({...getResetCodeState(content), cleanGist: true}, this.onRunParser);
       })
       .catch(errors => this.setState({ errors }));
   }
