@@ -236,6 +236,14 @@ export default class App extends Component {
     this.setState({ customServerUrl });
   }
 
+  onGistLoaded(gistUrl) {
+    api.getGist(gistUrl)
+      .then(content => {
+        this.setState({...getResetCodeState(content)});
+      })
+      .catch(errors => this.setState({ errors }));
+  }
+
   render() {
     const { innerWidth: width } = window;
     const {
@@ -266,6 +274,7 @@ export default class App extends Component {
           examples={examples}
           loading={loading}
           canParse={!loading && (validServerUrl || !customServer) && dirty}
+          onLoadGist={(url) => this.onGistLoaded(url)}
         />
         <Content>
           <SplitPane
