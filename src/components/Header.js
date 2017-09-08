@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
 
 import bblfshLogo from '../img/babelfish_logo.svg';
@@ -216,6 +217,14 @@ export default class Header extends Component {
     this.props.onLoadGist(this.state.gistUrl);
   }
 
+  onShareGist(shared) {
+    console.info('shared url:' + shared);
+  }
+
+  getSharableUrl() {
+    return 'DASHBOARD_URL#' + this.state.gistUrl;
+  }
+
   render() {
     const {
       selectedLanguage,
@@ -228,6 +237,7 @@ export default class Header extends Component {
       actualLanguage,
       selectedExample,
       canParse,
+      cleanGist
     } = this.props;
 
     const languageOptions = Object.keys(languages).map(k => {
@@ -299,6 +309,14 @@ export default class Header extends Component {
             >
               load
             </Button>
+            <CopyToClipboard text={this.getSharableUrl()}
+              onCopy={shared => this.onShareGist(shared)}>
+              <Button
+                disabled={!cleanGist}
+              >
+                share
+              </Button>
+            </CopyToClipboard>
           </InputGroup>
 
           <InputGroupRight>
