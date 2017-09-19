@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
-.itLWpz {
+.jtfEvz {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -13,17 +13,13 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   margin-left: .5rem;
 }
 
-.bbcOHy {
+.gPoXnw {
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
 }
 
-.inpfcO {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.ieScAd {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,42 +34,34 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   font-size: .9rem;
 }
 
-.ieScAd:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.ieScAd:hover .sc-gZMcBi {
-  border-bottom-color: #EB7422;
-}
-
-.ieScAd:hover .sc-iwsKbI {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
 <div
-  className="sc-dnqmqq itLWpz"
+  className="sc-iwsKbI jtfEvz"
 >
   <a
-    className="sc-gqjmRU ieScAd"
+    className="sc-gqjmRU hYQcKc"
     href="Python.driver"
     target="_blank"
   >
     <img
-      alt="Driver Code on GitHub"
-      className="sc-iwsKbI bbcOHy"
+      alt="Driver code repository on GitHub"
+      className="sc-gZMcBi gPoXnw"
       src="github.svg"
+      title="Driver code repository on GitHub"
     />
-    <span
-      className="sc-gZMcBi inpfcO"
-    >
-      Driver Code
-    </span>
   </a>
 </div>
 `;
 
 exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] = `
-.itLWpz {
+.jtfEvz {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,17 +73,13 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   margin-left: .5rem;
 }
 
-.bbcOHy {
+.gPoXnw {
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
 }
 
-.inpfcO {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.ieScAd {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,36 +94,28 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   font-size: .9rem;
 }
 
-.ieScAd:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.ieScAd:hover .sc-gZMcBi {
-  border-bottom-color: #EB7422;
-}
-
-.ieScAd:hover .sc-iwsKbI {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
 <div
-  className="sc-dnqmqq itLWpz"
+  className="sc-iwsKbI jtfEvz"
 >
   <a
-    className="sc-gqjmRU ieScAd"
+    className="sc-gqjmRU hYQcKc"
     href="Java.driver"
     target="_blank"
   >
     <img
-      alt="Driver Code on GitHub"
-      className="sc-iwsKbI bbcOHy"
+      alt="Driver code repository on GitHub"
+      className="sc-gZMcBi gPoXnw"
       src="github.svg"
+      title="Driver code repository on GitHub"
     />
-    <span
-      className="sc-gZMcBi inpfcO"
-    >
-      Driver Code
-    </span>
   </a>
 </div>
 `;
@@ -230,7 +206,36 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   border-right: none;
 }
 
-.buVHMZ {
+.jdktxT {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding-right: 0;
+}
+
+.jdktxT + .jdktxT {
+  margin-left: 1rem;
+}
+
+.jdktxT:last-child {
+  border-right: none;
+}
+
+.jfLTLB {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -241,7 +246,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   font-size: .7rem;
 }
 
-.dmeEWi {
+.bvYyFK {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
@@ -260,11 +265,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dmeEWi:hover {
+.bvYyFK:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.itLWpz {
+.jtfEvz {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -276,17 +281,13 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   margin-left: .5rem;
 }
 
-.bbcOHy {
+.gPoXnw {
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
 }
 
-.inpfcO {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.ieScAd {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -301,15 +302,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   font-size: .9rem;
 }
 
-.ieScAd:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.ieScAd:hover .sc-gZMcBi {
-  border-bottom-color: #EB7422;
-}
-
-.ieScAd:hover .sc-iwsKbI {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -343,7 +340,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         Language
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -365,37 +362,21 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         </option>
       </select>
       <div
-        className="sc-dnqmqq itLWpz"
+        className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-gqjmRU ieScAd"
+          className="sc-gqjmRU hYQcKc"
           href="Python.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
-            className="sc-iwsKbI bbcOHy"
+            alt="Driver code repository on GitHub"
+            className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gZMcBi inpfcO"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
-    </div>
-    <div
-      className="sc-bZQynM eJfGpj"
-    >
-      <button
-        className="sc-htoDjs dmeEWi"
-        disabled={true}
-        id="run-parser"
-        onClick={undefined}
-      >
-        Run parser
-      </button>
     </div>
     <div
       className="sc-bZQynM eJfGpj"
@@ -407,22 +388,30 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         Examples
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
+    </div>
+    <div
+      className="sc-gzVnrw jdktxT"
+    >
+      <button
+        className="sc-dnqmqq bvYyFK"
+        disabled={true}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
     </div>
   </div>
 </header>
@@ -514,7 +503,36 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   border-right: none;
 }
 
-.buVHMZ {
+.jdktxT {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding-right: 0;
+}
+
+.jdktxT + .jdktxT {
+  margin-left: 1rem;
+}
+
+.jdktxT:last-child {
+  border-right: none;
+}
+
+.jfLTLB {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -525,7 +543,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   font-size: .7rem;
 }
 
-.dmeEWi {
+.bvYyFK {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
@@ -544,11 +562,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dmeEWi:hover {
+.bvYyFK:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.itLWpz {
+.jtfEvz {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -560,17 +578,13 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   margin-left: .5rem;
 }
 
-.bbcOHy {
+.gPoXnw {
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
 }
 
-.inpfcO {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.ieScAd {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -585,15 +599,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   font-size: .9rem;
 }
 
-.ieScAd:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.ieScAd:hover .sc-gZMcBi {
-  border-bottom-color: #EB7422;
-}
-
-.ieScAd:hover .sc-iwsKbI {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -627,7 +637,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         Language
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -649,37 +659,21 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         </option>
       </select>
       <div
-        className="sc-dnqmqq itLWpz"
+        className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-gqjmRU ieScAd"
+          className="sc-gqjmRU hYQcKc"
           href="Python.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
-            className="sc-iwsKbI bbcOHy"
+            alt="Driver code repository on GitHub"
+            className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gZMcBi inpfcO"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
-    </div>
-    <div
-      className="sc-bZQynM eJfGpj"
-    >
-      <button
-        className="sc-htoDjs dmeEWi"
-        disabled={false}
-        id="run-parser"
-        onClick={undefined}
-      >
-        Run parser
-      </button>
     </div>
     <div
       className="sc-bZQynM eJfGpj"
@@ -691,22 +685,30 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         Examples
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
+    </div>
+    <div
+      className="sc-gzVnrw jdktxT"
+    >
+      <button
+        className="sc-dnqmqq bvYyFK"
+        disabled={false}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
     </div>
   </div>
 </header>
@@ -798,7 +800,36 @@ exports[`Header renders correctly 1`] = `
   border-right: none;
 }
 
-.buVHMZ {
+.jdktxT {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid #dad7d0;
+  padding-right: 1rem;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding-right: 0;
+}
+
+.jdktxT + .jdktxT {
+  margin-left: 1rem;
+}
+
+.jdktxT:last-child {
+  border-right: none;
+}
+
+.jfLTLB {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -809,7 +840,7 @@ exports[`Header renders correctly 1`] = `
   font-size: .7rem;
 }
 
-.dmeEWi {
+.bvYyFK {
   padding: .7rem 1.8rem;
   border-radius: 3px;
   border: none;
@@ -828,11 +859,11 @@ exports[`Header renders correctly 1`] = `
   transition: box-shadow 300ms ease-in-out;
 }
 
-.dmeEWi:hover {
+.bvYyFK:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.itLWpz {
+.jtfEvz {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -844,17 +875,13 @@ exports[`Header renders correctly 1`] = `
   margin-left: .5rem;
 }
 
-.bbcOHy {
+.gPoXnw {
   width: 20px;
   opacity: .7;
   margin-right: .3rem;
 }
 
-.inpfcO {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.ieScAd {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -869,15 +896,11 @@ exports[`Header renders correctly 1`] = `
   font-size: .9rem;
 }
 
-.ieScAd:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.ieScAd:hover .sc-gZMcBi {
-  border-bottom-color: #EB7422;
-}
-
-.ieScAd:hover .sc-iwsKbI {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -911,7 +934,7 @@ exports[`Header renders correctly 1`] = `
         Language
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -933,37 +956,21 @@ exports[`Header renders correctly 1`] = `
         </option>
       </select>
       <div
-        className="sc-dnqmqq itLWpz"
+        className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-gqjmRU ieScAd"
+          className="sc-gqjmRU hYQcKc"
           href="Java.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
-            className="sc-iwsKbI bbcOHy"
+            alt="Driver code repository on GitHub"
+            className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gZMcBi inpfcO"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
-    </div>
-    <div
-      className="sc-bZQynM eJfGpj"
-    >
-      <button
-        className="sc-htoDjs dmeEWi"
-        disabled={true}
-        id="run-parser"
-        onClick={undefined}
-      >
-        Run parser
-      </button>
     </div>
     <div
       className="sc-bZQynM eJfGpj"
@@ -975,22 +982,30 @@ exports[`Header renders correctly 1`] = `
         Examples
       </label>
       <select
-        className="sc-gzVnrw buVHMZ"
+        className="sc-htoDjs jfLTLB"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
       >
         <option
           value="python"
-        >
-          python
-        </option>
+        />
         <option
           value="java"
-        >
-          java
-        </option>
+        />
       </select>
+    </div>
+    <div
+      className="sc-gzVnrw jdktxT"
+    >
+      <button
+        className="sc-dnqmqq bvYyFK"
+        disabled={true}
+        id="run-parser"
+        onClick={undefined}
+      >
+        Run parser
+      </button>
     </div>
   </div>
 </header>

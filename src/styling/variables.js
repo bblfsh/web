@@ -22,10 +22,10 @@ const px2rem = px => (px / fontSizeHTML) + 'rem';
 export const font = {
   size: {
     html: fontSizeHTML+'px',
-    xlarge: px2rem(24),
-    large: px2rem(20),
-    regular: px2rem(16),
-    small: px2rem(14),
+    xlarge: px2rem(19.2),
+    large: px2rem(16),
+    regular: px2rem(12.8),
+    small: px2rem(11.2),
   },
   lineHeight: {
     large: '1.45em',
@@ -40,7 +40,7 @@ export const font = {
   family: {
     logo: 'Century Gothic',
     prose: 'Lato, sans-serif',
-    code: 'Inconsolata',
+    code: 'Hack, monospace',
   }
 };
 

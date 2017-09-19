@@ -12,20 +12,36 @@ import { Notifications, Error } from './components/Notifications';
 import { indexDrivers } from './drivers';
 import * as api from './services/api';
 
-import { codePy } from './examples/example.py.js';
-import codePyUast from './examples/example.py.uast.json';
-import { codeJava } from './examples/example.java.js';
-import codeJavaUast from './examples/example.java.uast.json';
+import { java_example_1 } from './examples/hello.java.js';
+import { java_example_2 } from './examples/swap.java.js';
+import { python_example_1 } from './examples/fizzbuzz.py.js';
+import { python_example_2 } from './examples/classdef.py.js';
+
+const DEFAULT_EXAMPLE = 'java_example_1';
+const LANG_JAVA = 'java';
+const LANG_PYTHON = 'python';
 
 const examples = {
-  python: {
-    code: codePy,
-    uast: codePyUast
+  java_example_1: {
+    name: 'hello.java',
+    language: LANG_JAVA,
+    code: java_example_1
   },
-  java: {
-    code: codeJava,
-    uast: codeJavaUast
-  }
+  java_example_2: {
+    name: 'swap.java',
+    language: LANG_JAVA,
+    code: java_example_2
+  },
+  python_example_1: {
+    name: 'fizzbuzz.py',
+    language: LANG_PYTHON,
+    code: python_example_1
+  },
+  python_example_2: {
+    name: 'classdef.py',
+    language: LANG_PYTHON,
+    code: python_example_2
+  },
 };
 
 const Wrap = styled.div`
@@ -52,25 +68,38 @@ const RightPanel = styled.div`
   position: relative;
 `;
 
-function getInitialState(lang) {
+function getExampleState(key) {
+  const example = examples[key];
+
   return {
+    ...getResetCodeState(examples[key].code),
     languages: {
       auto: { name: '(auto)' }
     },
     // babelfish tells us which language is active at the moment, but it
     // won't be used unless the selectedLanguage is auto.
-    actualLanguage: lang,
-    loading: false,
+    actualLanguage: example.language,
     // this is the language that is selected by the user. It overrides the
     // actualLanguage except when it is 'auto'.
     selectedLanguage: 'auto',
-    selectedExample: lang,
-    code: examples[lang].code,
-    ast: examples[lang].uast,
-    dirty: false,
+    selectedExample: example.language,
+  };
+}
+
+function getInitialState() {
+  return {
     showLocations: false,
     customServer: false,
     customServerUrl: '',
+  };
+}
+
+function getResetCodeState(code) {
+  return {
+    code,
+    ast: {},
+    dirty: true,
+    loading: false,
     errors: []
   };
 }
@@ -78,7 +107,7 @@ function getInitialState(lang) {
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, getInitialState('python'));
+    this.state = Object.assign(getInitialState(), getExampleState(DEFAULT_EXAMPLE));
     this.mark = null;
   }
 
@@ -116,10 +145,10 @@ export default class App extends Component {
     this.setState({ selectedLanguage });
   }
 
-  onExampleChanged(lang) {
+  onExampleChanged(exampleKey) {
     this.clearNodeSelection();
     const { languages } = this.state;
-    this.setState({ ...getInitialState(lang), languages });
+    this.setState({ ...getExampleState(exampleKey), languages });
   }
 
   hasLanguage(lang) {

@@ -45,11 +45,6 @@
     border-color: transparent;
 }
 
-.CodeMirror {
-    font-family: Inconsolata, monospace;
-    font-size: 1.25rem;
-}
-
 .cm-s-solarized.cm-s-light {
     background-color: #fffdfa;
 }

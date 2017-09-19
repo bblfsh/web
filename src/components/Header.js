@@ -64,6 +64,12 @@ const InputGroup = styled.div`
   }
 `;
 
+const InputGroupRight = InputGroup.extend`
+  flex-grow: 1;
+  flex-direction: row-reverse;
+  padding-right: 0;
+`
+
 const Select = styled.select`
   border-radius: 3px;
   border: 1px solid ${border.smooth};
@@ -109,10 +115,6 @@ const DriverCodeIcon = styled.img`
   margin-right: .3rem;
 `;
 
-const DriverCodeText = styled.span`
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-`;
-
 const DriverCodeLink = styled.a`
   display: flex;
   align-items: center;
@@ -122,10 +124,6 @@ const DriverCodeLink = styled.a`
 
   &:hover {
     color: ${font.color.accentDark};
-  }
-
-  &:hover ${DriverCodeText} {
-    border-bottom-color: ${border.accent};
   }
 
   &:hover ${DriverCodeIcon} {
@@ -143,8 +141,10 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
         href={languages[driver] && languages[driver].url}
         target="_blank"
       >
-        <DriverCodeIcon src={githubIcon} alt="Driver Code on GitHub" />
-        <DriverCodeText>Driver Code</DriverCodeText>
+        <DriverCodeIcon src={githubIcon}
+          alt="Driver code repository on GitHub"
+          title="Driver code repository on GitHub"
+        />
       </DriverCodeLink>
     </DriverCodeBox>
   );
@@ -177,9 +177,9 @@ export default function Header({
     );
   });
 
-  const examplesOptions = Object.keys(examples).map((name, k) =>
-    <option value={name} key={k}>
-      {name}
+  const examplesOptions = Object.keys(examples).map((key, k) =>
+    <option value={key} key={k}>
+      {examples[key].name}
     </option>
   );
 
@@ -209,12 +209,6 @@ export default function Header({
         </InputGroup>
 
         <InputGroup>
-          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
-            {loading ? 'Parsing...' : 'Run parser'}
-          </RunButton>
-        </InputGroup>
-
-        <InputGroup>
           <Label htmlFor="examples-selector">Examples</Label>
           <Select
             id="examples-selector"
@@ -224,6 +218,12 @@ export default function Header({
             {examplesOptions}
           </Select>
         </InputGroup>
+
+        <InputGroupRight>
+          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
+            {loading ? 'Parsing...' : 'Run parser'}
+          </RunButton>
+        </InputGroupRight>
       </Actions>
     </Container>
   );

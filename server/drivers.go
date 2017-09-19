@@ -7,6 +7,6 @@ type Driver struct {
 }
 
 var driverList = []Driver{
-	{"python", "Python", "https://github.com/bblfsh/python-driver"},
 	{"java", "Java", "https://github.com/bblfsh/java-driver"},
+	{"python", "Python", "https://github.com/bblfsh/python-driver"},
 }

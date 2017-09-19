@@ -39,10 +39,10 @@ it('removes the error when onErrorRemoved is called', async () => {
 
 it('changes the editor mode when it updates', async () => {
   const wrapper = await renderApp();
-  expect(wrapper.refs.editor.document.getMode().name).toBe('python');
-
-  wrapper.setState({ selectedLanguage: 'java' });
   expect(wrapper.refs.editor.document.getMode().name).toBe('clike');
+
+  wrapper.setState({ selectedLanguage: 'python' });
+  expect(wrapper.refs.editor.document.getMode().name).toBe('python');
 });
 
 it('onLanguageChanged changes the selected language', async () => {

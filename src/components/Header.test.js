@@ -12,12 +12,10 @@ const testLanguages = {
 
 const testExamples = {
   python: {
-    code: '',
-    uast: {}
+    code: ''
   },
   java: {
-    code: '',
-    uast: {}
+    code: ''
   }
 };
 
