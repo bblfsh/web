@@ -64,6 +64,12 @@ const InputGroup = styled.div`
   }
 `;
 
+const InputGroupRight = InputGroup.extend`
+  flex-grow: 1;
+  flex-direction: row-reverse;
+  padding-right: 0;
+`
+
 const Select = styled.select`
   border-radius: 3px;
   border: 1px solid ${border.smooth};
@@ -209,12 +215,6 @@ export default function Header({
         </InputGroup>
 
         <InputGroup>
-          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
-            {loading ? 'Parsing...' : 'Run parser'}
-          </RunButton>
-        </InputGroup>
-
-        <InputGroup>
           <Label htmlFor="examples-selector">Examples</Label>
           <Select
             id="examples-selector"
@@ -224,6 +224,12 @@ export default function Header({
             {examplesOptions}
           </Select>
         </InputGroup>
+
+        <InputGroupRight>
+          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
+            {loading ? 'Parsing...' : 'Run parser'}
+          </RunButton>
+        </InputGroupRight>
       </Actions>
     </Container>
   );
