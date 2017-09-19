@@ -115,10 +115,6 @@ const DriverCodeIcon = styled.img`
   margin-right: .3rem;
 `;
 
-const DriverCodeText = styled.span`
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-`;
-
 const DriverCodeLink = styled.a`
   display: flex;
   align-items: center;
@@ -128,10 +124,6 @@ const DriverCodeLink = styled.a`
 
   &:hover {
     color: ${font.color.accentDark};
-  }
-
-  &:hover ${DriverCodeText} {
-    border-bottom-color: ${border.accent};
   }
 
   &:hover ${DriverCodeIcon} {
@@ -149,8 +141,10 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
         href={languages[driver] && languages[driver].url}
         target="_blank"
       >
-        <DriverCodeIcon src={githubIcon} alt="Driver Code on GitHub" />
-        <DriverCodeText>Driver Code</DriverCodeText>
+        <DriverCodeIcon src={githubIcon}
+          alt="Driver code repository on GitHub"
+          title="Driver code repository on GitHub"
+        />
       </DriverCodeLink>
     </DriverCodeBox>
   );

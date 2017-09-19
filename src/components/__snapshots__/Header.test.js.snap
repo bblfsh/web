@@ -19,11 +19,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   margin-right: .3rem;
 }
 
-.kgBjnk {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.eEQXSz {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,15 +34,11 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   font-size: .9rem;
 }
 
-.eEQXSz:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.eEQXSz:hover .sc-gqjmRU {
-  border-bottom-color: #EB7422;
-}
-
-.eEQXSz:hover .sc-gZMcBi {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -54,20 +46,16 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   className="sc-iwsKbI jtfEvz"
 >
   <a
-    className="sc-VigVT eEQXSz"
+    className="sc-gqjmRU hYQcKc"
     href="Python.driver"
     target="_blank"
   >
     <img
-      alt="Driver Code on GitHub"
+      alt="Driver code repository on GitHub"
       className="sc-gZMcBi gPoXnw"
       src="github.svg"
+      title="Driver code repository on GitHub"
     />
-    <span
-      className="sc-gqjmRU kgBjnk"
-    >
-      Driver Code
-    </span>
   </a>
 </div>
 `;
@@ -91,11 +79,7 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   margin-right: .3rem;
 }
 
-.kgBjnk {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.eEQXSz {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,15 +94,11 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   font-size: .9rem;
 }
 
-.eEQXSz:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.eEQXSz:hover .sc-gqjmRU {
-  border-bottom-color: #EB7422;
-}
-
-.eEQXSz:hover .sc-gZMcBi {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -126,20 +106,16 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   className="sc-iwsKbI jtfEvz"
 >
   <a
-    className="sc-VigVT eEQXSz"
+    className="sc-gqjmRU hYQcKc"
     href="Java.driver"
     target="_blank"
   >
     <img
-      alt="Driver Code on GitHub"
+      alt="Driver code repository on GitHub"
       className="sc-gZMcBi gPoXnw"
       src="github.svg"
+      title="Driver code repository on GitHub"
     />
-    <span
-      className="sc-gqjmRU kgBjnk"
-    >
-      Driver Code
-    </span>
   </a>
 </div>
 `;
@@ -311,11 +287,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   margin-right: .3rem;
 }
 
-.kgBjnk {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.eEQXSz {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -330,15 +302,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   font-size: .9rem;
 }
 
-.eEQXSz:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.eEQXSz:hover .sc-gqjmRU {
-  border-bottom-color: #EB7422;
-}
-
-.eEQXSz:hover .sc-gZMcBi {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -397,20 +365,16 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-VigVT eEQXSz"
+          className="sc-gqjmRU hYQcKc"
           href="Python.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
+            alt="Driver code repository on GitHub"
             className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gqjmRU kgBjnk"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
     </div>
@@ -620,11 +584,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   margin-right: .3rem;
 }
 
-.kgBjnk {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.eEQXSz {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -639,15 +599,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   font-size: .9rem;
 }
 
-.eEQXSz:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.eEQXSz:hover .sc-gqjmRU {
-  border-bottom-color: #EB7422;
-}
-
-.eEQXSz:hover .sc-gZMcBi {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -706,20 +662,16 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-VigVT eEQXSz"
+          className="sc-gqjmRU hYQcKc"
           href="Python.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
+            alt="Driver code repository on GitHub"
             className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gqjmRU kgBjnk"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
     </div>
@@ -929,11 +881,7 @@ exports[`Header renders correctly 1`] = `
   margin-right: .3rem;
 }
 
-.kgBjnk {
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
-}
-
-.eEQXSz {
+.hYQcKc {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -948,15 +896,11 @@ exports[`Header renders correctly 1`] = `
   font-size: .9rem;
 }
 
-.eEQXSz:hover {
+.hYQcKc:hover {
   color: #EB7422;
 }
 
-.eEQXSz:hover .sc-gqjmRU {
-  border-bottom-color: #EB7422;
-}
-
-.eEQXSz:hover .sc-gZMcBi {
+.hYQcKc:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -1015,20 +959,16 @@ exports[`Header renders correctly 1`] = `
         className="sc-iwsKbI jtfEvz"
       >
         <a
-          className="sc-VigVT eEQXSz"
+          className="sc-gqjmRU hYQcKc"
           href="Java.driver"
           target="_blank"
         >
           <img
-            alt="Driver Code on GitHub"
+            alt="Driver code repository on GitHub"
             className="sc-gZMcBi gPoXnw"
             src="github.svg"
+            title="Driver code repository on GitHub"
           />
-          <span
-            className="sc-gqjmRU kgBjnk"
-          >
-            Driver Code
-          </span>
         </a>
       </div>
     </div>
