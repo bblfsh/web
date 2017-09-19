@@ -43,9 +43,9 @@ exports[`Children renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -84,7 +84,7 @@ exports[`Children renders correctly 1`] = `
       children
     </span>
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     >
       []Node
     </summary>
@@ -101,7 +101,7 @@ exports[`Children renders correctly 1`] = `
         onClick={[Function]}
       >
         <summary
-          className="sc-ifAKCX TgBnR"
+          className="sc-ifAKCX gaIEnP"
         >
           Node
         </summary>
@@ -142,7 +142,7 @@ exports[`Children renders correctly 1`] = `
               roles
             </span>
             <summary
-              className="sc-ifAKCX TgBnR"
+              className="sc-ifAKCX gaIEnP"
             >
               []Role
             </summary>
@@ -191,7 +191,7 @@ exports[`Children renders correctly 1`] = `
         onClick={[Function]}
       >
         <summary
-          className="sc-ifAKCX TgBnR"
+          className="sc-ifAKCX gaIEnP"
         >
           Node
         </summary>
@@ -232,7 +232,7 @@ exports[`Children renders correctly 1`] = `
               roles
             </span>
             <summary
-              className="sc-ifAKCX TgBnR"
+              className="sc-ifAKCX gaIEnP"
             >
               []Role
             </summary>
@@ -309,9 +309,9 @@ exports[`CollapsibleItem renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -338,7 +338,7 @@ exports[`CollapsibleItem renders correctly 1`] = `
       foo
     </span>
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     />
   </div>
   <div
@@ -392,9 +392,9 @@ exports[`Node renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -440,7 +440,7 @@ exports[`Node renders correctly 1`] = `
     onClick={[Function]}
   >
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     >
       Node
     </summary>
@@ -481,7 +481,7 @@ exports[`Node renders correctly 1`] = `
           properties
         </span>
         <summary
-          className="sc-ifAKCX TgBnR"
+          className="sc-ifAKCX gaIEnP"
         >
           map&lt;string, string&gt;
         </summary>
@@ -560,7 +560,7 @@ exports[`Node renders correctly 1`] = `
           children
         </span>
         <summary
-          className="sc-ifAKCX TgBnR"
+          className="sc-ifAKCX gaIEnP"
         >
           []Node
         </summary>
@@ -577,7 +577,7 @@ exports[`Node renders correctly 1`] = `
             onClick={[Function]}
           >
             <summary
-              className="sc-ifAKCX TgBnR"
+              className="sc-ifAKCX gaIEnP"
             >
               Node
             </summary>
@@ -618,7 +618,7 @@ exports[`Node renders correctly 1`] = `
                   roles
                 </span>
                 <summary
-                  className="sc-ifAKCX TgBnR"
+                  className="sc-ifAKCX gaIEnP"
                 >
                   []Role
                 </summary>
@@ -667,7 +667,7 @@ exports[`Node renders correctly 1`] = `
             onClick={[Function]}
           >
             <summary
-              className="sc-ifAKCX TgBnR"
+              className="sc-ifAKCX gaIEnP"
             >
               Node
             </summary>
@@ -708,7 +708,7 @@ exports[`Node renders correctly 1`] = `
                   roles
                 </span>
                 <summary
-                  className="sc-ifAKCX TgBnR"
+                  className="sc-ifAKCX gaIEnP"
                 >
                   []Role
                 </summary>
@@ -783,7 +783,7 @@ exports[`Node renders correctly 1`] = `
           roles
         </span>
         <summary
-          className="sc-ifAKCX TgBnR"
+          className="sc-ifAKCX gaIEnP"
         >
           []Role
         </summary>
@@ -868,9 +868,9 @@ exports[`Position renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -909,7 +909,7 @@ exports[`Position renders correctly 1`] = `
       foo
     </span>
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     >
       Position
     </summary>
@@ -1021,9 +1021,9 @@ exports[`Properties renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -1062,7 +1062,7 @@ exports[`Properties renders correctly 1`] = `
       properties
     </span>
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     >
       map&lt;string, string&gt;
     </summary>
@@ -1231,9 +1231,9 @@ exports[`Roles renders correctly 1`] = `
   margin-left: 4px;
 }
 
-.TgBnR {
+.gaIEnP {
   display: inline;
-  font-family: Lato, sans-serif;
+  font-family: Hack, monospace;
   color: #B1B1B1;
 }
 
@@ -1272,7 +1272,7 @@ exports[`Roles renders correctly 1`] = `
       roles
     </span>
     <summary
-      className="sc-ifAKCX TgBnR"
+      className="sc-ifAKCX gaIEnP"
     >
       []Role
     </summary>

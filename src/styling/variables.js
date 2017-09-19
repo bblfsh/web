@@ -40,7 +40,7 @@ export const font = {
   family: {
     logo: 'Century Gothic',
     prose: 'Lato, sans-serif',
-    code: 'Inconsolata, monospace',
+    code: 'Hack, monospace',
   }
 };
 

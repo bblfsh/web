@@ -51,7 +51,7 @@ export const StyledCollapsibleContent = styled.div`
 
 const Label = styled.summary`
   display: inline;
-  font-family: ${font.family.prose};
+  font-family: ${font.family.code};
   color: ${font.color.light};
 `;
 
