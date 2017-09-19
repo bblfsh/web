@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
 import CodeMirror from 'react-codemirror';
 import { background } from '../styling/variables';
+import { font, border } from '../styling/variables';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
@@ -13,9 +14,16 @@ injectGlobal`
   .ReactCodeMirror, .CodeMirror {
     height: 100%;
   }
+
+  .CodeMirror {
+    font-family: ${font.family.code};
+    font-size: ${font.size.large};
+  }
 `;
 
-const Container = styled.div`height: 100%;`;
+const Container = styled.div`
+  height: 100%;
+`;
 
 const BookMark = styled.div`
   display: inline-block;
@@ -27,11 +35,12 @@ const BookMark = styled.div`
     content: '';
     position: absolute;
     bottom: -5px;
-    left: -2px;
+    left: -3px;
     width: 3px;
     height: 19px;
-    border: 1px solid #ea7024;
+    border: 1px solid ${border.accent};
     border-right-width: 0 !important;
+    border-left-width: 2px !important;
   }
 `;
 
