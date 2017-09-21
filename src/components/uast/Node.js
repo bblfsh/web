@@ -168,7 +168,9 @@ export default class Node extends Component {
 
   expand() {
     this.refs.collapsible.expand();
-    this.path.forEach(node => node.expand());
+    this.path.forEach(node => {
+      node.refs.collapsible.expand()
+    });
   }
 
   render() {
@@ -235,11 +237,6 @@ export function Property({ name, value }) {
 }
 
 export class Children extends Component {
-  expand() {
-    this.refs.collapsible.expand();
-    this.props.path.forEach(node => node.expand());
-  }
-
   render() {
     const {
       children,
@@ -252,13 +249,13 @@ export class Children extends Component {
 
     if (Array.isArray(children)) {
       return (
-        <CollapsibleItem name="children" ref="collapsible" label="[]Node">
+        <CollapsibleItem name="children" label="[]Node">
           {children.map((node, i) =>
             <Node
               key={i}
               tree={node}
               depth={depth}
-              path={path.concat([this])}
+              path={path}
               onNodeSelected={onNodeSelected}
               onMount={onMount}
               showLocations={showLocations}

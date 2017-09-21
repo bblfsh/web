@@ -103,18 +103,6 @@ describe('Children', () => {
       <Children path={[]} children={children} depth={1} onMount={jest.fn()} />
     );
   });
-
-  it('expands itself and its ancestors when expand is called', () => {
-    const path = [{ expand: jest.fn() }, { expand: jest.fn() }];
-
-    const wrapper = mount(
-      <Children path={path} children={[]} depth={MAX_EXPANDED_DEPTH + 1} />
-    );
-
-    wrapper.instance().expand();
-    expect(wrapper.ref('collapsible').get(0).state.collapsed).toBe(false);
-    path.map(i => i.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
-  });
 });
 
 test('Property renders correctly', () => {
@@ -163,14 +151,22 @@ describe('Node', () => {
   });
 
   it('expands itself and all its ancestors', () => {
-    const path = [{ expand: jest.fn() }, { expand: jest.fn() }];
+    const path = [
+      {refs: {collapsible: {expand: jest.fn()}}},
+      {refs: {collapsible: {expand: jest.fn()}}},
+    ];
+
+    const tree = {
+      expand: jest.fn(),
+    };
+
     const wrapper = mount(
-      <Node tree={{}} path={path} depth={MAX_EXPANDED_DEPTH + 1} />
+      <Node tree={tree} path={path} depth={MAX_EXPANDED_DEPTH + 1} />
     );
 
     wrapper.instance().expand();
     expect(wrapper.ref('collapsible').get(0).state.collapsed).toBe(false);
-    path.map(i => i.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
+    path.map(node => node.refs.collapsible.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
   });
 
   it('highlights itself when highlight is called', () => {
