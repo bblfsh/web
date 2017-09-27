@@ -24,7 +24,7 @@ export function parse(language, code, serverUrl) {
         if (status === 'ok') {
           resolve(uast);
         } else {
-          reject(errors.map(normalizeError));
+          reject(errors ? errors.map(normalizeError) : ["unexpected error"]);
         }
       })
       .catch(err => {
