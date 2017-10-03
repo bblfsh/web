@@ -21,7 +21,7 @@ export function parse(language, code, serverUrl) {
     })
       .then(resp => resp.json())
       .then(({ status, errors, uast }) => {
-        if (status === 'ok') {
+        if (status === 0) {
           resolve(uast);
         } else {
           reject(errors ? errors.map(normalizeError) : ["unexpected error"]);
