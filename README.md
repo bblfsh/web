@@ -20,6 +20,27 @@ Please read the [getting started](https://doc.bblf.sh/user/getting-started.html)
 
 If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard) page.
 
+## Development
+
+The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
+
+Every time you change any source of the front assets, it is needed to regenerate the `server/asset/asset.go` containing the static files of the site.
+
+It can be done running
+```sh
+make assets
+```
+
+### Access the dashboard locally
+
+To run it locally you can run:
+```sh
+make serve
+```
+(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, the dashboard api, and to serve the updated dashboard itself)
+
+And access the dashboard through http://localhost:9999
+
 ## License
 
 GPLv3, see [LICENSE](LICENSE)
