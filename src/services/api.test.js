@@ -2,7 +2,7 @@ import { parse } from './api';
 
 describe('api/parse', () => {
   it('should return the UAST when the request is successful', () => {
-    fetch.mockResponse(JSON.stringify({ uast: 'ok', status: 'ok' }));
+    fetch.mockResponse(JSON.stringify({ uast: 'ok', status: 0 }));
 
     const promise = parse('python', 'def sum(a, b):\n  return a + b\n');
     expect(promise).resolves.toEqual('ok');
