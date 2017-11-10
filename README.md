@@ -6,15 +6,22 @@
 The easiest way to deploy **dashboard** is using *Docker*.
 
 ```sh
-docker run -p 8080:80 bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
+docker run --publish 8080:80 --name bblfsh-dashboard bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
 ```
 
-If you don't have a bblfsh server running you can execute the dashboard and the server using the following command:
+If you don't have a bblfsh server running you can execute the dashboard and the server using the following commands:
 
 ```sh
-docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/server
-docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
+DASHBOARD_PORT=8080; # port under the dashboard will be accessible
+DAEMON=bblfsh-daemon; # container name given to the bblfsh daemon
+DASHBOARD=bblfsh-dashboard; # container name given to the bblfsh dashboard
+docker run --privileged --detach --publish 9432:9432 --name ${DAEMON} bblfsh/bblfshd;
+docker exec -it ${DAEMON} bblfshctl driver install --all;
+docker run --detach --publish ${DASHBOARD_PORT}:80 --name ${DASHBOARD} --link ${DAEMON} bblfsh/dashboard -bblfsh-addr ${DAEMON}:9432;
 ```
+
+and then navigate to [http://localhost:${DASHBOARD_PORT}](http://localhost:8080)
+
 
 Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
 
