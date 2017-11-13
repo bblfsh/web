@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components';
+import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
 
 import bblfshLogo from '../img/babelfish_logo.svg';
@@ -70,23 +71,38 @@ const InputGroupRight = InputGroup.extend`
   padding-right: 0;
 `
 
-const Select = styled.select`
+const CssInput = css`
   border-radius: 3px;
   border: 1px solid ${border.smooth};
   background: white;
   padding: .5em .5em;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: .8rem;
+
+  & + button {
+    margin-left: 3px;
+  }
 `;
 
-const RunButton = styled.button`
-  padding: .7rem 1.8rem;
+const Select = styled.select`
+  ${CssInput}
+  font-size: .7rem;
+  text-transform: uppercase;
+`;
+
+const Input = styled.input`
+  ${CssInput}
+  text-transform: none;
+`;
+
+const CssButton = css`
+  padding: .5em .5em;
+  border: 1px solid ${background.lightGrey};
   border-radius: 3px;
-  border: none;
   cursor: pointer;
-  background: ${background.accent};
-  color: white;
+  background: ${background.lightGrey};
+  color: ${font.color.dark};
   font-weight: bold;
   text-transform: uppercase;
   font-size: .8rem;
@@ -97,6 +113,27 @@ const RunButton = styled.button`
     opacity: .6;
     pointer-events: none;
   }
+
+  &:hover {
+    box-shadow: 0 5px 15px ${shadow.dark};
+  }
+`;
+
+const Button = styled.button`
+  ${CssButton}
+  border: none;
+
+  & + & {
+    margin-left: .7rem;
+  }
+`;
+
+const RunButton = styled.button`
+  ${CssButton}
+  padding: .7rem 1.8rem;
+  background: ${background.accent};
+  color: ${font.color.white};
+  white-space: nowrap;
 
   &:hover {
     box-shadow: 0 5px 15px ${shadow.primaryButton};
@@ -150,81 +187,145 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
   );
 }
 
-export default function Header({
-  selectedLanguage,
-  languages,
-  examples,
-  onLanguageChanged,
-  onExampleChanged,
-  onRunParser,
-  loading,
-  actualLanguage,
-  selectedExample,
-  canParse
-}) {
-  const languageOptions = Object.keys(languages).map(k => {
-    let name = '(auto)';
-    if (k === 'auto' && languages[actualLanguage]) {
-      name = `${languages[actualLanguage].name} ${name}`;
-    } else if (languages[k] && k !== 'auto') {
-      name = languages[k].name;
-    }
+const gistRegexp = new RegExp('^\\s*(?:https?://)?gist.githubusercontent.com/(\\S+\\s*$)');
 
-    return (
-      <option value={k} key={k}>
-        {name}
+function getGist(input) {
+  const parts = input.match(gistRegexp);
+  return parts === null ? "" : parts[1];
+}
+
+export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gistInput: "",
+      gistUrl: "",
+      isValidGistUrl: false,
+    };
+  }
+
+  updateGistUrl(input) {
+    const gistUrl = getGist(input);
+    this.setState({
+      gistInput: input,
+      gistUrl: gistUrl,
+      isValidGistUrl: !!gistUrl,
+    });
+  }
+
+  onTryLoadingGist() {
+    this.props.onLoadGist(this.state.gistUrl);
+  }
+
+  onShareGist(shared) {
+    console.info('shared url:' + shared);
+  }
+
+  getSharableUrl() {
+    return 'DASHBOARD_URL#' + this.state.gistUrl;
+  }
+
+  render() {
+    const {
+      selectedLanguage,
+      languages,
+      examples,
+      onLanguageChanged,
+      onExampleChanged,
+      onRunParser,
+      loading,
+      actualLanguage,
+      selectedExample,
+      canParse,
+      cleanGist
+    } = this.props;
+
+    const languageOptions = Object.keys(languages).map(k => {
+      let name = '(auto)';
+      if (k === 'auto' && languages[actualLanguage]) {
+        name = `${languages[actualLanguage].name} ${name}`;
+      } else if (languages[k] && k !== 'auto') {
+        name = languages[k].name;
+      }
+
+      return (
+        <option value={k} key={k}>
+          {name}
+        </option>
+      );
+    });
+
+    const examplesOptions = Object.keys(examples).map((key, k) =>
+      <option value={key} key={k}>
+        {examples[key].name}
       </option>
     );
-  });
 
-  const examplesOptions = Object.keys(examples).map((key, k) =>
-    <option value={key} key={k}>
-      {examples[key].name}
-    </option>
-  );
+    return (
+      <Container>
+        <Title>
+          <TitleImage src={bblfshLogo} alt="bblfsh" />
+          <DashboardTitle>Dashboard</DashboardTitle>
+        </Title>
 
-  return (
-    <Container>
-      <Title>
-        <TitleImage src={bblfshLogo} alt="bblfsh" />
-        <DashboardTitle>Dashboard</DashboardTitle>
-      </Title>
+        <Actions>
+          <InputGroup>
+            <Label htmlFor="language-selector">Language</Label>
+            <Select
+              id="language-selector"
+              onChange={onLanguageChanged}
+              value={selectedLanguage}
+            >
+              {languageOptions}
+            </Select>
 
-      <Actions>
-        <InputGroup>
-          <Label htmlFor="language-selector">Language</Label>
-          <Select
-            id="language-selector"
-            onChange={onLanguageChanged}
-            value={selectedLanguage}
-          >
-            {languageOptions}
-          </Select>
+            <DriverCode
+              languages={languages}
+              selectedLanguage={selectedLanguage}
+              actualLanguage={actualLanguage}
+            />
+          </InputGroup>
 
-          <DriverCode
-            languages={languages}
-            selectedLanguage={selectedLanguage}
-            actualLanguage={actualLanguage}
-          />
-        </InputGroup>
+          <InputGroup>
+            <Label htmlFor="examples-selector">Examples</Label>
+            <Select
+              id="examples-selector"
+              onChange={onExampleChanged}
+              value={selectedExample}
+            >
+              {examplesOptions}
+            </Select>
+          </InputGroup>
 
-        <InputGroup>
-          <Label htmlFor="examples-selector">Examples</Label>
-          <Select
-            id="examples-selector"
-            onChange={onExampleChanged}
-            value={selectedExample}
-          >
-            {examplesOptions}
-          </Select>
-        </InputGroup>
+          <InputGroup>
+            <Input type="url"
+              value={this.state.gistInput}
+              onChange={e => this.updateGistUrl(e.target.value)}
+              placeholder="raw gist url"
+            />
+            <Button
+              onClick={e => this.onTryLoadingGist(e)}
+              disabled={!this.state.isValidGistUrl}
+            >
+              load
+            </Button>
+            <CopyToClipboard text={this.getSharableUrl()}
+              onCopy={shared => this.onShareGist(shared)}>
+              <Button
+                disabled={!cleanGist}
+              >
+                share
+              </Button>
+            </CopyToClipboard>
+          </InputGroup>
 
-        <InputGroupRight>
-          <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
-            {loading ? 'Parsing...' : 'Run parser'}
-          </RunButton>
-        </InputGroupRight>
-      </Actions>
-    </Container>
-  );
+          <InputGroupRight>
+            <RunButton id="run-parser" onClick={onRunParser} disabled={!canParse}>
+              {loading ? 'Parsing...' : 'Run parser'}
+            </RunButton>
+          </InputGroupRight>
+        </Actions>
+      </Container>
+    );
+  }
 }

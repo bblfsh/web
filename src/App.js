@@ -99,6 +99,7 @@ function getResetCodeState(code) {
     code,
     ast: {},
     dirty: true,
+    cleanGist: false,
     loading: false,
     errors: []
   };
@@ -200,7 +201,7 @@ export default class App extends Component {
   }
 
   onCodeChange(code) {
-    this.setState({ code, dirty: true });
+    this.setState({ code, dirty: true, cleanGist: false });
   }
 
   get currentLanguage() {
@@ -236,6 +237,14 @@ export default class App extends Component {
     this.setState({ customServerUrl });
   }
 
+  onGistLoaded(gistUrl) {
+    api.getGist(gistUrl)
+      .then(content => {
+        this.setState({...getResetCodeState(content), cleanGist: true}, this.onRunParser);
+      })
+      .catch(errors => this.setState({ errors }));
+  }
+
   render() {
     const { innerWidth: width } = window;
     const {
@@ -246,6 +255,7 @@ export default class App extends Component {
       loading,
       actualLanguage,
       dirty,
+      cleanGist,
       errors,
       showLocations,
       customServer,
@@ -266,6 +276,8 @@ export default class App extends Component {
           examples={examples}
           loading={loading}
           canParse={!loading && (validServerUrl || !customServer) && dirty}
+          cleanGist={cleanGist}
+          onLoadGist={(url) => this.onGistLoaded(url)}
         />
         <Content>
           <SplitPane
