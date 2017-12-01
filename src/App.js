@@ -25,22 +25,22 @@ const examples = {
   java_example_1: {
     name: 'hello.java',
     language: LANG_JAVA,
-    code: java_example_1
+    code: java_example_1,
   },
   java_example_2: {
     name: 'swap.java',
     language: LANG_JAVA,
-    code: java_example_2
+    code: java_example_2,
   },
   python_example_1: {
     name: 'fizzbuzz.py',
     language: LANG_PYTHON,
-    code: python_example_1
+    code: python_example_1,
   },
   python_example_2: {
     name: 'classdef.py',
     language: LANG_PYTHON,
-    code: python_example_2
+    code: python_example_2,
   },
 };
 
@@ -74,7 +74,7 @@ function getExampleState(key) {
   return {
     ...getResetCodeState(examples[key].code),
     languages: {
-      auto: { name: '(auto)' }
+      auto: { name: '(auto)' },
     },
     // babelfish tells us which language is active at the moment, but it
     // won't be used unless the selectedLanguage is auto.
@@ -100,14 +100,17 @@ function getResetCodeState(code) {
     ast: {},
     dirty: true,
     loading: false,
-    errors: []
+    errors: [],
   };
 }
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign(getInitialState(), getExampleState(DEFAULT_EXAMPLE));
+    this.state = Object.assign(
+      getInitialState(),
+      getExampleState(DEFAULT_EXAMPLE)
+    );
     this.mark = null;
   }
 
@@ -118,16 +121,19 @@ export default class App extends Component {
       .listDrivers()
       .then(indexDrivers)
       .then(languages =>
-        this.setState({
-          loading: false,
-          languages: Object.assign(this.state.languages, languages)
-        }, this.onRunParser)
+        this.setState(
+          {
+            loading: false,
+            languages: Object.assign(this.state.languages, languages),
+          },
+          this.onRunParser
+        )
       )
       .catch(err => {
         console.error(err);
         this.setState({
           loading: false,
-          errors: ['Unable to load the list of available drivers.']
+          errors: ['Unable to load the list of available drivers.'],
         });
       });
   }
@@ -148,7 +154,10 @@ export default class App extends Component {
   onExampleChanged(exampleKey) {
     this.clearNodeSelection();
     const { languages } = this.state;
-    this.setState({ ...getExampleState(exampleKey), languages }, this.onRunParser);
+    this.setState(
+      { ...getExampleState(exampleKey), languages },
+      this.onRunParser
+    );
   }
 
   hasLanguage(lang) {
@@ -172,7 +181,7 @@ export default class App extends Component {
 
   onErrorRemoved(idx) {
     this.setState({
-      errors: this.state.errors.filter((_, i) => i !== idx)
+      errors: this.state.errors.filter((_, i) => i !== idx),
     });
   }
 
@@ -228,7 +237,7 @@ export default class App extends Component {
   onCustomServerToggle() {
     this.setState({
       customServer: !this.state.customServer,
-      customServerUrl: this.state.customServer ? '' : '0.0.0.0:9432'
+      customServerUrl: this.state.customServer ? '' : '0.0.0.0:9432',
     });
   }
 
@@ -249,7 +258,7 @@ export default class App extends Component {
       errors,
       showLocations,
       customServer,
-      customServerUrl
+      customServerUrl,
     } = this.state;
 
     const validServerUrl = isUrl(customServerUrl);
@@ -291,7 +300,8 @@ export default class App extends Component {
                 onLocationsToggle={() => this.onLocationsToggle()}
                 onCustomServerToggle={() => this.onCustomServerToggle()}
                 onCustomServerUrlChange={e =>
-                  this.onCustomServerUrlChange(e.target.value)}
+                  this.onCustomServerUrlChange(e.target.value)
+                }
               />
               <UASTViewer
                 ref="viewer"
@@ -307,19 +317,19 @@ export default class App extends Component {
 
         <Footer />
 
-        {errors.length > 0
-          ? <Notifications>
-              {errors.map((err, i) => {
-                return (
-                  <Error
-                    message={err}
-                    key={i}
-                    onRemove={() => this.onErrorRemoved(i)}
-                  />
-                );
-              })}
-            </Notifications>
-          : null}
+        {errors.length > 0 ? (
+          <Notifications>
+            {errors.map((err, i) => {
+              return (
+                <Error
+                  message={err}
+                  key={i}
+                  onRemove={() => this.onErrorRemoved(i)}
+                />
+              );
+            })}
+          </Notifications>
+        ) : null}
       </Wrap>
     );
   }

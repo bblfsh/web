@@ -25,4 +25,4 @@ export const java_example_2 = `public class SwapElementsExample {
 
          }
  }
-`
+`;

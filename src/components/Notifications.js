@@ -21,16 +21,16 @@ const NotificationLine = styled.p`
   margin: 0;
 
   & + & {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 `;
 
 export var CloseButton = styled.button`
   font-size: 1.5rem;
   position: absolute;
-  right: .5rem;
-  top: .2rem;
-  padding: .3rem .5rem;
+  right: 0.5rem;
+  top: 0.2rem;
+  padding: 0.3rem 0.5rem;
   margin: 0;
   border: none;
   background: transparent;
@@ -54,19 +54,13 @@ const Title = styled.h5`
 `;
 
 export function Notifications({ children }) {
-  return (
-    <NotificationList>
-      {children}
-    </NotificationList>
-  );
+  return <NotificationList>{children}</NotificationList>;
 }
 
 export function Error({ message, onRemove }) {
-  const lines = message.split('\n').map((line, i) =>
-    <NotificationLine key={i}>
-      {line}
-    </NotificationLine>
-  );
+  const lines = message
+    .split('\n')
+    .map((line, i) => <NotificationLine key={i}>{line}</NotificationLine>);
 
   return (
     <ErrorNotification>

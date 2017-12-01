@@ -11,20 +11,20 @@ export function parse(language, code, serverUrl) {
     return fetch(apiUrl('/parse'), {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         server_url: serverUrl,
         language,
-        content: code
-      })
+        content: code,
+      }),
     })
       .then(resp => resp.json())
       .then(({ status, errors, uast }) => {
         if (status === 0) {
           resolve(uast);
         } else {
-          reject(errors ? errors.map(normalizeError) : ["unexpected error"]);
+          reject(errors ? errors.map(normalizeError) : ['unexpected error']);
         }
       })
       .catch(err => {
@@ -35,7 +35,9 @@ export function parse(language, code, serverUrl) {
 }
 
 export function listDrivers() {
-  return fetch(apiUrl('/drivers')).then(checkStatus).then(resp => resp.json());
+  return fetch(apiUrl('/drivers'))
+    .then(checkStatus)
+    .then(resp => resp.json());
 }
 
 function checkStatus(resp) {

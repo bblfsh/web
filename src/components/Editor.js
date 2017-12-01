@@ -50,13 +50,13 @@ export default class Editor extends Component {
   }
 
   get editor() {
-    return this.refs.codemirror.getCodeMirror();
+    return this.codemirror.getCodeMirror();
   }
 
   selectCode(from, to) {
     if (from && to) {
       return this.document.markText(from, to, {
-        css: 'background: ' + background.highlight
+        css: 'background: ' + background.highlight,
       });
     } else if (from) {
       return this.document.setBookmark(from, { widget: this.bookmark });
@@ -82,7 +82,11 @@ export default class Editor extends Component {
   }
 
   cursor(editor = this.editor) {
-    return editor.getDoc().listSelections().slice(0, 1).pop().head;
+    return editor
+      .getDoc()
+      .listSelections()
+      .slice(0, 1)
+      .pop().head;
   }
 
   render() {
@@ -91,13 +95,13 @@ export default class Editor extends Component {
     const options = {
       mode: languageMode,
       lineNumbers: true,
-      theme: 'solarized light'
+      theme: 'solarized light',
     };
 
     return (
       <Container>
         <CodeMirror
-          ref="codemirror"
+          ref={r => (this.codemirror = r)}
           autoFocus={true}
           onChange={onChange}
           value={code}
