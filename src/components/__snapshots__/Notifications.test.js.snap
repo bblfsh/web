@@ -15,12 +15,12 @@ exports[`Error should render correctly 1`] = `
   color: white;
 }
 
-.iApsGL {
+.dXfXAk {
   font-size: 1.5rem;
   position: absolute;
-  right: .5rem;
-  top: .2rem;
-  padding: .3rem .5rem;
+  right: 0.5rem;
+  top: 0.2rem;
+  padding: 0.3rem 0.5rem;
   margin: 0;
   border: none;
   background: transparent;
@@ -33,20 +33,20 @@ exports[`Error should render correctly 1`] = `
   font-size: 1.2rem;
 }
 
-.dFkWwO {
+.jwagSQ {
   padding: 0;
   margin: 0;
 }
 
-.dFkWwO + .dFkWwO {
-  margin-top: .5rem;
+.jwagSQ + .jwagSQ {
+  margin-top: 0.5rem;
 }
 
 <div
   className="sc-ifAKCX fbizxx"
 >
   <button
-    className="sc-bxivhb iApsGL"
+    className="sc-bxivhb dXfXAk"
     onClick={undefined}
   >
     ×
@@ -57,12 +57,12 @@ exports[`Error should render correctly 1`] = `
     Error
   </h5>
   <p
-    className="sc-htpNat dFkWwO"
+    className="sc-htpNat jwagSQ"
   >
     Foo bar
   </p>
   <p
-    className="sc-htpNat dFkWwO"
+    className="sc-htpNat jwagSQ"
   >
     Baz qux
   </p>

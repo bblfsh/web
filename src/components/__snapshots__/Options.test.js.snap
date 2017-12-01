@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it renders correctly 1`] = `
-.nejLS {
-  padding: .5rem 1rem;
+.knclXs {
+  padding: 0.5rem 1rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,14 +27,14 @@ exports[`it renders correctly 1`] = `
   margin-left: 1.5rem;
 }
 
-.gkGdtY {
+.driqVY {
   color: #212121;
-  padding-left: .5rem;
-  font-size: .8rem;
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
 }
 
 <div
-  className="sc-bdVaJa nejLS"
+  className="sc-bdVaJa knclXs"
 >
   <div
     className="sc-bwzfXH ejAJGS"
@@ -46,7 +46,7 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="sc-htpNat gkGdtY"
+      className="sc-htpNat driqVY"
       htmlFor="show-locations"
     >
       Show locations
@@ -62,7 +62,7 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="sc-htpNat gkGdtY"
+      className="sc-htpNat driqVY"
       htmlFor="custom-server"
     >
       Custom babelfish server
