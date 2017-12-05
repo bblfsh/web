@@ -3,38 +3,21 @@ package server
 import (
 	"encoding/json"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
-	"time"
-
-	"google.golang.org/grpc"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
+	"gopkg.in/bblfsh/client-go.v2"
 	"gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v1/uast"
 )
 
 type Server struct {
-	client protocol.ProtocolServiceClient
-}
-
-func newClient(addr string) (protocol.ProtocolServiceClient, io.Closer, error) {
-	conn, err := grpc.Dial(
-		addr,
-		grpc.WithInsecure(),
-		grpc.WithTimeout(time.Second*10),
-	)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	return protocol.NewProtocolServiceClient(conn), conn, nil
+	client *bblfsh.Client
 }
 
 func New(addr string) (*Server, error) {
-	client, _, err := newClient(addr)
+	client, err := bblfsh.NewClient(addr)
 	if err != nil {
 		return nil, err
 	}
@@ -56,25 +39,17 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		return
 	}
 
-	cli, closer, err := s.clientForRequest(req)
+	cli, err := s.clientForRequest(req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error starting client: %s", err))
 		return
 	}
 
-	if closer != nil {
-		defer func() {
-			if err := closer.Close(); err != nil {
-				logrus.Errorf("error closing connection to client at %s: %s", req.ServerURL, err)
-			}
-		}()
-	}
-
-	resp, err := cli.Parse(ctx.Request.Context(), &protocol.ParseRequest{
-		Content:  req.Content,
-		Language: req.Language,
-		Filename: req.Filename,
-	})
+	resp, err := cli.NewParseRequest().
+		Language(req.Language).
+		Filename(req.Filename).
+		Content(req.Content).
+		Do()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))
 		return
@@ -83,12 +58,12 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
 }
 
-func (s *Server) clientForRequest(req parseRequest) (protocol.ProtocolServiceClient, io.Closer, error) {
+func (s *Server) clientForRequest(req parseRequest) (*bblfsh.Client, error) {
 	if req.ServerURL == "" {
-		return s.client, nil, nil
+		return s.client, nil
 	}
 
-	return newClient(req.ServerURL)
+	return bblfsh.NewClient(req.ServerURL)
 }
 
 func (s *Server) LoadGist(ctx *gin.Context) {
