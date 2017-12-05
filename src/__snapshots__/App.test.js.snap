@@ -5,6 +5,7 @@ exports[`renders without crashing 1`] = `
   <Header
     actualLanguage="java"
     canParse={true}
+    cleanGist={false}
     examples={
       Object {
         "java_example_1": Object {
@@ -114,6 +115,7 @@ exports[`renders without crashing 1`] = `
     loading={false}
     onExampleChanged={[Function]}
     onLanguageChanged={[Function]}
+    onLoadGist={[Function]}
     onRunParser={[Function]}
     selectedLanguage="auto"
   />

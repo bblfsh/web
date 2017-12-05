@@ -76,6 +76,7 @@ func main() {
 	api := r.Group("/api")
 	api.POST("/parse", s.HandleParse)
 	api.GET("/drivers", s.ListDrivers)
+	api.GET("/gist", s.LoadGist)
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 

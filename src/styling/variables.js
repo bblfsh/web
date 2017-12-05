@@ -32,6 +32,7 @@ export const font = {
     regular: '1.2em',
   },
   color: {
+    white: color.base.white,
     dark: color.base.darkGrey,
     light: color.base.lightGrey,
     accentDark: color.accent.deepOrange,
@@ -49,6 +50,7 @@ export const background = {
   dark: color.base.black,
   highlight: color.custom.highlight,
   light: color.base.light,
+  lightGrey: color.base.lightGrey,
   accent: color.accent.deepOrange,
 };
 
@@ -59,6 +61,7 @@ export const border = {
 };
 
 export const shadow = {
+  dark: 'rgba(138, 128, 115, 0.8)',
   topbar: 'rgba(138, 128, 115, 0.14)',
   primaryButton: 'rgba(191, 76, 50, 0.48)',
 };

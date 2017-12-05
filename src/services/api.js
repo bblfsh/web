@@ -58,3 +58,21 @@ function normalizeError(err) {
 
   return null;
 }
+
+export function getGist(gist) {
+  return new Promise((resolve, reject) => {
+    return fetch(apiUrl('/gist?url=' + gist), {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(checkStatus)
+      .then(resp => resp.text())
+      .then(code => resolve(code))
+      .catch(err => {
+        console.error(err);
+        reject([err].map(normalizeError));
+      });
+  });
+}
