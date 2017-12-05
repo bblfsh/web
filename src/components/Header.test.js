@@ -7,16 +7,16 @@ import renderer from 'react-test-renderer';
 const testLanguages = {
   auto: { name: 'auto' },
   python: { name: 'Python', url: 'Python.driver' },
-  java: { name: 'Java', url: 'Java.driver' }
+  java: { name: 'Java', url: 'Java.driver' },
 };
 
 const testExamples = {
   python: {
-    code: ''
+    code: '',
   },
   java: {
-    code: ''
-  }
+    code: '',
+  },
 };
 
 describe('DriverCode', () => {
@@ -74,7 +74,7 @@ describe('Header', () => {
     );
 
     wrapper.find('#language-selector').simulate('change', {
-      target: { value: 'python' }
+      target: { value: 'python' },
     });
     expect(onLanguageChangedSpy.mock.calls.length).toBe(1);
     expect(onLanguageChangedSpy.mock.calls[0][0].target.value).toBe('python');
@@ -94,7 +94,7 @@ describe('Header', () => {
     );
 
     wrapper.find('#examples-selector').simulate('change', {
-      target: { value: 'java' }
+      target: { value: 'java' },
     });
     expect(spy.mock.calls.length).toBe(1);
     expect(spy.mock.calls[0][0].target.value).toBe('java');

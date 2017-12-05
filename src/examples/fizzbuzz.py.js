@@ -10,4 +10,4 @@ export const python_example_1 = `def fizzbuzz(n):
         return str(n)
 
 print "\\n".join(fizzbuzz(n) for n in xrange(1, 21))
-`
+`;

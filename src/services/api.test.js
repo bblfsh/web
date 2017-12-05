@@ -12,7 +12,7 @@ describe('api/parse', () => {
     fetch.mockResponse(
       JSON.stringify({
         status: 'error',
-        errors: ['nok', { message: 'err' }]
+        errors: ['nok', { message: 'err' }],
       })
     );
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { font, background, border } from '../styling/variables';
 
 const Container = styled.div`
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   background: ${background.light};
   border-bottom: 1px solid ${border.smooth};
@@ -21,20 +21,20 @@ const Field = styled.div`
 
 const Label = styled.label`
   color: ${font.color.dark};
-  padding-left: .5rem;
-  font-size: .8rem;
+  padding-left: 0.5rem;
+  font-size: 0.8rem;
 `;
 
 const TextInput = styled.input`
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   background: transparent;
   border-top: none;
   border-left: none;
   border-right: none;
   border-bottom: 1px solid ${border.smooth};
   outline: none;
-  font-size: .8rem;
-  padding: .1rem .5rem;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
   color: ${props => (props.valid ? 'inherit' : 'red')};
   border-bottom: 1px solid ${props => (props.valid ? border.smooth : 'red')};
 `;
@@ -46,7 +46,7 @@ export default function Options({
   serverUrlIsValid,
   onLocationsToggle,
   onCustomServerToggle,
-  onCustomServerUrlChange
+  onCustomServerUrlChange,
 }) {
   return (
     <Container>
@@ -68,16 +68,16 @@ export default function Options({
           onChange={onCustomServerToggle}
         />
         <Label htmlFor="custom-server">Custom babelfish server</Label>
-        {customServer
-          ? <TextInput
-              type="url"
-              name="custom-server-url"
-              value={customServerUrl}
-              onChange={onCustomServerUrlChange}
-              disabled={!customServer}
-              valid={serverUrlIsValid}
-            />
-          : null}
+        {customServer ? (
+          <TextInput
+            type="url"
+            name="custom-server-url"
+            value={customServerUrl}
+            onChange={onCustomServerUrlChange}
+            disabled={!customServer}
+            valid={serverUrlIsValid}
+          />
+        ) : null}
       </Field>
     </Container>
   );

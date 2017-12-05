@@ -28,9 +28,13 @@ const Title = styled.h1`
   padding-right: 1rem;
 `;
 
-const TitleImage = styled.img`height: 40px;`;
+const TitleImage = styled.img`
+  height: 40px;
+`;
 
-const DashboardTitle = styled.span`margin-left: .8rem;`;
+const DashboardTitle = styled.span`
+  margin-left: 0.8rem;
+`;
 
 const Actions = styled.div`
   width: 100%;
@@ -42,7 +46,7 @@ const Actions = styled.div`
 const Label = styled.label`
   color: grey;
   margin-right: 1em;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
   color: #636262;
@@ -68,20 +72,20 @@ const InputGroupRight = InputGroup.extend`
   flex-grow: 1;
   flex-direction: row-reverse;
   padding-right: 0;
-`
+`;
 
 const Select = styled.select`
   border-radius: 3px;
   border: 1px solid ${border.smooth};
   background: white;
-  padding: .5em .5em;
+  padding: 0.5em 0.5em;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
 `;
 
 const RunButton = styled.button`
-  padding: .7rem 1.8rem;
+  padding: 0.7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -89,12 +93,12 @@ const RunButton = styled.button`
   color: white;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: .8rem;
-  letter-spacing: .05em;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
   transition: box-shadow 300ms ease-in-out;
 
   &[disabled] {
-    opacity: .6;
+    opacity: 0.6;
     pointer-events: none;
   }
 
@@ -106,13 +110,13 @@ const RunButton = styled.button`
 const DriverCodeBox = styled.div`
   display: flex;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 `;
 
 const DriverCodeIcon = styled.img`
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 `;
 
 const DriverCodeLink = styled.a`
@@ -120,7 +124,7 @@ const DriverCodeLink = styled.a`
   align-items: center;
   color: black;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   &:hover {
     color: ${font.color.accentDark};
@@ -141,7 +145,8 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
         href={languages[driver] && languages[driver].url}
         target="_blank"
       >
-        <DriverCodeIcon src={githubIcon}
+        <DriverCodeIcon
+          src={githubIcon}
           alt="Driver code repository on GitHub"
           title="Driver code repository on GitHub"
         />
@@ -160,7 +165,7 @@ export default function Header({
   loading,
   actualLanguage,
   selectedExample,
-  canParse
+  canParse,
 }) {
   const languageOptions = Object.keys(languages).map(k => {
     let name = '(auto)';
@@ -177,11 +182,11 @@ export default function Header({
     );
   });
 
-  const examplesOptions = Object.keys(examples).map((key, k) =>
+  const examplesOptions = Object.keys(examples).map((key, k) => (
     <option value={key} key={k}>
       {examples[key].name}
     </option>
-  );
+  ));
 
   return (
     <Container>

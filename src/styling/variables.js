@@ -17,11 +17,11 @@ const color = {
 };
 
 const fontSizeHTML = 16;
-const px2rem = px => (px / fontSizeHTML) + 'rem';
+const px2rem = px => px / fontSizeHTML + 'rem';
 
 export const font = {
   size: {
-    html: fontSizeHTML+'px',
+    html: fontSizeHTML + 'px',
     xlarge: px2rem(19.2),
     large: px2rem(16),
     regular: px2rem(12.8),
@@ -41,7 +41,7 @@ export const font = {
     logo: 'Century Gothic',
     prose: 'Lato, sans-serif',
     code: 'Hack, monospace',
-  }
+  },
 };
 
 export const background = {

@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import { background, border, font } from '../styling/variables';
 
 const Container = styled.footer`
-  padding: .5rem;
-  font-size: .9rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
   text-align: center;
   border-top: 1px solid ${border.smooth};
   background: ${background.light};
 `;
 
-const Link = styled.a`color: ${font.color.dark};`;
+const Link = styled.a`
+  color: ${font.color.dark};
+`;
 
 export default function Footer() {
   return (

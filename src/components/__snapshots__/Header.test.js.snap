@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
-.jtfEvz {
+.eusqcD {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,16 +10,16 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.gPoXnw {
+.fDargq {
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 }
 
-.hYQcKc {
+.iRCvIV {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31,28 +31,28 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.hYQcKc:hover {
+.iRCvIV:hover {
   color: #EB7422;
 }
 
-.hYQcKc:hover .sc-gZMcBi {
+.iRCvIV:hover .sc-gZMcBi {
   opacity: 1;
 }
 
 <div
-  className="sc-iwsKbI jtfEvz"
+  className="sc-iwsKbI eusqcD"
 >
   <a
-    className="sc-gqjmRU hYQcKc"
+    className="sc-gqjmRU iRCvIV"
     href="Python.driver"
     target="_blank"
   >
     <img
       alt="Driver code repository on GitHub"
-      className="sc-gZMcBi gPoXnw"
+      className="sc-gZMcBi fDargq"
       src="github.svg"
       title="Driver code repository on GitHub"
     />
@@ -61,7 +61,7 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
 `;
 
 exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] = `
-.jtfEvz {
+.eusqcD {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,16 +70,16 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.gPoXnw {
+.fDargq {
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 }
 
-.hYQcKc {
+.iRCvIV {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -91,28 +91,28 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.hYQcKc:hover {
+.iRCvIV:hover {
   color: #EB7422;
 }
 
-.hYQcKc:hover .sc-gZMcBi {
+.iRCvIV:hover .sc-gZMcBi {
   opacity: 1;
 }
 
 <div
-  className="sc-iwsKbI jtfEvz"
+  className="sc-iwsKbI eusqcD"
 >
   <a
-    className="sc-gqjmRU hYQcKc"
+    className="sc-gqjmRU iRCvIV"
     href="Java.driver"
     target="_blank"
   >
     <img
       alt="Driver code repository on GitHub"
-      className="sc-gZMcBi gPoXnw"
+      className="sc-gZMcBi fDargq"
       src="github.svg"
       title="Driver code repository on GitHub"
     />
@@ -156,12 +156,12 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   padding-right: 1rem;
 }
 
-.jSEybS {
+.iZWaVz {
   height: 40px;
 }
 
-.jaIsHC {
-  margin-left: .8rem;
+.dtdqzi {
+  margin-left: 0.8rem;
 }
 
 .gkhDQm {
@@ -174,10 +174,10 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   height: 100%;
 }
 
-.iUXYdf {
+.dWtenm {
   color: grey;
   margin-right: 1em;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
@@ -235,19 +235,19 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   border-right: none;
 }
 
-.jfLTLB {
+.sAHzS {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
-  padding: .5em .5em;
+  padding: 0.5em 0.5em;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
-.bvYyFK {
-  padding: .7rem 1.8rem;
+.iJteYS {
+  padding: 0.7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -256,20 +256,20 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
-  font-size: .8rem;
-  -webkit-letter-spacing: .05em;
-  -moz-letter-spacing: .05em;
-  -ms-letter-spacing: .05em;
-  letter-spacing: .05em;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   -webkit-transition: box-shadow 300ms ease-in-out;
   transition: box-shadow 300ms ease-in-out;
 }
 
-.bvYyFK:hover {
+.iJteYS:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.jtfEvz {
+.eusqcD {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -278,16 +278,16 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.gPoXnw {
+.fDargq {
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 }
 
-.hYQcKc {
+.iRCvIV {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -299,14 +299,14 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.hYQcKc:hover {
+.iRCvIV:hover {
   color: #EB7422;
 }
 
-.hYQcKc:hover .sc-gZMcBi {
+.iRCvIV:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -318,11 +318,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat jSEybS"
+      className="sc-htpNat iZWaVz"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb jaIsHC"
+      className="sc-bxivhb dtdqzi"
     >
       Dashboard
     </span>
@@ -334,13 +334,13 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -362,16 +362,16 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         </option>
       </select>
       <div
-        className="sc-iwsKbI jtfEvz"
+        className="sc-iwsKbI eusqcD"
       >
         <a
-          className="sc-gqjmRU hYQcKc"
+          className="sc-gqjmRU iRCvIV"
           href="Python.driver"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="sc-gZMcBi gPoXnw"
+            className="sc-gZMcBi fDargq"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -382,13 +382,13 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
@@ -405,7 +405,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       className="sc-gzVnrw jdktxT"
     >
       <button
-        className="sc-dnqmqq bvYyFK"
+        className="sc-dnqmqq iJteYS"
         disabled={true}
         id="run-parser"
         onClick={undefined}
@@ -453,12 +453,12 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   padding-right: 1rem;
 }
 
-.jSEybS {
+.iZWaVz {
   height: 40px;
 }
 
-.jaIsHC {
-  margin-left: .8rem;
+.dtdqzi {
+  margin-left: 0.8rem;
 }
 
 .gkhDQm {
@@ -471,10 +471,10 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   height: 100%;
 }
 
-.iUXYdf {
+.dWtenm {
   color: grey;
   margin-right: 1em;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
@@ -532,19 +532,19 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   border-right: none;
 }
 
-.jfLTLB {
+.sAHzS {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
-  padding: .5em .5em;
+  padding: 0.5em 0.5em;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
-.bvYyFK {
-  padding: .7rem 1.8rem;
+.iJteYS {
+  padding: 0.7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -553,20 +553,20 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
-  font-size: .8rem;
-  -webkit-letter-spacing: .05em;
-  -moz-letter-spacing: .05em;
-  -ms-letter-spacing: .05em;
-  letter-spacing: .05em;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   -webkit-transition: box-shadow 300ms ease-in-out;
   transition: box-shadow 300ms ease-in-out;
 }
 
-.bvYyFK:hover {
+.iJteYS:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.jtfEvz {
+.eusqcD {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -575,16 +575,16 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.gPoXnw {
+.fDargq {
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 }
 
-.hYQcKc {
+.iRCvIV {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -596,14 +596,14 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.hYQcKc:hover {
+.iRCvIV:hover {
   color: #EB7422;
 }
 
-.hYQcKc:hover .sc-gZMcBi {
+.iRCvIV:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -615,11 +615,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat jSEybS"
+      className="sc-htpNat iZWaVz"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb jaIsHC"
+      className="sc-bxivhb dtdqzi"
     >
       Dashboard
     </span>
@@ -631,13 +631,13 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -659,16 +659,16 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         </option>
       </select>
       <div
-        className="sc-iwsKbI jtfEvz"
+        className="sc-iwsKbI eusqcD"
       >
         <a
-          className="sc-gqjmRU hYQcKc"
+          className="sc-gqjmRU iRCvIV"
           href="Python.driver"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="sc-gZMcBi gPoXnw"
+            className="sc-gZMcBi fDargq"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -679,13 +679,13 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
@@ -702,7 +702,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       className="sc-gzVnrw jdktxT"
     >
       <button
-        className="sc-dnqmqq bvYyFK"
+        className="sc-dnqmqq iJteYS"
         disabled={false}
         id="run-parser"
         onClick={undefined}
@@ -750,12 +750,12 @@ exports[`Header renders correctly 1`] = `
   padding-right: 1rem;
 }
 
-.jSEybS {
+.iZWaVz {
   height: 40px;
 }
 
-.jaIsHC {
-  margin-left: .8rem;
+.dtdqzi {
+  margin-left: 0.8rem;
 }
 
 .gkhDQm {
@@ -768,10 +768,10 @@ exports[`Header renders correctly 1`] = `
   height: 100%;
 }
 
-.iUXYdf {
+.dWtenm {
   color: grey;
   margin-right: 1em;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
@@ -829,19 +829,19 @@ exports[`Header renders correctly 1`] = `
   border-right: none;
 }
 
-.jfLTLB {
+.sAHzS {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
-  padding: .5em .5em;
+  padding: 0.5em 0.5em;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
-.bvYyFK {
-  padding: .7rem 1.8rem;
+.iJteYS {
+  padding: 0.7rem 1.8rem;
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -850,20 +850,20 @@ exports[`Header renders correctly 1`] = `
   font-weight: bold;
   -webkit-text-transform: uppercase;
   text-transform: uppercase;
-  font-size: .8rem;
-  -webkit-letter-spacing: .05em;
-  -moz-letter-spacing: .05em;
-  -ms-letter-spacing: .05em;
-  letter-spacing: .05em;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
   -webkit-transition: box-shadow 300ms ease-in-out;
   transition: box-shadow 300ms ease-in-out;
 }
 
-.bvYyFK:hover {
+.iJteYS:hover {
   box-shadow: 0 5px 15px rgba(191, 76, 50, 0.48);
 }
 
-.jtfEvz {
+.eusqcD {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -872,16 +872,16 @@ exports[`Header renders correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
-.gPoXnw {
+.fDargq {
   width: 20px;
-  opacity: .7;
-  margin-right: .3rem;
+  opacity: 0.7;
+  margin-right: 0.3rem;
 }
 
-.hYQcKc {
+.iRCvIV {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -893,14 +893,14 @@ exports[`Header renders correctly 1`] = `
   color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-.hYQcKc:hover {
+.iRCvIV:hover {
   color: #EB7422;
 }
 
-.hYQcKc:hover .sc-gZMcBi {
+.iRCvIV:hover .sc-gZMcBi {
   opacity: 1;
 }
 
@@ -912,11 +912,11 @@ exports[`Header renders correctly 1`] = `
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat jSEybS"
+      className="sc-htpNat iZWaVz"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb jaIsHC"
+      className="sc-bxivhb dtdqzi"
     >
       Dashboard
     </span>
@@ -928,13 +928,13 @@ exports[`Header renders correctly 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="language-selector"
         onChange={undefined}
         value="auto"
@@ -956,16 +956,16 @@ exports[`Header renders correctly 1`] = `
         </option>
       </select>
       <div
-        className="sc-iwsKbI jtfEvz"
+        className="sc-iwsKbI eusqcD"
       >
         <a
-          className="sc-gqjmRU hYQcKc"
+          className="sc-gqjmRU iRCvIV"
           href="Java.driver"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="sc-gZMcBi gPoXnw"
+            className="sc-gZMcBi fDargq"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -976,13 +976,13 @@ exports[`Header renders correctly 1`] = `
       className="sc-bZQynM eJfGpj"
     >
       <label
-        className="sc-EHOje iUXYdf"
+        className="sc-EHOje dWtenm"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs jfLTLB"
+        className="sc-htoDjs sAHzS"
         id="examples-selector"
         onChange={undefined}
         value={undefined}
@@ -999,7 +999,7 @@ exports[`Header renders correctly 1`] = `
       className="sc-gzVnrw jdktxT"
     >
       <button
-        className="sc-dnqmqq bvYyFK"
+        className="sc-dnqmqq iJteYS"
         disabled={true}
         id="run-parser"
         onClick={undefined}
