@@ -41,6 +41,11 @@
     cursor: not-allowed;
 }
 
+/* disable this min-sizing behavior of flexbox because of scrollable div inside */
+.Pane2 {
+    min-width: 0;
+}
+
 .Resizer.disabled:hover {
     border-color: transparent;
 }

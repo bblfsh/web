@@ -6,6 +6,7 @@ import { font, background } from '../styling/variables';
 
 const Container = styled.div`
   height: 100%;
+  min-width: 0; // disable this min-sizing behavior of flexbox because of scrollable div inside
   width: 100%;
   overflow: auto;
   font-family: ${font.family.code};
