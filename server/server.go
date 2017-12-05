@@ -45,6 +45,7 @@ func New(addr string) (*Server, error) {
 type parseRequest struct {
 	ServerURL string `json:"server_url"`
 	Language  string `json:"language"`
+	Filename  string `json:"filename"`
 	Content   string `json:"content"`
 }
 
@@ -72,6 +73,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 	resp, err := cli.Parse(ctx.Request.Context(), &protocol.ParseRequest{
 		Content:  req.Content,
 		Language: req.Language,
+		Filename: req.Filename,
 	})
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))

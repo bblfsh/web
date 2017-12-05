@@ -188,31 +188,9 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
   );
 }
 
-<<<<<<< HEAD
-export default function Header({
-  selectedLanguage,
-  languages,
-  examples,
-  onLanguageChanged,
-  onExampleChanged,
-  onRunParser,
-  loading,
-  actualLanguage,
-  selectedExample,
-  canParse,
-}) {
-  const languageOptions = Object.keys(languages).map(k => {
-    let name = '(auto)';
-    if (k === 'auto' && languages[actualLanguage]) {
-      name = `${languages[actualLanguage].name} ${name}`;
-    } else if (languages[k] && k !== 'auto') {
-      name = languages[k].name;
-    }
-=======
 const gistRegexp = new RegExp(
   '^\\s*(?:https?://)?gist.githubusercontent.com/(\\S+\\s*$)'
 );
->>>>>>> 7430e32... [WIP] Add Gist Feature
 
 function getGist(input) {
   const parts = input.match(gistRegexp);
@@ -227,6 +205,13 @@ export default class Header extends Component {
       gistUrl: '',
       isValidGistUrl: false,
     };
+  }
+
+  componentWillReceiveProps({ gistUrl }) {
+    if (gistUrl && gistUrl !== this.propsGistUrl) {
+      this.propsGistUrl = gistUrl;
+      this.updateGistUrl(`https://gist.githubusercontent.com/${gistUrl}`);
+    }
   }
 
   updateGistUrl(input) {
@@ -247,7 +232,7 @@ export default class Header extends Component {
   }
 
   getSharableUrl() {
-    return 'DASHBOARD_URL#' + this.state.gistUrl;
+    return `${window.location.origin}/${this.state.gistUrl}`;
   }
 
   render() {
@@ -280,26 +265,23 @@ export default class Header extends Component {
       );
     });
 
-    const examplesOptions = Object.keys(examples).map((key, k) => (
-      <option value={key} key={k}>
-        {examples[key].name}
-      </option>
-    ));
+    const examplesOptions = [
+      <option value="" key="">
+        ---
+      </option>,
+      Object.keys(examples).map((key, k) => (
+        <option value={key} key={k}>
+          {examples[key].name}
+        </option>
+      )),
+    ];
 
-<<<<<<< HEAD
-  const examplesOptions = Object.keys(examples).map((key, k) => (
-    <option value={key} key={k}>
-      {examples[key].name}
-    </option>
-  ));
-=======
     return (
       <Container>
         <Title>
           <TitleImage src={bblfshLogo} alt="bblfsh" />
           <DashboardTitle>Dashboard</DashboardTitle>
         </Title>
->>>>>>> 7430e32... [WIP] Add Gist Feature
 
         <Actions>
           <InputGroup>

@@ -3,13 +3,12 @@ import App from './App';
 import 'jest-styled-components';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import renderer from 'react-test-renderer';
 
 async function renderApp(state) {
   fetch.mockResponse(
     JSON.stringify([
       { id: 'python', name: 'Python', url: 'python-driver' },
-      { id: 'java', name: 'Java', url: 'java-driver' }
+      { id: 'java', name: 'Java', url: 'java-driver' },
     ])
   );
 
@@ -31,6 +30,12 @@ it('renders without crashing', () => {
   expect(toJson(wrapper)).toMatchStyledComponentsSnapshot();
 });
 
+it('render while loading', async () => {
+  const wrapper = shallow(<App />);
+  wrapper.setState({ code: null });
+  expect(toJson(wrapper)).toMatchStyledComponentsSnapshot();
+});
+
 it('removes the error when onErrorRemoved is called', async () => {
   const wrapper = await renderApp();
   wrapper.setState({ errors: ['1', '2', '3'] });
@@ -40,10 +45,10 @@ it('removes the error when onErrorRemoved is called', async () => {
 
 it('changes the editor mode when it updates', async () => {
   const wrapper = await renderApp();
-  expect(wrapper.refs.editor.document.getMode().name).toBe('clike');
+  expect(wrapper.editor.document.getMode().name).toBe('clike');
 
   wrapper.setState({ selectedLanguage: 'python' });
-  expect(wrapper.refs.editor.document.getMode().name).toBe('python');
+  expect(wrapper.editor.document.getMode().name).toBe('python');
 });
 
 it('onLanguageChanged changes the selected language', async () => {

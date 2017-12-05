@@ -3,14 +3,14 @@ export function indexDrivers(drivers) {
     index[id] = {
       name,
       url,
-      mode: modeForLang(id)
+      mode: modeForLang(id),
     };
     return index;
   }, {});
 }
 
 const specialLanguageModes = {
-  java: 'text/x-java'
+  java: 'text/x-java',
 };
 
 function modeForLang(lang) {
