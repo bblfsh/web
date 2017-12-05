@@ -69,7 +69,7 @@ export default class Editor extends Component {
 
   updateCode() {
     const cursor = this.cursor();
-    this.document.setValue(this.props.code);
+    this.document.setValue(this.props.code || '');
     this.document.setCursor(cursor);
   }
 

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net/http"
 	"time"
 
@@ -44,6 +45,7 @@ func New(addr string) (*Server, error) {
 type parseRequest struct {
 	ServerURL string `json:"server_url"`
 	Language  string `json:"language"`
+	Filename  string `json:"filename"`
 	Content   string `json:"content"`
 }
 
@@ -71,6 +73,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 	resp, err := cli.Parse(ctx.Request.Context(), &protocol.ParseRequest{
 		Content:  req.Content,
 		Language: req.Language,
+		Filename: req.Filename,
 	})
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))
@@ -86,6 +89,25 @@ func (s *Server) clientForRequest(req parseRequest) (protocol.ProtocolServiceCli
 	}
 
 	return newClient(req.ServerURL)
+}
+
+func (s *Server) LoadGist(ctx *gin.Context) {
+	gistUrl := "https://gist.githubusercontent.com/" + ctx.Query("url")
+
+	resp, err := http.Get(gistUrl)
+	if err != nil {
+		ctx.JSON(http.StatusNotFound, jsonError("Gist not found: %s", err))
+		return
+	}
+	defer resp.Body.Close()
+
+	gistContent, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, jsonError("Could not read gist: %s", err))
+		return
+	}
+
+	ctx.String(resp.StatusCode, string(gistContent))
 }
 
 func (s *Server) ListDrivers(ctx *gin.Context) {

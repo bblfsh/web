@@ -15,8 +15,8 @@ global.document.body.createTextRange = function() {
       return {
         length: 0,
         left: 0,
-        right: 0
+        right: 0,
       };
-    }
+    },
   };
 };

@@ -5,11 +5,13 @@ import SplitPane from 'react-split-pane';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Spinner from './components/Spinner';
 import Editor from './components/Editor';
 import Options from './components/Options';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
 import { indexDrivers } from './drivers';
+import * as history from './services/history';
 import * as api from './services/api';
 
 import { java_example_1 } from './examples/hello.java.js';
@@ -71,19 +73,37 @@ const RightPanel = styled.div`
 function getExampleState(key) {
   const example = examples[key];
 
+  history.setExample();
+
   return {
-    ...getResetCodeState(examples[key].code),
-    languages: {
-      auto: { name: '(auto)' },
-    },
+    ...getResetCodeState(example.code, example.name),
     // babelfish tells us which language is active at the moment, but it
     // won't be used unless the selectedLanguage is auto.
     actualLanguage: example.language,
     // this is the language that is selected by the user. It overrides the
     // actualLanguage except when it is 'auto'.
     selectedLanguage: 'auto',
-    selectedExample: example.language,
+    selectedExample: key,
   };
+}
+
+function getGistState(content, gistUrl, selectedLanguage) {
+  const gistParts = gistUrl.split('/');
+  const filename = gistParts[gistParts.length - 1];
+  const state = {
+    ...getResetCodeState(content, filename),
+    cleanGist: true,
+    gistUrl,
+  };
+
+  if (selectedLanguage) {
+    state.selectedLanguage = selectedLanguage;
+    history.setLanguage(selectedLanguage);
+  }
+
+  history.setGist(gistUrl);
+
+  return state;
 }
 
 function getInitialState() {
@@ -91,26 +111,41 @@ function getInitialState() {
     showLocations: false,
     customServer: false,
     customServerUrl: '',
+    languages: {
+      auto: { name: '(auto)' },
+    },
+    filename: undefined,
+    code: null,
+    ast: {},
+
+    gistUrl: undefined,
   };
 }
 
-function getResetCodeState(code) {
+function getResetCodeState(code, filename, selectedLanguage) {
   return {
-    code,
+    code: code || null,
     ast: {},
     dirty: true,
+    cleanGist: false,
     loading: false,
     errors: [],
+
+    filename,
+    actualLanguage: '',
+    selectedLanguage: selectedLanguage || 'auto',
+    selectedExample: '',
   };
 }
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign(
-      getInitialState(),
-      getExampleState(DEFAULT_EXAMPLE)
-    );
+    const { gistUrl } = history.parse();
+    const codeState = gistUrl
+      ? getResetCodeState()
+      : getExampleState(DEFAULT_EXAMPLE);
+    this.state = Object.assign(getInitialState(), codeState);
     this.mark = null;
   }
 
@@ -136,11 +171,19 @@ export default class App extends Component {
           errors: ['Unable to load the list of available drivers.'],
         });
       });
+
+    if (this.state.code === null) {
+      const { gistUrl, lang } = history.parse();
+      this.onGistLoaded(gistUrl, lang);
+    }
   }
 
   componentDidUpdate() {
-    this.refs.editor.setMode(this.languageMode);
-    this.refs.editor.updateCode();
+    if (!this.editor) {
+      return;
+    }
+    this.editor.setMode(this.languageMode);
+    this.editor.updateCode();
   }
 
   onLanguageChanged(language) {
@@ -149,15 +192,16 @@ export default class App extends Component {
       selectedLanguage = 'auto';
     }
     this.setState({ selectedLanguage }, this.onRunParser);
+
+    history.setLanguage(selectedLanguage);
   }
 
   onExampleChanged(exampleKey) {
     this.clearNodeSelection();
-    const { languages } = this.state;
-    this.setState(
-      { ...getExampleState(exampleKey), languages },
-      this.onRunParser
-    );
+    if (!exampleKey) {
+      return;
+    }
+    this.setState(getExampleState(exampleKey), this.onRunParser);
   }
 
   hasLanguage(lang) {
@@ -165,16 +209,23 @@ export default class App extends Component {
   }
 
   onRunParser() {
-    const { code, customServer, customServerUrl } = this.state;
+    const { code, filename, customServer, customServerUrl } = this.state;
     this.setState({ loading: true, errors: [] });
     api
       .parse(
         this.currentLanguage,
+        filename,
         code,
         customServer ? customServerUrl : undefined
       )
       .then(
-        ast => this.setState({ loading: false, ast }),
+        ({ uast, language }) => {
+          this.setState({
+            loading: false,
+            ast: uast || {},
+            actualLanguage: language,
+          });
+        },
         errors => this.setState({ loading: false, errors })
       );
   }
@@ -190,7 +241,7 @@ export default class App extends Component {
       this.mark.clear();
     }
 
-    this.mark = this.refs.editor.selectCode(from, to);
+    this.mark = this.editor.selectCode(from, to);
   }
 
   clearNodeSelection() {
@@ -201,15 +252,15 @@ export default class App extends Component {
   }
 
   onCursorChanged(pos) {
-    if (!this.refs.viewer || !this.state.ast) {
+    if (!this.viewer || !this.state.ast) {
       return;
     }
 
-    this.refs.viewer.selectNode(pos);
+    this.viewer.selectNode(pos);
   }
 
   onCodeChange(code) {
-    this.setState({ code, dirty: true });
+    this.setState({ code, dirty: true, cleanGist: false });
   }
 
   get currentLanguage() {
@@ -245,18 +296,83 @@ export default class App extends Component {
     this.setState({ customServerUrl });
   }
 
-  render() {
+  onGistLoaded(gistUrl, selectedLanguage) {
+    api
+      .getGist(gistUrl)
+      .then(content => {
+        this.setState(
+          getGistState(content, gistUrl, selectedLanguage),
+          this.onRunParser
+        );
+      })
+      .catch(errors => this.setState({ errors }));
+  }
+
+  renderContent() {
     const { innerWidth: width } = window;
     const {
-      languages,
-      selectedLanguage,
       code,
       ast,
       loading,
+      showLocations,
+      customServer,
+      customServerUrl,
+    } = this.state;
+
+    const validServerUrl = isUrl(customServerUrl);
+
+    return (
+      <SplitPane
+        split="vertical"
+        minSize={width * 0.25}
+        defaultSize="50%"
+        maxSize={width * 0.75}
+      >
+        <Editor
+          ref={r => (this.editor = r)}
+          code={code}
+          languageMode={this.languageMode}
+          onChange={code => this.onCodeChange(code)}
+          onCursorChanged={pos => this.onCursorChanged(pos)}
+        />
+
+        <RightPanel>
+          <Options
+            showLocations={showLocations}
+            customServer={customServer}
+            customServerUrl={customServerUrl}
+            serverUrlIsValid={validServerUrl}
+            onLocationsToggle={() => this.onLocationsToggle()}
+            onCustomServerToggle={() => this.onCustomServerToggle()}
+            onCustomServerUrlChange={e =>
+              this.onCustomServerUrlChange(e.target.value)
+            }
+          />
+          <UASTViewer
+            ref={r => (this.viewer = r)}
+            clearNodeSelection={() => this.clearNodeSelection()}
+            onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
+            ast={ast}
+            showLocations={showLocations}
+            loading={loading}
+          />
+        </RightPanel>
+      </SplitPane>
+    );
+  }
+
+  render() {
+    const {
+      languages,
+      selectedLanguage,
+      selectedExample,
+      code,
+      loading,
       actualLanguage,
       dirty,
+      gistUrl,
+      cleanGist,
       errors,
-      showLocations,
       customServer,
       customServerUrl,
     } = this.state;
@@ -270,50 +386,17 @@ export default class App extends Component {
           selectedLanguage={selectedLanguage}
           actualLanguage={actualLanguage}
           onLanguageChanged={e => this.onLanguageChanged(e.target.value)}
+          selectedExample={selectedExample}
           onExampleChanged={e => this.onExampleChanged(e.target.value)}
           onRunParser={e => this.onRunParser(e)}
           examples={examples}
           loading={loading}
           canParse={!loading && (validServerUrl || !customServer) && dirty}
+          gistUrl={gistUrl}
+          cleanGist={cleanGist}
+          onLoadGist={url => this.onGistLoaded(url)}
         />
-        <Content>
-          <SplitPane
-            split="vertical"
-            minSize={width * 0.25}
-            defaultSize="50%"
-            maxSize={width * 0.75}
-          >
-            <Editor
-              ref="editor"
-              code={code}
-              languageMode={this.languageMode}
-              onChange={code => this.onCodeChange(code)}
-              onCursorChanged={pos => this.onCursorChanged(pos)}
-            />
-
-            <RightPanel>
-              <Options
-                showLocations={showLocations}
-                customServer={customServer}
-                customServerUrl={customServerUrl}
-                serverUrlIsValid={validServerUrl}
-                onLocationsToggle={() => this.onLocationsToggle()}
-                onCustomServerToggle={() => this.onCustomServerToggle()}
-                onCustomServerUrlChange={e =>
-                  this.onCustomServerUrlChange(e.target.value)
-                }
-              />
-              <UASTViewer
-                ref="viewer"
-                clearNodeSelection={() => this.clearNodeSelection()}
-                onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
-                ast={ast}
-                showLocations={showLocations}
-                loading={loading}
-              />
-            </RightPanel>
-          </SplitPane>
-        </Content>
+        <Content>{code !== null ? this.renderContent() : <Spinner />}</Content>
 
         <Footer />
 
