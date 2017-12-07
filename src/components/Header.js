@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
+import { connect } from 'react-redux';
+import { select as languageSelect, set as languageSet } from 'state/languages';
+import {
+  examples as examplesList,
+  select as exampleSelect,
+} from 'state/examples';
+import { runParser } from 'state/code';
+import { setURL as gistSetURL, load as gistLoad } from 'state/gist';
+import { isUrl } from 'state/options';
 
 import bblfshLogo from '../img/babelfish_logo.svg';
 import githubIcon from '../img/github.svg';
@@ -188,74 +197,37 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
   );
 }
 
-const gistRegexp = new RegExp(
-  '^\\s*(?:https?://)?gist.githubusercontent.com/(\\S+\\s*$)'
-);
-
-function getGist(input) {
-  const parts = input.match(gistRegexp);
-  return parts === null ? '' : parts[1];
-}
-
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gistInput: '',
-      gistUrl: '',
-      isValidGistUrl: false,
-    };
-  }
-
-  componentWillReceiveProps({ gistUrl }) {
-    if (gistUrl && gistUrl !== this.propsGistUrl) {
-      this.propsGistUrl = gistUrl;
-      this.updateGistUrl(`https://gist.githubusercontent.com/${gistUrl}`);
-    }
-  }
-
-  updateGistUrl(input) {
-    const gistUrl = getGist(input);
-    this.setState({
-      gistInput: input,
-      gistUrl: gistUrl,
-      isValidGistUrl: !!gistUrl,
-    });
-  }
-
-  onTryLoadingGist() {
-    this.props.onLoadGist(this.state.gistUrl);
-  }
-
+export class Header extends Component {
   onShareGist(shared) {
     console.info('shared url:' + shared);
   }
 
   getSharableUrl() {
-    return `${window.location.origin}/${this.state.gistUrl}`;
+    return `${window.location.origin}/${this.props.gistURL}`;
   }
 
   render() {
     const {
       selectedLanguage,
+      actualLanguage,
       languages,
       examples,
       onLanguageChanged,
       onExampleChanged,
       onRunParser,
-      loading,
-      actualLanguage,
+      parsing,
       selectedExample,
       canParse,
-      cleanGist,
+      gistURL,
+      isValidGist,
+      updateGistUrl,
+      onTryLoadingGist,
     } = this.props;
 
     const languageOptions = Object.keys(languages).map(k => {
-      let name = '(auto)';
-      if (k === 'auto' && languages[actualLanguage]) {
-        name = `${languages[actualLanguage].name} ${name}`;
-      } else if (languages[k] && k !== 'auto') {
-        name = languages[k].name;
+      let name = languages[k].name;
+      if (k === '' && !selectedLanguage && actualLanguage) {
+        name = `${languages[actualLanguage].name} (auto)`;
       }
 
       return (
@@ -288,7 +260,7 @@ export default class Header extends Component {
             <Label htmlFor="language-selector">Language</Label>
             <Select
               id="language-selector"
-              onChange={onLanguageChanged}
+              onChange={e => onLanguageChanged(e.target.value)}
               value={selectedLanguage}
             >
               {languageOptions}
@@ -305,7 +277,7 @@ export default class Header extends Component {
             <Label htmlFor="examples-selector">Examples</Label>
             <Select
               id="examples-selector"
-              onChange={onExampleChanged}
+              onChange={e => onExampleChanged(e.target.value)}
               value={selectedExample}
             >
               {examplesOptions}
@@ -315,21 +287,18 @@ export default class Header extends Component {
           <InputGroup>
             <Input
               type="url"
-              value={this.state.gistInput}
-              onChange={e => this.updateGistUrl(e.target.value)}
+              value={gistURL}
+              onChange={e => updateGistUrl(e.target.value)}
               placeholder="raw gist url"
             />
-            <Button
-              onClick={e => this.onTryLoadingGist(e)}
-              disabled={!this.state.isValidGistUrl}
-            >
+            <Button onClick={onTryLoadingGist} disabled={!isValidGist}>
               load
             </Button>
             <CopyToClipboard
               text={this.getSharableUrl()}
               onCopy={shared => this.onShareGist(shared)}
             >
-              <Button disabled={!cleanGist}>share</Button>
+              <Button disabled={!isValidGist}>share</Button>
             </CopyToClipboard>
           </InputGroup>
 
@@ -339,7 +308,7 @@ export default class Header extends Component {
               onClick={onRunParser}
               disabled={!canParse}
             >
-              {loading ? 'Parsing...' : 'Run parser'}
+              {parsing ? 'Parsing...' : 'Run parser'}
             </RunButton>
           </InputGroupRight>
         </Actions>
@@ -347,3 +316,54 @@ export default class Header extends Component {
     );
   }
 }
+
+export const mapStateToProps = state => {
+  const { languages, examples, options, code, gist } = state;
+  const validServerUrl = isUrl(options.customServerUrl);
+
+  return {
+    languages: languages.languages,
+    selectedLanguage: languages.selected,
+    actualLanguage: languages.actual,
+
+    selectedExample: examples.selected,
+    examples: examplesList,
+
+    parsing: code.parsing,
+    canParse:
+      !languages.loading &&
+      !code.parsing &&
+      (validServerUrl || !options.customServer) &&
+      code.dirty,
+
+    gistURL: gist.url,
+    isValidGist: gist.isValid,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLanguageChanged: lang => {
+      dispatch(languageSelect(lang));
+      dispatch(runParser());
+    },
+    onExampleChanged: key => {
+      dispatch(exampleSelect(key));
+      dispatch(runParser());
+    },
+    onRunParser: () => dispatch(runParser()),
+    updateGistUrl: url => dispatch(gistSetURL(url)),
+    onTryLoadingGist: () => {
+      dispatch(gistLoad())
+        .then(() => {
+          // reset selected language to allow babelfish server recognize it
+          dispatch(languageSet(''));
+          dispatch(languageSelect(''));
+          dispatch(runParser());
+        })
+        .catch(() => console.error('can not load gist'));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

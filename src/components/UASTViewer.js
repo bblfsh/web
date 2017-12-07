@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Node from './uast/Node';
-import NodeIndex from './uast/NodeIndex';
 import { font, background } from '../styling/variables';
+import { connect } from 'react-redux';
+import { markRange } from 'state/code';
 
 const Container = styled.div`
   height: 100%;
@@ -16,48 +17,37 @@ const Container = styled.div`
   padding: 4px;
 `;
 
-export default class UASTViewer extends Component {
-  constructor(props) {
-    super(props);
-    this.index = new NodeIndex();
-    this.addToIndex = node => this.index.add(node);
-    this.resetIndex(props);
-  }
-
-  resetIndex({ ast }) {
-    this.index.clear();
-    this.activeNode = null;
-    this.ast = ast;
-  }
-
-  componentWillUpdate(nextProps) {
-    if (this.ast !== nextProps.ast) {
-      this.resetIndex(nextProps);
-    }
-  }
-
-  selectNode({ line, ch }) {
-    if (this.activeNode) {
-      this.activeNode.unHighlight();
-    }
-
-    this.activeNode = this.index.get({ Line: line + 1, Col: ch + 1 });
-    if (this.activeNode) {
-      this.activeNode.expand();
-      this.activeNode.highlight();
-    }
-  }
-
+export class UASTViewer extends Component {
   render() {
     return (
       <Container onMouseOut={this.props.clearNodeSelection}>
-        <Node
-          tree={this.props.ast}
-          showLocations={this.props.showLocations}
-          onNodeSelected={this.props.onNodeSelected}
-          onMount={this.addToIndex}
-        />
+        {this.props.rootNodeId ? (
+          <Node
+            id={this.props.rootNodeId}
+            onNodeSelected={this.props.onNodeSelected}
+          />
+        ) : null}
       </Container>
     );
   }
 }
+
+export const mapStateToProps = state => {
+  let rootNodeId = 1;
+  if (!state.code.ast || !state.code.ast[1]) {
+    rootNodeId = null;
+  }
+
+  return {
+    rootNodeId,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    clearNodeSelection: () => dispatch(markRange()),
+    onNodeSelected: (from, to) => dispatch(markRange(from, to)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UASTViewer);

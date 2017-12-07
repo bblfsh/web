@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { font, border, background } from '../../styling/variables';
+import { connect } from 'react-redux';
 
 const INDENT_SIZE = 20;
 const WHITE_SPACE = 5;
@@ -88,132 +89,88 @@ export function Value({ value }) {
 }
 
 export function PropertyName({ name }) {
-  return name
-    ? <StyledPropertyName>
-        {name}
-      </StyledPropertyName>
-    : null;
+  return name ? <StyledPropertyName>{name}</StyledPropertyName> : null;
 }
 
-export default class Node extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      highlighted: false
-    };
+export class Node extends Component {
+  constructor() {
+    super();
 
-    if (this.props.onMount) {
-      this.props.onMount(this);
-    }
-
-    this.tree = this.props.tree;
-  }
-
-  componentWillUpdate({ tree }) {
-    if (this.tree !== tree) {
-      this.setState({ highlighted: false });
-      this.tree = tree;
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.onMount) {
-      this.props.onMount(this);
-    }
+    this.onNodeSelected = this.onNodeSelected.bind(this);
   }
 
   onNodeSelected(e) {
+    const { StartPosition: start, EndPosition: end } = this.props.node;
+
     let from, to;
-    if (this.start && this.start.Line && this.start.Col) {
+    if (start && start.Line && start.Col) {
       from = {
-        line: this.start.Line - 1,
-        ch: this.start.Col - 1
+        line: start.Line - 1,
+        ch: start.Col - 1,
       };
     }
 
-    if (this.end && this.end.Line && this.end.Col) {
+    if (end && end.Line && end.Col) {
       to = {
-        line: this.end.Line - 1,
-        ch: this.end.Col - 1
+        line: end.Line - 1,
+        ch: end.Col - 1,
       };
     }
 
-    this.props.onNodeSelected(from, to);
+    this.props.onNodeSelected && this.props.onNodeSelected(from, to);
     e.stopPropagation();
   }
 
-  get start() {
-    return this.props.tree.StartPosition;
-  }
-
-  get end() {
-    return this.props.tree.EndPosition;
-  }
-
-  get depth() {
-    return this.props.depth || 0;
-  }
-
-  get path() {
-    return this.props.path || [];
-  }
-
-  highlight() {
-    this.setState({ highlighted: true });
-  }
-
-  unHighlight() {
-    this.setState({ highlighted: false });
-  }
-
-  expand() {
-    this.refs.collapsible.expand();
-    this.path.forEach(node => {
-      node.refs.collapsible.expand()
-    });
-  }
-
   render() {
-    const { tree, onNodeSelected, onMount, showLocations } = this.props;
+    const { node, showLocations } = this.props;
+
+    if (!node) {
+      return null;
+    }
 
     return (
       <CollapsibleItem
         label="Node"
-        ref="collapsible"
-        depth={this.depth}
-        onNodeSelected={this.onNodeSelected.bind(this)}
-        highlighted={this.state.highlighted}
+        highlighted={node.highlighted}
+        collapsed={!node.expanded}
+        onNodeSelected={this.onNodeSelected}
       >
-        <Property name="internal_type" value={tree.InternalType} />
-        <Properties properties={tree.Properties} />
+        <Property name="internal_type" value={node.InternalType} />
+        <Properties properties={node.Properties} />
         <Children
-          children={tree.Children}
-          depth={this.depth + 1}
-          path={this.path.concat([this])}
-          onNodeSelected={onNodeSelected}
-          onMount={onMount}
-          showLocations={showLocations}
+          ids={node.Children}
+          onNodeSelected={this.props.onNodeSelected}
         />
-        <Property name="token" value={tree.Token} />
-        {showLocations
-          ? <Position name="start_position" position={tree.StartPosition} />
-          : null}
-        {showLocations
-          ? <Position name="end_position" position={tree.EndPosition} />
-          : null}
-        <Roles roles={tree.Roles} />
+        <Property name="token" value={node.Token} />
+        {showLocations ? (
+          <Position name="start_position" position={node.StartPosition} />
+        ) : null}
+        {showLocations ? (
+          <Position name="end_position" position={node.EndPosition} />
+        ) : null}
+        <Roles roles={node.Roles} />
       </CollapsibleItem>
     );
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    node: state.code.ast[ownProps.id],
+    showLocations: state.options.showLocations,
+  };
+};
+
+const ConnectedNode = connect(mapStateToProps)(Node);
+export default ConnectedNode;
+
 export function Properties({ properties }) {
   if (properties && Object.keys(properties).length > 0) {
     return (
       <CollapsibleItem name="properties" label="map<string, string>">
-        {Object.keys(properties).map((name, i) =>
+        {Object.keys(properties).map((name, i) => (
           <Property key={i} name={name} value={properties[name]} />
-        )}
+        ))}
       </CollapsibleItem>
     );
   }
@@ -238,29 +195,14 @@ export function Property({ name, value }) {
 
 export class Children extends Component {
   render() {
-    const {
-      children,
-      depth,
-      onNodeSelected,
-      onMount,
-      path,
-      showLocations
-    } = this.props;
+    const { ids, onNodeSelected } = this.props;
 
-    if (Array.isArray(children)) {
+    if (Array.isArray(ids)) {
       return (
-        <CollapsibleItem name="children" label="[]Node">
-          {children.map((node, i) =>
-            <Node
-              key={i}
-              tree={node}
-              depth={depth}
-              path={path}
-              onNodeSelected={onNodeSelected}
-              onMount={onMount}
-              showLocations={showLocations}
-            />
-          )}
+        <CollapsibleItem name="children" label="[]Node" collapsed={false}>
+          {ids.map(id => (
+            <ConnectedNode key={id} id={id} onNodeSelected={onNodeSelected} />
+          ))}
         </CollapsibleItem>
       );
     }
@@ -278,9 +220,9 @@ function coordinates(position) {
 
   return values
     .filter(name => typeof position[name] !== 'undefined')
-    .map((name, i) =>
+    .map((name, i) => (
       <Property key={i} name={name.toLowerCase()} value={position[name]} />
-    );
+    ));
 }
 
 export function Position({ name, position }) {
@@ -311,9 +253,19 @@ export function Roles({ roles }) {
 export class CollapsibleItem extends Component {
   constructor(props) {
     super(props);
+    // component can be controlled or uncontrolled depends on did we pass collapsed state on init or not
+    // similar to react input components
+    this.controlled = typeof this.props.collapsed !== 'undefined';
     this.state = {
-      collapsed: this.props.depth > MAX_EXPANDED_DEPTH
+      collapsed: this.props.collapsed,
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.controlled) {
+      return;
+    }
+    this.setState({ collapsed: nextProps.collapsed });
   }
 
   toggle() {
@@ -333,9 +285,7 @@ export class CollapsibleItem extends Component {
           onClick={this.toggle.bind(this)}
         >
           <PropertyName name={name} />
-          <Label>
-            {label}
-          </Label>
+          <Label>{label}</Label>
         </StyledCollapsibleTitle>
         <StyledCollapsibleContent collapsed={this.state.collapsed}>
           {children}

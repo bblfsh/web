@@ -10,41 +10,11 @@ import Editor from './components/Editor';
 import Options from './components/Options';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
-import { indexDrivers } from './drivers';
 import * as history from './services/history';
 import * as api from './services/api';
-
-import { java_example_1 } from './examples/hello.java.js';
-import { java_example_2 } from './examples/swap.java.js';
-import { python_example_1 } from './examples/fizzbuzz.py.js';
-import { python_example_2 } from './examples/classdef.py.js';
-
-const DEFAULT_EXAMPLE = 'java_example_1';
-const LANG_JAVA = 'java';
-const LANG_PYTHON = 'python';
-
-const examples = {
-  java_example_1: {
-    name: 'hello.java',
-    language: LANG_JAVA,
-    code: java_example_1,
-  },
-  java_example_2: {
-    name: 'swap.java',
-    language: LANG_JAVA,
-    code: java_example_2,
-  },
-  python_example_1: {
-    name: 'fizzbuzz.py',
-    language: LANG_PYTHON,
-    code: python_example_1,
-  },
-  python_example_2: {
-    name: 'classdef.py',
-    language: LANG_PYTHON,
-    code: python_example_2,
-  },
-};
+import { connect } from 'react-redux';
+import { remove as errorsRemove } from 'state/errors';
+import { init } from 'state';
 
 const Wrap = styled.div`
   position: absolute;
@@ -70,23 +40,6 @@ const RightPanel = styled.div`
   position: relative;
 `;
 
-function getExampleState(key) {
-  const example = examples[key];
-
-  history.setExample();
-
-  return {
-    ...getResetCodeState(example.code, example.name),
-    // babelfish tells us which language is active at the moment, but it
-    // won't be used unless the selectedLanguage is auto.
-    actualLanguage: example.language,
-    // this is the language that is selected by the user. It overrides the
-    // actualLanguage except when it is 'auto'.
-    selectedLanguage: 'auto',
-    selectedExample: key,
-  };
-}
-
 function getGistState(content, gistUrl, selectedLanguage) {
   const gistParts = gistUrl.split('/');
   const filename = gistParts[gistParts.length - 1];
@@ -106,22 +59,6 @@ function getGistState(content, gistUrl, selectedLanguage) {
   return state;
 }
 
-function getInitialState() {
-  return {
-    showLocations: false,
-    customServer: false,
-    customServerUrl: '',
-    languages: {
-      auto: { name: '(auto)' },
-    },
-    filename: undefined,
-    code: null,
-    ast: {},
-
-    gistUrl: undefined,
-  };
-}
-
 function getResetCodeState(code, filename, selectedLanguage) {
   return {
     code: code || null,
@@ -138,162 +75,9 @@ function getResetCodeState(code, filename, selectedLanguage) {
   };
 }
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    const { gistUrl } = history.parse();
-    const codeState = gistUrl
-      ? getResetCodeState()
-      : getExampleState(DEFAULT_EXAMPLE);
-    this.state = Object.assign(getInitialState(), codeState);
-    this.mark = null;
-  }
-
+export class App extends Component {
   componentDidMount() {
-    this.setState({ loading: true });
-
-    this.loaded = api
-      .listDrivers()
-      .then(indexDrivers)
-      .then(languages =>
-        this.setState(
-          {
-            loading: false,
-            languages: Object.assign(this.state.languages, languages),
-          },
-          this.onRunParser
-        )
-      )
-      .catch(err => {
-        console.error(err);
-        this.setState({
-          loading: false,
-          errors: ['Unable to load the list of available drivers.'],
-        });
-      });
-
-    if (this.state.code === null) {
-      const { gistUrl, lang } = history.parse();
-      this.onGistLoaded(gistUrl, lang);
-    }
-  }
-
-  componentDidUpdate() {
-    if (!this.editor) {
-      return;
-    }
-    this.editor.setMode(this.languageMode);
-    this.editor.updateCode();
-  }
-
-  onLanguageChanged(language) {
-    let selectedLanguage = language;
-    if (!this.hasLanguage(selectedLanguage)) {
-      selectedLanguage = 'auto';
-    }
-    this.setState({ selectedLanguage }, this.onRunParser);
-
-    history.setLanguage(selectedLanguage);
-  }
-
-  onExampleChanged(exampleKey) {
-    this.clearNodeSelection();
-    if (!exampleKey) {
-      return;
-    }
-    this.setState(getExampleState(exampleKey), this.onRunParser);
-  }
-
-  hasLanguage(lang) {
-    return this.state.languages.hasOwnProperty(lang);
-  }
-
-  onRunParser() {
-    const { code, filename, customServer, customServerUrl } = this.state;
-    this.setState({ loading: true, errors: [] });
-    api
-      .parse(
-        this.currentLanguage,
-        filename,
-        code,
-        customServer ? customServerUrl : undefined
-      )
-      .then(
-        ({ uast, language }) => {
-          this.setState({
-            loading: false,
-            ast: uast || {},
-            actualLanguage: language,
-          });
-        },
-        errors => this.setState({ loading: false, errors })
-      );
-  }
-
-  onErrorRemoved(idx) {
-    this.setState({
-      errors: this.state.errors.filter((_, i) => i !== idx),
-    });
-  }
-
-  onNodeSelected(from, to) {
-    if (this.mark) {
-      this.mark.clear();
-    }
-
-    this.mark = this.editor.selectCode(from, to);
-  }
-
-  clearNodeSelection() {
-    if (this.mark) {
-      this.mark.clear();
-      this.mark = null;
-    }
-  }
-
-  onCursorChanged(pos) {
-    if (!this.viewer || !this.state.ast) {
-      return;
-    }
-
-    this.viewer.selectNode(pos);
-  }
-
-  onCodeChange(code) {
-    this.setState({ code, dirty: true, cleanGist: false });
-  }
-
-  get currentLanguage() {
-    let { selectedLanguage, actualLanguage } = this.state;
-
-    if (selectedLanguage === 'auto') {
-      selectedLanguage = actualLanguage;
-    }
-
-    return selectedLanguage;
-  }
-
-  get languageMode() {
-    if (this.state.languages[this.currentLanguage]) {
-      return this.state.languages[this.currentLanguage].mode;
-    }
-
-    return '';
-  }
-
-  onLocationsToggle() {
-    this.setState({ showLocations: !this.state.showLocations });
-  }
-
-  onCustomServerToggle() {
-    this.setState({
-      customServer: !this.state.customServer,
-      customServerUrl: this.state.customServer ? '' : '0.0.0.0:9432',
-    });
-  }
-
-  onCustomServerUrlChange(customServerUrl) {
-    this.setState({ customServerUrl });
+    return this.props.init();
   }
 
   onGistLoaded(gistUrl, selectedLanguage) {
@@ -310,16 +94,6 @@ export default class App extends Component {
 
   renderContent() {
     const { innerWidth: width } = window;
-    const {
-      code,
-      ast,
-      loading,
-      showLocations,
-      customServer,
-      customServerUrl,
-    } = this.state;
-
-    const validServerUrl = isUrl(customServerUrl);
 
     return (
       <SplitPane
@@ -328,74 +102,22 @@ export default class App extends Component {
         defaultSize="50%"
         maxSize={width * 0.75}
       >
-        <Editor
-          ref={r => (this.editor = r)}
-          code={code}
-          languageMode={this.languageMode}
-          onChange={code => this.onCodeChange(code)}
-          onCursorChanged={pos => this.onCursorChanged(pos)}
-        />
+        <Editor />
 
         <RightPanel>
-          <Options
-            showLocations={showLocations}
-            customServer={customServer}
-            customServerUrl={customServerUrl}
-            serverUrlIsValid={validServerUrl}
-            onLocationsToggle={() => this.onLocationsToggle()}
-            onCustomServerToggle={() => this.onCustomServerToggle()}
-            onCustomServerUrlChange={e =>
-              this.onCustomServerUrlChange(e.target.value)
-            }
-          />
-          <UASTViewer
-            ref={r => (this.viewer = r)}
-            clearNodeSelection={() => this.clearNodeSelection()}
-            onNodeSelected={(from, to) => this.onNodeSelected(from, to)}
-            ast={ast}
-            showLocations={showLocations}
-            loading={loading}
-          />
+          <Options />
+          <UASTViewer />
         </RightPanel>
       </SplitPane>
     );
   }
 
   render() {
-    const {
-      languages,
-      selectedLanguage,
-      selectedExample,
-      code,
-      loading,
-      actualLanguage,
-      dirty,
-      gistUrl,
-      cleanGist,
-      errors,
-      customServer,
-      customServerUrl,
-    } = this.state;
-
-    const validServerUrl = isUrl(customServerUrl);
+    const { code, errors, errorsRemove } = this.props;
 
     return (
       <Wrap>
-        <Header
-          languages={languages}
-          selectedLanguage={selectedLanguage}
-          actualLanguage={actualLanguage}
-          onLanguageChanged={e => this.onLanguageChanged(e.target.value)}
-          selectedExample={selectedExample}
-          onExampleChanged={e => this.onExampleChanged(e.target.value)}
-          onRunParser={e => this.onRunParser(e)}
-          examples={examples}
-          loading={loading}
-          canParse={!loading && (validServerUrl || !customServer) && dirty}
-          gistUrl={gistUrl}
-          cleanGist={cleanGist}
-          onLoadGist={url => this.onGistLoaded(url)}
-        />
+        <Header />
         <Content>{code !== null ? this.renderContent() : <Spinner />}</Content>
 
         <Footer />
@@ -404,11 +126,7 @@ export default class App extends Component {
           <Notifications>
             {errors.map((err, i) => {
               return (
-                <Error
-                  message={err}
-                  key={i}
-                  onRemove={() => this.onErrorRemoved(i)}
-                />
+                <Error message={err} key={i} onRemove={() => errorsRemove(i)} />
               );
             })}
           </Notifications>
@@ -418,4 +136,15 @@ export default class App extends Component {
   }
 }
 
-const isUrl = url => /^[a-zA-Z0-9][^/]+$/.test(url);
+const mapStateToProps = state => ({
+  languages: state.languages,
+  code: state.code.code,
+  errors: state.errors,
+});
+
+const mapDispatchToProps = {
+  init,
+  errorsRemove,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

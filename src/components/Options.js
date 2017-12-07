@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { font, background, border } from '../styling/variables';
+import { connect } from 'react-redux';
+import {
+  locationsToggle,
+  setCustomServerUrl,
+  customServerToggle,
+  isUrl,
+} from 'state/options';
 
 const Container = styled.div`
   padding: 0.5rem 1rem;
@@ -39,7 +46,7 @@ const TextInput = styled.input`
   border-bottom: 1px solid ${props => (props.valid ? border.smooth : 'red')};
 `;
 
-export default function Options({
+export function Options({
   showLocations,
   customServer,
   customServerUrl,
@@ -73,7 +80,7 @@ export default function Options({
             type="url"
             name="custom-server-url"
             value={customServerUrl}
-            onChange={onCustomServerUrlChange}
+            onChange={e => onCustomServerUrlChange(e.target.value)}
             disabled={!customServer}
             valid={serverUrlIsValid}
           />
@@ -82,3 +89,18 @@ export default function Options({
     </Container>
   );
 }
+
+export const mapStateToProps = state => {
+  return {
+    ...state.options,
+    serverUrlIsValid: isUrl(state.options.customServerUrl),
+  };
+};
+
+const mapDispatchToProps = {
+  onLocationsToggle: locationsToggle,
+  onCustomServerToggle: customServerToggle,
+  onCustomServerUrlChange: setCustomServerUrl,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Options);

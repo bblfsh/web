@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
-import CodeMirror from 'react-codemirror';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 import { background } from '../styling/variables';
 import { font, border } from '../styling/variables';
+import { connect } from 'react-redux';
+import { getLanguageMode } from 'state/languages';
+import { change as changeCode, selectNodeByPos } from 'state/code';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
@@ -44,49 +47,48 @@ const BookMark = styled.div`
   }
 `;
 
-export default class Editor extends Component {
+export class Editor extends Component {
   get document() {
     return this.editor.getDoc();
   }
 
   get editor() {
-    return this.codemirror.getCodeMirror();
+    return this.codemirror.editor;
   }
 
-  selectCode(from, to) {
+  selectCode(range) {
+    if (this.mark) {
+      this.mark.clear();
+    }
+
+    if (!range) {
+      this.mark = null;
+      return;
+    }
+
+    const { from, to } = range;
+
     if (from && to) {
-      return this.document.markText(from, to, {
+      this.mark = this.document.markText(from, to, {
         css: 'background: ' + background.highlight,
       });
     } else if (from) {
-      return this.document.setBookmark(from, { widget: this.bookmark });
+      this.mark = this.document.setBookmark(from, { widget: this.bookmark });
     }
   }
 
-  setMode(mode) {
-    this.editor.setOption('mode', mode);
+  componentDidUpdate(prevProps) {
+    if (prevProps.markRange !== this.props.markRange) {
+      this.selectCode(this.props.markRange);
+    }
   }
 
-  updateCode() {
-    const cursor = this.cursor();
-    this.document.setValue(this.props.code || '');
-    this.document.setCursor(cursor);
-  }
-
-  onCursorActivity(editor) {
+  onCursor(pos) {
     if (!this.props.onCursorChanged) {
       return;
     }
 
-    this.props.onCursorChanged(this.cursor(editor));
-  }
-
-  cursor(editor = this.editor) {
-    return editor
-      .getDoc()
-      .listSelections()
-      .slice(0, 1)
-      .pop().head;
+    this.props.onCursorChanged(pos);
   }
 
   render() {
@@ -103,10 +105,10 @@ export default class Editor extends Component {
         <CodeMirror
           ref={r => (this.codemirror = r)}
           autoFocus={true}
-          onChange={onChange}
           value={code}
-          onCursorActivity={editor => this.onCursorActivity(editor)}
           options={options}
+          onBeforeChange={(editor, data, v) => onChange(v)}
+          onCursor={(_, pos) => this.onCursor(pos)}
         />
         <BookMark
           innerRef={elem => {
@@ -117,3 +119,18 @@ export default class Editor extends Component {
     );
   }
 }
+
+export const mapStateToProps = state => {
+  return {
+    code: state.code.code,
+    languageMode: getLanguageMode(state),
+    markRange: state.code.markRange,
+  };
+};
+
+const mapDispatchToProps = {
+  onChange: changeCode,
+  onCursorChanged: selectNodeByPos,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
