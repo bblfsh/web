@@ -55,10 +55,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-.env.local
-
 # ci files
 Makefile.main
 .ci
