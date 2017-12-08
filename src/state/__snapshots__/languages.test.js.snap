@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`languages/reducer LOAD_FAILED 1`] = `
+Object {
+  "actual": "",
+  "languages": Object {
+    "": Object {
+      "name": "(auto)",
+    },
+  },
+  "loading": false,
+  "selected": "",
+}
+`;
+
 exports[`languages/reducer LOADED 1`] = `
 Object {
   "actual": "",

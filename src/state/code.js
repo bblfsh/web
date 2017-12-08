@@ -119,9 +119,11 @@ export const selectNodeByPos = ({ line, ch }) => (dispatch, getState) => {
   if (!node) {
     return;
   }
-  const highlightedNode = Object.values(code.ast).find(n => n.highlighted);
-  if (highlightedNode) {
-    dispatch(nodeUnhighlight(highlightedNode.id));
+  const highlightedId = Object.keys(code.ast).find(
+    id => code.ast[id].highlighted
+  );
+  if (highlightedId) {
+    dispatch(nodeUnhighlight(+highlightedId));
   }
   // expand tree
   let id = node.id;
@@ -143,7 +145,7 @@ export const runParser = () => (dispatch, getState) => {
   dispatch(errorsClear());
   dispatch({ type: PARSE });
 
-  api
+  return api
     .parse(
       languageSelected,
       filename,

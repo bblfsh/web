@@ -14,6 +14,7 @@ export const initialState = {
 
 export const LOADING = 'bblfsh/languages/LOADING';
 export const LOADED = 'bblfsh/languages/LOADED';
+export const LOAD_FAILED = 'bblfsh/languages/LOAD_FAILED';
 export const SET = 'bblfsh/languages/SET';
 export const SELECT = 'bblfsh/languages/SELECT';
 
@@ -32,6 +33,11 @@ export const reducer = (state = initialState, action) => {
           '': { name: '(auto)' },
           ...action.languages,
         },
+      };
+    case LOAD_FAILED:
+      return {
+        ...state,
+        loading: false,
       };
     case SET:
       return {
@@ -63,6 +69,7 @@ export const load = () => dispatch => {
     )
     .catch(err => {
       console.error(err);
+      dispatch({ type: LOAD_FAILED });
       dispatch(errorsAdd(['Unable to load the list of available drivers.']));
     });
 };
