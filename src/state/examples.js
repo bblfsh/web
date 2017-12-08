@@ -34,7 +34,7 @@ export const examples = {
   },
 };
 
-const initialState = {
+export const initialState = {
   selected: '',
 };
 

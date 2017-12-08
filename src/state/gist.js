@@ -4,7 +4,7 @@ import { set as codeSet } from './code';
 import { reset as examplesReset } from './examples';
 import { add as errorsAdd } from './errors';
 
-const initialState = {
+export const initialState = {
   url: '',
   gist: '',
   isValid: false,

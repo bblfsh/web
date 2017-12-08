@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`code/reducer CHANGE 1`] = `
+Object {
+  "ast": Object {},
+  "code": "bar = 1",
+  "dirty": true,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer MARK 1`] = `
+Object {
+  "ast": Object {},
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": Object {
+    "from": 1,
+    "to": 2,
+  },
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer NODE_EXPAND 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": true,
+      "higlighted": false,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer NODE_HIGHLIGHT 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": false,
+      "highlighted": true,
+      "higlighted": false,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer NODE_TOGGLE 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": true,
+      "higlighted": false,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer NODE_TOGGLE 2`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": false,
+      "higlighted": false,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer NODE_UNHIGHLIGHT 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": false,
+      "highlighted": false,
+      "higlighted": true,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer PARSE 1`] = `
+Object {
+  "ast": Object {},
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": true,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer PARSE_FAILED 1`] = `
+Object {
+  "ast": Object {},
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
+}
+`;
+
+exports[`code/reducer SET 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "InternalType": "file",
+      "expanded": true,
+      "higlighted": false,
+      "id": 1,
+      "parentId": undefined,
+    },
+  },
+  "code": "foo = 1",
+  "dirty": true,
+  "filename": "file.py",
+  "markRange": null,
+  "parsing": false,
+  "posIndex": NodeIndex {
+    "index": Array [],
+  },
+}
+`;
+
+exports[`code/reducer SET_AST 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "1": Object {
+        "id": 1,
+      },
+      "expanded": true,
+      "higlighted": false,
+      "id": 1,
+      "parentId": undefined,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": NodeIndex {
+    "index": Array [],
+  },
+}
+`;

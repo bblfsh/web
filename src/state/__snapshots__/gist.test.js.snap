@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gist/reducer SET 1`] = `
+Object {
+  "gist": "gist1",
+  "isValid": true,
+  "url": "https://gist.githubusercontent.com/gist1",
+}
+`;
+
+exports[`gist/reducer SET_URL 1`] = `
+Object {
+  "gist": "gist1",
+  "isValid": true,
+  "url": "https://gist.githubusercontent.com/gist1",
+}
+`;
+
+exports[`gist/reducer SET_URL 2`] = `
+Object {
+  "gist": "",
+  "isValid": false,
+  "url": "invalid",
+}
+`;

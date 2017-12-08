@@ -3,7 +3,7 @@ import * as api from 'services/api';
 import { indexDrivers } from 'drivers';
 import { add as errorsAdd } from './errors';
 
-const initialState = {
+export const initialState = {
   loading: true,
   languages: {
     '': { name: '(auto)' },

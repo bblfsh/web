@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`languages/reducer LOADED 1`] = `
+Object {
+  "actual": "",
+  "languages": Object {
+    "": Object {
+      "name": "(auto)",
+    },
+    "python": Object {
+      "name": "python",
+    },
+  },
+  "loading": false,
+  "selected": "",
+}
+`;
+
+exports[`languages/reducer LOADING 1`] = `
+Object {
+  "actual": "",
+  "languages": Object {
+    "": Object {
+      "name": "(auto)",
+    },
+  },
+  "loading": true,
+  "selected": "",
+}
+`;
+
+exports[`languages/reducer SELECT 1`] = `
+Object {
+  "actual": "python",
+  "languages": Object {
+    "": Object {
+      "name": "(auto)",
+    },
+  },
+  "loading": true,
+  "selected": "python",
+}
+`;
+
+exports[`languages/reducer SET 1`] = `
+Object {
+  "actual": "python",
+  "languages": Object {
+    "": Object {
+      "name": "(auto)",
+    },
+  },
+  "loading": true,
+  "selected": "",
+}
+`;

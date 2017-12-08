@@ -9,7 +9,7 @@ import {
 import { set as languageSet } from './languages';
 import { add as errorsAdd, clear as errorsClear } from './errors';
 
-const initialState = {
+export const initialState = {
   filename: undefined,
   code: null,
   ast: {},

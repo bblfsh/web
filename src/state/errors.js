@@ -1,4 +1,4 @@
-const initialState = [];
+export const initialState = [];
 
 export const ADD = 'bblfsh/errors/ADD';
 export const SET = 'bblfsh/errors/SET';
