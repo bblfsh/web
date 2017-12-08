@@ -178,8 +178,7 @@ const DriverCodeLink = styled.a`
 `;
 
 export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
-  const driver =
-    selectedLanguage === 'auto' ? actualLanguage : selectedLanguage;
+  const driver = selectedLanguage === '' ? actualLanguage : selectedLanguage;
 
   return (
     <DriverCodeBox>

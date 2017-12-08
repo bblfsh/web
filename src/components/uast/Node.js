@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 const INDENT_SIZE = 20;
 const WHITE_SPACE = 5;
 const LINE_HEIGHT = 29;
-export const MAX_EXPANDED_DEPTH = 2; // Last level that will be expanded by default
 
 const PROPERTY_VALUE_SEPARATOR = "':'";
 const STRING_LIMITER = "'\\27'";

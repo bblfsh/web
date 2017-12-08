@@ -402,11 +402,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="language-selector"
-        onChange={undefined}
-        value="auto"
+        onChange={[Function]}
+        value=""
       >
         <option
-          value="auto"
+          value=""
         >
           Python (auto)
         </option>
@@ -450,7 +450,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="examples-selector"
-        onChange={undefined}
+        onChange={[Function]}
         value={undefined}
       >
         <option
@@ -474,12 +474,12 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value=""
+        value={undefined}
       />
       <button
         className="sc-iwsKbI kUlzXo"
         disabled={true}
-        onClick={[Function]}
+        onClick={undefined}
       >
         load
       </button>
@@ -789,11 +789,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="language-selector"
-        onChange={undefined}
-        value="auto"
+        onChange={[Function]}
+        value=""
       >
         <option
-          value="auto"
+          value=""
         >
           Python (auto)
         </option>
@@ -837,7 +837,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="examples-selector"
-        onChange={undefined}
+        onChange={[Function]}
         value={undefined}
       >
         <option
@@ -861,12 +861,12 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value=""
+        value={undefined}
       />
       <button
         className="sc-iwsKbI kUlzXo"
         disabled={true}
-        onClick={[Function]}
+        onClick={undefined}
       >
         load
       </button>
@@ -1176,11 +1176,11 @@ exports[`Header renders correctly 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="language-selector"
-        onChange={undefined}
-        value="auto"
+        onChange={[Function]}
+        value=""
       >
         <option
-          value="auto"
+          value=""
         >
           Java (auto)
         </option>
@@ -1224,7 +1224,7 @@ exports[`Header renders correctly 1`] = `
       <select
         className="sc-htoDjs fvfSyI"
         id="examples-selector"
-        onChange={undefined}
+        onChange={[Function]}
         value={undefined}
       >
         <option
@@ -1248,12 +1248,12 @@ exports[`Header renders correctly 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value=""
+        value={undefined}
       />
       <button
         className="sc-iwsKbI kUlzXo"
         disabled={true}
-        onClick={[Function]}
+        onClick={undefined}
       >
         load
       </button>

@@ -2,124 +2,7 @@
 
 exports[`render while loading 1`] = `
 <styled.div>
-  <Header
-    actualLanguage="java"
-    canParse={true}
-    cleanGist={false}
-    examples={
-      Object {
-        "java_example_1": Object {
-          "code": "// hello.java
-      import java.io.*;
-      import javax.servlet.*;
-      
-      public class Hello extends GenericServlet {
-          public void service(final ServletRequest request, final ServletResponse response)
-          throws ServletException, IOException {
-              response.setContentType(\\"text/html\\");
-              final PrintWriter pw = response.getWriter();
-              try {
-                  pw.println(\\"Hello, world!\\");
-              } finally {
-                  pw.close();
-              }
-          }
-      }
-      ",
-          "language": "java",
-          "name": "hello.java",
-        },
-        "java_example_2": Object {
-          "code": "public class SwapElementsExample {
-      
-               public static void main(String[] args) {
-      
-                       int num1 = 10;
-                       int num2 = 20;
-      
-                       System.out.println(\\"Before Swapping\\");
-                       System.out.println(\\"Value of num1 is :\\" + num1);
-                       System.out.println(\\"Value of num2 is :\\" +num2);
-      
-                       //swap the value
-                       swap(num1, num2);
-               }
-      
-               private static void swap(int num1, int num2) {
-      
-                       int temp = num1;
-                       num1 = num2;
-                       num2 = temp;
-      
-                       System.out.println(\\"After Swapping\\");
-                       System.out.println(\\"Value of num1 is :\\" + num1);
-                       System.out.println(\\"Value of num2 is :\\" +num2);
-      
-               }
-       }
-      ",
-          "language": "java",
-          "name": "swap.java",
-        },
-        "python_example_1": Object {
-          "code": "def fizzbuzz(n):
-      
-          if n % 3 == 0 and n % 5 == 0:
-              return 'FizzBuzz'
-          elif n % 3 == 0:
-              return 'Fizz'
-          elif n % 5 == 0:
-              return 'Buzz'
-          else:
-              return str(n)
-      
-      print \\"\\\\n\\".join(fizzbuzz(n) for n in xrange(1, 21))
-      ",
-          "language": "python",
-          "name": "fizzbuzz.py",
-        },
-        "python_example_2": Object {
-          "code": "class Animal:
-          def __init__(self):
-              self._a = 1
-              b = 2
-      
-          def method(self, arg1):
-              pass
-      
-          @property
-          def a():
-              return self._a
-      
-          @a.setter
-          def a(newa):
-              self._a = newa
-      
-      a = Animal()
-      a.b = 3
-      a.b.c.d.e.f.g = 6
-      a.method(5)
-      ",
-          "language": "python",
-          "name": "classdef.py",
-        },
-      }
-    }
-    languages={
-      Object {
-        "auto": Object {
-          "name": "(auto)",
-        },
-      }
-    }
-    loading={false}
-    onExampleChanged={[Function]}
-    onLanguageChanged={[Function]}
-    onLoadGist={[Function]}
-    onRunParser={[Function]}
-    selectedExample="java_example_1"
-    selectedLanguage="auto"
-  />
+  <Connect(Header) />
   <styled.div>
     <styled.div />
   </styled.div>
@@ -127,126 +10,9 @@ exports[`render while loading 1`] = `
 </styled.div>
 `;
 
-exports[`renders without crashing 1`] = `
+exports[`render with errors 1`] = `
 <styled.div>
-  <Header
-    actualLanguage="java"
-    canParse={true}
-    cleanGist={false}
-    examples={
-      Object {
-        "java_example_1": Object {
-          "code": "// hello.java
-      import java.io.*;
-      import javax.servlet.*;
-      
-      public class Hello extends GenericServlet {
-          public void service(final ServletRequest request, final ServletResponse response)
-          throws ServletException, IOException {
-              response.setContentType(\\"text/html\\");
-              final PrintWriter pw = response.getWriter();
-              try {
-                  pw.println(\\"Hello, world!\\");
-              } finally {
-                  pw.close();
-              }
-          }
-      }
-      ",
-          "language": "java",
-          "name": "hello.java",
-        },
-        "java_example_2": Object {
-          "code": "public class SwapElementsExample {
-      
-               public static void main(String[] args) {
-      
-                       int num1 = 10;
-                       int num2 = 20;
-      
-                       System.out.println(\\"Before Swapping\\");
-                       System.out.println(\\"Value of num1 is :\\" + num1);
-                       System.out.println(\\"Value of num2 is :\\" +num2);
-      
-                       //swap the value
-                       swap(num1, num2);
-               }
-      
-               private static void swap(int num1, int num2) {
-      
-                       int temp = num1;
-                       num1 = num2;
-                       num2 = temp;
-      
-                       System.out.println(\\"After Swapping\\");
-                       System.out.println(\\"Value of num1 is :\\" + num1);
-                       System.out.println(\\"Value of num2 is :\\" +num2);
-      
-               }
-       }
-      ",
-          "language": "java",
-          "name": "swap.java",
-        },
-        "python_example_1": Object {
-          "code": "def fizzbuzz(n):
-      
-          if n % 3 == 0 and n % 5 == 0:
-              return 'FizzBuzz'
-          elif n % 3 == 0:
-              return 'Fizz'
-          elif n % 5 == 0:
-              return 'Buzz'
-          else:
-              return str(n)
-      
-      print \\"\\\\n\\".join(fizzbuzz(n) for n in xrange(1, 21))
-      ",
-          "language": "python",
-          "name": "fizzbuzz.py",
-        },
-        "python_example_2": Object {
-          "code": "class Animal:
-          def __init__(self):
-              self._a = 1
-              b = 2
-      
-          def method(self, arg1):
-              pass
-      
-          @property
-          def a():
-              return self._a
-      
-          @a.setter
-          def a(newa):
-              self._a = newa
-      
-      a = Animal()
-      a.b = 3
-      a.b.c.d.e.f.g = 6
-      a.method(5)
-      ",
-          "language": "python",
-          "name": "classdef.py",
-        },
-      }
-    }
-    languages={
-      Object {
-        "auto": Object {
-          "name": "(auto)",
-        },
-      }
-    }
-    loading={false}
-    onExampleChanged={[Function]}
-    onLanguageChanged={[Function]}
-    onLoadGist={[Function]}
-    onRunParser={[Function]}
-    selectedExample="java_example_1"
-    selectedLanguage="auto"
-  />
+  <Connect(Header) />
   <styled.div>
     <SplitPane
       allowResize={true}
@@ -454,45 +220,241 @@ exports[`renders without crashing 1`] = `
       primary="first"
       split="vertical"
     >
-      <Editor
-        code="// hello.java
-      import java.io.*;
-      import javax.servlet.*;
-      
-      public class Hello extends GenericServlet {
-          public void service(final ServletRequest request, final ServletResponse response)
-          throws ServletException, IOException {
-              response.setContentType(\\"text/html\\");
-              final PrintWriter pw = response.getWriter();
-              try {
-                  pw.println(\\"Hello, world!\\");
-              } finally {
-                  pw.close();
-              }
-          }
-      }
-      "
-        languageMode=""
-        onChange={[Function]}
-        onCursorChanged={[Function]}
-      />
+      <Connect(Editor) />
       <styled.div>
-        <Options
-          customServer={false}
-          customServerUrl=""
-          onCustomServerToggle={[Function]}
-          onCustomServerUrlChange={[Function]}
-          onLocationsToggle={[Function]}
-          serverUrlIsValid={false}
-          showLocations={false}
-        />
-        <UASTViewer
-          ast={Object {}}
-          clearNodeSelection={[Function]}
-          loading={false}
-          onNodeSelected={[Function]}
-          showLocations={false}
-        />
+        <Connect(Options) />
+        <Connect(UASTViewer) />
+      </styled.div>
+    </SplitPane>
+  </styled.div>
+  <Footer />
+  <Notifications>
+    <Error
+      message="error1"
+      onRemove={[Function]}
+    />
+    <Error
+      message="error2"
+      onRemove={[Function]}
+    />
+  </Notifications>
+</styled.div>
+`;
+
+exports[`renders without crashing 1`] = `
+<styled.div>
+  <Connect(Header) />
+  <styled.div>
+    <SplitPane
+      allowResize={true}
+      defaultSize="50%"
+      maxSize={768}
+      minSize={256}
+      prefixer={
+        Prefixer {
+          "_browserInfo": Object {
+            "browserName": "safari",
+            "browserVersion": 7,
+            "cssPrefix": "-webkit-",
+            "jsPrefix": "Webkit",
+            "name": "Safari",
+            "osVersion": 7,
+            "osversion": "7",
+            "safari": true,
+            "webkit": true,
+            "windows": true,
+            "x": true,
+          },
+          "_hasPropsRequiringPrefix": true,
+          "_keepUnprefixed": false,
+          "_metaData": Object {
+            "browserName": "safari",
+            "browserVersion": 7,
+            "cssPrefix": "-webkit-",
+            "jsPrefix": "Webkit",
+            "keepUnprefixed": false,
+            "requiresPrefix": Object {
+              "alignContent": true,
+              "alignItems": true,
+              "alignSelf": true,
+              "animation": true,
+              "animationDelay": true,
+              "animationDirection": true,
+              "animationDuration": true,
+              "animationFillMode": true,
+              "animationIterationCount": true,
+              "animationName": true,
+              "animationPlayState": true,
+              "animationTimingFunction": true,
+              "appearance": true,
+              "backdropFilter": true,
+              "backfaceVisibility": true,
+              "boxDecorationBreak": true,
+              "breakAfter": true,
+              "breakBefore": true,
+              "breakInside": true,
+              "clipPath": true,
+              "columnCount": true,
+              "columnFill": true,
+              "columnGap": true,
+              "columnRule": true,
+              "columnRuleColor": true,
+              "columnRuleStyle": true,
+              "columnRuleWidth": true,
+              "columnSpan": true,
+              "columnWidth": true,
+              "columns": true,
+              "filter": true,
+              "flex": true,
+              "flexBasis": true,
+              "flexDirection": true,
+              "flexFlow": true,
+              "flexGrow": true,
+              "flexShrink": true,
+              "flexWrap": true,
+              "flowFrom": true,
+              "flowInto": true,
+              "fontKerning": true,
+              "hyphens": true,
+              "justifyContent": true,
+              "mask": true,
+              "maskBorder": true,
+              "maskBorderMode": true,
+              "maskBorderOutset": true,
+              "maskBorderRepeat": true,
+              "maskBorderSlice": true,
+              "maskBorderSource": true,
+              "maskBorderWidth": true,
+              "maskClip": true,
+              "maskComposite": true,
+              "maskImage": true,
+              "maskMode": true,
+              "maskOrigin": true,
+              "maskPosition": true,
+              "maskRepeat": true,
+              "maskSize": true,
+              "maskType": true,
+              "order": true,
+              "perspective": true,
+              "perspectiveOrigin": true,
+              "regionFragment": true,
+              "scrollSnapCoordinate": true,
+              "scrollSnapDestination": true,
+              "scrollSnapPointsX": true,
+              "scrollSnapPointsY": true,
+              "scrollSnapType": true,
+              "shapeImageMargin": true,
+              "shapeImageOutside": true,
+              "shapeImageThreshold": true,
+              "textDecorationColor": true,
+              "textDecorationLine": true,
+              "textDecorationSkip": true,
+              "textDecorationStyle": true,
+              "transform": true,
+              "transformOrigin": true,
+              "transformOriginX": true,
+              "transformOriginY": true,
+              "transformOriginZ": true,
+              "transformStyle": true,
+              "userSelect": true,
+            },
+          },
+          "_requiresPrefix": Object {
+            "alignContent": true,
+            "alignItems": true,
+            "alignSelf": true,
+            "animation": true,
+            "animationDelay": true,
+            "animationDirection": true,
+            "animationDuration": true,
+            "animationFillMode": true,
+            "animationIterationCount": true,
+            "animationName": true,
+            "animationPlayState": true,
+            "animationTimingFunction": true,
+            "appearance": true,
+            "backdropFilter": true,
+            "backfaceVisibility": true,
+            "boxDecorationBreak": true,
+            "breakAfter": true,
+            "breakBefore": true,
+            "breakInside": true,
+            "clipPath": true,
+            "columnCount": true,
+            "columnFill": true,
+            "columnGap": true,
+            "columnRule": true,
+            "columnRuleColor": true,
+            "columnRuleStyle": true,
+            "columnRuleWidth": true,
+            "columnSpan": true,
+            "columnWidth": true,
+            "columns": true,
+            "filter": true,
+            "flex": true,
+            "flexBasis": true,
+            "flexDirection": true,
+            "flexFlow": true,
+            "flexGrow": true,
+            "flexShrink": true,
+            "flexWrap": true,
+            "flowFrom": true,
+            "flowInto": true,
+            "fontKerning": true,
+            "hyphens": true,
+            "justifyContent": true,
+            "mask": true,
+            "maskBorder": true,
+            "maskBorderMode": true,
+            "maskBorderOutset": true,
+            "maskBorderRepeat": true,
+            "maskBorderSlice": true,
+            "maskBorderSource": true,
+            "maskBorderWidth": true,
+            "maskClip": true,
+            "maskComposite": true,
+            "maskImage": true,
+            "maskMode": true,
+            "maskOrigin": true,
+            "maskPosition": true,
+            "maskRepeat": true,
+            "maskSize": true,
+            "maskType": true,
+            "order": true,
+            "perspective": true,
+            "perspectiveOrigin": true,
+            "regionFragment": true,
+            "scrollSnapCoordinate": true,
+            "scrollSnapDestination": true,
+            "scrollSnapPointsX": true,
+            "scrollSnapPointsY": true,
+            "scrollSnapType": true,
+            "shapeImageMargin": true,
+            "shapeImageOutside": true,
+            "shapeImageThreshold": true,
+            "textDecorationColor": true,
+            "textDecorationLine": true,
+            "textDecorationSkip": true,
+            "textDecorationStyle": true,
+            "transform": true,
+            "transformOrigin": true,
+            "transformOriginX": true,
+            "transformOriginY": true,
+            "transformOriginZ": true,
+            "transformStyle": true,
+            "userSelect": true,
+          },
+          "_userAgent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Safari/537.2",
+          "prefixedKeyframes": "-webkit-keyframes",
+        }
+      }
+      primary="first"
+      split="vertical"
+    >
+      <Connect(Editor) />
+      <styled.div>
+        <Connect(Options) />
+        <Connect(UASTViewer) />
       </styled.div>
     </SplitPane>
   </styled.div>

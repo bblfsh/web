@@ -77,6 +77,10 @@ export class Editor extends Component {
     }
   }
 
+  componentDidMount() {
+    this.selectCode(this.props.markRange);
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.markRange !== this.props.markRange) {
       this.selectCode(this.props.markRange);

@@ -10,6 +10,8 @@ it('convertTree', () => {
           {
             InternalType: 'Child11',
             Children: [{ InternalType: 'Child111' }],
+            StartPosition: { Col: 1, Line: 1, Offset: 1 },
+            EndPosition: { Col: 1, Line: 1, Offset: 1 },
           },
           {
             InternalType: 'Child12',
@@ -27,6 +29,6 @@ it('convertTree', () => {
     ],
   };
 
-  const tree = convertTree(uast);
-  expect(tree).toMatchSnapshot();
+  const treeAndIndex = convertTree(uast);
+  expect(treeAndIndex).toMatchSnapshot();
 });
