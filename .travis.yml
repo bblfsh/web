@@ -15,6 +15,8 @@ before_install:
   - npm install -g yarn
 
 install:
+  - go get gopkg.in/bblfsh/client-go.v2
+  - (cd $GOPATH/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
   - go get -v -t ./...
 
 script:
