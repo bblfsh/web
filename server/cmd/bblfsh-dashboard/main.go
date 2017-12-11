@@ -41,7 +41,7 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	s, err := server.New(bblfshAddr)
+	s, err := server.New(bblfshAddr, VERSION)
 	if err != nil {
 		logrus.Fatalf("error starting new server at %s: %s", addr, err)
 	}
@@ -77,6 +77,7 @@ func main() {
 	api.POST("/parse", s.HandleParse)
 	api.GET("/drivers", s.ListDrivers)
 	api.GET("/gist", s.LoadGist)
+	api.GET("/version", s.Version)
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 

@@ -77,3 +77,13 @@ export function getGist(gist) {
       });
   });
 }
+
+export function version(serverUrl) {
+  return fetch(apiUrl(`/version?server_url=${serverUrl || ''}`))
+    .then(checkStatus)
+    .then(resp => resp.json())
+    .catch(err => {
+      console.error(err);
+      return Promise.reject([err].map(normalizeError));
+    });
+}

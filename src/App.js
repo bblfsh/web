@@ -64,14 +64,14 @@ export class App extends Component {
   }
 
   render() {
-    const { code, errors, errorsRemove } = this.props;
+    const { code, errors, versions, errorsRemove } = this.props;
 
     return (
       <Wrap>
         <Header />
         <Content>{code !== null ? this.renderContent() : <Spinner />}</Content>
 
-        <Footer />
+        <Footer versionsState={versions} />
 
         {errors.length > 0 ? (
           <Notifications>
@@ -91,6 +91,7 @@ const mapStateToProps = state => ({
   languages: state.languages,
   code: state.code.code,
   errors: state.errors,
+  versions: state.versions,
 });
 
 const mapDispatchToProps = {
