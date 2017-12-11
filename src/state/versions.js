@@ -5,6 +5,7 @@ export const initialState = {
   error: null,
   bblfshdVersion: undefined,
   dashboardVersion: undefined,
+  loadedFrom: null,
 };
 
 export const LOAD = 'bblfsh/versions/LOAD';
@@ -18,6 +19,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
+        loadedFrom: action.from,
       };
     case SET:
       return {
@@ -40,11 +42,12 @@ export const reducer = (state = initialState, action) => {
 
 export const load = () => (dispatch, getState) => {
   const { options: { customServer, customServerUrl } } = getState();
+  const from = customServer ? customServerUrl : undefined;
 
-  dispatch({ type: LOAD });
+  dispatch({ type: LOAD, from });
 
   return api
-    .version(customServer ? customServerUrl : undefined)
+    .version(from)
     .then(resp => {
       dispatch({
         type: SET,
@@ -55,4 +58,18 @@ export const load = () => (dispatch, getState) => {
     .catch(err => {
       dispatch({ type: FAILED, error: err });
     });
+};
+
+export const updateIfNeeded = () => (dispatch, getState) => {
+  const {
+    options: { customServer, customServerUrl },
+    versions: { loadedFrom },
+  } = getState();
+  const from = customServer ? customServerUrl : undefined;
+
+  if (loadedFrom === from) {
+    return;
+  }
+
+  return dispatch(load());
 };

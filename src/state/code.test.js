@@ -185,6 +185,7 @@ describe('code/actions', () => {
       code: { code: 'foo = 1', filename: 'test.py' },
       options: { customServer: false, customServerUrl: '' },
       languages: { selected: '' },
+      versions: { loadedFrom: undefined },
     });
     const expectedActions = [
       errorsClear(),
