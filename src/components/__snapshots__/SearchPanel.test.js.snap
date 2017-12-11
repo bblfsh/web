@@ -1,0 +1,328 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input & button should be disabled while loading 1`] = `
+.cLwhky {
+  padding: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  min-height: 2.5rem;
+}
+
+.kVvuhv {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.kVvuhv + .kVvuhv {
+  margin-left: 1rem;
+}
+
+.hRSXSK {
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #dad7d0;
+  outline: none;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.jMEkeu {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.jMEkeu:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+<form
+  className="sc-bwzfXH cLwhky"
+  onSubmit={[Function]}
+>
+  <div
+    className="sc-htpNat kVvuhv"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <input
+      className="sc-bxivhb hRSXSK"
+      disabled={true}
+      name="query"
+      onChange={[Function]}
+      placeholder="UAST Query"
+      type="text"
+      value="test"
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <input
+      className="sc-ifAKCX jMEkeu"
+      disabled={true}
+      type="submit"
+      value="Search"
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <a
+      href="https://doc.bblf.sh/user/uast-querying.html"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Help
+    </a>
+  </div>
+</form>
+`;
+
+exports[`renders correctly 1`] = `
+.cLwhky {
+  padding: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  min-height: 2.5rem;
+}
+
+.kVvuhv {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.kVvuhv + .kVvuhv {
+  margin-left: 1rem;
+}
+
+.hRSXSK {
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #dad7d0;
+  outline: none;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.jMEkeu {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.jMEkeu:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+<form
+  className="sc-bwzfXH cLwhky"
+  onSubmit={[Function]}
+>
+  <div
+    className="sc-htpNat kVvuhv"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <input
+      className="sc-bxivhb hRSXSK"
+      disabled={undefined}
+      name="query"
+      onChange={[Function]}
+      placeholder="UAST Query"
+      type="text"
+      value={undefined}
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <input
+      className="sc-ifAKCX jMEkeu"
+      disabled={true}
+      type="submit"
+      value="Search"
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <a
+      href="https://doc.bblf.sh/user/uast-querying.html"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Help
+    </a>
+  </div>
+</form>
+`;
+
+exports[`renders correctly with value 1`] = `
+.cLwhky {
+  padding: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f7f5;
+  border-bottom: 1px solid #dad7d0;
+  min-height: 2.5rem;
+}
+
+.kVvuhv {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.kVvuhv + .kVvuhv {
+  margin-left: 1rem;
+}
+
+.hRSXSK {
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #dad7d0;
+  outline: none;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.jMEkeu {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.jMEkeu:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+<form
+  className="sc-bwzfXH cLwhky"
+  onSubmit={[Function]}
+>
+  <div
+    className="sc-htpNat kVvuhv"
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <input
+      className="sc-bxivhb hRSXSK"
+      disabled={undefined}
+      name="query"
+      onChange={[Function]}
+      placeholder="UAST Query"
+      type="text"
+      value="test"
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <input
+      className="sc-ifAKCX jMEkeu"
+      disabled={false}
+      type="submit"
+      value="Search"
+    />
+  </div>
+  <div
+    className="sc-htpNat kVvuhv"
+  >
+    <a
+      href="https://doc.bblf.sh/user/uast-querying.html"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Help
+    </a>
+  </div>
+</form>
+`;

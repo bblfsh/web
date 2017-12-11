@@ -12,6 +12,7 @@ import {
   SET_AST,
   CHANGE,
   MARK,
+  runParserWithQuery,
   runParser,
   setAst,
   selectNodeByPos,
@@ -26,6 +27,7 @@ import {
   nodeUnhighlight,
 } from './ast';
 import { set as languageSet } from './languages';
+import { setUastQuery } from './options';
 import { clear as errorsClear } from './errors';
 
 describe('code/reducer', () => {
@@ -177,6 +179,27 @@ describe('code/actions', () => {
     ]);
   });
 
+  it('runParserWithQuery', () => {
+    const uast = { InternalType: 'root' };
+    fetch.mockResponse(JSON.stringify({ status: 0, uast, language: 'python' }));
+
+    const store = mockStore({
+      code: { code: 'foo = 1', filename: 'test.py', query: 'test-query' },
+      options: { customServer: false, customServerUrl: '' },
+      languages: { selected: '' },
+    });
+    const expectedActions = [
+      errorsClear(),
+      { type: PARSE },
+      languageSet('python'),
+      setAst(uast),
+    ];
+
+    return store.dispatch(runParserWithQuery()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
   it('runParser', () => {
     const uast = { InternalType: 'root' };
     fetch.mockResponse(JSON.stringify({ status: 0, uast, language: 'python' }));
@@ -188,6 +211,7 @@ describe('code/actions', () => {
       versions: { loadedFrom: undefined },
     });
     const expectedActions = [
+      setUastQuery(''),
       errorsClear(),
       { type: PARSE },
       languageSet('python'),

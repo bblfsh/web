@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults should render children nodes 1`] = `
+.jQbgOF {
+  margin-left: 20px;
+  min-width: 400px;
+  background: none;
+}
+
+.hRiJmB {
+  min-height: 29px;
+}
+
+.hRiJmB::before {
+  content: '';
+  width: 15px;
+  display: inline-block;
+}
+
+.hbfmnM {
+  min-height: 29px;
+  cursor: pointer;
+}
+
+.hbfmnM::before {
+  content: '';
+  width: 15px;
+  display: inline-block;
+}
+
+.hbfmnM::before {
+  content: '+';
+  color: #EB7422;
+}
+
+.hbfmnM:hover > span {
+  border-bottom: 1px dashed #B1B1B1;
+}
+
+.bUwxHt {
+  display: none;
+  border-left: 1px solid #dad7d0;
+  margin-left: 4px;
+}
+
+.gaIEnP {
+  display: inline;
+  font-family: Hack, monospace;
+  color: #B1B1B1;
+}
+
+.HnGWi {
+  color: #F2A83F;
+}
+
+.HnGWi::before {
+  content: '\\27';
+}
+
+.HnGWi::after {
+  content: '\\27';
+}
+
+.iOQEqP {
+  margin-right: 5px;
+}
+
+.iOQEqP::after {
+  content: ':';
+  color: #B1B1B1;
+}
+
+<div>
+  <div
+    className="sc-bdVaJa jQbgOF"
+    onMouseMove={[Function]}
+  >
+    <div
+      className="sc-htpNat hbfmnM"
+      onClick={[Function]}
+    >
+      <summary
+        className="sc-ifAKCX gaIEnP"
+      >
+        Node
+      </summary>
+    </div>
+    <div
+      className="sc-bxivhb bUwxHt"
+    >
+      <div
+        className="sc-bdVaJa jQbgOF"
+      >
+        <div
+          className="sc-bwzfXH hRiJmB"
+        >
+          <span
+            className="sc-bZQynM iOQEqP"
+          >
+            internal_type
+          </span>
+          <span
+            className="sc-EHOje HnGWi"
+            type="string"
+          >
+            Child1
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="sc-bdVaJa jQbgOF"
+    onMouseMove={[Function]}
+  >
+    <div
+      className="sc-htpNat hbfmnM"
+      onClick={[Function]}
+    >
+      <summary
+        className="sc-ifAKCX gaIEnP"
+      >
+        Node
+      </summary>
+    </div>
+    <div
+      className="sc-bxivhb bUwxHt"
+    >
+      <div
+        className="sc-bdVaJa jQbgOF"
+      >
+        <div
+          className="sc-bwzfXH hRiJmB"
+        >
+          <span
+            className="sc-bZQynM iOQEqP"
+          >
+            internal_type
+          </span>
+          <span
+            className="sc-EHOje HnGWi"
+            type="string"
+          >
+            Child2
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SearchResults should render not found 1`] = `
+.kqrAPn {
+  width: 100%;
+  padding: 1rem 0;
+  -webkit-text-align: center;
+  text-align: center;
+}
+
+<div
+  className="sc-gzVnrw kqrAPn"
+>
+  Nothing found
+</div>
+`;

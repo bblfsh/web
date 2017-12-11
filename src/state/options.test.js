@@ -4,6 +4,7 @@ import {
   LOCATIONS_TOGGLE,
   CUSTOM_SERVER_URL_SET,
   CUSTOM_SERVER_TOGGLE,
+  SET_UAST_QUERY,
 } from './options';
 
 describe('options/reducer', () => {
@@ -35,6 +36,12 @@ describe('options/reducer', () => {
         { ...initialState, customServer: true },
         { type: CUSTOM_SERVER_TOGGLE }
       )
+    ).toMatchSnapshot();
+  });
+
+  it('SET_UAST_QUERY', () => {
+    expect(
+      reducer(initialState, { type: SET_UAST_QUERY, query: 'test' })
     ).toMatchSnapshot();
   });
 });
