@@ -225,7 +225,12 @@ export class Header extends Component {
 
     const languageOptions = Object.keys(languages).map(k => {
       let name = languages[k].name;
-      if (k === '' && !selectedLanguage && actualLanguage) {
+      if (
+        k === '' &&
+        !selectedLanguage &&
+        actualLanguage &&
+        languages[actualLanguage]
+      ) {
         name = `${languages[actualLanguage].name} (auto)`;
       }
 
