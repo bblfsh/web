@@ -14,10 +14,13 @@ If you don't have it running, please read the [getting started](https://doc.bblf
 ### Recomended way (using Docker)
 
 ```sh
-docker run -p 8080:80 bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
+docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/bblfshd
+docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
 ```
 
 When server starts dashboard will be available on http://localhost:8080
+
+Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server, install drivers, etc.
 
 ### Standalone
 
@@ -27,9 +30,14 @@ If don't want to run **dashboard** using our *Docker* image you can download a b
 ./bblfsh-dashboard -bblfsh-addr <bblfsh-server-addr>
 ```
 
+## Development
+
+See relevant sections on [CONTRIBUTING.md](CONTRIBUTING.md) for information on application [architecture](CONTRIBUTING.md#Architecture) and how [build it](CONTRIBUTING.md#Development) from sources.
+
 ## Contributing
 
-Please take a look at [CONTRIBUTING](CONTRIBUTING.md) file to see how to contribute in this project, get more information about the dashboard [architecture](CONTRIBUTING.md#Architecture) and how to launch it for [development](CONTRIBUTING.md#Development) purposes.
+Please take a look at [CONTRIBUTING](CONTRIBUTING.md) file to see how to contribute in this project.
+
 
 ## License
 

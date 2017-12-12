@@ -55,14 +55,22 @@ The format can be described more formally as follows:
 
 ## Architecture
 
-The dashboard contains 2 parts:
+The Dashboard application consists of 2 parts:
 
 - Single page react application bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
-- Go web server to proxy and transform requests to bblfsd server
+- Go web server to proxy and transform requests to actual [bblfsh server](https://doc.bblf.sh/).
 
 For production usage, all static files are served from the go server after being embedded in the server itself using go [go-bindata](https://github.com/jteeuwen/go-bindata).
 
+### Dependencies
+
+ - Golang 1.9
+ - Node 8.x
+ - Yarn 1.x
+
 ## Development
+
+The dashboard is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
 
 The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
 
