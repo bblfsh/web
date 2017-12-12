@@ -10,8 +10,6 @@ import Editor from './components/Editor';
 import Options from './components/Options';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
-import * as history from './services/history';
-import * as api from './services/api';
 import { connect } from 'react-redux';
 import { remove as errorsRemove } from 'state/errors';
 import { init } from 'state';
@@ -40,56 +38,9 @@ const RightPanel = styled.div`
   position: relative;
 `;
 
-function getGistState(content, gistUrl, selectedLanguage) {
-  const gistParts = gistUrl.split('/');
-  const filename = gistParts[gistParts.length - 1];
-  const state = {
-    ...getResetCodeState(content, filename),
-    cleanGist: true,
-    gistUrl,
-  };
-
-  if (selectedLanguage) {
-    state.selectedLanguage = selectedLanguage;
-    history.setLanguage(selectedLanguage);
-  }
-
-  history.setGist(gistUrl);
-
-  return state;
-}
-
-function getResetCodeState(code, filename, selectedLanguage) {
-  return {
-    code: code || null,
-    ast: {},
-    dirty: true,
-    cleanGist: false,
-    loading: false,
-    errors: [],
-
-    filename,
-    actualLanguage: '',
-    selectedLanguage: selectedLanguage || 'auto',
-    selectedExample: '',
-  };
-}
-
 export class App extends Component {
   componentDidMount() {
     return this.props.init();
-  }
-
-  onGistLoaded(gistUrl, selectedLanguage) {
-    api
-      .getGist(gistUrl)
-      .then(content => {
-        this.setState(
-          getGistState(content, gistUrl, selectedLanguage),
-          this.onRunParser
-        );
-      })
-      .catch(errors => this.setState({ errors }));
   }
 
   renderContent() {
