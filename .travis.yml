@@ -14,14 +14,9 @@ before_install:
   - nvm use 8
   - npm install -g yarn
 
-install:
-  - go get gopkg.in/bblfsh/client-go.v2
-  - (cd $GOPATH/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
-  - go get -v -t ./...
-
 script:
-  - make test-coverage
   - make test-frontend
+  - make test-coverage
 
 before_deploy:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

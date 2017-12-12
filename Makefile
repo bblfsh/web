@@ -24,7 +24,12 @@ $(MAKEFILE):
 
 -include $(MAKEFILE)
 
-dependencies-frontend: dependencies
+# simple go get doesn't work for client go
+install-client-go:
+	go get gopkg.in/bblfsh/client-go.v2
+	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make cgo-dependencies)
+
+dependencies-frontend: install-client-go dependencies
 	$(YARN)	install
 
 test-frontend: dependencies-frontend
