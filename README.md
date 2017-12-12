@@ -1,45 +1,35 @@
 # Dashboard [![GitHub version](https://badge.fury.io/gh/bblfsh%2Fdashboard.svg)](https://github.com/bblfsh/dashboard/releases) [![Build Status](https://travis-ci.org/bblfsh/dashboard.svg?branch=master)](https://travis-ci.org/bblfsh/dashboard)
 
+Web dashboard for [Babelfish server](https://bblf.sh).
+
+It's user-friendly tool for testing and research how babelfish parse code.
+
+![Screenshot](images/screenshot.png?raw=true)
 
 ## Installation
 
-The easiest way to deploy **dashboard** is using *Docker*.
+Babelfish server is required for dashboard.
+If you don't have it running, please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
+
+### Recomended way (using Docker)
 
 ```sh
 docker run -p 8080:80 bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
 ```
 
-If you don't have a bblfsh server running you can execute the dashboard and the server using the following command:
+When server starts dashboard will be available on http://localhost:8080
+
+### Standalone
+
+If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard/releases) page and run it as
 
 ```sh
-docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/server
-docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
+./bblfsh-dashboard -bblfsh-addr <bblfsh-server-addr>
 ```
 
-Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
+## Contributing
 
-If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard/releases) page.
-
-## Development
-
-The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
-
-Every time you change any source of the front assets, it is needed to regenerate the `server/asset/asset.go` containing the static files of the site.
-
-It can be done running
-```sh
-make assets
-```
-
-### Access the dashboard locally
-
-To run it locally you can run:
-```sh
-make serve
-```
-(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, the dashboard api, and to serve the updated dashboard itself)
-
-And access the dashboard through http://localhost:9999
+Please take a look at [CONTRIBUTING](CONTRIBUTING.md) file to see how to contribute in this project, get more information about the dashboard [architecture](CONTRIBUTING.md#Architecture) and how to launch it for [development](CONTRIBUTING.md#Development) purposes.
 
 ## License
 
