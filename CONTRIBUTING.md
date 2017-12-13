@@ -1,35 +1,114 @@
-Contributing
-------------------------------
+# Contributing Guidelines
 
-Contributions require sign-off. The sign-off is a simple line at the end  of the commit message for the patch or pull request, which certifies that you wrote it or otherwise have the right to pass it on as an open-source patch. The rules are pretty simple: if you can certify the below:
+source{d} babelfish dashboard is [GPLv3](LICENSE) and accept
+contributions via GitHub pull requests. This document outlines some of the
+conventions on development workflow, commit message formatting, contact points,
+and other resources to make it easier to get your contribution accepted.
 
-    Developer’s Certificate of Origin
-    =================================
+## Certificate of Origin
 
-    By making a contribution to this project, I certify that:
+By contributing to this project you agree to the [Developer Certificate of
+Origin (DCO)](DCO). This document was created by the Linux Kernel community and is a
+simple statement that you, as a contributor, have the legal right to make the
+contribution.
 
-      (a) The contribution was created in whole or in part by me and I have the right to submit it under the open source license indicated in the file; or
+In order to show your agreement with the DCO you should include at the end of commit message,
+the following line: `Signed-off-by: John Doe <john.doe@example.com>`, using your real name.
 
-      (b) The contribution is based upon previous work that, to the best of my knowledge, is covered under an appropriate open source license and I have the right under that license to submit that work with modifications, whether created in whole or in part by me, under the same open source license (unless I am permitted to submit under a different license), as indicated in the file; or
+This can be done easily using the [`-s`](https://github.com/git/git/blob/b2c150d3aa82f6583b9aadfecc5f8fa1c74aca09/Documentation/git-commit.txt#L154-L161) flag on the `git commit`.
 
-      (c) The contribution was provided directly to me by some other person who certified (a), (b) or (c) and I have not modified it.
 
-      (d) I understand and agree that this project and the contribution are public and that a record of the contribution (including all personal information I submit with it, including my sign-off) is maintained indefinitely and may be redistributed consistent with this project or the open source license(s) involved.
+## Support Channels
 
-      (e) I agree to the following terms and conditions:
+The official support channels, for both users and contributors, are:
 
-        (1) Except for the license granted herein to the maintainer and recipients of software distributed by the maintainer, You reserve all right, title, and interest in and to your contributions.
+- GitHub [issues](https://github.com/bblfsh/dashboard/issues)*
 
-        (2) Grant of Copyright License. Subject to the terms and conditions of this Agreement, You hereby grant to the maintainer and to recipients of software distributed by the maintainer a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute your contributions and such derivative works.
+*Before opening a new issue or submitting a new pull request, it's helpful to
+search the project - it's likely that another user has already reported the
+issue you're facing, or it's a known issue that we're already aware of.
 
-        (3) Grant of Patent License. Subject to the terms and conditions of this Agreement, You hereby grant to the maintainer and to recipients of software distributed by the maintainer a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by You that are necessarily infringed by your contribution(s) alone or by combination of your contribution(s) with the Work to which such contribution(s) was submitted. If any entity institutes patent litigation against You or any other entity (including a cross-claim or counterclaim in a lawsuit) alleging that your contribution, or the Work to which you have contributed, constitutes direct or contributory patent infringement, then any patent licenses granted to that entity under this Agreement for that contribution or Work shall terminate as of the date such litigation is filed.
 
-        (4) You are not expected to provide support for your contributions, except to the extent You desire to provide support. You may provide support for free, for a fee, or not at all. Unless required by applicable law or agreed to in writing, You provide your Contributions on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE.
+## How to Contribute
 
-then you just add a line saying
+Pull Requests (PRs) are the main and exclusive way to contribute to the project.
+In order for a PR to be accepted it needs to pass a list of requirements:
 
-    Signed-off-by: Random J Developer <random@developer.example.org>
+- If the PR is a bug fix, it has to include a new unit test that fails before the patch is merged.
+- If the PR is a new feature, it has to come with a suite of unit tests, that tests the new functionality.
+- In any case, all the PRs have to pass the personal evaluation of at least one of the [maintainers](MAINTAINERS).
 
-When committing using the command line you can sign off using the --signoff or -s flag. This adds a Signed-off-by line by the committer at the end of the commit log message.
 
-    git commit -s -m "Commit message"
+### Format of the commit message
+
+Every commit message should describe what was changed and, if applicable, the GitHub issue it relates to:
+
+```
+Skip argument validations for unknown capabilities. Fixes #623
+```
+
+The format can be described more formally as follows:
+
+```
+<what changed>. [Fixes #<issue-number>]
+```
+
+## Architecture
+
+The dashboard contains 2 parts:
+
+- Single page react application bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
+- Go web server to proxy and transform requests to bblfsd server
+
+For production usage, all static files are served from the go server after being embedded in the server itself using go [go-bindata](https://github.com/jteeuwen/go-bindata).
+
+## Development
+
+The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
+
+Every time you change any source of the front assets, it is needed to regenerate the `server/asset/asset.go` containing the static files of the site.
+
+It can be done running
+```sh
+make assets
+```
+
+### Access the dashboard locally
+
+To run it locally you can run:
+```sh
+make serve
+```
+(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, the dashboard api, and to serve the updated dashboard itself)
+
+And access the dashboard through http://localhost:9999
+
+### Run tests
+
+Frontend tests:
+
+```sh
+yarn test
+```
+
+Server tests:
+
+```sh
+go test ./server/...
+```
+
+### Hot reloading mode
+
+You can also run frontend in hot reloading mode:
+
+```sh
+yarn start
+```
+
+Dashboard will be available on http://localhost:3000
+
+But it still requires go server on `9999` port to be available. The easiest way to run it is:
+
+```sh
+go run ./server/cmd/bblfsh-dashboard/main.go
+```
