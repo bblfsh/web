@@ -17,7 +17,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const VERSION = "v0.1.0"
+const VERSION = "v0.3.0"
 
 func flags() (addr, bblfshAddr string, debug, version bool) {
 	flag.StringVar(&addr, "addr", ":9999", "address in which the server will run")
