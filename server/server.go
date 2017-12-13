@@ -95,8 +95,11 @@ type versionRequest struct {
 }
 
 func (s *Server) Version(ctx *gin.Context) {
-	req := versionRequest{}
-	req.ServerURL = ctx.Query("server_url")
+	var req versionRequest
+	if err := ctx.BindJSON(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
+		return
+	}
 
 	cli, err := s.clientForRequest(req.request)
 	if err != nil {

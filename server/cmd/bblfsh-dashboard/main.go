@@ -77,7 +77,7 @@ func main() {
 	api.POST("/parse", s.HandleParse)
 	api.GET("/drivers", s.ListDrivers)
 	api.GET("/gist", s.LoadGist)
-	api.GET("/version", s.Version)
+	api.POST("/version", s.Version)
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 
