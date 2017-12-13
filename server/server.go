@@ -109,7 +109,7 @@ func (s *Server) Version(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error getting server version: %s", err))
 	}
 
-	ctx.JSON(200, map[string]string{
+	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{
 		"dashboard": s.version,
 		"server":    resp.Version,
 	})
