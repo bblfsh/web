@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import Header, { DriverCode } from './Header';
+import { Header, DriverCode } from './Header';
 import renderer from 'react-test-renderer';
 
 const testLanguages = {
-  auto: { name: 'auto' },
+  '': { name: 'auto' },
   python: { name: 'Python', url: 'Python.driver' },
   java: { name: 'Java', url: 'Java.driver' },
 };
@@ -38,7 +38,7 @@ describe('DriverCode', () => {
       <DriverCode
         languages={testLanguages}
         actualLanguage="python"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );
@@ -53,7 +53,7 @@ describe('Header', () => {
       <Header
         languages={testLanguages}
         actualLanguage="java"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );
@@ -68,7 +68,7 @@ describe('Header', () => {
         languages={testLanguages}
         onLanguageChanged={onLanguageChangedSpy}
         actualLanguage="java"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );
@@ -77,7 +77,7 @@ describe('Header', () => {
       target: { value: 'python' },
     });
     expect(onLanguageChangedSpy.mock.calls.length).toBe(1);
-    expect(onLanguageChangedSpy.mock.calls[0][0].target.value).toBe('python');
+    expect(onLanguageChangedSpy.mock.calls[0][0]).toBe('python');
   });
 
   it('calls onExampleChanged when the dropdown is changed', () => {
@@ -87,7 +87,7 @@ describe('Header', () => {
         languages={testLanguages}
         onExampleChanged={spy}
         actualLanguage="java"
-        selectedLanguage="auto"
+        selectedLanguage=""
         selectedExample="python"
         examples={testExamples}
       />
@@ -97,7 +97,7 @@ describe('Header', () => {
       target: { value: 'java' },
     });
     expect(spy.mock.calls.length).toBe(1);
-    expect(spy.mock.calls[0][0].target.value).toBe('java');
+    expect(spy.mock.calls[0][0]).toBe('java');
   });
 
   it('calls onRunParser when the button is clicked', () => {
@@ -107,7 +107,7 @@ describe('Header', () => {
         languages={testLanguages}
         onRunParser={onRunParserSpy}
         actualLanguage="java"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );
@@ -122,7 +122,7 @@ describe('Header', () => {
         languages={testLanguages}
         canParse={false}
         actualLanguage="python"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );
@@ -136,7 +136,7 @@ describe('Header', () => {
         languages={testLanguages}
         canParse={true}
         actualLanguage="python"
-        selectedLanguage="auto"
+        selectedLanguage=""
         examples={testExamples}
       />
     );

@@ -2,9 +2,13 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import Node, {
-  MAX_EXPANDED_DEPTH,
+const mockStore = configureStore();
+
+import {
+  Node,
   CollapsibleItem,
   StyledCollapsibleContent,
   StyledCollapsibleTitle,
@@ -15,7 +19,7 @@ import Node, {
   Properties,
   Value,
   PropertyName,
-  Position
+  Position,
 } from './Node';
 
 const shouldMatchSnapshot = comp => {
@@ -24,20 +28,20 @@ const shouldMatchSnapshot = comp => {
 };
 
 describe('CollapsibleItem', () => {
-  it('is collapsed if the depth is higher than MAX_EXPANDED_DEPTH', () => {
-    const wrapper = mount(<CollapsibleItem depth={MAX_EXPANDED_DEPTH + 1} />);
+  it('collapsed item should be hidden', () => {
+    const wrapper = mount(<CollapsibleItem collapsed={true} />);
     const content = wrapper.find(StyledCollapsibleContent);
     expect(content).toHaveStyleRule('display', 'none');
   });
 
-  it('is not collapsed if the depth is lower than MAX_EXPANDED_DEPTH', () => {
-    const wrapper = mount(<CollapsibleItem depth={MAX_EXPANDED_DEPTH - 1} />);
+  it('expanded item should not be hidden', () => {
+    const wrapper = mount(<CollapsibleItem collapsed={false} />);
     const content = wrapper.find(StyledCollapsibleContent);
     expect(content).toHaveStyleRule('display', 'block');
   });
 
   it('is collapsed when the title is clicked', () => {
-    const wrapper = mount(<CollapsibleItem depth={MAX_EXPANDED_DEPTH - 1} />);
+    const wrapper = mount(<CollapsibleItem collapsed={false} />);
     const title = wrapper.find(StyledCollapsibleTitle);
     title.simulate('click');
     const content = wrapper.find(StyledCollapsibleContent);
@@ -45,7 +49,7 @@ describe('CollapsibleItem', () => {
   });
 
   it('is expanded when the title is clicked and it was collpased', () => {
-    const wrapper = mount(<CollapsibleItem depth={MAX_EXPANDED_DEPTH + 1} />);
+    const wrapper = mount(<CollapsibleItem collapsed={true} />);
     const title = wrapper.find(StyledCollapsibleTitle);
     title.simulate('click');
     const content = wrapper.find(StyledCollapsibleContent);
@@ -58,12 +62,6 @@ describe('CollapsibleItem', () => {
     wrapper.find(StyledItem).simulate('mousemove');
 
     expect(spy.mock.calls.length).toBe(1);
-  });
-
-  it('expand expands the node', () => {
-    const wrapper = shallow(<CollapsibleItem depth={MAX_EXPANDED_DEPTH + 1} />);
-    wrapper.instance().expand();
-    expect(wrapper.state('collapsed')).toBe(false);
   });
 
   it('renders correctly', () => {
@@ -84,23 +82,39 @@ test('Position renders correctly', () => {
 });
 
 describe('Children', () => {
-  it('renders correctly', () => {
-    const children = [
-      {
-        StartPosition: { Col: 1, Line: 1, Offset: 1 },
-        EndPosition: { Col: 1, Line: 1, Offset: 1 },
-        Roles: ['a', 'b'],
-        InternalType: 'foo'
+  const initialState = {
+    code: {
+      ast: {
+        2: {
+          id: 2,
+          StartPosition: { Col: 1, Line: 1, Offset: 1 },
+          EndPosition: { Col: 1, Line: 1, Offset: 1 },
+          Roles: ['a', 'b'],
+          InternalType: 'foo',
+        },
+        3: {
+          id: 3,
+          StartPosition: { Col: 2, Line: 1, Offset: 1 },
+          EndPosition: { Col: 2, Line: 1, Offset: 1 },
+          Roles: ['a', 'c'],
+          InternalType: 'bar',
+        },
       },
-      {
-        StartPosition: { Col: 2, Line: 1, Offset: 1 },
-        EndPosition: { Col: 2, Line: 1, Offset: 1 },
-        Roles: ['a', 'c'],
-        InternalType: 'bar'
-      }
-    ];
+    },
+    options: { showLocations: false },
+  };
+  let store;
+
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+
+  it('renders correctly', () => {
+    const children = [2, 3];
     shouldMatchSnapshot(
-      <Children path={[]} children={children} depth={1} onMount={jest.fn()} />
+      <Provider store={store}>
+        <Children ids={children} />
+      </Provider>
     );
   });
 });
@@ -114,7 +128,7 @@ test('Properties renders correctly', () => {
     <Properties
       properties={{
         foo: 'bar',
-        baz: 'qux'
+        baz: 'qux',
       }}
     />
   );
@@ -136,57 +150,32 @@ test('PropertyName renders correctly', () => {
 });
 
 describe('Node', () => {
-  it('calls onMount when it is constructed', () => {
-    const spy = jest.fn();
-    const component = mount(<Node onMount={spy} tree={{}} />);
-    expect(spy.mock.calls.length).toBe(1);
-  });
-
-  it("calls onMount when it's updated", () => {
-    const spy = jest.fn();
-    const component = mount(<Node onMount={spy} tree={{}} />);
-    component.instance().forceUpdate(() => {
-      expect(spy.mock.calls.length).toBe(2);
-    });
-  });
-
-  it('expands itself and all its ancestors', () => {
-    const path = [
-      {refs: {collapsible: {expand: jest.fn()}}},
-      {refs: {collapsible: {expand: jest.fn()}}},
-    ];
-
-    const tree = {
-      expand: jest.fn(),
-    };
-
-    const wrapper = mount(
-      <Node tree={tree} path={path} depth={MAX_EXPANDED_DEPTH + 1} />
-    );
-
-    wrapper.instance().expand();
-    expect(wrapper.ref('collapsible').get(0).state.collapsed).toBe(false);
-    path.map(node => node.refs.collapsible.expand.mock.calls.length).forEach(i => expect(i).toBe(1));
-  });
-
-  it('highlights itself when highlight is called', () => {
-    const wrapper = shallow(<Node tree={{}} />);
-
-    wrapper.instance().highlight();
-    expect(wrapper.state('highlighted')).toBe(true);
-  });
-
-  it('unhighlights itself when unHighlight is called', () => {
-    const wrapper = shallow(<Node tree={{}} />);
-    const component = wrapper.instance();
-
-    component.highlight();
-    component.unHighlight();
-    expect(wrapper.state('highlighted')).toBe(false);
-  });
+  const initialState = {
+    code: {
+      ast: {
+        2: {
+          id: 2,
+          StartPosition: { Col: 1, Line: 1, Offset: 1 },
+          EndPosition: { Col: 1, Line: 1, Offset: 1 },
+          Roles: ['a', 'b'],
+          InternalType: 'foo',
+        },
+        3: {
+          id: 3,
+          StartPosition: { Col: 2, Line: 1, Offset: 1 },
+          EndPosition: { Col: 2, Line: 1, Offset: 1 },
+          Roles: ['a', 'c'],
+          InternalType: 'bar',
+        },
+      },
+    },
+    options: { showLocations: false },
+  };
 
   it('renders correctly', () => {
+    const store = mockStore(initialState);
     const node = {
+      id: 1,
       InternalType: 'foo',
       Roles: ['e', 'g'],
       StartPosition: { Col: 1, Line: 2, Offset: 3 },
@@ -195,36 +184,30 @@ describe('Node', () => {
       Properties: {
         a: 'b',
         c: 'd',
-        foo: false
+        foo: false,
       },
-      Children: [
-        {
-          StartPosition: { Col: 1, Line: 1, Offset: 1 },
-          EndPosition: { Col: 1, Line: 1, Offset: 1 },
-          Roles: ['a', 'b'],
-          InternalType: 'foo'
-        },
-        {
-          StartPosition: { Col: 2, Line: 1, Offset: 1 },
-          EndPosition: { Col: 2, Line: 1, Offset: 1 },
-          Roles: ['a', 'c'],
-          InternalType: 'bar'
-        }
-      ]
+      Children: [2, 3],
     };
 
-    shouldMatchSnapshot(<Node tree={node} depth={0} />);
+    shouldMatchSnapshot(
+      <Provider store={store}>
+        <Node node={node} showLocations={false} />
+      </Provider>
+    );
   });
 
   it('when the node is selected it calls onNodeSelected', () => {
     const spy = jest.fn();
     const node = {
       StartPosition: { Col: 2, Line: 2, Offset: 1 },
-      EndPosition: { Col: 6, Line: 2, Offset: 6 }
+      EndPosition: { Col: 6, Line: 2, Offset: 6 },
     };
-    const wrapper = mount(<Node tree={node} onNodeSelected={spy} />);
+    const wrapper = mount(<Node node={node} onNodeSelected={spy} />);
 
-    wrapper.find(StyledItem).first().simulate('mousemove');
+    wrapper
+      .find(StyledItem)
+      .first()
+      .simulate('mousemove');
     expect(spy.mock.calls.length).toBe(1);
     const { line, ch } = spy.mock.calls[0][0];
     expect(line).toBe(1);
@@ -234,9 +217,9 @@ describe('Node', () => {
   it('when showLocations is false, it does not display the locations', () => {
     const node = {
       StartPosition: { Col: 2, Line: 2, Offset: 1 },
-      EndPosition: { Col: 6, Line: 2, Offset: 6 }
+      EndPosition: { Col: 6, Line: 2, Offset: 6 },
     };
-    const wrapper = mount(<Node tree={node} showLocations={false} />);
+    const wrapper = mount(<Node node={node} showLocations={false} />);
 
     expect(wrapper.find(Position).length).toBe(0);
   });
@@ -244,9 +227,9 @@ describe('Node', () => {
   it('when showLocations is true, it does display them', () => {
     const node = {
       StartPosition: { Col: 2, Line: 2, Offset: 1 },
-      EndPosition: { Col: 6, Line: 2, Offset: 6 }
+      EndPosition: { Col: 6, Line: 2, Offset: 6 },
     };
-    const wrapper = mount(<Node tree={node} showLocations={true} />);
+    const wrapper = mount(<Node node={node} showLocations={true} />);
 
     expect(wrapper.find(Position).length).toBe(2);
   });

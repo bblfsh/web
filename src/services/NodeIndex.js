@@ -94,7 +94,7 @@ function findSmallerContainerInColNodes(columnNodes, targetLine, targetCol) {
     closestEndCol = Number.MAX_VALUE;
 
   columnNodes.forEach(node => {
-    if (!hasEndPosition(node) || !endsAfter(node, targetLine, targetCol)) {
+    if (!hasend(node) || !endsAfter(node, targetLine, targetCol)) {
       return;
     }
 
@@ -118,6 +118,6 @@ function endsAfter(node, targetLine, targetCol) {
   );
 }
 
-function hasEndPosition(node) {
+function hasend(node) {
   return node.end && node.end.Line && node.end.Col;
 }

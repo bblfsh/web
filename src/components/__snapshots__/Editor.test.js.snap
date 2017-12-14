@@ -2,9 +2,10 @@
 
 exports[`Editor renders without crashing 1`] = `
 <styled.div>
-  <Component
+  <Controlled
     autoFocus={true}
-    onCursorActivity={[Function]}
+    onBeforeChange={[Function]}
+    onCursor={[Function]}
     options={
       Object {
         "lineNumbers": true,
@@ -12,7 +13,6 @@ exports[`Editor renders without crashing 1`] = `
         "theme": "solarized light",
       }
     }
-    preserveScrollPosition={false}
     value="foo = 1"
   />
   <styled.div

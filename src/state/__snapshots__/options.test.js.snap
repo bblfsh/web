@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`options/reducer CUSTOM_SERVER_TOGGLE 1`] = `
+Object {
+  "customServer": true,
+  "customServerUrl": "0.0.0.0:9432",
+  "showLocations": false,
+}
+`;
+
+exports[`options/reducer CUSTOM_SERVER_TOGGLE 2`] = `
+Object {
+  "customServer": false,
+  "customServerUrl": "",
+  "showLocations": false,
+}
+`;
+
+exports[`options/reducer CUSTOM_SERVER_URL_SET 1`] = `
+Object {
+  "customServer": false,
+  "customServerUrl": "newUrl",
+  "showLocations": false,
+}
+`;
+
+exports[`options/reducer LOCATIONS_TOGGLE 1`] = `
+Object {
+  "customServer": false,
+  "customServerUrl": "",
+  "showLocations": false,
+}
+`;
+
+exports[`options/reducer LOCATIONS_TOGGLE 2`] = `
+Object {
+  "customServer": false,
+  "customServerUrl": "",
+  "showLocations": true,
+}
+`;

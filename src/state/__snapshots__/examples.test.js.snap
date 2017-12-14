@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`examples/reducer RESET 1`] = `
+Object {
+  "selected": "",
+}
+`;
+
+exports[`examples/reducer SET 1`] = `
+Object {
+  "selected": "java_example_1",
+}
+`;
