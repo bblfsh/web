@@ -68,6 +68,29 @@ export const convertTree = uast => {
   return { tree, posIndex };
 };
 
+export const getNodeRootId = state => {
+  if (!state.code.ast || !state.code.ast[1]) {
+    return null;
+  }
+  return 1;
+};
+
+const SEARCH_RESULTS_TYPE = 'Dashboard: Search results';
+
+export const getSearchResults = state => {
+  const rootId = getNodeRootId(state);
+  if (!rootId) {
+    return null;
+  }
+
+  const rootNode = state.code.ast[rootId];
+  if (rootNode.InternalType === SEARCH_RESULTS_TYPE) {
+    return rootNode.Children;
+  }
+
+  return null;
+};
+
 export const expand = nodeId => ({
   type: NODE_EXPAND,
   nodeId,

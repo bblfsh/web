@@ -7,6 +7,7 @@ import {
   expand,
 } from './ast';
 import { set as languageSet } from './languages';
+import { setUastQuery } from './options';
 import { add as errorsAdd, clear as errorsClear } from './errors';
 import { updateIfNeeded as versionUpdateIfNeeded } from './versions';
 
@@ -135,11 +136,11 @@ export const selectNodeByPos = ({ line, ch }) => (dispatch, getState) => {
   return dispatch(nodeHighlight(node.id));
 };
 
-export const runParser = () => (dispatch, getState) => {
+export const runParserWithQuery = () => (dispatch, getState) => {
   const state = getState();
   const {
     code: { code, filename },
-    options: { customServer, customServerUrl },
+    options: { customServer, customServerUrl, uastQuery },
     languages: { selected: languageSelected },
   } = state;
 
@@ -154,6 +155,7 @@ export const runParser = () => (dispatch, getState) => {
       languageSelected,
       filename,
       code,
+      uastQuery,
       customServer ? customServerUrl : undefined
     )
     .then(({ uast, language }) => {
@@ -164,4 +166,9 @@ export const runParser = () => (dispatch, getState) => {
       dispatch({ type: PARSE_FAILED });
       dispatch(errorsAdd(errors));
     });
+};
+
+export const runParser = () => dispatch => {
+  dispatch(setUastQuery(''));
+  return dispatch(runParserWithQuery());
 };

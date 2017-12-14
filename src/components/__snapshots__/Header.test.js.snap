@@ -121,7 +121,35 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
 `;
 
 exports[`Header has the button disabled if canParse is false 1`] = `
-.dfgKLf {
+.fOnTQX {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.fOnTQX:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+.fOnTQX + .fOnTQX {
+  margin-left: 0.7rem;
+}
+
+.arQZl {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -138,7 +166,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
 }
 
-.gRdHVw {
+.lcBPpi {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -156,15 +184,15 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.bSicIw {
   height: 40px;
 }
 
-.dtdqzi {
+.cMxHoB {
   margin-left: 0.8rem;
 }
 
-.gkhDQm {
+.jDIAvY {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -174,7 +202,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   height: 100%;
 }
 
-.dWtenm {
+.hvjMcs {
   color: grey;
   margin-right: 1em;
   font-size: 0.8rem;
@@ -184,7 +212,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   color: #636262;
 }
 
-.eJfGpj {
+.ccajvZ {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -198,15 +226,15 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   padding-right: 1rem;
 }
 
-.eJfGpj + .eJfGpj {
+.ccajvZ + .ccajvZ {
   margin-left: 1rem;
 }
 
-.eJfGpj:last-child {
+.ccajvZ:last-child {
   border-right: none;
 }
 
-.jdktxT {
+.cnAjrS {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -227,15 +255,15 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   padding-right: 0;
 }
 
-.jdktxT + .jdktxT {
+.cnAjrS + .cnAjrS {
   margin-left: 1rem;
 }
 
-.jdktxT:last-child {
+.cnAjrS:last-child {
   border-right: none;
 }
 
-.fvfSyI {
+.fGoKVN {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -249,11 +277,11 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   text-transform: uppercase;
 }
 
-.fvfSyI + button {
+.fGoKVN + button {
   margin-left: 3px;
 }
 
-.acdud {
+.boALzA {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -266,36 +294,8 @@ exports[`Header has the button disabled if canParse is false 1`] = `
   text-transform: none;
 }
 
-.acdud + button {
+.boALzA + button {
   margin-left: 3px;
-}
-
-.kUlzXo {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.kUlzXo:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
-}
-
-.kUlzXo + .kUlzXo {
-  margin-left: 0.7rem;
 }
 
 .kmPTEb {
@@ -371,36 +371,36 @@ exports[`Header has the button disabled if canParse is false 1`] = `
 }
 
 <header
-  className="sc-bdVaJa dfgKLf"
+  className="sc-bwzfXH arQZl"
 >
   <h1
-    className="sc-bwzfXH gRdHVw"
+    className="sc-htpNat lcBPpi"
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-bxivhb bSicIw"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb dtdqzi"
+      className="sc-ifAKCX cMxHoB"
     >
       Dashboard
     </span>
   </h1>
   <div
-    className="sc-ifAKCX gkhDQm"
+    className="sc-EHOje jDIAvY"
   >
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -439,16 +439,16 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </div>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="examples-selector"
         onChange={[Function]}
         value={undefined}
@@ -467,24 +467,24 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </select>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <input
-        className="sc-dnqmqq acdud"
+        className="sc-iwsKbI boALzA"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
         value={undefined}
       />
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={undefined}
       >
         load
       </button>
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={[Function]}
       >
@@ -492,7 +492,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </button>
     </div>
     <div
-      className="sc-gzVnrw jdktxT"
+      className="sc-htoDjs cnAjrS"
     >
       <button
         className="sc-gZMcBi kmPTEb"
@@ -508,7 +508,35 @@ exports[`Header has the button disabled if canParse is false 1`] = `
 `;
 
 exports[`Header has the button enabled if canParse is true 1`] = `
-.dfgKLf {
+.fOnTQX {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.fOnTQX:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+.fOnTQX + .fOnTQX {
+  margin-left: 0.7rem;
+}
+
+.arQZl {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -525,7 +553,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
 }
 
-.gRdHVw {
+.lcBPpi {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -543,15 +571,15 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.bSicIw {
   height: 40px;
 }
 
-.dtdqzi {
+.cMxHoB {
   margin-left: 0.8rem;
 }
 
-.gkhDQm {
+.jDIAvY {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -561,7 +589,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   height: 100%;
 }
 
-.dWtenm {
+.hvjMcs {
   color: grey;
   margin-right: 1em;
   font-size: 0.8rem;
@@ -571,7 +599,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   color: #636262;
 }
 
-.eJfGpj {
+.ccajvZ {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -585,15 +613,15 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   padding-right: 1rem;
 }
 
-.eJfGpj + .eJfGpj {
+.ccajvZ + .ccajvZ {
   margin-left: 1rem;
 }
 
-.eJfGpj:last-child {
+.ccajvZ:last-child {
   border-right: none;
 }
 
-.jdktxT {
+.cnAjrS {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -614,15 +642,15 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   padding-right: 0;
 }
 
-.jdktxT + .jdktxT {
+.cnAjrS + .cnAjrS {
   margin-left: 1rem;
 }
 
-.jdktxT:last-child {
+.cnAjrS:last-child {
   border-right: none;
 }
 
-.fvfSyI {
+.fGoKVN {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -636,11 +664,11 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   text-transform: uppercase;
 }
 
-.fvfSyI + button {
+.fGoKVN + button {
   margin-left: 3px;
 }
 
-.acdud {
+.boALzA {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -653,36 +681,8 @@ exports[`Header has the button enabled if canParse is true 1`] = `
   text-transform: none;
 }
 
-.acdud + button {
+.boALzA + button {
   margin-left: 3px;
-}
-
-.kUlzXo {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.kUlzXo:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
-}
-
-.kUlzXo + .kUlzXo {
-  margin-left: 0.7rem;
 }
 
 .kmPTEb {
@@ -758,36 +758,36 @@ exports[`Header has the button enabled if canParse is true 1`] = `
 }
 
 <header
-  className="sc-bdVaJa dfgKLf"
+  className="sc-bwzfXH arQZl"
 >
   <h1
-    className="sc-bwzfXH gRdHVw"
+    className="sc-htpNat lcBPpi"
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-bxivhb bSicIw"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb dtdqzi"
+      className="sc-ifAKCX cMxHoB"
     >
       Dashboard
     </span>
   </h1>
   <div
-    className="sc-ifAKCX gkhDQm"
+    className="sc-EHOje jDIAvY"
   >
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -826,16 +826,16 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </div>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="examples-selector"
         onChange={[Function]}
         value={undefined}
@@ -854,24 +854,24 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </select>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <input
-        className="sc-dnqmqq acdud"
+        className="sc-iwsKbI boALzA"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
         value={undefined}
       />
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={undefined}
       >
         load
       </button>
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={[Function]}
       >
@@ -879,7 +879,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </button>
     </div>
     <div
-      className="sc-gzVnrw jdktxT"
+      className="sc-htoDjs cnAjrS"
     >
       <button
         className="sc-gZMcBi kmPTEb"
@@ -895,7 +895,35 @@ exports[`Header has the button enabled if canParse is true 1`] = `
 `;
 
 exports[`Header renders correctly 1`] = `
-.dfgKLf {
+.fOnTQX {
+  padding: 0.5em 0.5em;
+  border: 1px solid #B1B1B1;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #B1B1B1;
+  color: #212121;
+  font-weight: bold;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  -webkit-transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  border: none;
+}
+
+.fOnTQX:hover {
+  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+}
+
+.fOnTQX + .fOnTQX {
+  margin-left: 0.7rem;
+}
+
+.arQZl {
   height: 70px;
   padding: 0 1rem;
   display: -webkit-box;
@@ -912,7 +940,7 @@ exports[`Header renders correctly 1`] = `
   box-shadow: 0 5px 25px rgba(138, 128, 115, 0.14);
 }
 
-.gRdHVw {
+.lcBPpi {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -930,15 +958,15 @@ exports[`Header renders correctly 1`] = `
   padding-right: 1rem;
 }
 
-.iZWaVz {
+.bSicIw {
   height: 40px;
 }
 
-.dtdqzi {
+.cMxHoB {
   margin-left: 0.8rem;
 }
 
-.gkhDQm {
+.jDIAvY {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -948,7 +976,7 @@ exports[`Header renders correctly 1`] = `
   height: 100%;
 }
 
-.dWtenm {
+.hvjMcs {
   color: grey;
   margin-right: 1em;
   font-size: 0.8rem;
@@ -958,7 +986,7 @@ exports[`Header renders correctly 1`] = `
   color: #636262;
 }
 
-.eJfGpj {
+.ccajvZ {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -972,15 +1000,15 @@ exports[`Header renders correctly 1`] = `
   padding-right: 1rem;
 }
 
-.eJfGpj + .eJfGpj {
+.ccajvZ + .ccajvZ {
   margin-left: 1rem;
 }
 
-.eJfGpj:last-child {
+.ccajvZ:last-child {
   border-right: none;
 }
 
-.jdktxT {
+.cnAjrS {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1001,15 +1029,15 @@ exports[`Header renders correctly 1`] = `
   padding-right: 0;
 }
 
-.jdktxT + .jdktxT {
+.cnAjrS + .cnAjrS {
   margin-left: 1rem;
 }
 
-.jdktxT:last-child {
+.cnAjrS:last-child {
   border-right: none;
 }
 
-.fvfSyI {
+.fGoKVN {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -1023,11 +1051,11 @@ exports[`Header renders correctly 1`] = `
   text-transform: uppercase;
 }
 
-.fvfSyI + button {
+.fGoKVN + button {
   margin-left: 3px;
 }
 
-.acdud {
+.boALzA {
   border-radius: 3px;
   border: 1px solid #dad7d0;
   background: white;
@@ -1040,36 +1068,8 @@ exports[`Header renders correctly 1`] = `
   text-transform: none;
 }
 
-.acdud + button {
+.boALzA + button {
   margin-left: 3px;
-}
-
-.kUlzXo {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  -webkit-text-transform: uppercase;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.kUlzXo:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
-}
-
-.kUlzXo + .kUlzXo {
-  margin-left: 0.7rem;
 }
 
 .kmPTEb {
@@ -1145,36 +1145,36 @@ exports[`Header renders correctly 1`] = `
 }
 
 <header
-  className="sc-bdVaJa dfgKLf"
+  className="sc-bwzfXH arQZl"
 >
   <h1
-    className="sc-bwzfXH gRdHVw"
+    className="sc-htpNat lcBPpi"
   >
     <img
       alt="bblfsh"
-      className="sc-htpNat iZWaVz"
+      className="sc-bxivhb bSicIw"
       src="babelfish_logo.svg"
     />
     <span
-      className="sc-bxivhb dtdqzi"
+      className="sc-ifAKCX cMxHoB"
     >
       Dashboard
     </span>
   </h1>
   <div
-    className="sc-ifAKCX gkhDQm"
+    className="sc-EHOje jDIAvY"
   >
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -1213,16 +1213,16 @@ exports[`Header renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <label
-        className="sc-EHOje dWtenm"
+        className="sc-bZQynM hvjMcs"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="sc-htoDjs fvfSyI"
+        className="sc-dnqmqq fGoKVN"
         id="examples-selector"
         onChange={[Function]}
         value={undefined}
@@ -1241,24 +1241,24 @@ exports[`Header renders correctly 1`] = `
       </select>
     </div>
     <div
-      className="sc-bZQynM eJfGpj"
+      className="sc-gzVnrw ccajvZ"
     >
       <input
-        className="sc-dnqmqq acdud"
+        className="sc-iwsKbI boALzA"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
         value={undefined}
       />
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={undefined}
       >
         load
       </button>
       <button
-        className="sc-iwsKbI kUlzXo"
+        className="sc-bdVaJa fOnTQX"
         disabled={true}
         onClick={[Function]}
       >
@@ -1266,7 +1266,7 @@ exports[`Header renders correctly 1`] = `
       </button>
     </div>
     <div
-      className="sc-gzVnrw jdktxT"
+      className="sc-htoDjs cnAjrS"
     >
       <button
         className="sc-gZMcBi kmPTEb"

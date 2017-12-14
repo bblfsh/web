@@ -5,6 +5,7 @@ Object {
   "customServer": true,
   "customServerUrl": "0.0.0.0:9432",
   "showLocations": false,
+  "uastQuery": "",
 }
 `;
 
@@ -13,6 +14,7 @@ Object {
   "customServer": false,
   "customServerUrl": "",
   "showLocations": false,
+  "uastQuery": "",
 }
 `;
 
@@ -21,6 +23,7 @@ Object {
   "customServer": false,
   "customServerUrl": "newUrl",
   "showLocations": false,
+  "uastQuery": "",
 }
 `;
 
@@ -29,6 +32,7 @@ Object {
   "customServer": false,
   "customServerUrl": "",
   "showLocations": false,
+  "uastQuery": "",
 }
 `;
 
@@ -37,5 +41,15 @@ Object {
   "customServer": false,
   "customServerUrl": "",
   "showLocations": true,
+  "uastQuery": "",
+}
+`;
+
+exports[`options/reducer SET_UAST_QUERY 1`] = `
+Object {
+  "customServer": false,
+  "customServerUrl": "",
+  "showLocations": false,
+  "uastQuery": "test",
 }
 `;

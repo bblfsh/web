@@ -8,6 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"gopkg.in/bblfsh/client-go.v2"
+	"gopkg.in/bblfsh/client-go.v2/tools"
 	"gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v1/uast"
 )
@@ -35,6 +36,7 @@ type parseRequest struct {
 	Language string `json:"language"`
 	Filename string `json:"filename"`
 	Content  string `json:"content"`
+	Query    string `json:"query"`
 }
 
 func (s *Server) HandleParse(ctx *gin.Context) {
@@ -60,7 +62,19 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
+	if req.Query != "" {
+		filtered, err := tools.Filter(resp.UAST, req.Query)
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
+			return
+		}
+		resp.UAST = &uast.Node{
+			InternalType: "Dashboard: Search results",
+			Children:     filtered,
+		}
+	}
+
+	ctx.JSON(toHTTPStatus(resp.Status), resp)
 }
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {

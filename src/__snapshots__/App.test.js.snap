@@ -223,6 +223,7 @@ exports[`render with errors 1`] = `
       <Connect(Editor) />
       <styled.div>
         <Connect(Options) />
+        <Connect(SearchPanel) />
         <Connect(UASTViewer) />
       </styled.div>
     </SplitPane>
@@ -454,6 +455,7 @@ exports[`renders without crashing 1`] = `
       <Connect(Editor) />
       <styled.div>
         <Connect(Options) />
+        <Connect(SearchPanel) />
         <Connect(UASTViewer) />
       </styled.div>
     </SplitPane>

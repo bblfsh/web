@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Spinner from './components/Spinner';
 import Editor from './components/Editor';
 import Options from './components/Options';
+import SearchPanel from './components/SearchPanel';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
 import { connect } from 'react-redux';
@@ -57,6 +58,7 @@ export class App extends Component {
 
         <RightPanel>
           <Options />
+          <SearchPanel />
           <UASTViewer />
         </RightPanel>
       </SplitPane>
