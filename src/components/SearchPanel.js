@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { background, border } from '../styling/variables';
 import { CssButton } from './Button';
 import { connect } from 'react-redux';
-import { setUastQuery } from 'state/options';
-import { runParserWithQuery } from 'state/code';
+import { setUastQuery } from '../state/options';
+import { runParserWithQuery } from '../state/code';
 
 const Container = styled.form`
   padding: 0.5rem 1rem;
