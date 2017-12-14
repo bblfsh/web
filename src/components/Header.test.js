@@ -143,4 +143,19 @@ describe('Header', () => {
 
     expect(component.toJSON()).toMatchStyledComponentsSnapshot();
   });
+
+  it('should return correct sharable url', () => {
+    const component = renderer.create(
+      <Header
+        languages={testLanguages}
+        canParse={true}
+        actualLanguage="python"
+        selectedLanguage=""
+        examples={testExamples}
+        gist="path/to/gist"
+      />
+    );
+
+    expect(component.getInstance().getSharableUrl()).toEqual('http://localhost/path/to/gist');
+  })
 });
