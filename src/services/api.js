@@ -6,7 +6,7 @@ const apiUrl = url => `${defaultServerUrl}${url}`;
 const unexpectedErrorMsg =
   'Unexpected error contacting babelfish server. Please, try again.';
 
-export function parse(language, filename, code, serverUrl) {
+export function parse(language, filename, code, query, serverUrl) {
   return new Promise((resolve, reject) => {
     return fetch(apiUrl('/parse'), {
       method: 'POST',
@@ -18,6 +18,7 @@ export function parse(language, filename, code, serverUrl) {
         language,
         filename,
         content: code,
+        query,
       }),
     })
       .then(resp => resp.json())

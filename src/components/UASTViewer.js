@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Node from './uast/Node';
+import SearchResults from './uast/SearchResults';
 import { font, background } from '../styling/variables';
 import { connect } from 'react-redux';
 import { markRange } from '../state/code';
+import { getNodeRootId, getSearchResults } from '../state/ast';
 
 const Container = styled.div`
   height: 100%;
@@ -18,28 +20,38 @@ const Container = styled.div`
 `;
 
 export class UASTViewer extends Component {
+  content() {
+    const { rootNodeId, searchResults, onNodeSelected } = this.props;
+
+    if (!rootNodeId) {
+      return null;
+    }
+
+    if (searchResults !== null) {
+      return (
+        <SearchResults
+          resultIds={searchResults}
+          onNodeSelected={onNodeSelected}
+        />
+      );
+    }
+
+    return <Node id={rootNodeId} onNodeSelected={onNodeSelected} />;
+  }
+
   render() {
+    const { clearNodeSelection } = this.props;
+
     return (
-      <Container onMouseOut={this.props.clearNodeSelection}>
-        {this.props.rootNodeId ? (
-          <Node
-            id={this.props.rootNodeId}
-            onNodeSelected={this.props.onNodeSelected}
-          />
-        ) : null}
-      </Container>
+      <Container onMouseOut={clearNodeSelection}>{this.content()}</Container>
     );
   }
 }
 
 export const mapStateToProps = state => {
-  let rootNodeId = 1;
-  if (!state.code.ast || !state.code.ast[1]) {
-    rootNodeId = null;
-  }
-
   return {
-    rootNodeId,
+    rootNodeId: getNodeRootId(state),
+    searchResults: getSearchResults(state),
   };
 };
 
