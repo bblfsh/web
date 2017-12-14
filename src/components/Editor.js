@@ -4,8 +4,8 @@ import { Controlled as CodeMirror } from 'react-codemirror2';
 import { background } from '../styling/variables';
 import { font, border } from '../styling/variables';
 import { connect } from 'react-redux';
-import { getLanguageMode } from 'state/languages';
-import { change as changeCode, selectNodeByPos } from 'state/code';
+import { getLanguageMode } from '../state/languages';
+import { change as changeCode, selectNodeByPos } from '../state/code';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';

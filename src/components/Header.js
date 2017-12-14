@@ -3,14 +3,14 @@ import styled, { css } from 'styled-components';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
 import { connect } from 'react-redux';
-import { select as languageSelect, set as languageSet } from 'state/languages';
+import { select as languageSelect, set as languageSet } from '../state/languages';
 import {
   examples as examplesList,
   select as exampleSelect,
-} from 'state/examples';
-import { runParser } from 'state/code';
-import { setURL as gistSetURL, load as gistLoad } from 'state/gist';
-import { isUrl } from 'state/options';
+} from '../state/examples';
+import { runParser } from '../state/code';
+import { setURL as gistSetURL, load as gistLoad } from '../state/gist';
+import { isUrl } from '../state/options';
 
 import bblfshLogo from '../img/babelfish_logo.svg';
 import githubIcon from '../img/github.svg';

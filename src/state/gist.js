@@ -1,5 +1,5 @@
-import * as history from 'services/history';
-import * as api from 'services/api';
+import * as history from '../services/history';
+import * as api from '../services/api';
 import { set as codeSet } from './code';
 import { reset as examplesReset } from './examples';
 import { add as errorsAdd } from './errors';

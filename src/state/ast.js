@@ -1,4 +1,4 @@
-import NodeIndex from 'services/NodeIndex';
+import NodeIndex from '../services/NodeIndex';
 
 export const NODE_EXPAND = 'bblfsh/ast/NODE_EXPAND';
 export const NODE_TOGGLE = 'bblfsh/ast/NODE_TOGGLE';

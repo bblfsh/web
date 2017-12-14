@@ -1,6 +1,6 @@
-import * as history from 'services/history';
-import * as api from 'services/api';
-import { indexDrivers } from 'drivers';
+import * as history from '../services/history';
+import * as api from '../services/api';
+import { indexDrivers } from '../drivers';
 import { add as errorsAdd } from './errors';
 
 export const initialState = {

@@ -1,11 +1,11 @@
-import * as history from 'services/history';
+import * as history from '../services/history';
 import * as code from './code';
 import * as languages from './languages';
 
-import { java_example_1 } from 'examples/hello.java.js';
-import { java_example_2 } from 'examples/swap.java.js';
-import { python_example_1 } from 'examples/fizzbuzz.py.js';
-import { python_example_2 } from 'examples/classdef.py.js';
+import { java_example_1 } from '../examples/hello.java.js';
+import { java_example_2 } from '../examples/swap.java.js';
+import { python_example_1 } from '../examples/fizzbuzz.py.js';
+import { python_example_2 } from '../examples/classdef.py.js';
 
 export const DEFAULT_EXAMPLE = 'java_example_1';
 const LANG_JAVA = 'java';

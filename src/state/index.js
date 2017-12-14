@@ -1,4 +1,4 @@
-import * as history from 'services/history';
+import * as history from '../services/history';
 import { combineReducers } from 'redux';
 import { reducer as errors } from './errors';
 import {

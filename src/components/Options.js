@@ -7,7 +7,7 @@ import {
   setCustomServerUrl,
   customServerToggle,
   isUrl,
-} from 'state/options';
+} from '../state/options';
 
 const Container = styled.div`
   padding: 0.5rem 1rem;

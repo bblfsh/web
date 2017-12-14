@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Node from './uast/Node';
 import { font, background } from '../styling/variables';
 import { connect } from 'react-redux';
-import { markRange } from 'state/code';
+import { markRange } from '../state/code';
 
 const Container = styled.div`
   height: 100%;

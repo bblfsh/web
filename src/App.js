@@ -11,8 +11,8 @@ import Options from './components/Options';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
 import { connect } from 'react-redux';
-import { remove as errorsRemove } from 'state/errors';
-import { init } from 'state';
+import { remove as errorsRemove } from './state/errors';
+import { init } from './state';
 
 const Wrap = styled.div`
   position: absolute;
