@@ -202,7 +202,7 @@ export class Header extends Component {
   }
 
   getSharableUrl() {
-    return `${window.location.origin}/${this.props.gistURL}`;
+    return `${window.location.origin}/${this.props.gist}`;
   }
 
   render() {
@@ -341,6 +341,7 @@ export const mapStateToProps = state => {
       code.dirty,
 
     gistURL: gist.url,
+    gist: gist.gist,
     isValidGist: gist.isValid,
   };
 };
