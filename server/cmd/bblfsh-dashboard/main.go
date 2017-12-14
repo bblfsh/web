@@ -17,7 +17,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const VERSION = "v0.3.0"
+var version = "dev"
 
 func flags() (addr, bblfshAddr string, debug, version bool) {
 	flag.StringVar(&addr, "addr", ":9999", "address in which the server will run")
@@ -30,10 +30,10 @@ func flags() (addr, bblfshAddr string, debug, version bool) {
 }
 
 func main() {
-	addr, bblfshAddr, debug, version := flags()
+	addr, bblfshAddr, debug, showVersion := flags()
 
-	if version {
-		fmt.Printf("bblfsh-dashboard %s\n", VERSION)
+	if showVersion {
+		fmt.Printf("bblfsh-dashboard %s\n", version)
 		return
 	}
 
@@ -41,7 +41,7 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	s, err := server.New(bblfshAddr, VERSION)
+	s, err := server.New(bblfshAddr, version)
 	if err != nil {
 		logrus.Fatalf("error starting new server at %s: %s", addr, err)
 	}
