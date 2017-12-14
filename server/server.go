@@ -62,7 +62,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		return
 	}
 
-	if req.Query != "" {
+	if resp.UAST != nil && req.Query != "" {
 		filtered, err := tools.Filter(resp.UAST, req.Query)
 		if err != nil {
 			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
