@@ -13,23 +13,28 @@ import (
 )
 
 type Server struct {
-	client *bblfsh.Client
+	client  *bblfsh.Client
+	version string
 }
 
-func New(addr string) (*Server, error) {
+func New(addr string, version string) (*Server, error) {
 	client, err := bblfsh.NewClient(addr)
 	if err != nil {
 		return nil, err
 	}
 
-	return &Server{client}, nil
+	return &Server{client, version}, nil
+}
+
+type request struct {
+	ServerURL string `json:"server_url"`
 }
 
 type parseRequest struct {
-	ServerURL string `json:"server_url"`
-	Language  string `json:"language"`
-	Filename  string `json:"filename"`
-	Content   string `json:"content"`
+	request
+	Language string `json:"language"`
+	Filename string `json:"filename"`
+	Content  string `json:"content"`
 }
 
 func (s *Server) HandleParse(ctx *gin.Context) {
@@ -39,7 +44,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		return
 	}
 
-	cli, err := s.clientForRequest(req)
+	cli, err := s.clientForRequest(req.request)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error starting client: %s", err))
 		return
@@ -58,7 +63,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
 }
 
-func (s *Server) clientForRequest(req parseRequest) (*bblfsh.Client, error) {
+func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
 	if req.ServerURL == "" {
 		return s.client, nil
 	}
@@ -83,6 +88,34 @@ func (s *Server) LoadGist(ctx *gin.Context) {
 	}
 
 	ctx.String(resp.StatusCode, string(gistContent))
+}
+
+type versionRequest struct {
+	request
+}
+
+func (s *Server) Version(ctx *gin.Context) {
+	var req versionRequest
+	if err := ctx.BindJSON(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
+		return
+	}
+
+	cli, err := s.clientForRequest(req.request)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, jsonError("error starting client: %s", err))
+		return
+	}
+
+	resp, err := cli.NewVersionRequest().Do()
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, jsonError("error getting server version: %s", err))
+	}
+
+	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{
+		"dashboard": s.version,
+		"server":    resp.Version,
+	})
 }
 
 func (s *Server) ListDrivers(ctx *gin.Context) {

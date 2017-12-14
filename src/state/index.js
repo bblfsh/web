@@ -14,6 +14,7 @@ import {
   DEFAULT_EXAMPLE,
 } from './examples';
 import { reducer as gist, set as gistSet, load as gistLoad } from './gist';
+import { reducer as versions, load as versionsLoad } from './versions';
 
 export default combineReducers({
   errors,
@@ -22,12 +23,13 @@ export default combineReducers({
   code,
   examples,
   gist,
+  versions,
 });
 
 export const init = () => dispatch => {
   const { gistUrl, lang } = history.parse();
 
-  return dispatch(languagesLoad())
+  const mainPromise = dispatch(languagesLoad())
     .then(() => {
       if (lang) {
         dispatch(languageSelect(lang));
@@ -44,4 +46,6 @@ export const init = () => dispatch => {
     .then(() => {
       return dispatch(runParser());
     });
+
+  return Promise.all([mainPromise, dispatch(versionsLoad())]);
 };

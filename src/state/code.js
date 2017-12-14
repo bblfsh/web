@@ -8,6 +8,7 @@ import {
 } from './ast';
 import { set as languageSet } from './languages';
 import { add as errorsAdd, clear as errorsClear } from './errors';
+import { updateIfNeeded as versionUpdateIfNeeded } from './versions';
 
 export const initialState = {
   filename: undefined,
@@ -144,6 +145,9 @@ export const runParser = () => (dispatch, getState) => {
 
   dispatch(errorsClear());
   dispatch({ type: PARSE });
+
+  // there is no action for custom server update, run parser is such an action
+  dispatch(versionUpdateIfNeeded());
 
   return api
     .parse(
