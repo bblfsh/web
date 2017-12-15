@@ -27,7 +27,7 @@ describe('NodeIndex', () => {
       const index = new NodeIndex();
       index.add({
         start: { Line: 1, Col: 1 },
-        end: { Line: 1, Col: 1 }
+        end: { Line: 1, Col: 1 },
       });
       expect(index.index[1][1].length).toBe(1);
     });
@@ -35,7 +35,7 @@ describe('NodeIndex', () => {
     it('does not add a duplicated node', () => {
       const node = {
         start: { Line: 1, Col: 1 },
-        end: { Line: 1, Col: 1 }
+        end: { Line: 1, Col: 1 },
       };
       const index = new NodeIndex();
       index.add(node);
@@ -75,7 +75,7 @@ describe('NodeIndex', () => {
       { line: 1, col: 3, expected: 'child1' },
       { line: 1, col: 5, expected: 'parent' },
       { line: 1, col: 6, expected: 'child2' },
-      { line: 2, col: 6, expected: 'child2' }
+      { line: 2, col: 6, expected: 'child2' },
     ];
 
     cases.forEach(c => {

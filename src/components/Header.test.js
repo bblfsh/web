@@ -156,6 +156,8 @@ describe('Header', () => {
       />
     );
 
-    expect(component.getInstance().getSharableUrl()).toEqual('http://localhost/path/to/gist');
-  })
+    expect(component.getInstance().getSharableUrl()).toEqual(
+      'http://localhost/path/to/gist'
+    );
+  });
 });

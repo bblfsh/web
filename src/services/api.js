@@ -81,14 +81,14 @@ export function getGist(gist) {
 
 export function version(serverUrl) {
   return fetch(apiUrl(`/version`), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        server_url: serverUrl,
-      }),
-    })
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      server_url: serverUrl,
+    }),
+  })
     .then(checkStatus)
     .then(resp => resp.json())
     .catch(err => {
