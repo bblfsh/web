@@ -72,12 +72,7 @@ func main() {
 	}
 	r.StaticFile("/", filepath.Join(dir, "index.html"))
 	r.Static("/static", filepath.Join(dir, "static"))
-
-	api := r.Group("/api")
-	api.POST("/parse", s.HandleParse)
-	api.GET("/drivers", s.ListDrivers)
-	api.GET("/gist", s.LoadGist)
-	api.POST("/version", s.Version)
+	server.Mount(s, r.Group("/api"))
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 

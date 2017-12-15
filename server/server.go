@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"gopkg.in/bblfsh/client-go.v2"
@@ -14,8 +15,9 @@ import (
 )
 
 type Server struct {
-	client  *bblfsh.Client
-	version string
+	client     *bblfsh.Client
+	httpClient *http.Client
+	version    string
 }
 
 func New(addr string, version string) (*Server, error) {
@@ -24,7 +26,19 @@ func New(addr string, version string) (*Server, error) {
 		return nil, err
 	}
 
-	return &Server{client, version}, nil
+	return &Server{
+		client:     client,
+		version:    version,
+		httpClient: &http.Client{Timeout: 5 * time.Second},
+	}, nil
+}
+
+func Mount(s *Server, r gin.IRouter) gin.IRouter {
+	r.POST("/parse", s.HandleParse)
+	r.GET("/drivers", s.ListDrivers)
+	r.GET("/gist", s.LoadGist)
+	r.POST("/version", s.Version)
+	return r
 }
 
 type request struct {
@@ -74,7 +88,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		}
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), resp)
+	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
 }
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
@@ -85,12 +99,20 @@ func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
 	return bblfsh.NewClient(req.ServerURL)
 }
 
-func (s *Server) LoadGist(ctx *gin.Context) {
-	gistUrl := "https://gist.githubusercontent.com/" + ctx.Query("url")
+// MakeGistURL makes url to github's gust
+// export to allow mocking in test
+var MakeGistURL = func(u string) string {
+	return "https://gist.githubusercontent.com/" + u
+}
 
-	resp, err := http.Get(gistUrl)
+func (s *Server) LoadGist(ctx *gin.Context) {
+	resp, err := s.httpClient.Get(MakeGistURL(ctx.Query("url")))
 	if err != nil {
 		ctx.JSON(http.StatusNotFound, jsonError("Gist not found: %s", err))
+		return
+	}
+	if resp.StatusCode != http.StatusOK {
+		ctx.JSON(http.StatusNotFound, jsonError("Gist not found"))
 		return
 	}
 	defer resp.Body.Close()
