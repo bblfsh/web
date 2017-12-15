@@ -320,7 +320,6 @@ const mapDispatchToProps = dispatch => {
   return {
     onLanguageChanged: lang => {
       dispatch(languageSelect(lang));
-      dispatch(runParser());
     },
     onExampleChanged: key => {
       dispatch(exampleSelect(key));
