@@ -60,6 +60,7 @@ export function Options({
       <Field>
         <input
           type="checkbox"
+          id="show-locations"
           name="show-locations"
           checked={showLocations}
           onChange={onLocationsToggle}
@@ -70,6 +71,7 @@ export function Options({
       <Field>
         <input
           type="checkbox"
+          id="custom-server"
           name="custom-server"
           checked={customServer}
           onChange={onCustomServerToggle}
