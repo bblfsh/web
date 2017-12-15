@@ -35,6 +35,9 @@ dependencies-frontend: install-client-go dependencies
 test-frontend: dependencies-frontend
 	$(YARN) test
 
+lint: dependencies-frontend
+	$(YARN) lint
+
 assets: build dependencies-frontend
 	$(BINDATA) -pkg asset -o ./server/asset/asset.go `find ./build -type d`
 

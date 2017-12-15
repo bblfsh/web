@@ -4,7 +4,10 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
 import Button, { CssButton } from './Button';
 import { connect } from 'react-redux';
-import { select as languageSelect, set as languageSet } from '../state/languages';
+import {
+  select as languageSelect,
+  set as languageSet,
+} from '../state/languages';
 import {
   examples as examplesList,
   select as exampleSelect,
