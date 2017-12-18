@@ -18,6 +18,8 @@ SERVER_URL ?= /api
 BBLFSH_PORT ?= 9432
 API_PORT ?= 9999
 
+rebuild := $(shell cp server/asset/asset.go.tpl server/asset/asset.go)
+
 $(MAKEFILE):
 	@git clone --quiet $(CI_REPOSITORY) $(CI_FOLDER); \
 	cp $(CI_FOLDER)/$(MAKEFILE) .;
