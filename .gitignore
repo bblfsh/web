@@ -63,3 +63,6 @@ typings/
 Makefile.main
 .ci
 bin
+
+# Go assets
+server/asset/asset.go
