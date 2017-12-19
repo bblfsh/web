@@ -70,9 +70,12 @@ func main() {
 			r.StaticFile("/"+a, filepath.Join(dir, a))
 		}
 	}
-	r.StaticFile("/", filepath.Join(dir, "index.html"))
+	indexPath := filepath.Join(dir, "index.html")
+	r.StaticFile("/", indexPath)
 	r.Static("/static", filepath.Join(dir, "static"))
 	server.Mount(s, r.Group("/api"))
+	// we handle urls on frontend
+	r.NoRoute(func(c *gin.Context) { c.File(indexPath) })
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 
