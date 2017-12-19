@@ -4,6 +4,10 @@ COMMANDS = server/cmd/bblfsh-dashboard
 DEPENDENCIES = \
 	github.com/jteeuwen/go-bindata
 
+# Environment
+BASE_PATH := $(shell pwd)
+ASSETS_PATH := $(BASE_PATH)/build
+
 # Including ci Makefile
 MAKEFILE = Makefile.main
 CI_REPOSITORY = https://github.com/src-d/ci.git
@@ -32,10 +36,10 @@ $(MAKEFILE):
 
 # simple go get doesn't work for client go
 install-client-go:
-	go get gopkg.in/bblfsh/client-go.v2
-	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make cgo-dependencies)
+	go get -d -u -v gopkg.in/bblfsh/client-go.v2
+	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
 
-dependencies-frontend: install-client-go dependencies
+dependencies-frontend: | install-client-go dependencies
 	$(YARN)	install
 
 test-frontend: dependencies-frontend
@@ -44,11 +48,19 @@ test-frontend: dependencies-frontend
 lint: dependencies-frontend
 	$(YARN) lint
 
-assets: build dependencies-frontend
-	$(BINDATA) -pkg asset -o ./server/asset/asset.go `find ./build -type d`
+assets: | build dependencies-frontend
+	chmod -R go=r $(ASSETS_PATH); \
+	$(BINDATA) \
+		-modtime 1 \
+		-pkg asset \
+		-o ./server/asset/asset.go \
+		-prefix $(BASE_PATH) \
+		$(ASSETS_PATH)/...
 
 build: dependencies-frontend
-	REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
+	GENERATE_SOURCEMAP=false REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
+
+validate-commit: assets no-changes-in-commit
 
 ## Compiles the dashboard assets, and serve the dashboard through its API
 serve:

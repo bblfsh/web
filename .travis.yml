@@ -15,6 +15,7 @@ before_install:
   - npm install -g yarn
 
 script:
+  - make validate-commit
   - make lint
   - make test-frontend
   - make test-coverage
