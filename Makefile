@@ -9,6 +9,12 @@ MAKEFILE = Makefile.main
 CI_REPOSITORY = https://github.com/src-d/ci.git
 CI_FOLDER = .ci
 
+# Use cgo during build because client-go needs it
+CGO_ENABLED = 1
+
+# Cross compilation doesn't work with cgo
+PKG_OS = linux
+
 # Tools
 YARN = yarn
 REMOVE = rm -rf

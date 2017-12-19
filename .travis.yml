@@ -37,4 +37,4 @@ deploy:
     go: 1.9
 
 after_deploy:
-  - make docker-push
+  - make docker-push-latest
