@@ -1,6 +1,6 @@
 .Resizer {
     background: #000000;
-    opacity: .2;
+    opacity: 0.2;
     z-index: 1;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -25,8 +25,8 @@
 }
 
 .Resizer.horizontal:hover {
-    border-top: 5px solid rgba(0, 0, 0, .5);
-    border-bottom: 5px solid rgba(0, 0, 0, .5);
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
 }
 
 .Resizer.vertical {
@@ -48,6 +48,11 @@
 
 .Resizer.disabled:hover {
     border-color: transparent;
+}
+
+/* theming code mirror */
+.react-codemirror2 {
+    height: 100%;
 }
 
 .cm-s-solarized.cm-s-light {
