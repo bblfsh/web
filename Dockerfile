@@ -1,5 +1,9 @@
-FROM alpine:3.6
+FROM debian:stretch-slim
 
-RUN apk add --no-cache device-mapper ca-certificates
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends --no-install-suggests \
+    ca-certificates \
+    libxml2 \
+    && apt-get clean
 ADD bin/bblfsh-dashboard /bin/bblfsh-dashboard
 ENTRYPOINT ["/bin/bblfsh-dashboard", "-addr", ":80"]
