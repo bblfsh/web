@@ -600,6 +600,77 @@ exports[`Node renders correctly 1`] = `
     </div>
     <div
       className="sc-bdVaJa jQbgOF"
+    >
+      <div
+        className="sc-bwzfXH hRiJmB"
+      >
+        <span
+          className="sc-bZQynM iOQEqP"
+        >
+          token
+        </span>
+        <span
+          className="sc-EHOje HnGWi"
+          type="string"
+        >
+          bar
+        </span>
+      </div>
+    </div>
+    <div
+      className="sc-bdVaJa jQbgOF"
+      onMouseMove={undefined}
+    >
+      <div
+        className="sc-htpNat ghHrsA"
+        onClick={[Function]}
+      >
+        <span
+          className="sc-bZQynM iOQEqP"
+        >
+          roles
+        </span>
+        <summary
+          className="sc-ifAKCX gaIEnP"
+        >
+          []Role
+        </summary>
+      </div>
+      <div
+        className="sc-bxivhb dJnrFt"
+      >
+        <div
+          className="sc-bdVaJa jQbgOF"
+        >
+          <div
+            className="sc-bwzfXH hRiJmB"
+          >
+            <span
+              className="sc-EHOje HnGWi"
+              type="string"
+            >
+              e
+            </span>
+          </div>
+        </div>
+        <div
+          className="sc-bdVaJa jQbgOF"
+        >
+          <div
+            className="sc-bwzfXH hRiJmB"
+          >
+            <span
+              className="sc-EHOje HnGWi"
+              type="string"
+            >
+              g
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-bdVaJa jQbgOF"
       onMouseMove={undefined}
     >
       <div
@@ -798,77 +869,6 @@ exports[`Node renders correctly 1`] = `
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="sc-bdVaJa jQbgOF"
-    >
-      <div
-        className="sc-bwzfXH hRiJmB"
-      >
-        <span
-          className="sc-bZQynM iOQEqP"
-        >
-          token
-        </span>
-        <span
-          className="sc-EHOje HnGWi"
-          type="string"
-        >
-          bar
-        </span>
-      </div>
-    </div>
-    <div
-      className="sc-bdVaJa jQbgOF"
-      onMouseMove={undefined}
-    >
-      <div
-        className="sc-htpNat ghHrsA"
-        onClick={[Function]}
-      >
-        <span
-          className="sc-bZQynM iOQEqP"
-        >
-          roles
-        </span>
-        <summary
-          className="sc-ifAKCX gaIEnP"
-        >
-          []Role
-        </summary>
-      </div>
-      <div
-        className="sc-bxivhb dJnrFt"
-      >
-        <div
-          className="sc-bdVaJa jQbgOF"
-        >
-          <div
-            className="sc-bwzfXH hRiJmB"
-          >
-            <span
-              className="sc-EHOje HnGWi"
-              type="string"
-            >
-              e
-            </span>
-          </div>
-        </div>
-        <div
-          className="sc-bdVaJa jQbgOF"
-        >
-          <div
-            className="sc-bwzfXH hRiJmB"
-          >
-            <span
-              className="sc-EHOje HnGWi"
-              type="string"
-            >
-              g
-            </span>
           </div>
         </div>
       </div>
