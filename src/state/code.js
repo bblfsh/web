@@ -39,7 +39,6 @@ export const reducer = (state = initialState, action) => {
         }),
         filename: action.filename,
         code: action.code,
-        dirty: true,
         markRange: null,
       };
     case PARSE:
@@ -61,6 +60,7 @@ export const reducer = (state = initialState, action) => {
         ast: tree,
         posIndex,
         parsing: false,
+        dirty: false,
       };
     case CHANGE:
       return {

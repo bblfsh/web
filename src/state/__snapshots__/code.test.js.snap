@@ -155,7 +155,7 @@ Object {
     },
   },
   "code": "foo = 1",
-  "dirty": true,
+  "dirty": false,
   "filename": "file.py",
   "markRange": null,
   "parsing": false,
