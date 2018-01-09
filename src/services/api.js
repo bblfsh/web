@@ -1,3 +1,5 @@
+import log from './log';
+
 const defaultServerUrl =
   process.env.REACT_APP_SERVER_URL || 'http://0.0.0.0:9999/api';
 
@@ -30,7 +32,7 @@ export function parse(language, filename, code, query, serverUrl) {
         }
       })
       .catch(err => {
-        console.error(err);
+        log.error(err);
         reject([unexpectedErrorMsg]);
       });
   });
@@ -73,7 +75,7 @@ export function getGist(gist) {
       .then(resp => resp.text())
       .then(code => resolve(code))
       .catch(err => {
-        console.error(err);
+        log.error(err);
         reject([err].map(normalizeError));
       });
   });
@@ -92,7 +94,7 @@ export function version(serverUrl) {
     .then(checkStatus)
     .then(resp => resp.json())
     .catch(err => {
-      console.error(err);
+      log.error(err);
       return Promise.reject([err].map(normalizeError));
     });
 }

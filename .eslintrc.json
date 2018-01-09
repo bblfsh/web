@@ -21,7 +21,6 @@
   },
   "plugins": ["react", "jest"],
   "rules": {
-    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
     "react/prop-types": 0,
     "no-case-declarations": 0
   }

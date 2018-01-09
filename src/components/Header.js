@@ -4,6 +4,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { shadow, font, background, border } from '../styling/variables';
 import Button, { CssButton } from './Button';
 import { connect } from 'react-redux';
+import log from '../services/log';
 import {
   select as languageSelect,
   set as languageSet,
@@ -171,7 +172,7 @@ export function DriverCode({ languages, selectedLanguage, actualLanguage }) {
 
 export class Header extends Component {
   onShareGist(shared) {
-    console.info('shared url:' + shared);
+    log.info('shared url:' + shared);
   }
 
   getSharableUrl() {
@@ -338,7 +339,7 @@ const mapDispatchToProps = dispatch => {
           dispatch(languageSelect(''));
           dispatch(runParser());
         })
-        .catch(() => console.error('can not load gist'));
+        .catch(() => log.error('can not load gist'));
     },
   };
 };
