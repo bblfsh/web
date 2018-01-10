@@ -312,7 +312,7 @@ export const mapStateToProps = state => {
       !languages.loading &&
       !code.parsing &&
       (validServerUrl || !options.customServer) &&
-      code.dirty,
+      !!code.code,
 
     gistURL: gist.url,
     gist: gist.gist,

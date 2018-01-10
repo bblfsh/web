@@ -233,4 +233,16 @@ describe('Node', () => {
 
     expect(wrapper.find(Position).length).toBe(2);
   });
+
+  it('does not calls onNodeSelected when the code is dirty', () => {
+    const nodeState = { id: 1 };
+
+    const spy = jest.fn();
+    const wrapper = mount(
+      <Node onNodeSelected={spy} node={nodeState} dirty={true} />
+    );
+    wrapper.find(StyledItem).simulate('mousemove');
+
+    expect(spy.mock.calls.length).toBe(0);
+  });
 });

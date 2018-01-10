@@ -99,6 +99,10 @@ export class Node extends Component {
   }
 
   onNodeSelected(e) {
+    if (this.props.dirty) {
+      return;
+    }
+
     const { StartPosition: start, EndPosition: end } = this.props.node;
 
     let from, to;
@@ -157,6 +161,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     node: state.code.ast[ownProps.id],
     showLocations: state.options.showLocations,
+    dirty: state.code.dirty,
   };
 };
 
