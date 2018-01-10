@@ -91,7 +91,12 @@ export const getSearchResults = state => {
   return null;
 };
 
-export const expand = nodeId => ({
+export const nodeToggle = nodeId => ({
+  type: NODE_TOGGLE,
+  nodeId,
+});
+
+export const nodeExpand = nodeId => ({
   type: NODE_EXPAND,
   nodeId,
 });
