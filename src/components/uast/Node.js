@@ -136,10 +136,6 @@ export class Node extends Component {
       >
         <Property name="internal_type" value={node.InternalType} />
         <Properties properties={node.Properties} />
-        <Children
-          ids={node.Children}
-          onNodeSelected={this.props.onNodeSelected}
-        />
         <Property name="token" value={node.Token} />
         {showLocations ? (
           <Position name="start_position" position={node.StartPosition} />
@@ -148,6 +144,10 @@ export class Node extends Component {
           <Position name="end_position" position={node.EndPosition} />
         ) : null}
         <Roles roles={node.Roles} />
+        <Children
+          ids={node.Children}
+          onNodeSelected={this.props.onNodeSelected}
+        />
       </CollapsibleItem>
     );
   }
