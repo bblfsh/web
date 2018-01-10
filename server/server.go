@@ -23,7 +23,7 @@ type Server struct {
 func New(addr string, version string) (*Server, error) {
 	client, err := bblfsh.NewClient(addr)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("Can't connect to bblfsh server: %s", err)
 	}
 
 	return &Server{
