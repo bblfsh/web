@@ -1,5 +1,6 @@
 import * as history from '../services/history';
 import * as api from '../services/api';
+import log from '../services/log';
 import { indexDrivers } from '../drivers';
 import { add as errorsAdd } from './errors';
 
@@ -68,7 +69,7 @@ export const load = () => dispatch => {
       })
     )
     .catch(err => {
-      console.error(err);
+      log.error(err);
       dispatch({ type: LOAD_FAILED });
       dispatch(errorsAdd(['Unable to load the list of available drivers.']));
     });
