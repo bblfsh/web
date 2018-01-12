@@ -4,7 +4,7 @@ import {
   convertTree,
   nodeHighlight,
   nodeUnhighlight,
-  expand,
+  nodeExpand,
 } from './ast';
 import { set as languageSet } from './languages';
 import { setUastQuery } from './options';
@@ -130,7 +130,7 @@ export const selectNodeByPos = ({ line, ch }) => (dispatch, getState) => {
   // expand tree
   let id = node.id;
   while (id) {
-    dispatch(expand(id));
+    dispatch(nodeExpand(id));
     id = code.ast[id].parentId;
   }
   return dispatch(nodeHighlight(node.id));

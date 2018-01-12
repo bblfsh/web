@@ -22,7 +22,7 @@ import {
   NODE_TOGGLE,
   NODE_HIGHLIGHT,
   NODE_UNHIGHLIGHT,
-  expand,
+  nodeExpand,
   nodeHighlight,
   nodeUnhighlight,
 } from './ast';
@@ -172,9 +172,9 @@ describe('code/actions', () => {
     store.dispatch(selectNodeByPos(pos));
     expect(store.getActions()).toEqual([
       nodeUnhighlight(4),
-      expand(3),
-      expand(2),
-      expand(1),
+      nodeExpand(3),
+      nodeExpand(2),
+      nodeExpand(1),
       nodeHighlight(3),
     ]);
   });

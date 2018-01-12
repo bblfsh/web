@@ -40,20 +40,35 @@ describe('CollapsibleItem', () => {
     expect(content).toHaveStyleRule('display', 'block');
   });
 
-  it('is collapsed when the title is clicked', () => {
-    const wrapper = mount(<CollapsibleItem collapsed={false} />);
+  it('is collapsed when the title is clicked (uncontrolled)', () => {
+    const wrapper = mount(<CollapsibleItem />);
     const title = wrapper.find(StyledCollapsibleTitle);
     title.simulate('click');
     const content = wrapper.find(StyledCollapsibleContent);
     expect(content).toHaveStyleRule('display', 'none');
   });
 
-  it('is expanded when the title is clicked and it was collpased', () => {
-    const wrapper = mount(<CollapsibleItem collapsed={true} />);
+  it('is expanded when the title is clicked and it was collpased (uncontrolled)', () => {
+    const wrapper = mount(<CollapsibleItem />);
+    wrapper.setState({ collapsed: true });
     const title = wrapper.find(StyledCollapsibleTitle);
     title.simulate('click');
     const content = wrapper.find(StyledCollapsibleContent);
     expect(content).toHaveStyleRule('display', 'block');
+  });
+
+  it('is collapsed when collapsed prop = true (controlled)', () => {
+    const wrapper = mount(<CollapsibleItem collapsed={true} />);
+    const content = wrapper.find(StyledCollapsibleContent);
+    expect(content).toHaveStyleRule('display', 'none');
+  });
+
+  it('toggle is called when the title is clicked (controlled)', () => {
+    const toggle = jest.fn();
+    const wrapper = mount(<CollapsibleItem collapsed={true} toggle={toggle} />);
+    const title = wrapper.find(StyledCollapsibleTitle);
+    title.simulate('click');
+    expect(toggle.mock.calls.length).toBe(1);
   });
 
   it('calls onNodeSelected when the mouse is over the node', () => {

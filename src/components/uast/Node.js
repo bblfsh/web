@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { font, border, background } from '../../styling/variables';
 import { connect } from 'react-redux';
+import { nodeToggle } from '../../state/ast';
 
 const INDENT_SIZE = 20;
 const WHITE_SPACE = 5;
@@ -125,7 +126,7 @@ export class Node extends Component {
   }
 
   render() {
-    const { node, showLocations } = this.props;
+    const { node, showLocations, toggle } = this.props;
 
     if (!node) {
       return null;
@@ -136,6 +137,7 @@ export class Node extends Component {
         label="Node"
         highlighted={node.highlighted}
         collapsed={!node.expanded}
+        toggle={() => toggle(node.id)}
         onNodeSelected={this.onNodeSelected}
       >
         <Property name="internal_type" value={node.InternalType} />
@@ -165,7 +167,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const ConnectedNode = connect(mapStateToProps)(Node);
+const ConnectedNode = connect(mapStateToProps, {
+  toggle: nodeToggle,
+})(Node);
 export default ConnectedNode;
 
 export function Properties({ properties }) {
@@ -273,11 +277,11 @@ export class CollapsibleItem extends Component {
   }
 
   toggle() {
-    this.setState({ collapsed: !this.state.collapsed });
-  }
-
-  expand() {
-    this.setState({ collapsed: false });
+    if (!this.controlled) {
+      this.setState({ collapsed: !this.state.collapsed });
+      return;
+    }
+    this.props.toggle();
   }
 
   render() {
