@@ -12,6 +12,7 @@ import {
   SET_AST,
   CHANGE,
   MARK,
+  SET_HOVER_ID,
   runParserWithQuery,
   runParser,
   setAst,
@@ -145,6 +146,12 @@ describe('code/reducer', () => {
         },
         { type: NODE_UNHIGHLIGHT, nodeId: 1 }
       )
+    ).toMatchSnapshot();
+  });
+
+  it('SET_HOVER_ID', () => {
+    expect(
+      reducer(initialWithNode, { type: SET_HOVER_ID, nodeId: 1 })
     ).toMatchSnapshot();
   });
 });

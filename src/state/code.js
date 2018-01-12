@@ -16,6 +16,7 @@ export const initialState = {
   code: null,
   ast: {},
   posIndex: null,
+  hoveredId: null,
 
   dirty: false,
   markRange: null,
@@ -28,6 +29,7 @@ export const PARSE_FAILED = 'bblfsh/code/PARSE_FAILED';
 export const SET_AST = 'bblfsh/code/SET_AST';
 export const CHANGE = 'bblfsh/code/CHANGE';
 export const MARK = 'bblfsh/code/MARK';
+export const SET_HOVERED_ID = 'bblfsh/code/SET_HOVERED_ID';
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -72,6 +74,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         markRange: action.range,
+      };
+    case SET_HOVERED_ID:
+      return {
+        ...state,
+        hoveredId: action.id,
       };
     default:
       if (action.nodeId) {
@@ -172,3 +179,8 @@ export const runParser = () => dispatch => {
   dispatch(setUastQuery(''));
   return dispatch(runParserWithQuery());
 };
+
+export const setHoveredNode = id => ({
+  type: SET_HOVERED_ID,
+  id,
+});

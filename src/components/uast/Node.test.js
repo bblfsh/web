@@ -224,7 +224,7 @@ describe('Node', () => {
       .first()
       .simulate('mousemove');
     expect(spy.mock.calls.length).toBe(1);
-    const { line, ch } = spy.mock.calls[0][0];
+    const { line, ch } = spy.mock.calls[0][1];
     expect(line).toBe(1);
     expect(ch).toBe(1);
   });

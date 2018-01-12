@@ -16,7 +16,10 @@ const COLLAPSIBLE_EXTENDED = "'-'";
 export const StyledItem = styled.div`
   margin-left: ${INDENT_SIZE}px;
   min-width: 400px;
-  background: ${props => (props.highlighted ? background.highlight : 'none')};
+  background: ${props =>
+    props.highlighted
+      ? background.highlight
+      : props.hovered ? background.veryLightGrey : 'none'};
 `;
 
 const StyledTitle = styled.div`
@@ -104,7 +107,7 @@ export class Node extends Component {
       return;
     }
 
-    const { StartPosition: start, EndPosition: end } = this.props.node;
+    const { id, StartPosition: start, EndPosition: end } = this.props.node;
 
     let from, to;
     if (start && start.Line && start.Col) {
@@ -121,12 +124,12 @@ export class Node extends Component {
       };
     }
 
-    this.props.onNodeSelected && this.props.onNodeSelected(from, to);
+    this.props.onNodeSelected && this.props.onNodeSelected(id, from, to);
     e.stopPropagation();
   }
 
   render() {
-    const { node, showLocations, toggle } = this.props;
+    const { node, showLocations, hoveredId, toggle } = this.props;
 
     if (!node) {
       return null;
@@ -137,6 +140,7 @@ export class Node extends Component {
         label="Node"
         highlighted={node.highlighted}
         collapsed={!node.expanded}
+        hovered={hoveredId === node.id}
         toggle={() => toggle(node.id)}
         onNodeSelected={this.onNodeSelected}
       >
@@ -162,6 +166,7 @@ export class Node extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     node: state.code.ast[ownProps.id],
+    hoveredId: state.code.hoveredId,
     showLocations: state.options.showLocations,
     dirty: state.code.dirty,
   };
@@ -285,9 +290,20 @@ export class CollapsibleItem extends Component {
   }
 
   render() {
-    const { name, label, children, onNodeSelected, highlighted } = this.props;
+    const {
+      name,
+      label,
+      children,
+      onNodeSelected,
+      highlighted,
+      hovered,
+    } = this.props;
     return (
-      <StyledItem onMouseMove={onNodeSelected} highlighted={highlighted}>
+      <StyledItem
+        onMouseMove={onNodeSelected}
+        highlighted={highlighted}
+        hovered={hovered}
+      >
         <StyledCollapsibleTitle
           collapsed={this.state.collapsed}
           onClick={this.toggle.bind(this)}

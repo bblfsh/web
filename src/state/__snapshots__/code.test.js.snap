@@ -6,6 +6,7 @@ Object {
   "code": "bar = 1",
   "dirty": true,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -18,6 +19,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": Object {
     "from": 1,
     "to": 2,
@@ -39,6 +41,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -58,6 +61,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -76,6 +80,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -94,6 +99,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -113,6 +119,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -125,6 +132,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": true,
   "posIndex": null,
@@ -137,6 +145,7 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": null,
@@ -157,6 +166,7 @@ Object {
   "code": "foo = 1",
   "dirty": false,
   "filename": "file.py",
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": NodeIndex {
@@ -181,10 +191,30 @@ Object {
   "code": null,
   "dirty": false,
   "filename": undefined,
+  "hoveredId": null,
   "markRange": null,
   "parsing": false,
   "posIndex": NodeIndex {
     "index": Array [],
   },
+}
+`;
+
+exports[`code/reducer SET_HOVER_ID 1`] = `
+Object {
+  "ast": Object {
+    "1": Object {
+      "expanded": false,
+      "higlighted": false,
+      "id": 1,
+    },
+  },
+  "code": null,
+  "dirty": false,
+  "filename": undefined,
+  "hoveredId": null,
+  "markRange": null,
+  "parsing": false,
+  "posIndex": null,
 }
 `;
