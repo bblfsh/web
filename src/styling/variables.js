@@ -13,6 +13,7 @@ const color = {
   custom: {
     smoothGrey: '#dad7d0',
     highlight: '#FFFF00',
+    veryLightGrey: '#f9f9f9',
   },
 };
 
@@ -51,6 +52,7 @@ export const background = {
   highlight: color.custom.highlight,
   light: color.base.light,
   lightGrey: color.base.lightGrey,
+  veryLightGrey: color.custom.veryLightGrey,
   accent: color.accent.deepOrange,
 };
 

@@ -4,7 +4,7 @@ import Node from './uast/Node';
 import SearchResults from './uast/SearchResults';
 import { font, background } from '../styling/variables';
 import { connect } from 'react-redux';
-import { markRange } from '../state/code';
+import { markRange, setHoveredNode } from '../state/code';
 import { getNodeRootId, getSearchResults } from '../state/ast';
 
 const Container = styled.div`
@@ -58,7 +58,10 @@ export const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     clearNodeSelection: () => dispatch(markRange()),
-    onNodeSelected: (from, to) => dispatch(markRange(from, to)),
+    onNodeSelected: (id, from, to) => {
+      dispatch(setHoveredNode(id));
+      dispatch(markRange(from, to));
+    },
   };
 };
 
