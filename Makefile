@@ -8,11 +8,6 @@ DEPENDENCIES = \
 BASE_PATH := $(shell pwd)
 ASSETS_PATH := $(BASE_PATH)/build
 
-# Including ci Makefile
-MAKEFILE = Makefile.main
-CI_REPOSITORY = https://github.com/src-d/ci.git
-CI_FOLDER = .ci
-
 # Use cgo during build because client-go needs it
 CGO_ENABLED = 1
 
@@ -28,10 +23,12 @@ SERVER_URL ?= /api
 BBLFSH_PORT ?= 9432
 API_PORT ?= 9999
 
+# Including ci Makefile
+CI_REPOSITORY ?= https://github.com/src-d/ci.git
+CI_PATH ?= $(shell pwd)/.ci
+MAKEFILE := $(CI_PATH)/Makefile.main
 $(MAKEFILE):
-	@git clone --quiet $(CI_REPOSITORY) $(CI_FOLDER); \
-	cp $(CI_FOLDER)/$(MAKEFILE) .;
-
+	git clone --quiet --depth 1 $(CI_REPOSITORY) $(CI_PATH);
 -include $(MAKEFILE)
 
 # simple go get doesn't work for client go
