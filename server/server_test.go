@@ -36,6 +36,7 @@ func TestHandleParseSuccess(t *testing.T) {
 				Response: protocol.Response{Status: protocol.Ok},
 				UAST:     serverUAST,
 				Language: "python",
+				Filename: "file.py",
 			}
 		},
 	}
@@ -54,6 +55,7 @@ func TestHandleParseSuccess(t *testing.T) {
 		"errors": null,
 		"elapsed": 0,
 		"language": "python",
+		"filename": "file.py",
 		"uast": {
 			"InternalType": "Root",
 			"Roles": ["File"],
@@ -73,6 +75,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 				Response: protocol.Response{Status: protocol.Ok},
 				UAST:     serverUAST,
 				Language: "python",
+				Filename: "file.py",
 			}
 		},
 	}
@@ -86,6 +89,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 		"errors": null,
 		"elapsed": 0,
 		"language": "python",
+		"filename": "file.py",
 		"uast": {
 			"InternalType": "Dashboard: Search results",
 			"Roles": [],
@@ -115,6 +119,7 @@ func TestHandleParseEmptyWithQuery(t *testing.T) {
 		"errors": null,
 		"elapsed": 0,
 		"language": "",
+		"filename": "",
 		"uast": null
 	}`, w.Body.String())
 }
