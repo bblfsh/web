@@ -20,6 +20,7 @@ type Server struct {
 	version    string
 }
 
+// New return a new Server
 func New(addr string, version string) (*Server, error) {
 	client, err := bblfsh.NewClient(addr)
 	if err != nil {
@@ -33,11 +34,12 @@ func New(addr string, version string) (*Server, error) {
 	}, nil
 }
 
+// Mount return a router listening for frontend requests
 func Mount(s *Server, r gin.IRouter) gin.IRouter {
-	r.POST("/parse", s.HandleParse)
-	r.GET("/drivers", s.ListDrivers)
-	r.GET("/gist", s.LoadGist)
-	r.POST("/version", s.Version)
+	r.POST("/parse", s.handleParse)
+	r.GET("/drivers", s.handleListDrivers)
+	r.GET("/gist", s.handleLoadGist)
+	r.POST("/version", s.handleVersion)
 	return r
 }
 
@@ -53,7 +55,7 @@ type parseRequest struct {
 	Query    string `json:"query"`
 }
 
-func (s *Server) HandleParse(ctx *gin.Context) {
+func (s *Server) handleParse(ctx *gin.Context) {
 	var req parseRequest
 	if err := ctx.BindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
@@ -88,7 +90,7 @@ func (s *Server) HandleParse(ctx *gin.Context) {
 		}
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), (*ParseResponse)(resp))
+	ctx.JSON(toHTTPStatus(resp.Status), (*parseResponse)(resp))
 }
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
@@ -99,13 +101,13 @@ func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
 	return bblfsh.NewClient(req.ServerURL)
 }
 
-// MakeGistURL makes url to github's gust
+// MakeGistURL makes url to github's gist
 // export to allow mocking in test
 var MakeGistURL = func(u string) string {
 	return "https://gist.githubusercontent.com/" + u
 }
 
-func (s *Server) LoadGist(ctx *gin.Context) {
+func (s *Server) handleLoadGist(ctx *gin.Context) {
 	resp, err := s.httpClient.Get(MakeGistURL(ctx.Query("url")))
 	if err != nil {
 		ctx.JSON(http.StatusNotFound, jsonError("Gist not found: %s", err))
@@ -130,7 +132,7 @@ type versionRequest struct {
 	request
 }
 
-func (s *Server) Version(ctx *gin.Context) {
+func (s *Server) handleVersion(ctx *gin.Context) {
 	var req versionRequest
 	if err := ctx.BindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
@@ -154,7 +156,7 @@ func (s *Server) Version(ctx *gin.Context) {
 	})
 }
 
-func (s *Server) ListDrivers(ctx *gin.Context) {
+func (s *Server) handleListDrivers(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, driverList)
 }
 
@@ -180,26 +182,29 @@ func jsonError(msg string, args ...interface{}) gin.H {
 	}
 }
 
-type ParseResponse protocol.ParseResponse
+type parseResponse protocol.ParseResponse
 
-func (r *ParseResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON returns the JSON representation of the protocol.ParseResponse
+func (r *parseResponse) MarshalJSON() ([]byte, error) {
 	resp := struct {
 		*protocol.ParseResponse
-		UAST *Node `json:"uast"`
+		UAST *node `json:"uast"`
 	}{
 		(*protocol.ParseResponse)(r),
-		(*Node)(r.UAST),
+		(*node)(r.UAST),
 	}
 
 	return json.Marshal(resp)
 }
 
-type Node uast.Node
+// Node represents a returned uast.Node
+type node uast.Node
 
-func (n *Node) MarshalJSON() ([]byte, error) {
-	var nodes = make([]*Node, len(n.Children))
+// MarshalJSON returns the JSON representation of the Node
+func (n *node) MarshalJSON() ([]byte, error) {
+	var nodes = make([]*node, len(n.Children))
 	for i, n := range n.Children {
-		nodes[i] = (*Node)(n)
+		nodes[i] = (*node)(n)
 	}
 
 	var roles = make([]string, len(n.Roles))
@@ -210,7 +215,7 @@ func (n *Node) MarshalJSON() ([]byte, error) {
 	node := struct {
 		*uast.Node
 		Roles    []string
-		Children []*Node
+		Children []*node
 	}{
 		(*uast.Node)(n),
 		roles,
