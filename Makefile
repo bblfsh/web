@@ -3,6 +3,7 @@ PROJECT = dashboard
 COMMANDS = server/cmd/bblfsh-dashboard
 DEPENDENCIES = \
 	github.com/jteeuwen/go-bindata
+DEPENDENCIES_DIRECTORY := ./vendor
 
 # Environment
 BASE_PATH := $(shell pwd)
@@ -18,6 +19,7 @@ PKG_OS = linux
 YARN = yarn
 REMOVE = rm -rf
 BINDATA = go-bindata
+GODEP = dep
 
 SERVER_URL ?= /api
 BBLFSH_PORT ?= 9432
@@ -33,8 +35,9 @@ $(MAKEFILE):
 
 # simple go get doesn't work for client go
 install-client-go:
-	go get -d -u -v gopkg.in/bblfsh/client-go.v2
-	$(MAKE) -C $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2 dependencies
+	$(GOGET) github.com/golang/dep/cmd/dep
+	$(GODEP) ensure
+	$(MAKE) -C $(DEPENDENCIES_DIRECTORY)/gopkg.in/bblfsh/client-go.v2 dependencies
 
 dependencies-frontend: | install-client-go dependencies
 	$(YARN)	install
