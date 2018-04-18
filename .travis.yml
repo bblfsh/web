@@ -8,6 +8,18 @@ sudo: required
 go:
   - 1.9
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-6
+    - g++-6
+
+install:
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90
+
 before_install:
   - . $HOME/.nvm/nvm.sh
   - nvm install 8
@@ -15,6 +27,7 @@ before_install:
   - npm install -g yarn
 
 script:
+  - make validate-commit
   - make lint
   - make test-frontend
   - make test-coverage
