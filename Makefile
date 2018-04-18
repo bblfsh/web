@@ -34,7 +34,7 @@ $(MAKEFILE):
 # simple go get doesn't work for client go
 install-client-go:
 	go get -d -u -v gopkg.in/bblfsh/client-go.v2
-	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
+	$(MAKE) -C $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2 dependencies
 
 dependencies-frontend: | install-client-go dependencies
 	$(YARN)	install
