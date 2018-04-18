@@ -11,6 +11,7 @@ export const initialState = {
   },
   actual: '',
   selected: '',
+  loadedFrom: null,
 };
 
 export const LOADING = 'bblfsh/languages/LOADING';
@@ -25,6 +26,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        loadedFrom: action.from,
       };
     case LOADED:
       return {
@@ -56,11 +58,13 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-export const load = () => dispatch => {
-  dispatch({ type: LOADING });
+export const load = () => (dispatch, getState) => {
+  const { options: { customServer, customServerUrl } } = getState();
+  const from = customServer ? customServerUrl : undefined;
+  dispatch({ type: LOADING, from });
 
   return api
-    .listDrivers()
+    .listDrivers(from)
     .then(indexDrivers)
     .then(languages =>
       dispatch({
@@ -104,4 +108,18 @@ export const getLanguageMode = state => {
   }
 
   return '';
+};
+
+export const updateIfNeeded = () => (dispatch, getState) => {
+  const {
+    options: { customServer, customServerUrl },
+    languages: { loadedFrom },
+  } = getState();
+  const from = customServer ? customServerUrl : undefined;
+
+  if (loadedFrom === from) {
+    return;
+  }
+
+  return dispatch(load());
 };

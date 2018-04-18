@@ -37,7 +37,7 @@ func New(addr string, version string) (*Server, error) {
 // Mount return a router listening for frontend requests
 func Mount(s *Server, r gin.IRouter) gin.IRouter {
 	r.POST("/parse", s.handleParse)
-	r.GET("/drivers", s.handleListDrivers)
+	r.POST("/drivers", s.handleListDrivers)
 	r.GET("/gist", s.handleLoadGist)
 	r.POST("/version", s.handleVersion)
 	return r
@@ -148,6 +148,7 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 	resp, err := cli.NewVersionRequest().Do()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error getting server version: %s", err))
+		return
 	}
 
 	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{

@@ -15,6 +15,7 @@ import {
   select,
   getLanguageMode,
 } from './languages';
+import { initialState as initialStateOptions } from './options.js';
 import { add as errorsAdd } from './errors';
 
 describe('languages/reducer', () => {
@@ -62,7 +63,11 @@ describe('languages/actions', () => {
       ])
     );
 
-    const store = mockStore({ languages: initialState });
+    const { customServer, customServerUrl } = initialStateOptions;
+    const store = mockStore({
+      languages: initialState,
+      options: { customServer, customServerUrl },
+    });
     const expectedActions = [
       { type: LOADING },
       {
@@ -81,8 +86,11 @@ describe('languages/actions', () => {
 
   it('load failed', () => {
     fetch.mockReject();
-
-    const store = mockStore({ languages: initialState });
+    const { customServer, customServerUrl } = initialStateOptions;
+    const store = mockStore({
+      languages: initialState,
+      options: { customServer, customServerUrl },
+    });
     const expectedActions = [
       { type: LOADING },
       { type: LOAD_FAILED },

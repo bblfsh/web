@@ -1,5 +1,7 @@
 package server
 
+
+// Driver as it will be seen in the frontend
 type Driver struct {
 	ID   string `json:"id"`
 	Name string `json:"name"`

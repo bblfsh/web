@@ -37,13 +37,6 @@ export function parse(language, filename, code, query, serverUrl) {
       });
   });
 }
-
-export function listDrivers() {
-  return fetch(apiUrl('/drivers'))
-    .then(checkStatus)
-    .then(resp => resp.json());
-}
-
 function checkStatus(resp) {
   if (resp.status < 200 || resp.status >= 300) {
     const error = new Error(resp.statusText);
@@ -82,7 +75,20 @@ export function getGist(gist) {
 }
 
 export function version(serverUrl) {
-  return fetch(apiUrl(`/version`), {
+  return info(infoEndpoints.version, serverUrl);
+}
+
+export function listDrivers(serverUrl) {
+  return info(infoEndpoints.drivers, serverUrl);
+}
+
+const infoEndpoints = {
+  version: '/version',
+  drivers: '/drivers',
+};
+
+export function info(endpoint, serverUrl) {
+  return fetch(apiUrl(endpoint), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

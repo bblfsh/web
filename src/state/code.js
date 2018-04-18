@@ -10,6 +10,7 @@ import { set as languageSet } from './languages';
 import { setUastQuery } from './options';
 import { add as errorsAdd, clear as errorsClear } from './errors';
 import { updateIfNeeded as versionUpdateIfNeeded } from './versions';
+import { updateIfNeeded as driversUpdateIfNeeded } from './languages';
 
 export const initialState = {
   filename: undefined,
@@ -156,6 +157,7 @@ export const runParserWithQuery = () => (dispatch, getState) => {
 
   // there is no action for custom server update, run parser is such an action
   dispatch(versionUpdateIfNeeded());
+  dispatch(driversUpdateIfNeeded());
 
   return api
     .parse(
