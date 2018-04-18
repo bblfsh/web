@@ -193,10 +193,10 @@ func TestCustomBblfshServer(t *testing.T) {
 
 	// run normal servers
 	s := &bblfshServiceMock{}
-	grpcServer, addr, err := runBblfsh(s)
+	grpcServer, addr, addrCtl, err := runBblfsh(s)
 	require.Nil(err)
 	defer grpcServer.GracefulStop()
-	srv, err := server.New(addr, "dashboard-ver")
+	srv, err := server.New(addr, addrCtl, "dashboard-ver")
 	require.Nil(err)
 	r, err := runGin(srv)
 	require.Nil(err)
@@ -210,7 +210,7 @@ func TestCustomBblfshServer(t *testing.T) {
 			}
 		},
 	}
-	customGrpcServer, customAddr, err := runBblfsh(s)
+	customGrpcServer, customAddr, _, err := runBblfsh(s)
 	require.Nil(err)
 	defer customGrpcServer.GracefulStop()
 
@@ -224,13 +224,13 @@ func TestCustomBblfshServer(t *testing.T) {
 }
 
 func request(s protocol.Service, method, url string, body io.Reader) (*httptest.ResponseRecorder, error) {
-	grpcServer, addr, err := runBblfsh(s)
+	grpcServer, addr, addrCtl, err := runBblfsh(s)
 	if err != nil {
 		return nil, err
 	}
 	defer grpcServer.GracefulStop()
 
-	srv, err := server.New(addr, "dashboard-ver")
+	srv, err := server.New(addr, addrCtl, "dashboard-ver")
 	if err != nil {
 		return nil, err
 	}
@@ -247,11 +247,11 @@ func request(s protocol.Service, method, url string, body io.Reader) (*httptest.
 	return w, nil
 }
 
-func runBblfsh(s protocol.Service) (*grpc.Server, string, error) {
+func runBblfsh(s protocol.Service) (*grpc.Server, string, string, error) {
 	protocol.DefaultService = s
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, "", err
+		return nil, "", "", err
 	}
 
 	gs := grpc.NewServer()
@@ -261,7 +261,19 @@ func runBblfsh(s protocol.Service) (*grpc.Server, string, error) {
 	)
 	go gs.Serve(lis)
 
-	return gs, lis.Addr().String(), nil
+	ctlLis, err := net.Listen("tcp", "localhost:0")
+	if err != nil {
+		return nil, "", "", err
+	}
+
+	ctlGs := grpc.NewServer()
+	protocol.RegisterProtocolServiceServer(
+		ctlGs,
+		protocol.NewProtocolServiceServer(),
+	)
+	go ctlGs.Serve(ctlLis)
+
+	return gs, lis.Addr().String(), ctlLis.Addr().String(), nil
 }
 
 func runGin(s *server.Server) (*gin.Engine, error) {

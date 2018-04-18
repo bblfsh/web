@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	bblfshProtocol "github.com/bblfsh/bblfshd/daemon/protocol"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/bblfsh/client-go.v2"
 	"gopkg.in/bblfsh/client-go.v2/tools"
@@ -15,22 +16,31 @@ import (
 )
 
 type Server struct {
-	client     *bblfsh.Client
-	httpClient *http.Client
-	version    string
+	client        *bblfsh.Client
+	ctlClient     bblfshProtocol.ProtocolServiceClient
+	bblfshCtlAddr string
+	httpClient    *http.Client
+	version       string
 }
 
 // New return a new Server
-func New(addr string, version string) (*Server, error) {
+func New(addr, bblfshCtlAddr, version string) (*Server, error) {
 	client, err := bblfsh.NewClient(addr)
 	if err != nil {
 		return nil, fmt.Errorf("Can't connect to bblfsh server: %s", err)
 	}
 
+	ctlClient, err := getCtlClient(bblfshCtlAddr)
+	if err != nil {
+		return nil, fmt.Errorf("Can't connect to bblfsh control endpoint: %s", err)
+	}
+
 	return &Server{
-		client:     client,
-		version:    version,
-		httpClient: &http.Client{Timeout: 5 * time.Second},
+		client:        client,
+		version:       version,
+		httpClient:    &http.Client{Timeout: 5 * time.Second},
+		ctlClient:     ctlClient,
+		bblfshCtlAddr: bblfshCtlAddr,
 	}, nil
 }
 
@@ -155,10 +165,6 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 		"dashboard": s.version,
 		"server":    resp.Version,
 	})
-}
-
-func (s *Server) handleListDrivers(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, driverList)
 }
 
 func toHTTPStatus(status protocol.Status) int {
