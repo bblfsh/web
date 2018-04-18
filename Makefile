@@ -8,11 +8,6 @@ DEPENDENCIES = \
 BASE_PATH := $(shell pwd)
 ASSETS_PATH := $(BASE_PATH)/build
 
-# Including ci Makefile
-MAKEFILE = Makefile.main
-CI_REPOSITORY = https://github.com/src-d/ci.git
-CI_FOLDER = .ci
-
 # Use cgo during build because client-go needs it
 CGO_ENABLED = 1
 
@@ -28,16 +23,31 @@ SERVER_URL ?= /api
 BBLFSH_PORT ?= 9432
 API_PORT ?= 9999
 
+# Including ci Makefile
+CI_REPOSITORY ?= https://github.com/src-d/ci.git
+CI_PATH ?= $(shell pwd)/.ci
+MAKEFILE := $(CI_PATH)/Makefile.main
 $(MAKEFILE):
-	@git clone --quiet $(CI_REPOSITORY) $(CI_FOLDER); \
-	cp $(CI_FOLDER)/$(MAKEFILE) .;
-
+	git clone --quiet --depth 1 $(CI_REPOSITORY) $(CI_PATH);
 -include $(MAKEFILE)
 
 # simple go get doesn't work for client go
-install-client-go:
+install-client-go: check-gcc
 	go get -d -u -v gopkg.in/bblfsh/client-go.v2
-	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
+	$(MAKE) -C $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2 dependencies
+
+check-gcc:
+	@if \
+		[[ -z `which gcc` ]] || \
+		[[ -z `which g++` ]] || \
+		[[ 5 -gt `gcc -dumpversion | sed -r 's/^[^0-9]*([0-9]+).*/\1/g'` ]] || \
+		[[ 5 -gt `g++ -dumpversion | sed -r 's/^[^0-9]*([0-9]+).*/\1/g'` ]]; \
+	then \
+		echo -e "error; GCC and G++ v5 or greater are required \n"; \
+		echo -e "- GCC: `gcc --version` \n"; \
+		echo -e "- G++: `g++ --version` \n"; \
+		exit 1; \
+	fi;
 
 dependencies-frontend: | install-client-go dependencies
 	$(YARN)	install
