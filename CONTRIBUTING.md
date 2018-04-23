@@ -120,3 +120,10 @@ But it still requires go server on `9999` port to be available. The easiest way 
 ```sh
 go run ./server/cmd/bblfsh-dashboard/main.go
 ```
+
+### Building the image locally
+
+```sh
+make packages
+docker build -t bblfsh/dashboard .
+```
