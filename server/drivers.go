@@ -22,7 +22,8 @@ type Driver struct {
 	URL  string `json:"url"`
 }
 
-const defaultBblfshdCtlPort = 9433
+// DefaultBblfshdCtlPort is the default port for the bblfsh control network
+const DefaultBblfshdCtlPort = 9433
 
 var dockerImageRegExp = regexp.MustCompile("^docker://([^:]+)")
 
@@ -55,7 +56,7 @@ func (s *Server) ctlClientForRequest(req request) (bblfshProtocol.ProtocolServic
 		return s.ctlClient, nil
 	}
 
-	bblfshCtlAddr, err := getCtlAddr(req.ServerURL)
+	bblfshCtlAddr, err := GetCtlAddr(req.ServerURL)
 	if err != nil {
 		return nil, fmt.Errorf("can not build control address: %s", err)
 	}
@@ -63,13 +64,15 @@ func (s *Server) ctlClientForRequest(req request) (bblfshProtocol.ProtocolServic
 	return getCtlClient(bblfshCtlAddr)
 }
 
-func getCtlAddr(bblfshAddr string) (string, error) {
+// GetCtlAddr returns the control address given a bblfsh address replacing the
+// port from the input address with the default control port
+func GetCtlAddr(bblfshAddr string) (string, error) {
 	parts := addressPortRegExp.FindStringSubmatch(bblfshAddr)
 	if len(parts) < 2 {
 		return "", fmt.Errorf("no valid bblfsh address")
 	}
 
-	return fmt.Sprintf("%s:%d", parts[1], defaultBblfshdCtlPort), nil
+	return fmt.Sprintf("%s:%d", parts[1], DefaultBblfshdCtlPort), nil
 }
 
 func fetchDrivers(ctx context.Context, cli bblfshProtocol.ProtocolServiceClient) ([]*bblfshProtocol.DriverImageState, error) {
@@ -106,10 +109,10 @@ func getCtlClient(address string) (bblfshProtocol.ProtocolServiceClient, error) 
 func driverStatusToDrivers(driverImages []*bblfshProtocol.DriverImageState) []Driver {
 	drivers := make([]Driver, len(driverImages))
 	for i, driver := range driverImages {
-		url, _ := gitHubURLFromDockerReference(driver.Reference)
+		url, _ := GitHubURLFromDockerReference(driver.Reference)
 		drivers[i] = Driver{
 			ID:   driver.Language,
-			Name: ucFirst(driver.Language),
+			Name: UcFirst(driver.Language),
 			URL:  url,
 		}
 	}
@@ -117,7 +120,8 @@ func driverStatusToDrivers(driverImages []*bblfshProtocol.DriverImageState) []Dr
 	return drivers
 }
 
-func ucFirst(t string) string {
+// UcFirst capitalizes the first letter of the passed string
+func UcFirst(t string) string {
 	if len(t) == 0 {
 		return ""
 	}
@@ -130,7 +134,9 @@ func ucFirst(t string) string {
 	return firstLetter + t[1:]
 }
 
-func gitHubURLFromDockerReference(t string) (string, error) {
+// GitHubURLFromDockerReference returns the driver github repository url of the
+// passed driver docker image url
+func GitHubURLFromDockerReference(t string) (string, error) {
 	parts := dockerImageRegExp.FindStringSubmatch(t)
 	if len(parts) < 2 {
 		return "", fmt.Errorf("no docker reference")

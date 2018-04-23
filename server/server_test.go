@@ -9,6 +9,8 @@ import (
 	"testing"
 
 	"github.com/bblfsh/dashboard/server"
+
+	bblfshProtocol "github.com/bblfsh/bblfshd/daemon/protocol"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
@@ -42,7 +44,7 @@ func TestHandleParseSuccess(t *testing.T) {
 	}
 
 	input := `{"language": "python", "filename": "file.py", "content": "foo = 1"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	// check correct input parsing
@@ -81,7 +83,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "foo = 1", "query": "//*[@roleAlias]"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -111,7 +113,7 @@ func TestHandleParseEmptyWithQuery(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "", "query": "//*[@roleAlias]"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -143,12 +145,12 @@ func TestLoadGistSuccess(t *testing.T) {
 	}
 
 	s := &bblfshServiceMock{}
-	w, err := request(s, "GET", "/api/gist?url=path/to/correct/gist", nil)
+	w, err := request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=path/to/correct/gist", nil)
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.Equal("ok", w.Body.String())
 
-	w, err = request(s, "GET", "/api/gist?url=does/not/exists", nil)
+	w, err = request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=does/not/exists", nil)
 	require.Nil(err)
 	require.Equal(http.StatusNotFound, w.Code)
 	require.JSONEq(`{"status": 2, "errors": [{"message": "Gist not found"}]}`, w.Body.String())
@@ -167,7 +169,7 @@ func TestVersionsSuccess(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "server-ver"}`, w.Body.String())
@@ -183,7 +185,7 @@ func TestHandleVersionsError(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusBadRequest, w.Code)
 }
@@ -193,9 +195,11 @@ func TestCustomBblfshServer(t *testing.T) {
 
 	// run normal servers
 	s := &bblfshServiceMock{}
-	grpcServer, addr, addrCtl, err := runBblfsh(s)
+	grpcServer, grpcCtlServer, addr, addrCtl, err := runBblfsh(s, &bblfshProtocolServiceMock{})
 	require.Nil(err)
 	defer grpcServer.GracefulStop()
+	defer grpcCtlServer.GracefulStop()
+
 	srv, err := server.New(addr, addrCtl, "dashboard-ver")
 	require.Nil(err)
 	r, err := runGin(srv)
@@ -210,9 +214,10 @@ func TestCustomBblfshServer(t *testing.T) {
 			}
 		},
 	}
-	customGrpcServer, customAddr, _, err := runBblfsh(s)
+	customGrpcServer, customGrpcCtlServer, customAddr, _, err := runBblfsh(s, &bblfshProtocolServiceMock{})
 	require.Nil(err)
 	defer customGrpcServer.GracefulStop()
+	defer customGrpcCtlServer.GracefulStop()
 
 	input := `{"server_url": "` + customAddr + `"}`
 	w := httptest.NewRecorder()
@@ -223,12 +228,22 @@ func TestCustomBblfshServer(t *testing.T) {
 	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "custom-ver"}`, w.Body.String())
 }
 
-func request(s protocol.Service, method, url string, body io.Reader) (*httptest.ResponseRecorder, error) {
-	grpcServer, addr, addrCtl, err := runBblfsh(s)
+func request(
+	s protocol.Service,
+	ctlServ bblfshProtocol.Service,
+	method string,
+	url string,
+	body io.Reader,
+) (
+	*httptest.ResponseRecorder,
+	error,
+) {
+	grpcServer, grpcCtlServer, addr, addrCtl, err := runBblfsh(s, ctlServ)
 	if err != nil {
 		return nil, err
 	}
 	defer grpcServer.GracefulStop()
+	defer grpcCtlServer.GracefulStop()
 
 	srv, err := server.New(addr, addrCtl, "dashboard-ver")
 	if err != nil {
@@ -247,11 +262,11 @@ func request(s protocol.Service, method, url string, body io.Reader) (*httptest.
 	return w, nil
 }
 
-func runBblfsh(s protocol.Service) (*grpc.Server, string, string, error) {
+func runBblfsh(s protocol.Service, ctlServ bblfshProtocol.Service) (*grpc.Server, *grpc.Server, string, string, error) {
 	protocol.DefaultService = s
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, "", "", err
+		return nil, nil, "", "", err
 	}
 
 	gs := grpc.NewServer()
@@ -261,19 +276,20 @@ func runBblfsh(s protocol.Service) (*grpc.Server, string, string, error) {
 	)
 	go gs.Serve(lis)
 
+	bblfshProtocol.DefaultService = ctlServ
 	ctlLis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, "", "", err
+		return nil, nil, "", "", err
 	}
 
 	ctlGs := grpc.NewServer()
-	protocol.RegisterProtocolServiceServer(
+	bblfshProtocol.RegisterProtocolServiceServer(
 		ctlGs,
-		protocol.NewProtocolServiceServer(),
+		bblfshProtocol.NewProtocolServiceServer(),
 	)
 	go ctlGs.Serve(ctlLis)
 
-	return gs, lis.Addr().String(), ctlLis.Addr().String(), nil
+	return gs, ctlGs, lis.Addr().String(), ctlLis.Addr().String(), nil
 }
 
 func runGin(s *server.Server) (*gin.Engine, error) {
@@ -298,4 +314,32 @@ func (c *bblfshServiceMock) NativeParse(req *protocol.NativeParseRequest) *proto
 }
 func (c *bblfshServiceMock) Version(req *protocol.VersionRequest) *protocol.VersionResponse {
 	return c.VersionFunc(req)
+}
+
+type bblfshProtocolServiceMock struct {
+	DriverStatesFunc         func() ([]*bblfshProtocol.DriverImageState, error)
+	InstallDriverFunc        func(string, string, bool) error
+	RemoveDriverFunc         func(string) error
+	DriverPoolStatesFunc     func() map[string]*bblfshProtocol.DriverPoolState
+	DriverInstanceStatesFunc func() ([]*bblfshProtocol.DriverInstanceState, error)
+}
+
+func (c *bblfshProtocolServiceMock) DriverStates() ([]*bblfshProtocol.DriverImageState, error) {
+	return c.DriverStatesFunc()
+}
+
+func (c *bblfshProtocolServiceMock) InstallDriver(language string, image string, update bool) error {
+	return c.InstallDriverFunc(language, image, update)
+}
+
+func (c *bblfshProtocolServiceMock) RemoveDriver(language string) error {
+	return c.RemoveDriverFunc(language)
+}
+
+func (c *bblfshProtocolServiceMock) DriverPoolStates() map[string]*bblfshProtocol.DriverPoolState {
+	return c.DriverPoolStatesFunc()
+}
+
+func (c *bblfshProtocolServiceMock) DriverInstanceStates() ([]*bblfshProtocol.DriverInstanceState, error) {
+	return c.DriverInstanceStatesFunc()
 }

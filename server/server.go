@@ -16,11 +16,10 @@ import (
 )
 
 type Server struct {
-	client        *bblfsh.Client
-	ctlClient     bblfshProtocol.ProtocolServiceClient
-	bblfshCtlAddr string
-	httpClient    *http.Client
-	version       string
+	client     *bblfsh.Client
+	ctlClient  bblfshProtocol.ProtocolServiceClient
+	httpClient *http.Client
+	version    string
 }
 
 // New return a new Server
@@ -36,11 +35,10 @@ func New(addr, bblfshCtlAddr, version string) (*Server, error) {
 	}
 
 	return &Server{
-		client:        client,
-		version:       version,
-		httpClient:    &http.Client{Timeout: 5 * time.Second},
-		ctlClient:     ctlClient,
-		bblfshCtlAddr: bblfshCtlAddr,
+		client:     client,
+		version:    version,
+		httpClient: &http.Client{Timeout: 5 * time.Second},
+		ctlClient:  ctlClient,
 	}, nil
 }
 
