@@ -1,17 +1,14 @@
 package server_test
 
 import (
-	"io"
-	"net"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 
 	"github.com/bblfsh/dashboard/server"
-	"github.com/gin-gonic/gin"
+
 	"github.com/stretchr/testify/require"
-	"google.golang.org/grpc"
 	"gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v1/uast"
 )
@@ -42,7 +39,7 @@ func TestHandleParseSuccess(t *testing.T) {
 	}
 
 	input := `{"language": "python", "filename": "file.py", "content": "foo = 1"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	// check correct input parsing
@@ -81,7 +78,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "foo = 1", "query": "//*[@roleAlias]"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -111,7 +108,7 @@ func TestHandleParseEmptyWithQuery(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "", "query": "//*[@roleAlias]"}`
-	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -143,12 +140,12 @@ func TestLoadGistSuccess(t *testing.T) {
 	}
 
 	s := &bblfshServiceMock{}
-	w, err := request(s, "GET", "/api/gist?url=path/to/correct/gist", nil)
+	w, err := request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=path/to/correct/gist", nil)
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.Equal("ok", w.Body.String())
 
-	w, err = request(s, "GET", "/api/gist?url=does/not/exists", nil)
+	w, err = request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=does/not/exists", nil)
 	require.Nil(err)
 	require.Equal(http.StatusNotFound, w.Code)
 	require.JSONEq(`{"status": 2, "errors": [{"message": "Gist not found"}]}`, w.Body.String())
@@ -167,7 +164,7 @@ func TestVersionsSuccess(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "server-ver"}`, w.Body.String())
@@ -183,7 +180,7 @@ func TestHandleVersionsError(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusBadRequest, w.Code)
 }
@@ -193,9 +190,11 @@ func TestCustomBblfshServer(t *testing.T) {
 
 	// run normal servers
 	s := &bblfshServiceMock{}
-	grpcServer, addr, addrCtl, err := runBblfsh(s)
+	grpcServer, grpcCtlServer, addr, addrCtl, err := runBblfsh(s, &bblfshProtocolServiceMock{})
 	require.Nil(err)
 	defer grpcServer.GracefulStop()
+	defer grpcCtlServer.GracefulStop()
+
 	srv, err := server.New(addr, addrCtl, "dashboard-ver")
 	require.Nil(err)
 	r, err := runGin(srv)
@@ -210,9 +209,10 @@ func TestCustomBblfshServer(t *testing.T) {
 			}
 		},
 	}
-	customGrpcServer, customAddr, _, err := runBblfsh(s)
+	customGrpcServer, customGrpcCtlServer, customAddr, _, err := runBblfsh(s, &bblfshProtocolServiceMock{})
 	require.Nil(err)
 	defer customGrpcServer.GracefulStop()
+	defer customGrpcCtlServer.GracefulStop()
 
 	input := `{"server_url": "` + customAddr + `"}`
 	w := httptest.NewRecorder()
@@ -221,81 +221,4 @@ func TestCustomBblfshServer(t *testing.T) {
 
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "custom-ver"}`, w.Body.String())
-}
-
-func request(s protocol.Service, method, url string, body io.Reader) (*httptest.ResponseRecorder, error) {
-	grpcServer, addr, addrCtl, err := runBblfsh(s)
-	if err != nil {
-		return nil, err
-	}
-	defer grpcServer.GracefulStop()
-
-	srv, err := server.New(addr, addrCtl, "dashboard-ver")
-	if err != nil {
-		return nil, err
-	}
-
-	r, err := runGin(srv)
-	if err != nil {
-		return nil, err
-	}
-
-	w := httptest.NewRecorder()
-	req, _ := http.NewRequest(method, url, body)
-	r.ServeHTTP(w, req)
-
-	return w, nil
-}
-
-func runBblfsh(s protocol.Service) (*grpc.Server, string, string, error) {
-	protocol.DefaultService = s
-	lis, err := net.Listen("tcp", "localhost:0")
-	if err != nil {
-		return nil, "", "", err
-	}
-
-	gs := grpc.NewServer()
-	protocol.RegisterProtocolServiceServer(
-		gs,
-		protocol.NewProtocolServiceServer(),
-	)
-	go gs.Serve(lis)
-
-	ctlLis, err := net.Listen("tcp", "localhost:0")
-	if err != nil {
-		return nil, "", "", err
-	}
-
-	ctlGs := grpc.NewServer()
-	protocol.RegisterProtocolServiceServer(
-		ctlGs,
-		protocol.NewProtocolServiceServer(),
-	)
-	go ctlGs.Serve(ctlLis)
-
-	return gs, lis.Addr().String(), ctlLis.Addr().String(), nil
-}
-
-func runGin(s *server.Server) (*gin.Engine, error) {
-	gin.SetMode(gin.ReleaseMode)
-	r := gin.New()
-	server.Mount(s, r.Group("/api"))
-
-	return r, nil
-}
-
-type bblfshServiceMock struct {
-	ParseFunc       func(*protocol.ParseRequest) *protocol.ParseResponse
-	NativeParseFunc func(*protocol.NativeParseRequest) *protocol.NativeParseResponse
-	VersionFunc     func(*protocol.VersionRequest) *protocol.VersionResponse
-}
-
-func (c *bblfshServiceMock) Parse(req *protocol.ParseRequest) *protocol.ParseResponse {
-	return c.ParseFunc(req)
-}
-func (c *bblfshServiceMock) NativeParse(req *protocol.NativeParseRequest) *protocol.NativeParseResponse {
-	return c.NativeParseFunc(req)
-}
-func (c *bblfshServiceMock) Version(req *protocol.VersionRequest) *protocol.VersionResponse {
-	return c.VersionFunc(req)
 }
