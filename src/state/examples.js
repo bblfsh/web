@@ -6,10 +6,19 @@ import { java_example_1 } from '../examples/hello.java.js';
 import { java_example_2 } from '../examples/swap.java.js';
 import { python_example_1 } from '../examples/fizzbuzz.py.js';
 import { python_example_2 } from '../examples/classdef.py.js';
+import { go_example_1 } from '../examples/golang.go.js';
+import { php_example_1 } from '../examples/phphtml.php.js';
+import { php_example_2 } from '../examples/phpv7.php.js';
+import { javascript_example_1 } from '../examples/javascript.js.js';
+import { ruby_example_1 } from '../examples/ruby.rb.js';
 
 export const DEFAULT_EXAMPLE = 'java_example_1';
 const LANG_JAVA = 'java';
 const LANG_PYTHON = 'python';
+const LANG_GO = 'go';
+const LANG_PHP = 'php';
+const LANG_JS = 'javascript';
+const LANG_RUBY = 'ruby';
 
 export const examples = {
   java_example_1: {
@@ -31,6 +40,31 @@ export const examples = {
     name: 'classdef.py',
     language: LANG_PYTHON,
     code: python_example_2,
+  },
+  go_example_1: {
+    name: 'golang.go',
+    language: LANG_GO,
+    code: go_example_1,
+  },
+  php_example_1: {
+    name: 'phphtml.php',
+    language: LANG_PHP,
+    code: php_example_1,
+  },
+  php_example_2: {
+    name: 'phpv7.php',
+    language: LANG_PHP,
+    code: php_example_2,
+  },
+  javascript_example_1: {
+    name: 'javascript.js',
+    language: LANG_JS,
+    code: javascript_example_1,
+  },
+  ruby_example_1: {
+    name: 'ruby.rb',
+    language: LANG_RUBY,
+    code: ruby_example_1,
   },
 };
 

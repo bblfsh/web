@@ -11,6 +11,10 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/solarized.css';
 import 'codemirror/mode/python/python';
 import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/php/php';
+import 'codemirror/mode/ruby/ruby';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/go/go';
 
 // eslint-disable-next-line
 injectGlobal`
