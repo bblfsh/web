@@ -72,6 +72,7 @@ export const examples = {
     name: 'bash.sh',
     language: LANG_BASH,
     code: bash_example_1,
+    driver: LANG_BASH,
   },
 };
 
@@ -104,7 +105,12 @@ export const select = key => dispatch => {
   const example = examples[key];
 
   dispatch(code.set(example.name, example.code));
-  dispatch(languages.set(example.language));
+
+  const forcedDriver = example.driver;
+  dispatch(languages.select(forcedDriver));
+  if (!forcedDriver) {
+    dispatch(languages.set(example.language));
+  }
 
   // url side effect
   history.setExample();

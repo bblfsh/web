@@ -11,6 +11,7 @@ export function indexDrivers(drivers) {
 
 const specialLanguageModes = {
   java: 'text/x-java',
+  bash: 'shell',
 };
 
 function modeForLang(lang) {

@@ -88,7 +88,7 @@ export const set = actual => {
 
 export const select = lang => (dispatch, getState) => {
   const { languages } = getState();
-  if (!languages.languages.hasOwnProperty(lang)) {
+  if (!languages || !languages.languages.hasOwnProperty(lang)) {
     lang = '';
   }
   // side effect: set language in url
