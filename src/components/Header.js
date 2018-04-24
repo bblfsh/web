@@ -205,7 +205,7 @@ export class Header extends Component {
         actualLanguage &&
         languages[actualLanguage]
       ) {
-        name = `${languages[actualLanguage].name} (auto)`;
+        name = `auto (${languages[actualLanguage].name})`;
       }
 
       return (

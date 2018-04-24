@@ -408,7 +408,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         <option
           value=""
         >
-          Python (auto)
+          auto (Python)
         </option>
         <option
           value="python"
@@ -795,7 +795,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         <option
           value=""
         >
-          Python (auto)
+          auto (Python)
         </option>
         <option
           value="python"
@@ -1182,7 +1182,7 @@ exports[`Header renders correctly 1`] = `
         <option
           value=""
         >
-          Java (auto)
+          auto (Java)
         </option>
         <option
           value="python"
