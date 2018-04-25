@@ -12,7 +12,7 @@ import {
   select,
 } from './examples';
 import { set as codeSet } from './code';
-import { set as languageSet } from './languages';
+import { set as languageSet, SELECT as LANG_SELECT } from './languages';
 
 describe('examples/reducer', () => {
   it('SET', () => {
@@ -41,6 +41,10 @@ describe('examples/actions', () => {
     store.dispatch(select(key));
     expect(store.getActions()).toEqual([
       codeSet(example.name, example.code),
+      {
+        type: LANG_SELECT,
+        selected: '',
+      },
       languageSet(example.language),
       {
         type: SET,

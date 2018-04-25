@@ -11,6 +11,7 @@ import { php_example_1 } from '../examples/phphtml.php.js';
 import { php_example_2 } from '../examples/phpv7.php.js';
 import { javascript_example_1 } from '../examples/javascript.js.js';
 import { ruby_example_1 } from '../examples/ruby.rb.js';
+import { bash_example_1 } from '../examples/bash.sh.js';
 
 export const DEFAULT_EXAMPLE = 'java_example_1';
 const LANG_JAVA = 'java';
@@ -19,6 +20,7 @@ const LANG_GO = 'go';
 const LANG_PHP = 'php';
 const LANG_JS = 'javascript';
 const LANG_RUBY = 'ruby';
+const LANG_BASH = 'bash';
 
 export const examples = {
   java_example_1: {
@@ -66,6 +68,12 @@ export const examples = {
     language: LANG_RUBY,
     code: ruby_example_1,
   },
+  bash_example_1: {
+    name: 'bash.sh',
+    language: LANG_BASH,
+    code: bash_example_1,
+    driver: LANG_BASH,
+  },
 };
 
 export const initialState = {
@@ -97,7 +105,12 @@ export const select = key => dispatch => {
   const example = examples[key];
 
   dispatch(code.set(example.name, example.code));
-  dispatch(languages.set(example.language));
+
+  const forcedDriver = example.driver;
+  dispatch(languages.select(forcedDriver));
+  if (!forcedDriver) {
+    dispatch(languages.set(example.language));
+  }
 
   // url side effect
   history.setExample();

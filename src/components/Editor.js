@@ -15,6 +15,7 @@ import 'codemirror/mode/php/php';
 import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/go/go';
+import 'codemirror/mode/shell/shell';
 
 // eslint-disable-next-line
 injectGlobal`
