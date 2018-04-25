@@ -8,6 +8,7 @@ Object {
       "name": "(auto)",
     },
   },
+  "loadedFrom": null,
   "loading": false,
   "selected": "",
 }
@@ -24,6 +25,7 @@ Object {
       "name": "python",
     },
   },
+  "loadedFrom": null,
   "loading": false,
   "selected": "",
 }
@@ -37,6 +39,7 @@ Object {
       "name": "(auto)",
     },
   },
+  "loadedFrom": undefined,
   "loading": true,
   "selected": "",
 }
@@ -50,6 +53,7 @@ Object {
       "name": "(auto)",
     },
   },
+  "loadedFrom": null,
   "loading": true,
   "selected": "python",
 }
@@ -63,6 +67,7 @@ Object {
       "name": "(auto)",
     },
   },
+  "loadedFrom": null,
   "loading": true,
   "selected": "",
 }

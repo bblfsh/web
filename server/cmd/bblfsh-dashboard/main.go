@@ -19,9 +19,10 @@ import (
 
 var version = "dev"
 
-func flags() (addr, bblfshAddr string, debug, version bool) {
+func flags() (addr, bblfshAddr, bblfshCtlAddr string, debug, version bool) {
 	flag.StringVar(&addr, "addr", ":9999", "address in which the server will run")
 	flag.StringVar(&bblfshAddr, "bblfsh-addr", "0.0.0.0:9432", "address of the babelfish server")
+	flag.StringVar(&bblfshCtlAddr, "bblfshctl-addr", "0.0.0.0:9433", "address of the babelfish server")
 	flag.BoolVar(&debug, "debug", false, "run in debug mode")
 	flag.BoolVar(&version, "version", false, "show version and exits")
 	flag.Parse()
@@ -30,7 +31,7 @@ func flags() (addr, bblfshAddr string, debug, version bool) {
 }
 
 func main() {
-	addr, bblfshAddr, debug, showVersion := flags()
+	addr, bblfshAddr, bblfshCtlAddr, debug, showVersion := flags()
 
 	if showVersion {
 		fmt.Printf("bblfsh-dashboard %s\n", version)
@@ -41,7 +42,7 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	s, err := server.New(bblfshAddr, version)
+	s, err := server.New(bblfshAddr, bblfshCtlAddr, version)
 	if err != nil {
 		logrus.Fatalf("error starting new server at %s: %s", addr, err)
 	}

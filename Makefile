@@ -3,15 +3,11 @@ PROJECT = dashboard
 COMMANDS = server/cmd/bblfsh-dashboard
 DEPENDENCIES = \
 	github.com/jteeuwen/go-bindata
+DEPENDENCIES_DIRECTORY := ./vendor
 
 # Environment
 BASE_PATH := $(shell pwd)
 ASSETS_PATH := $(BASE_PATH)/build
-
-# Including ci Makefile
-MAKEFILE = Makefile.main
-CI_REPOSITORY = https://github.com/src-d/ci.git
-CI_FOLDER = .ci
 
 # Use cgo during build because client-go needs it
 CGO_ENABLED = 1
@@ -23,21 +19,25 @@ PKG_OS = linux
 YARN = yarn
 REMOVE = rm -rf
 BINDATA = go-bindata
+GODEP = dep
 
 SERVER_URL ?= /api
 BBLFSH_PORT ?= 9432
 API_PORT ?= 9999
 
+# Including ci Makefile
+CI_REPOSITORY ?= https://github.com/src-d/ci.git
+CI_PATH ?= $(shell pwd)/.ci
+MAKEFILE := $(CI_PATH)/Makefile.main
 $(MAKEFILE):
-	@git clone --quiet $(CI_REPOSITORY) $(CI_FOLDER); \
-	cp $(CI_FOLDER)/$(MAKEFILE) .;
-
+	git clone --quiet --depth 1 $(CI_REPOSITORY) $(CI_PATH);
 -include $(MAKEFILE)
 
 # simple go get doesn't work for client go
 install-client-go:
-	go get -d -u -v gopkg.in/bblfsh/client-go.v2
-	(cd $(GOPATH)/src/gopkg.in/bblfsh/client-go.v2; make dependencies)
+	$(GOGET) github.com/golang/dep/cmd/dep
+	$(GODEP) ensure
+	$(MAKE) -C $(DEPENDENCIES_DIRECTORY)/gopkg.in/bblfsh/client-go.v2 dependencies
 
 dependencies-frontend: | install-client-go dependencies
 	$(YARN)	install
