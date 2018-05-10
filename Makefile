@@ -54,7 +54,6 @@ fix-lint-errors: dependencies-frontend
 assets: | build dependencies-frontend
 	chmod -R go=r $(ASSETS_PATH); \
 	$(BINDATA) \
-		-modtime 1 \
 		-pkg asset \
 		-o ./server/asset/asset.go \
 		-prefix $(BASE_PATH) \
@@ -63,7 +62,7 @@ assets: | build dependencies-frontend
 build: dependencies-frontend
 	GENERATE_SOURCEMAP=false REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
 
-validate-commit: assets fix-lint-errors no-changes-in-commit
+validate-commit: fix-lint-errors no-changes-in-commit
 
 ## Compiles the dashboard assets, and serve the dashboard through its API
 serve:
