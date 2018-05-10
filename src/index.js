@@ -8,7 +8,8 @@ import rootReducer from './state';
 import 'normalize.css';
 import { injectGlobal } from 'styled-components';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
+
 import './vendor.css';
 import { polyfill as es6PromisesPolyfill } from 'es6-promise';
 import 'isomorphic-fetch';
@@ -39,4 +40,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-registerServiceWorker();
+unregister();
