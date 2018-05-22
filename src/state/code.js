@@ -1,11 +1,4 @@
 import * as api from '../services/api';
-import {
-  nodeReducer,
-  convertTree,
-  nodeHighlight,
-  nodeUnhighlight,
-  nodeExpand,
-} from './ast';
 import { set as languageSet } from './languages';
 import { setUastQuery } from './options';
 import { add as errorsAdd, clear as errorsClear } from './errors';
@@ -15,12 +8,9 @@ import { updateIfNeeded as driversUpdateIfNeeded } from './languages';
 export const initialState = {
   filename: undefined,
   code: null,
-  ast: {},
-  posIndex: null,
-  hoveredId: null,
+  uastJson: null,
 
   dirty: false,
-  markRange: null,
   parsing: false,
 };
 
@@ -29,8 +19,6 @@ export const PARSE = 'bblfsh/code/PARSE';
 export const PARSE_FAILED = 'bblfsh/code/PARSE_FAILED';
 export const SET_AST = 'bblfsh/code/SET_AST';
 export const CHANGE = 'bblfsh/code/CHANGE';
-export const MARK = 'bblfsh/code/MARK';
-export const SET_HOVERED_ID = 'bblfsh/code/SET_HOVERED_ID';
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -57,13 +45,11 @@ export const reducer = (state = initialState, action) => {
         parsing: false,
       };
     case SET_AST:
-      const { tree, posIndex } = convertTree(action.ast);
       return {
         ...state,
-        ast: tree,
-        posIndex,
         parsing: false,
         dirty: false,
+        uastJson: action.ast,
       };
     case CHANGE:
       return {
@@ -71,27 +57,7 @@ export const reducer = (state = initialState, action) => {
         code: action.code,
         dirty: true,
       };
-    case MARK:
-      return {
-        ...state,
-        markRange: action.range,
-      };
-    case SET_HOVERED_ID:
-      return {
-        ...state,
-        hoveredId: action.id,
-      };
     default:
-      if (action.nodeId) {
-        const node = state.ast[action.nodeId];
-        return {
-          ...state,
-          ast: {
-            ...state.ast,
-            [action.nodeId]: nodeReducer(node, action),
-          },
-        };
-      }
       return state;
   }
 };
@@ -112,37 +78,6 @@ export const change = code => ({
   type: CHANGE,
   code,
 });
-
-export const markRange = (from, to) => {
-  return {
-    type: MARK,
-    range: from || to ? { from, to } : null,
-  };
-};
-
-export const selectNodeByPos = ({ line, ch }) => (dispatch, getState) => {
-  const { code } = getState();
-  if (!code.posIndex) {
-    return;
-  }
-  const node = code.posIndex.get({ Line: line + 1, Col: ch + 1 });
-  if (!node) {
-    return;
-  }
-  const highlightedId = Object.keys(code.ast).find(
-    id => code.ast[id].highlighted
-  );
-  if (highlightedId) {
-    dispatch(nodeUnhighlight(+highlightedId));
-  }
-  // expand tree
-  let id = node.id;
-  while (id) {
-    dispatch(nodeExpand(id));
-    id = code.ast[id].parentId;
-  }
-  return dispatch(nodeHighlight(node.id));
-};
 
 export const runParserWithQuery = () => (dispatch, getState) => {
   const state = getState();
@@ -181,8 +116,3 @@ export const runParser = () => dispatch => {
   dispatch(setUastQuery(''));
   return dispatch(runParserWithQuery());
 };
-
-export const setHoveredNode = id => ({
-  type: SET_HOVERED_ID,
-  id,
-});
