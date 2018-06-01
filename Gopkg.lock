@@ -2,12 +2,6 @@
 
 
 [[projects]]
-  name = "github.com/bblfsh/bblfshd"
-  packages = ["daemon/protocol"]
-  revision = "c528245c859923eaef89c4d29e648639052392b4"
-  version = "v2.4.2"
-
-[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"

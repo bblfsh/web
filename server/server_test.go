@@ -39,7 +39,7 @@ func TestHandleParseSuccess(t *testing.T) {
 	}
 
 	input := `{"language": "python", "filename": "file.py", "content": "foo = 1"}`
-	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	// check correct input parsing
@@ -78,7 +78,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "foo = 1", "query": "//*[@roleAlias]"}`
-	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -108,7 +108,7 @@ func TestHandleParseEmptyWithQuery(t *testing.T) {
 	}
 
 	input := `{"filename": "file.py", "content": "", "query": "//*[@roleAlias]"}`
-	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/parse", strings.NewReader(input))
+	w, err := request(s, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{
@@ -140,12 +140,12 @@ func TestLoadGistSuccess(t *testing.T) {
 	}
 
 	s := &bblfshServiceMock{}
-	w, err := request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=path/to/correct/gist", nil)
+	w, err := request(s, "GET", "/api/gist?url=path/to/correct/gist", nil)
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.Equal("ok", w.Body.String())
 
-	w, err = request(s, &bblfshProtocolServiceMock{}, "GET", "/api/gist?url=does/not/exists", nil)
+	w, err = request(s, "GET", "/api/gist?url=does/not/exists", nil)
 	require.Nil(err)
 	require.Equal(http.StatusNotFound, w.Code)
 	require.JSONEq(`{"status": 2, "errors": [{"message": "Gist not found"}]}`, w.Body.String())
@@ -164,7 +164,7 @@ func TestVersionsSuccess(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "server-ver"}`, w.Body.String())
@@ -180,7 +180,7 @@ func TestHandleVersionsError(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, &bblfshProtocolServiceMock{}, "POST", "/api/version", strings.NewReader("{}"))
+	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusBadRequest, w.Code)
 }
@@ -190,12 +190,10 @@ func TestCustomBblfshServer(t *testing.T) {
 
 	// run normal servers
 	s := &bblfshServiceMock{}
-	grpcServer, grpcCtlServer, addr, addrCtl, err := runBblfsh(s, &bblfshProtocolServiceMock{})
+	grpcServer, addr, err := runBblfsh(s)
 	require.Nil(err)
 	defer grpcServer.GracefulStop()
-	defer grpcCtlServer.GracefulStop()
-
-	srv, err := server.New(addr, addrCtl, "dashboard-ver")
+	srv, err := server.New(addr, "dashboard-ver")
 	require.Nil(err)
 	r, err := runGin(srv)
 	require.Nil(err)
@@ -209,10 +207,10 @@ func TestCustomBblfshServer(t *testing.T) {
 			}
 		},
 	}
-	customGrpcServer, customGrpcCtlServer, customAddr, _, err := runBblfsh(s, &bblfshProtocolServiceMock{})
+
+	customGrpcServer, customAddr, err := runBblfsh(s)
 	require.Nil(err)
 	defer customGrpcServer.GracefulStop()
-	defer customGrpcCtlServer.GracefulStop()
 
 	input := `{"server_url": "` + customAddr + `"}`
 	w := httptest.NewRecorder()
