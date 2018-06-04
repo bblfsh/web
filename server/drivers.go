@@ -16,12 +16,16 @@ type Driver struct {
 	URL  string `json:"url"`
 }
 
+type supportedLanguagesRequest struct {
+	request
+}
+
 const driverRepoURLPattern = "https://github.com/bblfsh/%s-driver"
 
 var dockerImageRegExp = regexp.MustCompile("^docker://([^:]+)")
 
 func (s *Server) handleSupportedLanguages(ctx *gin.Context) {
-	var req versionRequest
+	var req supportedLanguagesRequest
 	if err := ctx.BindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
 		return
