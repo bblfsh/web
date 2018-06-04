@@ -23,9 +23,8 @@ describe('Editor', () => {
 
     wrapper.instance().document.setSelection(mkPos(0, 4), mkPos(0, 2));
 
-    // NOTE: there is an initial call when the CodeMirror is rendered.
-    expect(spy.mock.calls.length).toBe(2);
-    const [pos] = spy.mock.calls[1];
+    expect(spy.mock.calls.length).toBe(1);
+    const [pos] = spy.mock.calls[0];
     expect(pos).toEqual(mkPos(0, 2));
   });
 
@@ -37,9 +36,8 @@ describe('Editor', () => {
 
     wrapper.instance().document.setCursor(mkPos(0, 4));
 
-    // NOTE: there is an initial call when the CodeMirror is rendered.
-    expect(spy.mock.calls.length).toBe(2);
-    const [pos] = spy.mock.calls[1];
+    expect(spy.mock.calls.length).toBe(1);
+    const [pos] = spy.mock.calls[0];
     expect(pos).toEqual(mkPos(0, 4));
   });
 
