@@ -34,10 +34,8 @@ class UASTViewer extends Component {
     const searchResults = getSearchResults(uastViewerProps.uast);
     let rootIds = searchResults || [ROOT_ID];
 
-    if (searchResults) {
-      if (!searchResults.length) {
-        return <NotFound>Nothing found</NotFound>;
-      }
+    if (searchResults && !searchResults.length) {
+      return <NotFound>Nothing found</NotFound>;
     }
 
     return (
