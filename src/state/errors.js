@@ -14,20 +14,33 @@ export const reducer = (state = initialState, action) => {
     case REMOVE:
       return [...state.slice(0, action.idx), ...state.slice(action.idx + 1)];
     case CLEAR:
+      if (action.errorType) {
+        return state.filter(e => e.type !== action.errorType);
+      }
       return [];
     default:
       return state;
   }
 };
 
-export const add = errors => ({
+export const add = (errors, type) => ({
   type: ADD,
-  errors,
+  errors: type
+    ? errors.map(e => {
+        e.type = type;
+        return e;
+      })
+    : errors,
 });
 
-export const set = errors => ({
+export const set = (errors, type) => ({
   type: SET,
-  errors,
+  errors: type
+    ? errors.map(e => {
+        e.type = type;
+        return e;
+      })
+    : errors,
 });
 
 export const remove = idx => ({
@@ -35,6 +48,7 @@ export const remove = idx => ({
   idx,
 });
 
-export const clear = () => ({
+export const clear = type => ({
   type: CLEAR,
+  errorType: type,
 });
