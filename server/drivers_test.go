@@ -30,7 +30,7 @@ func TestDriversSuccess(t *testing.T) {
 	s := &bblfshServiceMock{
 		SupportedLanguagesFunc: func(*protocol.SupportedLanguagesRequest) *protocol.SupportedLanguagesResponse {
 			return &protocol.SupportedLanguagesResponse{
-				Drivers: []protocol.DriverManifest{driver1, driver2},
+				Languages: []protocol.DriverManifest{driver1, driver2},
 			}
 		},
 	}
