@@ -1,11 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { UASTViewer } from './UASTViewer';
-
-const mockStore = configureStore();
+import UASTViewer, { SEARCH_RESULTS_TYPE } from './UASTViewer';
 
 const shouldMatchSnapshot = comp => {
   const wrapper = renderer.create(comp);
@@ -13,25 +9,40 @@ const shouldMatchSnapshot = comp => {
 };
 
 it('empty render', () => {
-  shouldMatchSnapshot(<UASTViewer />);
+  shouldMatchSnapshot(<UASTViewer uastViewerProps={{ uast: {} }} />);
 });
 
 it('tree render', () => {
-  const store = mockStore({
-    code: {
-      ast: {
-        1: { id: 1 },
-      },
+  const uastViewerProps = {
+    uast: {
+      1: { id: 1 },
     },
-    options: { showLocations: false },
-  });
+  };
+
   shouldMatchSnapshot(
-    <Provider store={store}>
-      <UASTViewer rootNodeId={1} searchResults={null} />
-    </Provider>
+    <UASTViewer uastViewerProps={uastViewerProps} showLocations={false} />
   );
 });
 
-it('search results render', () => {
-  shouldMatchSnapshot(<UASTViewer rootNodeId={1} searchResults={[]} />);
+describe('search results', () => {
+  it('render', () => {
+    const uastViewerProps = {
+      uast: {
+        1: { id: 1, InternalType: SEARCH_RESULTS_TYPE, Children: [2] },
+        2: { id: 2, InternalType: 'TestType' },
+      },
+    };
+
+    shouldMatchSnapshot(<UASTViewer uastViewerProps={uastViewerProps} />);
+  });
+
+  it('empty', () => {
+    const uastViewerProps = {
+      uast: {
+        1: { id: 1, InternalType: SEARCH_RESULTS_TYPE, Children: [] },
+      },
+    };
+
+    shouldMatchSnapshot(<UASTViewer uastViewerProps={uastViewerProps} />);
+  });
 });

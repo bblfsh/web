@@ -1,128 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`empty render 1`] = `
-.dzikwh {
-  height: 100%;
-  min-width: 0;
-  width: 100%;
-  overflow: auto;
-  font-family: Hack, monospace;
-  font-size: 1rem;
-  background: #FFFFFF;
-  line-height: 1.45em;
-  padding: 4px;
-}
+
 
 <div
-  className="sc-htoDjs dzikwh"
-  onMouseOut={undefined}
+  className="uast-viewer"
+  onMouseOut={[Function]}
+  style={
+    Object {
+      "overflow": "auto",
+    }
+  }
 />
 `;
 
-exports[`search results render 1`] = `
-.kqrAPn {
+exports[`search results empty 1`] = `
+.dSUuhc {
   width: 100%;
   padding: 1rem 0;
   -webkit-text-align: center;
   text-align: center;
 }
 
-.dzikwh {
-  height: 100%;
-  min-width: 0;
-  width: 100%;
-  overflow: auto;
-  font-family: Hack, monospace;
-  font-size: 1rem;
-  background: #FFFFFF;
-  line-height: 1.45em;
-  padding: 4px;
-}
+<div
+  className="sc-bdVaJa dSUuhc"
+>
+  Nothing found
+</div>
+`;
+
+exports[`search results render 1`] = `
+
 
 <div
-  className="sc-htoDjs dzikwh"
-  onMouseOut={undefined}
+  className="uast-viewer"
+  onMouseOut={[Function]}
+  style={
+    Object {
+      "overflow": "auto",
+    }
+  }
 >
   <div
-    className="sc-gzVnrw kqrAPn"
+    className="uast-item"
+    onMouseMove={[Function]}
   >
-    Nothing found
+    <div
+      className="uast-title uast-title-collapsible collapsed"
+      onClick={[Function]}
+    >
+      <summary
+        className="uast-label"
+      >
+        Node
+      </summary>
+    </div>
   </div>
 </div>
 `;
 
 exports[`tree render 1`] = `
-.jQbgOF {
-  margin-left: 20px;
-  min-width: 400px;
-  background: none;
-}
 
-.hbfmnM {
-  min-height: 29px;
-  cursor: pointer;
-}
-
-.hbfmnM::before {
-  content: '';
-  width: 15px;
-  display: inline-block;
-}
-
-.hbfmnM::before {
-  content: '+';
-  color: #EB7422;
-}
-
-.hbfmnM:hover > span {
-  border-bottom: 1px dashed #B1B1B1;
-}
-
-.bUwxHt {
-  display: none;
-  border-left: 1px solid #dad7d0;
-  margin-left: 4px;
-}
-
-.gaIEnP {
-  display: inline;
-  font-family: Hack, monospace;
-  color: #B1B1B1;
-}
-
-.dzikwh {
-  height: 100%;
-  min-width: 0;
-  width: 100%;
-  overflow: auto;
-  font-family: Hack, monospace;
-  font-size: 1rem;
-  background: #FFFFFF;
-  line-height: 1.45em;
-  padding: 4px;
-}
 
 <div
-  className="sc-htoDjs dzikwh"
-  onMouseOut={undefined}
+  className="uast-viewer"
+  onMouseOut={[Function]}
+  style={
+    Object {
+      "overflow": "auto",
+    }
+  }
 >
   <div
-    className="sc-bdVaJa jQbgOF"
+    className="uast-item"
     onMouseMove={[Function]}
   >
     <div
-      className="sc-htpNat hbfmnM"
+      className="uast-title uast-title-collapsible collapsed"
       onClick={[Function]}
     >
       <summary
-        className="sc-ifAKCX gaIEnP"
+        className="uast-label"
       >
         Node
       </summary>
     </div>
-    <div
-      className="sc-bxivhb bUwxHt"
-    />
   </div>
 </div>
 `;

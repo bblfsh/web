@@ -220,11 +220,18 @@ exports[`render with errors 1`] = `
       primary="first"
       split="vertical"
     >
-      <Connect(Editor) />
+      <Editor
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+        theme="solarized light"
+      />
       <styled.div>
         <Connect(Options) />
         <Connect(SearchPanel) />
-        <Connect(UASTViewer) />
+        <UASTViewer />
       </styled.div>
     </SplitPane>
   </styled.div>
@@ -452,11 +459,18 @@ exports[`renders without crashing 1`] = `
       primary="first"
       split="vertical"
     >
-      <Connect(Editor) />
+      <Editor
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+        theme="solarized light"
+      />
       <styled.div>
         <Connect(Options) />
         <Connect(SearchPanel) />
-        <Connect(UASTViewer) />
+        <UASTViewer />
       </styled.div>
     </SplitPane>
   </styled.div>

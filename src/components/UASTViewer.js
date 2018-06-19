@@ -1,68 +1,52 @@
 import React, { Component } from 'react';
+import Viewer from 'uast-viewer';
 import styled from 'styled-components';
-import Node from './uast/Node';
-import SearchResults from './uast/SearchResults';
-import { font, background } from '../styling/variables';
-import { connect } from 'react-redux';
-import { markRange, setHoveredNode } from '../state/code';
-import { getNodeRootId, getSearchResults } from '../state/ast';
 
-const Container = styled.div`
-  height: 100%;
-  min-width: 0; // disable this min-sizing behavior of flexbox because of scrollable div inside
-  width: 100%;
-  overflow: auto;
-  font-family: ${font.family.code};
-  font-size: ${font.size.large};
-  background: ${background.main};
-  line-height: ${font.lineHeight.large};
-  padding: 4px;
-`;
+const ROOT_ID = 1;
+export const SEARCH_RESULTS_TYPE = 'Dashboard: Search results';
 
-export class UASTViewer extends Component {
-  content() {
-    const { rootNodeId, searchResults, onNodeSelected } = this.props;
-
-    if (!rootNodeId) {
-      return null;
-    }
-
-    if (searchResults !== null) {
-      return (
-        <SearchResults
-          resultIds={searchResults}
-          onNodeSelected={onNodeSelected}
-        />
-      );
-    }
-
-    return <Node id={rootNodeId} onNodeSelected={onNodeSelected} />;
+export const getSearchResults = uast => {
+  if (!uast) {
+    return null;
   }
 
+  const rootNode = uast[ROOT_ID];
+  if (!rootNode) {
+    return null;
+  }
+
+  if (rootNode.InternalType === SEARCH_RESULTS_TYPE) {
+    return rootNode.Children;
+  }
+
+  return null;
+};
+
+const NotFound = styled.div`
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+`;
+
+class UASTViewer extends Component {
   render() {
-    const { clearNodeSelection } = this.props;
+    const { uastViewerProps, showLocation } = this.props;
+    const searchResults = getSearchResults(uastViewerProps.uast);
+    let rootIds = searchResults || [ROOT_ID];
+
+    if (searchResults && !searchResults.length) {
+      return <NotFound>Nothing found</NotFound>;
+    }
 
     return (
-      <Container onMouseOut={clearNodeSelection}>{this.content()}</Container>
+      <Viewer
+        {...uastViewerProps}
+        rootIds={rootIds}
+        showLocations={showLocation}
+        style={{ overflow: 'auto' }}
+      />
     );
   }
 }
 
-export const mapStateToProps = state => {
-  return {
-    rootNodeId: getNodeRootId(state),
-    searchResults: getSearchResults(state),
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    clearNodeSelection: () => dispatch(markRange()),
-    onNodeSelected: (id, from, to) => {
-      dispatch(setHoveredNode(id));
-      dispatch(markRange(from, to));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UASTViewer);
+export default UASTViewer;
