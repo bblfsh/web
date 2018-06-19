@@ -87,7 +87,7 @@ export const runParserWithQuery = () => (dispatch, getState) => {
     languages: { selected: languageSelected },
   } = state;
 
-  dispatch(errorsClear());
+  dispatch(errorsClear('parse'));
   dispatch({ type: PARSE });
 
   // there is no action for custom server update, run parser is such an action
@@ -108,7 +108,7 @@ export const runParserWithQuery = () => (dispatch, getState) => {
     })
     .catch(errors => {
       dispatch({ type: PARSE_FAILED });
-      dispatch(errorsAdd(errors));
+      dispatch(errorsAdd(errors, 'parse'));
     });
 };
 

@@ -2,10 +2,10 @@
 
 
 [[projects]]
-  name = "github.com/bblfsh/bblfshd"
-  packages = ["daemon/protocol"]
-  revision = "c528245c859923eaef89c4d29e648639052392b4"
-  version = "v2.4.2"
+  name = "github.com/BurntSushi/toml"
+  packages = ["."]
+  revision = "b26d9c308763d68093482582cea63d69be07a0f0"
+  version = "v0.3.0"
 
 [[projects]]
   name = "github.com/davecgh/go-spew"
@@ -197,17 +197,18 @@
     ".",
     "tools"
   ]
-  revision = "090eb176faddeeef5c1affdec63dab9ca42ffc6d"
-  version = "v2.4.2"
+  revision = "3528037b9c4ec657341135ea9701f160189586f4"
+  version = "v2.5.1"
 
 [[projects]]
   name = "gopkg.in/bblfsh/sdk.v1"
   packages = [
+    "manifest",
     "protocol",
     "uast"
   ]
-  revision = "19e77f414dbb893a34f67fc435e5011b99ba6a1f"
-  version = "v1.15.2"
+  revision = "96e92bdde3785e655b8095a576addd52b96c6c61"
+  version = "v1.16.0"
 
 [[projects]]
   name = "gopkg.in/go-playground/validator.v8"
@@ -230,6 +231,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1f1924e80b7e6238eb43bb65c013c6f54ac26e49c5bb98438a8e4b72c57db006"
+  inputs-digest = "c6e0a20892829faad68a87dba44e90f060a5ce6f1c7d5b731f633b7762e97a8b"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,7 +1,16 @@
-[[constraint]]
-  name = "github.com/bblfsh/bblfshd"
-  version = "2.4.2"
-
 [prune]
   go-tests = true
   unused-packages = true
+  non-go = true
+
+  [[prune.project]]
+    name = "gopkg.in/bblfsh/client-go.v2"
+    non-go = false
+
+[[constraint]]
+  name = "gopkg.in/bblfsh/sdk.v1"
+  version = "^1.16.0"
+
+[[constraint]]
+  name = "gopkg.in/bblfsh/client-go.v2"
+  version = "^2.5.1"

@@ -81,7 +81,7 @@ describe('code/actions', () => {
       versions: { loadedFrom: undefined },
     });
     const expectedActions = [
-      errorsClear(),
+      errorsClear('parse'),
       { type: PARSE },
       languageSet('python'),
       setAst(uast),
@@ -104,7 +104,7 @@ describe('code/actions', () => {
     });
     const expectedActions = [
       setUastQuery(''),
-      errorsClear(),
+      errorsClear('parse'),
       { type: PARSE },
       languageSet('python'),
       setAst(uast),

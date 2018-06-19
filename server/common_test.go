@@ -8,7 +8,6 @@ import (
 
 	"github.com/bblfsh/dashboard/server"
 
-	bblfshProtocol "github.com/bblfsh/bblfshd/daemon/protocol"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
 	"gopkg.in/bblfsh/sdk.v1/protocol"
@@ -16,7 +15,6 @@ import (
 
 func request(
 	s protocol.Service,
-	ctlServ bblfshProtocol.Service,
 	method string,
 	url string,
 	body io.Reader,
@@ -24,14 +22,13 @@ func request(
 	*httptest.ResponseRecorder,
 	error,
 ) {
-	grpcServer, grpcCtlServer, addr, addrCtl, err := runBblfsh(s, ctlServ)
+	grpcServer, addr, err := runBblfsh(s)
 	if err != nil {
 		return nil, err
 	}
 	defer grpcServer.GracefulStop()
-	defer grpcCtlServer.GracefulStop()
 
-	srv, err := server.New(addr, addrCtl, "dashboard-ver")
+	srv, err := server.New(addr, "dashboard-ver")
 	if err != nil {
 		return nil, err
 	}
@@ -48,11 +45,11 @@ func request(
 	return w, nil
 }
 
-func runBblfsh(s protocol.Service, ctlServ bblfshProtocol.Service) (*grpc.Server, *grpc.Server, string, string, error) {
+func runBblfsh(s protocol.Service) (*grpc.Server, string, error) {
 	protocol.DefaultService = s
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, nil, "", "", err
+		return nil, "", err
 	}
 
 	gs := grpc.NewServer()
@@ -62,20 +59,7 @@ func runBblfsh(s protocol.Service, ctlServ bblfshProtocol.Service) (*grpc.Server
 	)
 	go gs.Serve(lis)
 
-	bblfshProtocol.DefaultService = ctlServ
-	ctlLis, err := net.Listen("tcp", "localhost:0")
-	if err != nil {
-		return nil, nil, "", "", err
-	}
-
-	ctlGs := grpc.NewServer()
-	bblfshProtocol.RegisterProtocolServiceServer(
-		ctlGs,
-		bblfshProtocol.NewProtocolServiceServer(),
-	)
-	go ctlGs.Serve(ctlLis)
-
-	return gs, ctlGs, lis.Addr().String(), ctlLis.Addr().String(), nil
+	return gs, lis.Addr().String(), nil
 }
 
 func runGin(s *server.Server) (*gin.Engine, error) {
@@ -87,9 +71,10 @@ func runGin(s *server.Server) (*gin.Engine, error) {
 }
 
 type bblfshServiceMock struct {
-	ParseFunc       func(*protocol.ParseRequest) *protocol.ParseResponse
-	NativeParseFunc func(*protocol.NativeParseRequest) *protocol.NativeParseResponse
-	VersionFunc     func(*protocol.VersionRequest) *protocol.VersionResponse
+	ParseFunc              func(*protocol.ParseRequest) *protocol.ParseResponse
+	NativeParseFunc        func(*protocol.NativeParseRequest) *protocol.NativeParseResponse
+	VersionFunc            func(*protocol.VersionRequest) *protocol.VersionResponse
+	SupportedLanguagesFunc func(*protocol.SupportedLanguagesRequest) *protocol.SupportedLanguagesResponse
 }
 
 func (c *bblfshServiceMock) Parse(req *protocol.ParseRequest) *protocol.ParseResponse {
@@ -101,31 +86,6 @@ func (c *bblfshServiceMock) NativeParse(req *protocol.NativeParseRequest) *proto
 func (c *bblfshServiceMock) Version(req *protocol.VersionRequest) *protocol.VersionResponse {
 	return c.VersionFunc(req)
 }
-
-type bblfshProtocolServiceMock struct {
-	DriverStatesFunc         func() ([]*bblfshProtocol.DriverImageState, error)
-	InstallDriverFunc        func(string, string, bool) error
-	RemoveDriverFunc         func(string) error
-	DriverPoolStatesFunc     func() map[string]*bblfshProtocol.DriverPoolState
-	DriverInstanceStatesFunc func() ([]*bblfshProtocol.DriverInstanceState, error)
-}
-
-func (c *bblfshProtocolServiceMock) DriverStates() ([]*bblfshProtocol.DriverImageState, error) {
-	return c.DriverStatesFunc()
-}
-
-func (c *bblfshProtocolServiceMock) InstallDriver(language string, image string, update bool) error {
-	return c.InstallDriverFunc(language, image, update)
-}
-
-func (c *bblfshProtocolServiceMock) RemoveDriver(language string) error {
-	return c.RemoveDriverFunc(language)
-}
-
-func (c *bblfshProtocolServiceMock) DriverPoolStates() map[string]*bblfshProtocol.DriverPoolState {
-	return c.DriverPoolStatesFunc()
-}
-
-func (c *bblfshProtocolServiceMock) DriverInstanceStates() ([]*bblfshProtocol.DriverInstanceState, error) {
-	return c.DriverInstanceStatesFunc()
+func (c *bblfshServiceMock) SupportedLanguages(req *protocol.SupportedLanguagesRequest) *protocol.SupportedLanguagesResponse {
+	return c.SupportedLanguagesFunc(req)
 }
