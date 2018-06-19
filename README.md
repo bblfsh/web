@@ -8,7 +8,7 @@ It's user-friendly tool for testing and research how babelfish parse code.
 
 ## Installation
 
-Babelfish server is required for dashboard.
+Babelfish server (v2.5.0 or newer) is required for dashboard.
 If you don't have it running, please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
 
 ### Recomended way (using Docker)
