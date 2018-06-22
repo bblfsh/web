@@ -66,7 +66,7 @@ export const set = (filename, code, ast) => ({
   type: SET,
   filename,
   code: code || null,
-  ast: ast || {},
+  ast: ast || null,
 });
 
 export const setAst = ast => ({
