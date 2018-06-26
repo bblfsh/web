@@ -130,7 +130,7 @@ const mapStateToProps = state => ({
   code: state.code.code || '',
   codeIsDirty: state.code.dirty,
   languageMode: getLanguageMode(state),
-  uast: state.code.uastJson || {},
+  uast: state.code.uastJson,
   showLocation: state.options.showLocations,
   errors: state.errors,
   versions: state.versions,

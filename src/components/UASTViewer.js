@@ -31,7 +31,13 @@ const NotFound = styled.div`
 class UASTViewer extends Component {
   render() {
     const { uastViewerProps, showLocation } = this.props;
-    const searchResults = getSearchResults(uastViewerProps.uast);
+    const { uast } = uastViewerProps;
+
+    if (!uast) {
+      return null;
+    }
+
+    const searchResults = getSearchResults(uast);
     let rootIds = searchResults || [ROOT_ID];
 
     if (searchResults && !searchResults.length) {
