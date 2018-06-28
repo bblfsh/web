@@ -5,7 +5,7 @@ exports[`empty render 1`] = `
 
 <div
   className="uast-viewer"
-  onMouseOut={[Function]}
+  onMouseLeave={[Function]}
   style={
     Object {
       "overflow": "auto",
@@ -34,7 +34,7 @@ exports[`search results render 1`] = `
 
 <div
   className="uast-viewer"
-  onMouseOut={[Function]}
+  onMouseLeave={[Function]}
   style={
     Object {
       "overflow": "auto",
@@ -42,7 +42,8 @@ exports[`search results render 1`] = `
   }
 >
   <div
-    className="uast-item"
+    className="uast-viewer__node-2 uast-item"
+    onClick={[Function]}
     onMouseMove={[Function]}
   >
     <div
@@ -64,7 +65,7 @@ exports[`tree render 1`] = `
 
 <div
   className="uast-viewer"
-  onMouseOut={[Function]}
+  onMouseLeave={[Function]}
   style={
     Object {
       "overflow": "auto",
@@ -72,7 +73,8 @@ exports[`tree render 1`] = `
   }
 >
   <div
-    className="uast-item"
+    className="uast-viewer__node-1 uast-item"
+    onClick={[Function]}
     onMouseMove={[Function]}
   >
     <div
