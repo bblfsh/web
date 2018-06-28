@@ -18,7 +18,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.1.0",
-    "uast-viewer": "^0.0.4"
+    "uast-viewer": "^0.0.6"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
