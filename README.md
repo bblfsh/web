@@ -9,7 +9,7 @@ It's user-friendly tool for testing and research how babelfish parse code.
 ## Installation
 
 Babelfish server (v2.5.0 or newer) is required for dashboard.
-If you don't have it running, please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
+If you don't have it running, please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
 
 ### Recomended way (using Docker)
 
@@ -20,7 +20,7 @@ docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
 
 When server starts dashboard will be available on http://localhost:8080
 
-Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server, install drivers, etc.
+Please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server, install drivers, etc.
 
 ### Standalone
 
