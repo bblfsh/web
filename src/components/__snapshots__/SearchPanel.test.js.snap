@@ -99,7 +99,7 @@ exports[`input & button should be disabled while loading 1`] = `
     className="sc-htpNat kVvuhv"
   >
     <a
-      href="https://doc.bblf.sh/user/uast-querying.html"
+      href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -208,7 +208,7 @@ exports[`renders correctly 1`] = `
     className="sc-htpNat kVvuhv"
   >
     <a
-      href="https://doc.bblf.sh/user/uast-querying.html"
+      href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -317,7 +317,7 @@ exports[`renders correctly with value 1`] = `
     className="sc-htpNat kVvuhv"
   >
     <a
-      href="https://doc.bblf.sh/user/uast-querying.html"
+      href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
       rel="noopener noreferrer"
       target="_blank"
     >
