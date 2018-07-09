@@ -65,7 +65,7 @@ export function SearchPanel({ query, loading, onChange, onSearch }) {
       </Field>
       <Field>
         <a
-          href="https://doc.bblf.sh/user/uast-querying.html"
+          href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
           target="_blank"
           rel="noopener noreferrer"
         >
