@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it renders correctly 1`] = `
-.knclXs {
+.c0 {
   padding: 0.5rem 1rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12,7 +12,7 @@ exports[`it renders correctly 1`] = `
   min-height: 2.5rem;
 }
 
-.ejAJGS {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,21 +23,21 @@ exports[`it renders correctly 1`] = `
   align-items: center;
 }
 
-.ejAJGS + .ejAJGS {
+.c1 + .c1 {
   margin-left: 1.5rem;
 }
 
-.driqVY {
+.c2 {
   color: #212121;
   padding-left: 0.5rem;
   font-size: 0.8rem;
 }
 
 <div
-  className="sc-bdVaJa knclXs"
+  className="c0"
 >
   <div
-    className="sc-bwzfXH ejAJGS"
+    className="c1"
   >
     <input
       checked={undefined}
@@ -47,14 +47,14 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="sc-htpNat driqVY"
+      className="c2"
       htmlFor="show-locations"
     >
       Show locations
     </label>
   </div>
   <div
-    className="sc-bwzfXH ejAJGS"
+    className="c1"
   >
     <input
       checked={undefined}
@@ -64,7 +64,7 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="sc-htpNat driqVY"
+      className="c2"
       htmlFor="custom-server"
     >
       Custom babelfish server
