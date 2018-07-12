@@ -5,7 +5,7 @@ import { SearchPanel } from './SearchPanel';
 
 const shouldMatchSnapshot = comp => {
   const wrapper = renderer.create(comp);
-  expect(wrapper.toJSON()).toMatchStyledComponentsSnapshot();
+  expect(wrapper.toJSON()).toMatchSnapshot();
 };
 
 it('renders correctly', () => {

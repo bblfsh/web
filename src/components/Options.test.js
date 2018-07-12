@@ -6,7 +6,7 @@ import { Options } from './Options';
 
 const shouldMatchSnapshot = comp => {
   const wrapper = renderer.create(comp);
-  expect(wrapper.toJSON()).toMatchStyledComponentsSnapshot();
+  expect(wrapper.toJSON()).toMatchSnapshot();
 };
 
 test('it renders correctly', () => {

@@ -12,7 +12,7 @@ describe('Editor', () => {
       <Editor code="foo = 1" languageMode="python" markRange={null} />
     );
 
-    expect(toJson(wrapper)).toMatchStyledComponentsSnapshot();
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('calls onCursorChanged when the selection changes', () => {

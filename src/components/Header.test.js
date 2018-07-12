@@ -30,7 +30,7 @@ describe('DriverCode', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('contains the actualLanguage URL if is auto', () => {
@@ -43,7 +43,7 @@ describe('DriverCode', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });
 
@@ -58,7 +58,7 @@ describe('Header', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('calls onLanguageChanged when the dropdown is changed', () => {
@@ -127,7 +127,7 @@ describe('Header', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('has the button enabled if canParse is true', () => {
@@ -141,7 +141,7 @@ describe('Header', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchStyledComponentsSnapshot();
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('should return correct sharable url', () => {
