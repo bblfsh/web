@@ -232,15 +232,15 @@
   version = "v1.11.3"
 
 [[projects]]
-  digest = "1:fe596e4ef9f2d699c64c90e253aafe0580c4f9ed8800d4d725b588086d8d0509"
+  digest = "1:c2d45df8b6f2ae9c80f660ba4b634a39b02fdd4e520f557a75ca5db6d9aa579d"
   name = "gopkg.in/bblfsh/client-go.v2"
   packages = [
     ".",
     "tools",
   ]
   pruneopts = "UT"
-  revision = "3528037b9c4ec657341135ea9701f160189586f4"
-  version = "v2.5.1"
+  revision = "78d31dfeb56c06d98fd56c0da270559e8002968d"
+  version = "v2.6.1"
 
 [[projects]]
   digest = "1:da126f28a82cb1a6c0c2a0091267dd4798c4b61f475ed7c1e37c17b1fbd7b5b8"
