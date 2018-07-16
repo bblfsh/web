@@ -33,13 +33,7 @@ $(MAKEFILE):
 	git clone --quiet --depth 1 $(CI_REPOSITORY) $(CI_PATH);
 -include $(MAKEFILE)
 
-# simple go get doesn't work for client go
-install-client-go:
-	$(GOGET) github.com/golang/dep/cmd/dep
-	$(GODEP) ensure
-	$(MAKE) -C $(DEPENDENCIES_DIRECTORY)/gopkg.in/bblfsh/client-go.v2 dependencies
-
-dependencies-frontend: | install-client-go dependencies
+dependencies-frontend: dependencies
 	$(YARN)	install
 
 test-frontend: dependencies-frontend
@@ -51,7 +45,7 @@ lint: dependencies-frontend
 fix-lint-errors: dependencies-frontend
 	$(YARN) fix-lint-errors
 
-assets: | build dependencies-frontend
+assets: build
 	chmod -R go=r $(ASSETS_PATH); \
 	$(BINDATA) \
 		-pkg asset \
