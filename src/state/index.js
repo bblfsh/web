@@ -10,6 +10,7 @@ import { reducer as options } from './options';
 import { reducer as code, runParser } from './code';
 import {
   reducer as examples,
+  setListByLangs as setExamples,
   select as exampleSelect,
   DEFAULT_EXAMPLE,
 } from './examples';
@@ -26,10 +27,14 @@ export default combineReducers({
   versions,
 });
 
-export const init = () => dispatch => {
+export const init = () => (dispatch, getState) => {
   const { gistUrl, lang } = history.parse();
 
   const mainPromise = dispatch(languagesLoad())
+    .then(() => {
+      const { languages } = getState().languages;
+      return dispatch(setExamples(Object.keys(languages)));
+    })
     .then(() => {
       if (lang) {
         dispatch(languageSelect(lang));
