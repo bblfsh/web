@@ -238,10 +238,12 @@ exports[`render with errors 1`] = `
   <Footer />
   <Notifications>
     <Error
+      key="0"
       message="error1"
       onRemove={[Function]}
     />
     <Error
+      key="1"
       message="error2"
       onRemove={[Function]}
     />

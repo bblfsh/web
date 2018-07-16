@@ -1,21 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error should render correctly 1`] = `
-.fbizxx {
-  position: relative;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 0 1rem 1rem 1rem;
-  background: #f44336;
-  color: white;
-  box-shadow: 0 4px 20px rgba(148, 12, 12, 0.38);
+.c4 {
+  padding: 0;
+  margin: 0;
 }
 
-.fbizxx .sc-bxivhb {
-  color: white;
+.c4 + .c4 {
+  margin-top: 0.5rem;
 }
 
-.dXfXAk {
+.c2 {
   font-size: 1.5rem;
   position: absolute;
   right: 0.5rem;
@@ -27,42 +22,47 @@ exports[`Error should render correctly 1`] = `
   cursor: pointer;
 }
 
-.cqPsd {
+.c0 {
+  position: relative;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+  background: #f44336;
+  color: white;
+  box-shadow: 0 4px 20px rgba(148,12,12,0.38);
+}
+
+.c0 .c1 {
+  color: white;
+}
+
+.c3 {
   padding: 0;
   margin: 0;
   font-size: 1.2rem;
 }
 
-.jwagSQ {
-  padding: 0;
-  margin: 0;
-}
-
-.jwagSQ + .jwagSQ {
-  margin-top: 0.5rem;
-}
-
 <div
-  className="sc-ifAKCX fbizxx"
+  className="c0"
 >
   <button
-    className="sc-bxivhb dXfXAk"
+    className="c1 c2"
     onClick={undefined}
   >
     ×
   </button>
   <h5
-    className="sc-EHOje cqPsd"
+    className="c3"
   >
     Error
   </h5>
   <p
-    className="sc-htpNat jwagSQ"
+    className="c4"
   >
     Foo bar
   </p>
   <p
-    className="sc-htpNat jwagSQ"
+    className="c4"
   >
     Baz qux
   </p>

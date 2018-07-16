@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`input & button should be disabled while loading 1`] = `
-.cLwhky {
+.c0 {
   padding: 0.5rem 1rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -12,7 +12,7 @@ exports[`input & button should be disabled while loading 1`] = `
   min-height: 2.5rem;
 }
 
-.kVvuhv {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,11 +23,11 @@ exports[`input & button should be disabled while loading 1`] = `
   align-items: center;
 }
 
-.kVvuhv + .kVvuhv {
+.c1 + .c1 {
   margin-left: 1rem;
 }
 
-.hRSXSK {
+.c2 {
   width: 100%;
   background: transparent;
   border-top: none;
@@ -39,7 +39,7 @@ exports[`input & button should be disabled while loading 1`] = `
   padding: 0.1rem 0.5rem;
 }
 
-.jMEkeu {
+.c3 {
   padding: 0.5em 0.5em;
   border: 1px solid #B1B1B1;
   border-radius: 3px;
@@ -47,7 +47,6 @@ exports[`input & button should be disabled while loading 1`] = `
   background: #B1B1B1;
   color: #212121;
   font-weight: bold;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-size: 0.8rem;
   -webkit-letter-spacing: 0.05em;
@@ -59,16 +58,21 @@ exports[`input & button should be disabled while loading 1`] = `
   border: none;
 }
 
-.jMEkeu:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+.c3[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.c3:hover {
+  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
 }
 
 <form
-  className="sc-bwzfXH cLwhky"
+  className="c0"
   onSubmit={[Function]}
 >
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
     style={
       Object {
         "width": "100%",
@@ -76,7 +80,7 @@ exports[`input & button should be disabled while loading 1`] = `
     }
   >
     <input
-      className="sc-bxivhb hRSXSK"
+      className="c2"
       disabled={true}
       name="query"
       onChange={[Function]}
@@ -86,17 +90,17 @@ exports[`input & button should be disabled while loading 1`] = `
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <input
-      className="sc-ifAKCX jMEkeu"
+      className="c3"
       disabled={true}
       type="submit"
       value="Search"
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <a
       href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
@@ -110,7 +114,7 @@ exports[`input & button should be disabled while loading 1`] = `
 `;
 
 exports[`renders correctly 1`] = `
-.cLwhky {
+.c0 {
   padding: 0.5rem 1rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -121,7 +125,7 @@ exports[`renders correctly 1`] = `
   min-height: 2.5rem;
 }
 
-.kVvuhv {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -132,11 +136,11 @@ exports[`renders correctly 1`] = `
   align-items: center;
 }
 
-.kVvuhv + .kVvuhv {
+.c1 + .c1 {
   margin-left: 1rem;
 }
 
-.hRSXSK {
+.c2 {
   width: 100%;
   background: transparent;
   border-top: none;
@@ -148,7 +152,7 @@ exports[`renders correctly 1`] = `
   padding: 0.1rem 0.5rem;
 }
 
-.jMEkeu {
+.c3 {
   padding: 0.5em 0.5em;
   border: 1px solid #B1B1B1;
   border-radius: 3px;
@@ -156,7 +160,6 @@ exports[`renders correctly 1`] = `
   background: #B1B1B1;
   color: #212121;
   font-weight: bold;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-size: 0.8rem;
   -webkit-letter-spacing: 0.05em;
@@ -168,16 +171,21 @@ exports[`renders correctly 1`] = `
   border: none;
 }
 
-.jMEkeu:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+.c3[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.c3:hover {
+  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
 }
 
 <form
-  className="sc-bwzfXH cLwhky"
+  className="c0"
   onSubmit={[Function]}
 >
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
     style={
       Object {
         "width": "100%",
@@ -185,7 +193,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <input
-      className="sc-bxivhb hRSXSK"
+      className="c2"
       disabled={undefined}
       name="query"
       onChange={[Function]}
@@ -195,17 +203,17 @@ exports[`renders correctly 1`] = `
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <input
-      className="sc-ifAKCX jMEkeu"
+      className="c3"
       disabled={true}
       type="submit"
       value="Search"
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <a
       href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
@@ -219,7 +227,7 @@ exports[`renders correctly 1`] = `
 `;
 
 exports[`renders correctly with value 1`] = `
-.cLwhky {
+.c0 {
   padding: 0.5rem 1rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -230,7 +238,7 @@ exports[`renders correctly with value 1`] = `
   min-height: 2.5rem;
 }
 
-.kVvuhv {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -241,11 +249,11 @@ exports[`renders correctly with value 1`] = `
   align-items: center;
 }
 
-.kVvuhv + .kVvuhv {
+.c1 + .c1 {
   margin-left: 1rem;
 }
 
-.hRSXSK {
+.c2 {
   width: 100%;
   background: transparent;
   border-top: none;
@@ -257,7 +265,7 @@ exports[`renders correctly with value 1`] = `
   padding: 0.1rem 0.5rem;
 }
 
-.jMEkeu {
+.c3 {
   padding: 0.5em 0.5em;
   border: 1px solid #B1B1B1;
   border-radius: 3px;
@@ -265,7 +273,6 @@ exports[`renders correctly with value 1`] = `
   background: #B1B1B1;
   color: #212121;
   font-weight: bold;
-  -webkit-text-transform: uppercase;
   text-transform: uppercase;
   font-size: 0.8rem;
   -webkit-letter-spacing: 0.05em;
@@ -277,16 +284,21 @@ exports[`renders correctly with value 1`] = `
   border: none;
 }
 
-.jMEkeu:hover {
-  box-shadow: 0 5px 15px rgba(138, 128, 115, 0.8);
+.c3[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.c3:hover {
+  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
 }
 
 <form
-  className="sc-bwzfXH cLwhky"
+  className="c0"
   onSubmit={[Function]}
 >
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
     style={
       Object {
         "width": "100%",
@@ -294,7 +306,7 @@ exports[`renders correctly with value 1`] = `
     }
   >
     <input
-      className="sc-bxivhb hRSXSK"
+      className="c2"
       disabled={undefined}
       name="query"
       onChange={[Function]}
@@ -304,17 +316,17 @@ exports[`renders correctly with value 1`] = `
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <input
-      className="sc-ifAKCX jMEkeu"
+      className="c3"
       disabled={false}
       type="submit"
       value="Search"
     />
   </div>
   <div
-    className="sc-htpNat kVvuhv"
+    className="c1"
   >
     <a
       href="https://doc.bblf.sh/using-babelfish/uast-querying.html"

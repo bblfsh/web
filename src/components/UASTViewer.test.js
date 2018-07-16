@@ -5,7 +5,7 @@ import UASTViewer, { SEARCH_RESULTS_TYPE } from './UASTViewer';
 
 const shouldMatchSnapshot = comp => {
   const wrapper = renderer.create(comp);
-  expect(wrapper.toJSON()).toMatchStyledComponentsSnapshot();
+  expect(wrapper.toJSON()).toMatchSnapshot();
 };
 
 it('empty render', () => {

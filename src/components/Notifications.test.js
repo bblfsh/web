@@ -9,7 +9,7 @@ describe('Error', () => {
     const msg = 'Foo bar\nBaz qux';
     const wrapper = renderer.create(<Error message={msg} />);
 
-    expect(wrapper).toMatchStyledComponentsSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('should call onRemove when the close button is clicked', () => {

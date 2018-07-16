@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`empty render 1`] = `
-
-
 <div
   className="uast-viewer"
   onMouseLeave={[Function]}
@@ -15,23 +13,20 @@ exports[`empty render 1`] = `
 `;
 
 exports[`search results empty 1`] = `
-.dSUuhc {
+.c0 {
   width: 100%;
   padding: 1rem 0;
-  -webkit-text-align: center;
   text-align: center;
 }
 
 <div
-  className="sc-bdVaJa dSUuhc"
+  className="c0"
 >
   Nothing found
 </div>
 `;
 
 exports[`search results render 1`] = `
-
-
 <div
   className="uast-viewer"
   onMouseLeave={[Function]}
@@ -61,8 +56,6 @@ exports[`search results render 1`] = `
 `;
 
 exports[`tree render 1`] = `
-
-
 <div
   className="uast-viewer"
   onMouseLeave={[Function]}
