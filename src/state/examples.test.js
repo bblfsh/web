@@ -8,16 +8,29 @@ import {
   initialState,
   SET,
   RESET,
-  examples,
+  SET_LIST_BY_LANGS,
   select,
 } from './examples';
 import { set as codeSet } from './code';
 import { set as languageSet, SELECT as LANG_SELECT } from './languages';
+import { java_example_1 } from '../examples/hello.java.js';
 
 describe('examples/reducer', () => {
   it('SET', () => {
     expect(
-      reducer(initialState, { type: SET, selected: 'java_example_1' })
+      reducer(
+        {
+          ...initialState,
+          list: {
+            java_example_1: {
+              name: 'hello.java',
+              language: 'java',
+              code: java_example_1,
+            },
+          },
+        },
+        { type: SET, selected: 'java_example_1' }
+      )
     ).toMatchSnapshot();
   });
 
@@ -25,6 +38,15 @@ describe('examples/reducer', () => {
     expect(
       reducer(initialState, {
         type: RESET,
+      })
+    ).toMatchSnapshot();
+  });
+
+  it('SET_LIST_BY_LANGS', () => {
+    expect(
+      reducer(initialState, {
+        type: SET_LIST_BY_LANGS,
+        languages: ['java', 'python'],
       })
     ).toMatchSnapshot();
   });
@@ -37,7 +59,11 @@ describe('examples/actions', () => {
     });
 
     const key = 'java_example_1';
-    const example = examples[key];
+    const example = {
+      name: 'hello.java',
+      language: 'java',
+      code: java_example_1,
+    };
     store.dispatch(select(key));
     expect(store.getActions()).toEqual([
       codeSet(example.name, example.code),

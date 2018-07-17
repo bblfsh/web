@@ -22,7 +22,7 @@ const LANG_JS = 'javascript';
 const LANG_RUBY = 'ruby';
 const LANG_BASH = 'bash';
 
-export const examples = {
+const examples = {
   java_example_1: {
     name: 'hello.java',
     language: LANG_JAVA,
@@ -77,11 +77,13 @@ export const examples = {
 };
 
 export const initialState = {
+  list: {},
   selected: '',
 };
 
 export const SET = 'bblfsh/examples/SET';
 export const RESET = 'bblfsh/examples/RESET';
+export const SET_LIST_BY_LANGS = 'bblfsh/examples/SET_LIST_BY_LANGS';
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -91,7 +93,23 @@ export const reducer = (state = initialState, action) => {
         selected: action.selected,
       };
     case RESET:
-      return initialState;
+      return {
+        ...state,
+        selected: '',
+      };
+    case SET_LIST_BY_LANGS:
+      const { languages } = action;
+      const list = Object.keys(examples).reduce((acc, key) => {
+        const example = examples[key];
+        if (languages.includes(example.language)) {
+          acc[key] = example;
+        }
+        return acc;
+      }, {});
+      return {
+        ...state,
+        list,
+      };
     default:
       return state;
   }
@@ -122,3 +140,8 @@ export const select = key => dispatch => {
 };
 
 export const reset = () => ({ type: RESET });
+
+export const setListByLangs = languages => ({
+  type: SET_LIST_BY_LANGS,
+  languages,
+});

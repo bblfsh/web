@@ -9,10 +9,7 @@ import {
   select as languageSelect,
   set as languageSet,
 } from '../state/languages';
-import {
-  examples as examplesList,
-  select as exampleSelect,
-} from '../state/examples';
+import { select as exampleSelect } from '../state/examples';
 import { runParser } from '../state/code';
 import { setURL as gistSetURL, load as gistLoad } from '../state/gist';
 import { isUrl } from '../state/options';
@@ -305,7 +302,7 @@ export const mapStateToProps = state => {
     actualLanguage: languages.actual,
 
     selectedExample: examples.selected,
-    examples: examplesList,
+    examples: examples.list,
 
     parsing: code.parsing,
     canParse:
