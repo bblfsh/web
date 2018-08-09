@@ -30,7 +30,7 @@ const NotFound = styled.div`
 
 class UASTViewer extends Component {
   render() {
-    const { uastViewerProps, showLocation } = this.props;
+    const { uastViewerProps, showLocations } = this.props;
     const { uast } = uastViewerProps;
 
     if (!uast) {
@@ -48,7 +48,7 @@ class UASTViewer extends Component {
       <Viewer
         {...uastViewerProps}
         rootIds={rootIds}
-        showLocations={showLocation}
+        showLocations={showLocations}
         style={{ overflow: 'auto' }}
       />
     );
