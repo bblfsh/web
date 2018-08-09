@@ -71,7 +71,7 @@ exports[`tree render 1`] = `
     onMouseMove={[Function]}
   >
     <div
-      className="uast-title uast-title-collapsible collapsed"
+      className="uast-title uast-title-collapsible "
       onClick={[Function]}
     >
       <summary
@@ -79,6 +79,101 @@ exports[`tree render 1`] = `
       >
         Node
       </summary>
+    </div>
+    <div
+      className="uast-content"
+    />
+  </div>
+</div>
+`;
+
+exports[`tree render with locations 1`] = `
+<div
+  className="uast-viewer"
+  onMouseLeave={[Function]}
+  style={
+    Object {
+      "overflow": "auto",
+    }
+  }
+>
+  <div
+    className="uast-viewer__node-1 uast-item"
+    onClick={[Function]}
+    onMouseMove={[Function]}
+  >
+    <div
+      className="uast-title uast-title-collapsible "
+      onClick={[Function]}
+    >
+      <summary
+        className="uast-label"
+      >
+        Node
+      </summary>
+    </div>
+    <div
+      className="uast-content"
+    >
+      <div
+        className="undefined uast-item"
+      >
+        <div
+          className="uast-title uast-title-collapsible "
+          onClick={[Function]}
+        >
+          <span
+            className="uast-property-name"
+          >
+            start_position
+          </span>
+          <summary
+            className="uast-label"
+          >
+            Position
+          </summary>
+        </div>
+        <div
+          className="uast-content"
+        >
+          <div
+            className="undefined uast-item"
+          >
+            <div
+              className="uast-title"
+            >
+              <span
+                className="uast-property-name"
+              >
+                line
+              </span>
+              <span
+                className="uast-value number"
+              >
+                1
+              </span>
+            </div>
+          </div>
+          <div
+            className="undefined uast-item"
+          >
+            <div
+              className="uast-title"
+            >
+              <span
+                className="uast-property-name"
+              >
+                col
+              </span>
+              <span
+                className="uast-value number"
+              >
+                2
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

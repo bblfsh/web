@@ -15,12 +15,24 @@ it('empty render', () => {
 it('tree render', () => {
   const uastViewerProps = {
     uast: {
-      1: { id: 1 },
+      1: { id: 1, expanded: true, StartPosition: { Line: 1, Col: 2 } },
     },
   };
 
   shouldMatchSnapshot(
     <UASTViewer uastViewerProps={uastViewerProps} showLocations={false} />
+  );
+});
+
+it('tree render with locations', () => {
+  const uastViewerProps = {
+    uast: {
+      1: { id: 1, expanded: true, StartPosition: { Line: 1, Col: 2 } },
+    },
+  };
+
+  shouldMatchSnapshot(
+    <UASTViewer uastViewerProps={uastViewerProps} showLocations={true} />
   );
 });
 
