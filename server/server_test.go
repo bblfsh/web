@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bblfsh/dashboard/server"
+	"github.com/bblfsh/web/server"
 
 	"github.com/stretchr/testify/require"
 	"gopkg.in/bblfsh/sdk.v1/protocol"

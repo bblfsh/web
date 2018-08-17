@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/bblfsh/dashboard/server"
+	"github.com/bblfsh/web/server"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"

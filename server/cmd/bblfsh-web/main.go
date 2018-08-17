@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/bblfsh/dashboard/server"
-	"github.com/bblfsh/dashboard/server/asset"
+	"github.com/bblfsh/web/server"
+	"github.com/bblfsh/web/server/asset"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"
 	"github.com/sirupsen/logrus"
