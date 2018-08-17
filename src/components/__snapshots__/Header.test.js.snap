@@ -388,7 +388,7 @@ exports[`Header has the button disabled if canParse is false 1`] = `
     <span
       className="c3"
     >
-      Dashboard
+      Web
     </span>
   </h1>
   <div
@@ -779,7 +779,7 @@ exports[`Header has the button enabled if canParse is true 1`] = `
     <span
       className="c3"
     >
-      Dashboard
+      Web
     </span>
   </h1>
   <div
@@ -1170,7 +1170,7 @@ exports[`Header renders correctly 1`] = `
     <span
       className="c3"
     >
-      Dashboard
+      Web
     </span>
   </h1>
   <div

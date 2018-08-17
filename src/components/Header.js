@@ -44,7 +44,7 @@ const TitleImage = styled.img`
   height: 40px;
 `;
 
-const DashboardTitle = styled.span`
+const AppTitle = styled.span`
   margin-left: 0.8rem;
 `;
 
@@ -227,7 +227,7 @@ export class Header extends Component {
       <Container>
         <Title>
           <TitleImage src={bblfshLogo} alt="bblfsh" />
-          <DashboardTitle>Dashboard</DashboardTitle>
+          <AppTitle>Web</AppTitle>
         </Title>
 
         <Actions>
