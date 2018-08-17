@@ -1,6 +1,6 @@
 # Package configuration
 PROJECT = dashboard
-COMMANDS = server/cmd/bblfsh-dashboard
+COMMANDS = server/cmd/bblfsh-web
 DEPENDENCIES = \
 	github.com/jteeuwen/go-bindata
 DEPENDENCIES_DIRECTORY := ./vendor
@@ -61,4 +61,4 @@ validate-commit: fix-lint-errors no-changes-in-commit
 ## Compiles the dashboard assets, and serve the dashboard through its API
 serve:
 	$(MAKE) -C . assets SERVER_URL=http://0.0.0.0:$(API_PORT)/api
-	go run server/cmd/bblfsh-dashboard/* -bblfsh-addr=0.0.0.0:$(BBLFSH_PORT) -addr=:$(API_PORT)
+	go run server/cmd/bblfsh-web/* -bblfsh-addr=0.0.0.0:$(BBLFSH_PORT) -addr=:$(API_PORT)

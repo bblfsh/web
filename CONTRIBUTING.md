@@ -118,7 +118,7 @@ Dashboard will be available on http://localhost:3000
 But it still requires go server on `9999` port to be available. The easiest way to run it is:
 
 ```sh
-go run ./server/cmd/bblfsh-dashboard/main.go
+go run ./server/cmd/bblfsh-web/main.go
 ```
 
 ### Building the image locally

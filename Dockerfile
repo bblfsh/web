@@ -5,5 +5,5 @@ RUN apt-get update && \
     ca-certificates \
     libxml2 \
     && apt-get clean
-ADD bin/bblfsh-dashboard /bin/bblfsh-dashboard
-ENTRYPOINT ["/bin/bblfsh-dashboard", "-addr", ":80"]
+ADD bin/bblfsh-web /bin/bblfsh-web
+ENTRYPOINT ["/bin/bblfsh-web", "-addr", ":80"]

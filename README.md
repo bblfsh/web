@@ -27,7 +27,7 @@ Please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-st
 If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard/releases) page and run it as
 
 ```sh
-./bblfsh-dashboard -bblfsh-addr <bblfsh-server-addr>
+./bblfsh-web -bblfsh-addr <bblfsh-server-addr>
 ```
 
 ## Development
