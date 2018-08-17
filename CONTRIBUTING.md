@@ -125,5 +125,5 @@ go run ./server/cmd/bblfsh-web/main.go
 
 ```sh
 make packages
-docker build -t bblfsh/dashboard .
+docker build -t bblfsh/web .
 ```

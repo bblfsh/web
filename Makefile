@@ -1,5 +1,5 @@
 # Package configuration
-PROJECT = dashboard
+PROJECT = web
 COMMANDS = server/cmd/bblfsh-web
 DEPENDENCIES = \
 	github.com/jteeuwen/go-bindata

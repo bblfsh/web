@@ -15,7 +15,7 @@ If you don't have it running, please read the [getting started](https://doc.bblf
 
 ```sh
 docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/bblfshd
-docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
+docker run -p 8080:80 --link bblfsh bblfsh/web -bblfsh-addr bblfsh:9432
 ```
 
 When server starts dashboard will be available on http://localhost:8080
