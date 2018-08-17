@@ -52,7 +52,7 @@ export default function Footer({ versionsState }) {
         </Link>{' '}
         under GPLv3 license. Fork{' '}
         <Link
-          href="https://github.com/bblfsh/dashboard/#fork-destination-box"
+          href="https://github.com/bblfsh/web/#fork-destination-box"
           target="_blank"
         >
           this demo

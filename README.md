@@ -1,4 +1,4 @@
-# Dashboard [![GitHub version](https://badge.fury.io/gh/bblfsh%2Fdashboard.svg)](https://github.com/bblfsh/dashboard/releases) [![Build Status](https://travis-ci.org/bblfsh/dashboard.svg?branch=master)](https://travis-ci.org/bblfsh/dashboard)
+# Dashboard [![GitHub version](https://badge.fury.io/gh/bblfsh%web.svg)](https://github.com/bblfsh/web/releases) [![Build Status](https://travis-ci.org/bblfsh/web.svg?branch=master)](https://travis-ci.org/bblfsh/web)
 
 Web dashboard for [Babelfish server](https://bblf.sh).
 
@@ -24,7 +24,7 @@ Please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-st
 
 ### Standalone
 
-If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard/releases) page and run it as
+If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/web/releases) page and run it as
 
 ```sh
 ./bblfsh-web -bblfsh-addr <bblfsh-server-addr>
