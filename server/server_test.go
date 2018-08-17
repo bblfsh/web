@@ -167,7 +167,7 @@ func TestVersionsSuccess(t *testing.T) {
 	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
-	require.JSONEq(`{"web": "web-ver", "server": "server-ver"}`, w.Body.String())
+	require.JSONEq(`{"webClient": "web-ver", "server": "server-ver"}`, w.Body.String())
 }
 
 func TestHandleVersionsError(t *testing.T) {
@@ -218,5 +218,5 @@ func TestCustomBblfshServer(t *testing.T) {
 	r.ServeHTTP(w, req)
 
 	require.Equal(http.StatusOK, w.Code)
-	require.JSONEq(`{"web": "web-ver", "server": "custom-ver"}`, w.Body.String())
+	require.JSONEq(`{"webClient": "web-ver", "server": "custom-ver"}`, w.Body.String())
 }

@@ -4,7 +4,7 @@ export const initialState = {
   loading: false,
   error: null,
   bblfshdVersion: undefined,
-  webVersion: undefined,
+  webClientVersion: undefined,
   loadedFrom: null,
 };
 
@@ -27,7 +27,7 @@ export const reducer = (state = initialState, action) => {
         loading: false,
         error: null,
         bblfshdVersion: action.bblfshdVersion,
-        webVersion: action.webVersion,
+        webClientVersion: action.webClientVersion,
       };
     case FAILED:
       return {
@@ -51,7 +51,7 @@ export const load = () => (dispatch, getState) => {
     .then(resp => {
       dispatch({
         type: SET,
-        webVersion: resp.web,
+        webClientVersion: resp.webClient,
         bblfshdVersion: resp.server,
       });
     })

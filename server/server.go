@@ -152,8 +152,8 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 	}
 
 	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{
-		"web":    s.version,
-		"server": resp.Version,
+		"webClient": s.version,
+		"server":    resp.Version,
 	})
 }
 
