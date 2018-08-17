@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-source{d} babelfish dashboard is [GPLv3](LICENSE) and accept
+source{d} babelfish web is [GPLv3](LICENSE) and accept
 contributions via GitHub pull requests. This document outlines some of the
 conventions on development workflow, commit message formatting, contact points,
 and other resources to make it easier to get your contribution accepted.
@@ -55,7 +55,7 @@ The format can be described more formally as follows:
 
 ## Architecture
 
-The Dashboard application consists of 2 parts:
+The web client application consists of 2 parts:
 
 - Single page react application bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 - Go web server to proxy and transform requests to actual [bblfsh server](https://doc.bblf.sh/).
@@ -70,9 +70,9 @@ For production usage, all static files are served from the go server after being
 
 ## Development
 
-The dashboard is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
+The web client is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
 
-The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
+The web client uses an intermediate API that connects to the bblfsh server and serves frontend assets.
 
 Every time you change any source of the front assets, it is needed to regenerate the `server/asset/asset.go` containing the static files of the site.
 
@@ -81,15 +81,15 @@ It can be done running
 make assets
 ```
 
-### Access the dashboard locally
+### Access web client locally
 
 To run it locally you can run:
 ```sh
 make serve
 ```
-(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, the dashboard api, and to serve the updated dashboard itself)
+(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, web client api, and to serve the updated web client itself)
 
-And access the dashboard through http://localhost:9999
+And access web client through http://localhost:9999
 
 ### Run tests
 
@@ -113,7 +113,7 @@ You can also run frontend in hot reloading mode:
 yarn start
 ```
 
-Dashboard will be available on http://localhost:3000
+Web client will be available on http://localhost:3000
 
 But it still requires go server on `9999` port to be available. The easiest way to run it is:
 
