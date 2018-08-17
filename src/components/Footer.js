@@ -15,7 +15,7 @@ const Link = styled.a`
   color: ${font.color.dark};
 `;
 
-export function Versions({ loading, error, bblfshdVersion, dashboardVersion }) {
+export function Versions({ loading, error, bblfshdVersion, webClientVersion }) {
   if (loading) {
     return <span>Getting server version...</span>;
   }
@@ -26,7 +26,7 @@ export function Versions({ loading, error, bblfshdVersion, dashboardVersion }) {
 
   return (
     <span>
-      Babelfish server: {bblfshdVersion}. Dashboard: {dashboardVersion}
+      Babelfish server: {bblfshdVersion}. Web client: {webClientVersion}
     </span>
   );
 }
@@ -52,7 +52,7 @@ export default function Footer({ versionsState }) {
         </Link>{' '}
         under GPLv3 license. Fork{' '}
         <Link
-          href="https://github.com/bblfsh/dashboard/#fork-destination-box"
+          href="https://github.com/bblfsh/web/#fork-destination-box"
           target="_blank"
         >
           this demo

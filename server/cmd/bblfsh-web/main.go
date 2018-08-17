@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/bblfsh/dashboard/server"
-	"github.com/bblfsh/dashboard/server/asset"
+	"github.com/bblfsh/web/server"
+	"github.com/bblfsh/web/server/asset"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"
 	"github.com/sirupsen/logrus"
@@ -33,7 +33,7 @@ func main() {
 	addr, bblfshAddr, debug, showVersion := flags()
 
 	if showVersion {
-		fmt.Printf("bblfsh-dashboard %s\n", version)
+		fmt.Printf("bblfsh-web %s\n", version)
 		return
 	}
 
@@ -93,7 +93,7 @@ func main() {
 }
 
 func mountAssets() (string, error) {
-	dir, err := ioutil.TempDir(os.TempDir(), "bblfsh-dashboard-assets")
+	dir, err := ioutil.TempDir(os.TempDir(), "bblfsh-web-assets")
 	if err != nil {
 		return "", err
 	}

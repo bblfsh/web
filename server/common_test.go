@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 
-	"github.com/bblfsh/dashboard/server"
+	"github.com/bblfsh/web/server"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
@@ -28,7 +28,7 @@ func request(
 	}
 	defer grpcServer.GracefulStop()
 
-	srv, err := server.New(addr, "dashboard-ver")
+	srv, err := server.New(addr, "web-ver")
 	if err != nil {
 		return nil, err
 	}
