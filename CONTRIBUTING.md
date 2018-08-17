@@ -55,7 +55,7 @@ The format can be described more formally as follows:
 
 ## Architecture
 
-The web client application consists of 2 parts:
+The bblfsh web client application consists of 2 parts:
 
 - Single page react application bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 - Go web server to proxy and transform requests to actual [bblfsh server](https://doc.bblf.sh/).
