@@ -28,7 +28,7 @@ func request(
 	}
 	defer grpcServer.GracefulStop()
 
-	srv, err := server.New(addr, "dashboard-ver")
+	srv, err := server.New(addr, "web-ver")
 	if err != nil {
 		return nil, err
 	}

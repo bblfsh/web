@@ -15,7 +15,7 @@ const Link = styled.a`
   color: ${font.color.dark};
 `;
 
-export function Versions({ loading, error, bblfshdVersion, dashboardVersion }) {
+export function Versions({ loading, error, bblfshdVersion, webVersion }) {
   if (loading) {
     return <span>Getting server version...</span>;
   }
@@ -26,7 +26,7 @@ export function Versions({ loading, error, bblfshdVersion, dashboardVersion }) {
 
   return (
     <span>
-      Babelfish server: {bblfshdVersion}. Dashboard: {dashboardVersion}
+      Babelfish server: {bblfshdVersion}. Web: {webVersion}
     </span>
   );
 }

@@ -167,7 +167,7 @@ func TestVersionsSuccess(t *testing.T) {
 	w, err := request(s, "POST", "/api/version", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
-	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "server-ver"}`, w.Body.String())
+	require.JSONEq(`{"web": "web-ver", "server": "server-ver"}`, w.Body.String())
 }
 
 func TestHandleVersionsError(t *testing.T) {
@@ -193,7 +193,7 @@ func TestCustomBblfshServer(t *testing.T) {
 	grpcServer, addr, err := runBblfsh(s)
 	require.Nil(err)
 	defer grpcServer.GracefulStop()
-	srv, err := server.New(addr, "dashboard-ver")
+	srv, err := server.New(addr, "web-ver")
 	require.Nil(err)
 	r, err := runGin(srv)
 	require.Nil(err)
@@ -218,5 +218,5 @@ func TestCustomBblfshServer(t *testing.T) {
 	r.ServeHTTP(w, req)
 
 	require.Equal(http.StatusOK, w.Code)
-	require.JSONEq(`{"dashboard": "dashboard-ver", "server": "custom-ver"}`, w.Body.String())
+	require.JSONEq(`{"web": "web-ver", "server": "custom-ver"}`, w.Body.String())
 }
