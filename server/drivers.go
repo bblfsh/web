@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/gin-gonic/gin"
-	"gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/sdk.v2/protocol"
 )
 
 // Driver as it will be seen in the frontend
