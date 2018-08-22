@@ -1,7 +1,7 @@
 package server
 
 import (
-	"encoding/json"
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -9,9 +9,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"gopkg.in/bblfsh/client-go.v2"
-	"gopkg.in/bblfsh/client-go.v2/tools"
+	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/protocol"
-	"gopkg.in/bblfsh/sdk.v2/uast"
+	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
 )
 
 type Server struct {
@@ -68,7 +68,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	resp, err := cli.NewParseRequest().
+	resp, err := cli.NewParseRequestV2().
 		Language(req.Language).
 		Filename(req.Filename).
 		Content(req.Content).
@@ -78,19 +78,27 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	if resp.UAST != nil && req.Query != "" {
-		filtered, err := tools.Filter(resp.UAST, req.Query)
-		if err != nil {
-			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
-			return
-		}
-		resp.UAST = &uast.Node{
-			InternalType: "Dashboard: Search results",
-			Children:     filtered,
-		}
+	gr := newGraphReader()
+	if err := gr.readGraph(bytes.NewReader(resp.Uast)); err != nil {
+		ctx.JSON(http.StatusInternalServerError, jsonError("error reading UAST: %s", err))
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), (*parseResponse)(resp))
+	tree, err := gr.asFlatTree()
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
+	}
+
+	ctx.JSON(toHTTPStatus(protocol1.Ok), parseResp{
+		Errors:   resp.Errors,
+		Language: resp.Language,
+		Uast:     tree,
+	})
+}
+
+type parseResp struct {
+	Errors   []*protocol.ParseError `json:"errors"`
+	Language string                 `json:"language"`
+	Uast     map[uint64]nodes.Node  `json:"uast"`
 }
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
@@ -157,11 +165,11 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 	})
 }
 
-func toHTTPStatus(status protocol.Status) int {
+func toHTTPStatus(status protocol1.Status) int {
 	switch status {
-	case protocol.Ok:
+	case protocol1.Ok:
 		return http.StatusOK
-	case protocol.Error:
+	case protocol1.Error:
 		return http.StatusBadRequest
 	}
 
@@ -170,54 +178,11 @@ func toHTTPStatus(status protocol.Status) int {
 
 func jsonError(msg string, args ...interface{}) gin.H {
 	return gin.H{
-		"status": protocol.Fatal,
+		"status": protocol1.Fatal,
 		"errors": []gin.H{
 			gin.H{
 				"message": fmt.Sprintf(msg, args...),
 			},
 		},
 	}
-}
-
-type parseResponse protocol.ParseResponse
-
-// MarshalJSON returns the JSON representation of the protocol.ParseResponse
-func (r *parseResponse) MarshalJSON() ([]byte, error) {
-	resp := struct {
-		*protocol.ParseResponse
-		UAST *node `json:"uast"`
-	}{
-		(*protocol.ParseResponse)(r),
-		(*node)(r.UAST),
-	}
-
-	return json.Marshal(resp)
-}
-
-// Node represents a returned uast.Node
-type node uast.Node
-
-// MarshalJSON returns the JSON representation of the Node
-func (n *node) MarshalJSON() ([]byte, error) {
-	var nodes = make([]*node, len(n.Children))
-	for i, n := range n.Children {
-		nodes[i] = (*node)(n)
-	}
-
-	var roles = make([]string, len(n.Roles))
-	for i, r := range n.Roles {
-		roles[i] = r.String()
-	}
-
-	node := struct {
-		*uast.Node
-		Roles    []string
-		Children []*node
-	}{
-		(*uast.Node)(n),
-		roles,
-		nodes,
-	}
-
-	return json.Marshal(node)
 }
