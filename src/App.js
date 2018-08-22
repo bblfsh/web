@@ -3,6 +3,7 @@ import styled, { injectGlobal } from 'styled-components';
 import 'normalize.css';
 import SplitPane from 'react-split-pane';
 import { withUASTEditor, Editor } from 'uast-viewer';
+import { hocOptions } from 'uast-viewer/es/uast-v2';
 import 'uast-viewer/dist/default-theme.css';
 
 import Header from './components/Header';
@@ -143,5 +144,5 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withUASTEditor(App)
+  withUASTEditor(App, hocOptions)
 );

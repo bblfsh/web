@@ -24,12 +24,11 @@ export function parse(language, filename, code, query, serverUrl) {
       }),
     })
       .then(resp => resp.json())
-      .then(({ status, errors, uast, language }) => {
-        if (status === 0) {
-          resolve({ uast, language });
-        } else {
-          reject(errors ? errors.map(normalizeError) : ['unexpected error']);
+      .then(({ errors, uast, language }) => {
+        if (errors && errors.length > 0) {
+          return reject(errors.map(normalizeError));
         }
+        resolve({ uast, language });
       })
       .catch(err => {
         log.error(err);
