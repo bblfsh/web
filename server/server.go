@@ -15,6 +15,7 @@ import (
 )
 
 type Server struct {
+	addr       string
 	client     *bblfsh.Client
 	httpClient *http.Client
 	version    string
@@ -22,16 +23,23 @@ type Server struct {
 
 // New return a new Server
 func New(addr string, version string) (*Server, error) {
-	client, err := bblfsh.NewClient(addr)
-	if err != nil {
-		return nil, fmt.Errorf("Can't connect to bblfsh server: %s", err)
-	}
-
 	return &Server{
-		client:     client,
+		addr:       addr,
 		version:    version,
 		httpClient: &http.Client{Timeout: 5 * time.Second},
 	}, nil
+}
+
+func (s *Server) bblfshClient() (*bblfsh.Client, error) {
+	if s.client == nil {
+		var err error
+		s.client, err = bblfsh.NewClient(s.addr)
+		if err != nil {
+			return nil, fmt.Errorf("Can't connect to bblfsh server: %s", err)
+		}
+	}
+
+	return s.client, nil
 }
 
 // Mount return a router listening for frontend requests
@@ -95,7 +103,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
 	if req.ServerURL == "" {
-		return s.client, nil
+		return s.bblfshClient()
 	}
 
 	return bblfsh.NewClient(req.ServerURL)
