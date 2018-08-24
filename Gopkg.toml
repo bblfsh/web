@@ -7,10 +7,10 @@
     name = "gopkg.in/bblfsh/client-go.v2"
     non-go = false
 
-[[override]]
+[[constraint]]
   name = "gopkg.in/bblfsh/sdk.v2"
-  version = "^2.0.1"
+  version = "^2.1.0"
 
 [[constraint]]
   name = "gopkg.in/bblfsh/client-go.v2"
-  version = "^2.8.2"
+  version = "^2.8.4"

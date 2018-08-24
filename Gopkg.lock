@@ -259,15 +259,12 @@
   version = "v1.14.0"
 
 [[projects]]
-  digest = "1:8abc2f918a3d13177b240c179d73e0c4d0e6caf4972327349acf8de486a53256"
+  digest = "1:6e1197a83154e0f55123cbe2008cef047ef6e0606fbdd77ca6e81d9c63f7bd1d"
   name = "gopkg.in/bblfsh/client-go.v2"
-  packages = [
-    ".",
-    "tools",
-  ]
+  packages = ["."]
   pruneopts = "UT"
-  revision = "65e3651ba840e097eb1cf1dfb8329d10444bfdd0"
-  version = "v2.8.2"
+  revision = "20221c1c560c7d51e1f1e444aa4e55bf3543520b"
+  version = "v2.8.4"
 
 [[projects]]
   digest = "1:b4160b7542f42012865fe468c4b2e14543ea90f1a4cac76d72848e425b8393b0"
@@ -282,12 +279,13 @@
   version = "v1.16.1"
 
 [[projects]]
-  digest = "1:df5e5e81df257399169c04cfdbd1e6f19b86ddad2288204ab9d1cfbb0a87d706"
+  digest = "1:0bbcd04d06a0c45f28b352bcb9c1f7b11725ed19a5f6aa177e76e7f2c5dd626a"
   name = "gopkg.in/bblfsh/sdk.v2"
   packages = [
     "driver",
     "driver/manifest",
     "protocol",
+    "protocol/v1",
     "uast",
     "uast/nodes",
     "uast/nodes/nodesproto",
@@ -296,8 +294,8 @@
     "uast/transformer",
   ]
   pruneopts = "NUT"
-  revision = "7afaacbde549f1711442ee62a7a646a799653833"
-  version = "v2.0.1"
+  revision = "966e28c602fb968fc52e27e14762bdf9307da229"
+  version = "v2.1.0"
 
 [[projects]]
   digest = "1:0215407129c5f116ae8f6d3af64df59c39d3f606a72ef77a1e6ed874f92a8d9c"
@@ -333,9 +331,12 @@
     "github.com/stretchr/testify/require",
     "google.golang.org/grpc",
     "gopkg.in/bblfsh/client-go.v2",
-    "gopkg.in/bblfsh/client-go.v2/tools",
+    "gopkg.in/bblfsh/sdk.v1/protocol",
     "gopkg.in/bblfsh/sdk.v2/protocol",
     "gopkg.in/bblfsh/sdk.v2/uast",
+    "gopkg.in/bblfsh/sdk.v2/uast/nodes",
+    "gopkg.in/bblfsh/sdk.v2/uast/nodes/nodesproto",
+    "gopkg.in/bblfsh/sdk.v2/uast/nodes/nodesproto/pio",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
