@@ -78,12 +78,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	gr := newGraphReader()
-	if err := gr.readGraph(bytes.NewReader(resp.Uast)); err != nil {
-		ctx.JSON(http.StatusInternalServerError, jsonError("error reading UAST: %s", err))
-	}
-
-	tree, err := gr.asFlatTree()
+	tree, err := readAsFlatTree(bytes.NewReader(resp.Uast))
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
 	}
