@@ -4,7 +4,6 @@ Web client for [Babelfish server](https://bblf.sh).
 
 It's user-friendly tool for testing and research how babelfish parse code.
 
-![Screenshot](images/screenshot.png?raw=true)
 ![Screenshot_gif](images/web.gif?raw=true)
 
 ## Installation
