@@ -1,4 +1,4 @@
-# Babelfish web [![GitHub version](https://badge.fury.io/gh/bblfsh%web.svg)](https://github.com/bblfsh/web/releases) [![Build Status](https://travis-ci.org/bblfsh/web.svg?branch=master)](https://travis-ci.org/bblfsh/web)
+# Babelfish web [![Build Status](https://travis-ci.org/bblfsh/web.svg?branch=master)](https://travis-ci.org/bblfsh/web)
 
 Web client for [Babelfish server](https://bblf.sh).
 
