@@ -10,6 +10,14 @@
   version = "v0.3.0"
 
 [[projects]]
+  branch = "master"
+  digest = "1:867b9f2be08ff92c487e1b653d18a879a811aae72404fff0fd8de752adaf6c39"
+  name = "github.com/antchfx/xpath"
+  packages = ["."]
+  pruneopts = "NUT"
+  revision = "3de91f3991a1af6e495d49c9218318b5544b20e3"
+
+[[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
@@ -259,9 +267,12 @@
   version = "v1.14.0"
 
 [[projects]]
-  digest = "1:60a4365ee58a06860dfbc7f2532a5c69b1d7f9ad2f778516c8df11388a30d4e8"
+  digest = "1:f6eeb7c0ff86a7cdddc20574e9ab6325203820c6a6b01f1a63b77286c9d37db1"
   name = "gopkg.in/bblfsh/client-go.v3"
-  packages = ["."]
+  packages = [
+    ".",
+    "tools",
+  ]
   pruneopts = "NUT"
   revision = "1169333c454a21a989546a2c4b9e49aacecabc3c"
   version = "v3.0.0"
@@ -279,7 +290,7 @@
   version = "v1.16.1"
 
 [[projects]]
-  digest = "1:cb52d6da4ad577153925c3a9d84385e9cb0c5c1cafc5d46a339a1f9463ee4243"
+  digest = "1:cf4bcf208171c10fc732ec72ad25d9961dfb4cdaf412e48af975dfb1dc12a8d2"
   name = "gopkg.in/bblfsh/sdk.v2"
   packages = [
     "driver",
@@ -289,6 +300,8 @@
     "uast/nodes",
     "uast/nodes/nodesproto",
     "uast/nodes/nodesproto/pio",
+    "uast/query",
+    "uast/query/xpath",
     "uast/role",
     "uast/transformer",
   ]
@@ -330,7 +343,9 @@
     "github.com/stretchr/testify/require",
     "google.golang.org/grpc",
     "gopkg.in/bblfsh/client-go.v3",
+    "gopkg.in/bblfsh/client-go.v3/tools",
     "gopkg.in/bblfsh/sdk.v1/protocol",
+    "gopkg.in/bblfsh/sdk.v1/uast",
     "gopkg.in/bblfsh/sdk.v2/protocol",
     "gopkg.in/bblfsh/sdk.v2/uast",
     "gopkg.in/bblfsh/sdk.v2/uast/nodes",

@@ -3,14 +3,10 @@
   unused-packages = true
   non-go = true
 
-  [[prune.project]]
-    name = "gopkg.in/bblfsh/client-go.v2"
-    non-go = false
-
 [[constraint]]
   name = "gopkg.in/bblfsh/sdk.v2"
   version = "^2.2.3"
 
 [[constraint]]
-  name = "gopkg.in/bblfsh/client-go.v2"
+  name = "gopkg.in/bblfsh/client-go.v3"
   version = "^3.0.0"
