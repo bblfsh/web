@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"gopkg.in/bblfsh/client-go.v2"
+	"gopkg.in/bblfsh/client-go.v3"
 	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/protocol"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
@@ -68,7 +68,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	resp, err := cli.NewParseRequestV2().
+	resp, err := cli.NewParseRequest().
 		Language(req.Language).
 		Filename(req.Filename).
 		Content(req.Content).
@@ -83,7 +83,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
 	}
 
-	ctx.JSON(toHTTPStatus(protocol1.Ok), parseResp{
+	ctx.JSON(http.StatusOK, parseResp{
 		Errors:   resp.Errors,
 		Language: resp.Language,
 		Uast:     tree,
@@ -154,21 +154,10 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{
+	ctx.JSON(http.StatusOK, map[string]string{
 		"webClient": s.version,
 		"server":    resp.Version,
 	})
-}
-
-func toHTTPStatus(status protocol1.Status) int {
-	switch status {
-	case protocol1.Ok:
-		return http.StatusOK
-	case protocol1.Error:
-		return http.StatusBadRequest
-	}
-
-	return http.StatusInternalServerError
 }
 
 func jsonError(msg string, args ...interface{}) gin.H {
