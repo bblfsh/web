@@ -16,8 +16,8 @@ export const getSearchResults = uast => {
     return null;
   }
 
-  if (rootNode.InternalType === SEARCH_RESULTS_TYPE) {
-    return rootNode.Children;
+  if (rootNode.n.InternalType === SEARCH_RESULTS_TYPE) {
+    return rootNode.n.Children;
   }
 
   return null;

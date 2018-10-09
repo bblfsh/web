@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"gopkg.in/bblfsh/client-go.v3"
+	"gopkg.in/bblfsh/client-go.v3/tools"
 	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/protocol"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
@@ -55,6 +56,8 @@ type parseRequest struct {
 	Query    string `json:"query"`
 }
 
+const rootNodeID uint64 = 1
+
 func (s *Server) handleParse(ctx *gin.Context) {
 	var req parseRequest
 	if err := ctx.BindJSON(&req); err != nil {
@@ -78,9 +81,36 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	tree, err := readAsFlatTree(bytes.NewReader(resp.Uast))
-	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
+	var tree map[uint64]nodes.Node
+
+	if resp.Uast != nil && req.Query != "" {
+		n, _ := resp.Nodes()
+
+		iter, err := tools.Filter(n, req.Query)
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
+			return
+		}
+
+		var results nodes.Array
+		var i = rootNodeID + 1
+		tree = make(map[uint64]nodes.Node)
+		for iter.Next() {
+			results = append(results, nodes.Int(i))
+			// TODO: need to transform children nodes
+			tree[i] = iter.Node().(nodes.Node)
+			i++
+		}
+
+		tree[rootNodeID] = nodes.Object{
+			"InternalType": nodes.String("Dashboard: Search results"),
+			"Children":     results,
+		}
+	} else {
+		tree, err = readAsFlatTree(bytes.NewReader(resp.Uast))
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
+		}
 	}
 
 	ctx.JSON(http.StatusOK, parseResp{
