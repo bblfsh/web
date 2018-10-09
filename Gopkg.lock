@@ -2,7 +2,7 @@
 
 
 [[projects]]
-  digest = "1:e0499b93857a1b91efbdc0c21e26f1130685de98035008f3b01eeeb0713798cb"
+  digest = "1:167b6f65a6656de568092189ae791253939f076df60231fdd64588ac703892a1"
   name = "github.com/BurntSushi/toml"
   packages = ["."]
   pruneopts = "NUT"
@@ -26,7 +26,7 @@
   revision = "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
 
 [[projects]]
-  digest = "1:ff3dcdddbfeb50d13ce5c9eb2e100898266bcd9118cfb05a6bd9ea5d0ed55636"
+  digest = "1:7f029513a3c64c1fc923af79bf27d4fd0ce4fafdd13b421c1884d52c84e9c600"
   name = "github.com/gin-gonic/gin"
   packages = [
     ".",
@@ -39,7 +39,7 @@
   version = "v1.3.0"
 
 [[projects]]
-  digest = "1:54d8b7e42748f38fd5015ee0cdb2828dbc891e0ef9989fc3e123a2b4e271b16b"
+  digest = "1:983cb7d70588854e2706e32c61698bbf0eab4956fca89e86c1c10d7213679a0e"
   name = "github.com/gogo/protobuf"
   packages = [
     "gogoproto",
@@ -53,7 +53,7 @@
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:094772cd3a2a5b9bb621111bfbe964a2fbee790b014a645ea09eb842b1b658c1"
+  digest = "1:63ccdfbd20f7ccd2399d0647a7d100b122f79c13bb83da9660b1598396fd9f62"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
@@ -139,7 +139,7 @@
   version = "v1.0.6"
 
 [[projects]]
-  digest = "1:a7cb71e7cef4a320ae6d91424df8f991ed4161aede6dea7ba8d8f3af1b589a6c"
+  digest = "1:0331452965d8695c0a5633e0f509012987681a654f388f2ad0c3b2d7f7004b1c"
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
@@ -167,7 +167,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:2a79580ea4e965b491af29becd7ab0e171e8528f9929d076b8375562b5b64819"
+  digest = "1:a2707daa031e6db5fcaae8a9b30eaa503a0d7d8aa72cd50b27fa394ef6c3f7fe"
   name = "golang.org/x/net"
   packages = [
     "context",
@@ -183,7 +183,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7237545db3d97ecbb1dd3f0e44ea4f69d6de6f7e46c08fd4c9c58348f61e2a78"
+  digest = "1:f8130e9e646175a1dcce75cfe1b57fa4cb07015c79690b03aa87bf9c912209fe"
   name = "golang.org/x/sys"
   packages = [
     "unix",
@@ -193,7 +193,7 @@
   revision = "4ea2f632f6e912459fe60b26b1749377f0d889d5"
 
 [[projects]]
-  digest = "1:a0f29009397dc27c9dc8440f0945d49e5cbb9b72d0b0fc745474d9bfdea2d9f8"
+  digest = "1:e7071ed636b5422cc51c0e3a6cebc229d6c9fffc528814b519a980641422d619"
   name = "golang.org/x/text"
   packages = [
     "collate",
@@ -224,7 +224,7 @@
   revision = "c66870c02cf823ceb633bcd05be3c7cda29976f4"
 
 [[projects]]
-  digest = "1:77ce454715387a609a4a4d97fe77d98f37d8b8fb69762784bdda6e228106f71c"
+  digest = "1:c2d756dba3cf0bc2d50ff9b3e4b80cd327436cf678386a51c8417d084625a51d"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -259,15 +259,15 @@
   version = "v1.14.0"
 
 [[projects]]
-  digest = "1:6e1197a83154e0f55123cbe2008cef047ef6e0606fbdd77ca6e81d9c63f7bd1d"
-  name = "gopkg.in/bblfsh/client-go.v2"
+  digest = "1:60a4365ee58a06860dfbc7f2532a5c69b1d7f9ad2f778516c8df11388a30d4e8"
+  name = "gopkg.in/bblfsh/client-go.v3"
   packages = ["."]
-  pruneopts = "UT"
-  revision = "20221c1c560c7d51e1f1e444aa4e55bf3543520b"
-  version = "v2.8.4"
+  pruneopts = "NUT"
+  revision = "1169333c454a21a989546a2c4b9e49aacecabc3c"
+  version = "v3.0.0"
 
 [[projects]]
-  digest = "1:b4160b7542f42012865fe468c4b2e14543ea90f1a4cac76d72848e425b8393b0"
+  digest = "1:d95a7444db17dcabe06077bf64b572b4036e4184fb4ae1fc1c118eedff42199a"
   name = "gopkg.in/bblfsh/sdk.v1"
   packages = [
     "manifest",
@@ -279,13 +279,12 @@
   version = "v1.16.1"
 
 [[projects]]
-  digest = "1:0bbcd04d06a0c45f28b352bcb9c1f7b11725ed19a5f6aa177e76e7f2c5dd626a"
+  digest = "1:cb52d6da4ad577153925c3a9d84385e9cb0c5c1cafc5d46a339a1f9463ee4243"
   name = "gopkg.in/bblfsh/sdk.v2"
   packages = [
     "driver",
     "driver/manifest",
     "protocol",
-    "protocol/v1",
     "uast",
     "uast/nodes",
     "uast/nodes/nodesproto",
@@ -294,8 +293,8 @@
     "uast/transformer",
   ]
   pruneopts = "NUT"
-  revision = "966e28c602fb968fc52e27e14762bdf9307da229"
-  version = "v2.1.0"
+  revision = "85fd47713ba40fc3bffe4214090a552074841431"
+  version = "v2.2.3"
 
 [[projects]]
   digest = "1:0215407129c5f116ae8f6d3af64df59c39d3f606a72ef77a1e6ed874f92a8d9c"
@@ -330,13 +329,12 @@
     "github.com/sirupsen/logrus",
     "github.com/stretchr/testify/require",
     "google.golang.org/grpc",
-    "gopkg.in/bblfsh/client-go.v2",
+    "gopkg.in/bblfsh/client-go.v3",
     "gopkg.in/bblfsh/sdk.v1/protocol",
     "gopkg.in/bblfsh/sdk.v2/protocol",
     "gopkg.in/bblfsh/sdk.v2/uast",
     "gopkg.in/bblfsh/sdk.v2/uast/nodes",
     "gopkg.in/bblfsh/sdk.v2/uast/nodes/nodesproto",
-    "gopkg.in/bblfsh/sdk.v2/uast/nodes/nodesproto/pio",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

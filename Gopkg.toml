@@ -9,8 +9,8 @@
 
 [[constraint]]
   name = "gopkg.in/bblfsh/sdk.v2"
-  version = "^2.1.0"
+  version = "^2.2.3"
 
 [[constraint]]
   name = "gopkg.in/bblfsh/client-go.v2"
-  version = "^2.8.4"
+  version = "^3.0.0"
