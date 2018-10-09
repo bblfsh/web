@@ -37,13 +37,13 @@ func (s *Server) handleSupportedLanguages(ctx *gin.Context) {
 		return
 	}
 
-	resp, err := cli.NewSupportedLanguagesRequest().Do()
+	langs, err := cli.NewSupportedLanguagesRequest().Do()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error getting server drivers: %s", err))
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), driverManifestToDrivers(resp.Languages))
+	ctx.JSON(http.StatusOK, driverManifestToDrivers(langs))
 }
 
 func driverManifestToDrivers(drivers []protocol.DriverManifest) []Driver {

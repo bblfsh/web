@@ -1,17 +1,18 @@
 package server
 
 import (
-	"encoding/json"
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"gopkg.in/bblfsh/client-go.v2"
-	"gopkg.in/bblfsh/client-go.v2/tools"
-	"gopkg.in/bblfsh/sdk.v1/protocol"
-	"gopkg.in/bblfsh/sdk.v1/uast"
+	"gopkg.in/bblfsh/client-go.v3"
+	"gopkg.in/bblfsh/client-go.v3/tools"
+	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
+	"gopkg.in/bblfsh/sdk.v2/protocol"
+	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
 )
 
 type Server struct {
@@ -63,6 +64,8 @@ type parseRequest struct {
 	Query    string `json:"query"`
 }
 
+const rootNodeID uint64 = 1
+
 func (s *Server) handleParse(ctx *gin.Context) {
 	var req parseRequest
 	if err := ctx.BindJSON(&req); err != nil {
@@ -86,19 +89,49 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		return
 	}
 
-	if resp.UAST != nil && req.Query != "" {
-		filtered, err := tools.Filter(resp.UAST, req.Query)
+	var tree map[uint64]nodes.Node
+
+	if resp.Uast != nil && req.Query != "" {
+		n, _ := resp.Nodes()
+
+		iter, err := tools.Filter(n, req.Query)
 		if err != nil {
 			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
 			return
 		}
-		resp.UAST = &uast.Node{
-			InternalType: "Dashboard: Search results",
-			Children:     filtered,
+
+		var results nodes.Array
+		var i = rootNodeID + 1
+		tree = make(map[uint64]nodes.Node)
+		for iter.Next() {
+			results = append(results, nodes.Int(i))
+			// TODO: need to transform children nodes
+			tree[i] = iter.Node().(nodes.Node)
+			i++
+		}
+
+		tree[rootNodeID] = nodes.Object{
+			"InternalType": nodes.String("Dashboard: Search results"),
+			"Children":     results,
+		}
+	} else {
+		tree, err = readAsFlatTree(bytes.NewReader(resp.Uast))
+		if err != nil {
+			ctx.JSON(http.StatusInternalServerError, jsonError("error flatting UAST: %s", err))
 		}
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), (*parseResponse)(resp))
+	ctx.JSON(http.StatusOK, parseResp{
+		Errors:   resp.Errors,
+		Language: resp.Language,
+		Uast:     tree,
+	})
+}
+
+type parseResp struct {
+	Errors   []*protocol.ParseError `json:"errors"`
+	Language string                 `json:"language"`
+	Uast     map[uint64]nodes.Node  `json:"uast"`
 }
 
 func (s *Server) clientForRequest(req request) (*bblfsh.Client, error) {
@@ -159,73 +192,19 @@ func (s *Server) handleVersion(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), map[string]string{
+	ctx.JSON(http.StatusOK, map[string]string{
 		"webClient": s.version,
 		"server":    resp.Version,
 	})
 }
 
-func toHTTPStatus(status protocol.Status) int {
-	switch status {
-	case protocol.Ok:
-		return http.StatusOK
-	case protocol.Error:
-		return http.StatusBadRequest
-	}
-
-	return http.StatusInternalServerError
-}
-
 func jsonError(msg string, args ...interface{}) gin.H {
 	return gin.H{
-		"status": protocol.Fatal,
+		"status": protocol1.Fatal,
 		"errors": []gin.H{
 			gin.H{
 				"message": fmt.Sprintf(msg, args...),
 			},
 		},
 	}
-}
-
-type parseResponse protocol.ParseResponse
-
-// MarshalJSON returns the JSON representation of the protocol.ParseResponse
-func (r *parseResponse) MarshalJSON() ([]byte, error) {
-	resp := struct {
-		*protocol.ParseResponse
-		UAST *node `json:"uast"`
-	}{
-		(*protocol.ParseResponse)(r),
-		(*node)(r.UAST),
-	}
-
-	return json.Marshal(resp)
-}
-
-// Node represents a returned uast.Node
-type node uast.Node
-
-// MarshalJSON returns the JSON representation of the Node
-func (n *node) MarshalJSON() ([]byte, error) {
-	var nodes = make([]*node, len(n.Children))
-	for i, n := range n.Children {
-		nodes[i] = (*node)(n)
-	}
-
-	var roles = make([]string, len(n.Roles))
-	for i, r := range n.Roles {
-		roles[i] = r.String()
-	}
-
-	node := struct {
-		*uast.Node
-		Roles    []string
-		Children []*node
-	}{
-		(*uast.Node)(n),
-		roles,
-		nodes,
-	}
-
-	return json.Marshal(node)
 }
