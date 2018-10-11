@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/gin-gonic/gin"
-	"gopkg.in/bblfsh/sdk.v1/protocol"
+	bblfsh "gopkg.in/bblfsh/client-go.v3"
 )
 
 // Driver as it will be seen in the frontend
@@ -43,10 +43,10 @@ func (s *Server) handleSupportedLanguages(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(toHTTPStatus(resp.Status), driverManifestToDrivers(resp.Languages))
+	ctx.JSON(http.StatusOK, driverManifestToDrivers(resp))
 }
 
-func driverManifestToDrivers(drivers []protocol.DriverManifest) []Driver {
+func driverManifestToDrivers(drivers []bblfsh.DriverManifest) []Driver {
 	result := make([]Driver, len(drivers))
 
 	for i, driver := range drivers {
