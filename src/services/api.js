@@ -9,33 +9,24 @@ const unexpectedErrorMsg =
   'Unexpected error contacting babelfish server. Please, try again.';
 
 export function parse(language, filename, code, query, serverUrl) {
-  return new Promise((resolve, reject) => {
-    return fetch(apiUrl('/parse'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        server_url: serverUrl,
-        language,
-        filename,
-        content: code,
-        query,
-      }),
-    })
-      .then(resp => resp.json())
-      .then(({ status, errors, uast, language }) => {
-        if (status === 0) {
-          resolve({ uast, language });
-        } else {
-          reject(errors ? errors.map(normalizeError) : ['unexpected error']);
-        }
-      })
-      .catch(err => {
-        log.error(err);
-        reject([unexpectedErrorMsg]);
-      });
-  });
+  return fetch(apiUrl('/parse'), {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      server_url: serverUrl,
+      language,
+      filename,
+      content: code,
+      query,
+    }),
+  })
+    .then(resp => resp.json())
+    .catch(err => {
+      log.error(err);
+      throw [unexpectedErrorMsg];
+    });
 }
 function checkStatus(resp) {
   if (resp.status < 200 || resp.status >= 300) {
