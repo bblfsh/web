@@ -37,7 +37,7 @@ exports[`search results render 1`] = `
   }
 >
   <div
-    className="uast-viewer__node-2 uast-item"
+    className="uast-item uast-viewer__node-2"
     onClick={[Function]}
     onMouseMove={[Function]}
   >
@@ -66,7 +66,7 @@ exports[`tree render 1`] = `
   }
 >
   <div
-    className="uast-viewer__node-1 uast-item"
+    className="uast-item uast-viewer__node-1"
     onClick={[Function]}
     onMouseMove={[Function]}
   >
@@ -98,7 +98,7 @@ exports[`tree render with locations 1`] = `
   }
 >
   <div
-    className="uast-viewer__node-1 uast-item"
+    className="uast-item uast-viewer__node-1"
     onClick={[Function]}
     onMouseMove={[Function]}
   >
@@ -116,7 +116,7 @@ exports[`tree render with locations 1`] = `
       className="uast-content"
     >
       <div
-        className="undefined uast-item"
+        className="uast-item"
       >
         <div
           className="uast-title uast-title-collapsible "
@@ -125,7 +125,7 @@ exports[`tree render with locations 1`] = `
           <span
             className="uast-property-name"
           >
-            start_position
+            @pos
           </span>
           <summary
             className="uast-label"
@@ -137,7 +137,7 @@ exports[`tree render with locations 1`] = `
           className="uast-content"
         >
           <div
-            className="undefined uast-item"
+            className="uast-item"
           >
             <div
               className="uast-title"
@@ -145,31 +145,167 @@ exports[`tree render with locations 1`] = `
               <span
                 className="uast-property-name"
               >
-                line
+                @type
               </span>
               <span
-                className="uast-value number"
+                className="uast-value string"
               >
-                1
+                uast:Position
               </span>
             </div>
           </div>
           <div
-            className="undefined uast-item"
+            className="uast-item"
           >
             <div
-              className="uast-title"
+              className="uast-title uast-title-collapsible "
+              onClick={[Function]}
             >
               <span
                 className="uast-property-name"
               >
-                col
+                start
               </span>
-              <span
-                className="uast-value number"
+              <summary
+                className="uast-label"
               >
-                2
+                map&lt;string,any&gt;
+              </summary>
+            </div>
+            <div
+              className="uast-content"
+            >
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    @type
+                  </span>
+                  <span
+                    className="uast-value string"
+                  >
+                    uast:Position
+                  </span>
+                </div>
+              </div>
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    line
+                  </span>
+                  <span
+                    className="uast-value number"
+                  >
+                    1
+                  </span>
+                </div>
+              </div>
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    col
+                  </span>
+                  <span
+                    className="uast-value number"
+                  >
+                    1
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="uast-item"
+          >
+            <div
+              className="uast-title uast-title-collapsible "
+              onClick={[Function]}
+            >
+              <span
+                className="uast-property-name"
+              >
+                end
               </span>
+              <summary
+                className="uast-label"
+              >
+                map&lt;string,any&gt;
+              </summary>
+            </div>
+            <div
+              className="uast-content"
+            >
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    @type
+                  </span>
+                  <span
+                    className="uast-value string"
+                  >
+                    uast:Position
+                  </span>
+                </div>
+              </div>
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    line
+                  </span>
+                  <span
+                    className="uast-value number"
+                  >
+                    2
+                  </span>
+                </div>
+              </div>
+              <div
+                className="uast-item"
+              >
+                <div
+                  className="uast-title"
+                >
+                  <span
+                    className="uast-property-name"
+                  >
+                    col
+                  </span>
+                  <span
+                    className="uast-value number"
+                  >
+                    2
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

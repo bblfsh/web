@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Viewer from 'uast-viewer';
-import { nodeSchema as schema } from 'uast-viewer/es/uast-v2';
+import { nodeSchema as schema } from 'uast-viewer/lib/uast-v2';
 import styled from 'styled-components';
 
 const ROOT_ID = 1;
