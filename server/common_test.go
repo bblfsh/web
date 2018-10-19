@@ -110,7 +110,7 @@ type parseMock struct {
 	ParseFunc func(*protocol.ParseRequest) (*protocol.ParseResponse, error)
 }
 
-func (c *parseMock) Parse(ctx xcontext.Context, req *protocol.ParseRequest) (resp *protocol.ParseResponse, gerr error) {
+func (c *parseMock) Parse(ctx xcontext.Context, req *protocol.ParseRequest) (*protocol.ParseResponse, error) {
 	return c.ParseFunc(req)
 }
 
