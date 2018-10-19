@@ -22,34 +22,6 @@ exports[`render with errors 1`] = `
       pane1ClassName=""
       pane2ClassName=""
       paneClassName=""
-      prefixer={
-        Prefixer {
-          "_browserInfo": Object {
-            "blink": true,
-            "browserName": "safari",
-            "browserVersion": NaN,
-            "cssPrefix": "-webkit-",
-            "jsPrefix": "Webkit",
-            "name": "Safari",
-            "osVersion": NaN,
-            "safari": true,
-            "x": true,
-          },
-          "_hasPropsRequiringPrefix": false,
-          "_keepUnprefixed": false,
-          "_metaData": Object {
-            "browserName": "safari",
-            "browserVersion": NaN,
-            "cssPrefix": "-webkit-",
-            "jsPrefix": "Webkit",
-            "keepUnprefixed": false,
-            "requiresPrefix": Object {},
-          },
-          "_requiresPrefix": Object {},
-          "_userAgent": "Node.js (darwin; U; rv:v8.9.4) AppleWebKit/537.36 (KHTML, like Gecko)",
-          "prefixedKeyframes": "keyframes",
-        }
-      }
       primary="first"
       split="vertical"
     >
@@ -96,34 +68,6 @@ exports[`renders without crashing 1`] = `
       pane1ClassName=""
       pane2ClassName=""
       paneClassName=""
-      prefixer={
-        Prefixer {
-          "_browserInfo": Object {
-            "blink": true,
-            "browserName": "safari",
-            "browserVersion": NaN,
-            "cssPrefix": "-webkit-",
-            "jsPrefix": "Webkit",
-            "name": "Safari",
-            "osVersion": NaN,
-            "safari": true,
-            "x": true,
-          },
-          "_hasPropsRequiringPrefix": false,
-          "_keepUnprefixed": false,
-          "_metaData": Object {
-            "browserName": "safari",
-            "browserVersion": NaN,
-            "cssPrefix": "-webkit-",
-            "jsPrefix": "Webkit",
-            "keepUnprefixed": false,
-            "requiresPrefix": Object {},
-          },
-          "_requiresPrefix": Object {},
-          "_userAgent": "Node.js (darwin; U; rv:v8.9.4) AppleWebKit/537.36 (KHTML, like Gecko)",
-          "prefixedKeyframes": "keyframes",
-        }
-      }
       primary="first"
       split="vertical"
     >
