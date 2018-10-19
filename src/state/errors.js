@@ -23,24 +23,21 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
+function error(obj, type) {
+  return {
+    type,
+    message: obj.toString(),
+  };
+}
+
 export const add = (errors, type) => ({
   type: ADD,
-  errors: type
-    ? errors.map(e => {
-        e.type = type;
-        return e;
-      })
-    : errors,
+  errors: type ? errors.map(e => error(e, type)) : errors,
 });
 
 export const set = (errors, type) => ({
   type: SET,
-  errors: type
-    ? errors.map(e => {
-        e.type = type;
-        return e;
-      })
-    : errors,
+  errors: type ? errors.map(e => error(e, type)) : errors,
 });
 
 export const remove = idx => ({

@@ -28,7 +28,11 @@ it('render while loading', async () => {
 
 it('render with errors', async () => {
   const wrapper = shallow(
-    <App errors={['error1', 'error2']} code="foo = 1" init={noop} />
+    <App
+      errors={[{ message: 'error1' }, { message: 'error2' }]}
+      code="foo = 1"
+      init={noop}
+    />
   );
   expect(toJsonFixed(wrapper)).toMatchSnapshot();
 });

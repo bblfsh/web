@@ -116,7 +116,11 @@ export class App extends Component {
           <Notifications>
             {errors.map((err, i) => {
               return (
-                <Error message={err} key={i} onRemove={() => errorsRemove(i)} />
+                <Error
+                  message={err.message}
+                  key={i}
+                  onRemove={() => errorsRemove(i)}
+                />
               );
             })}
           </Notifications>
