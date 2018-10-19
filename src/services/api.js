@@ -17,7 +17,7 @@ function checkStatus(resp) {
   return resp;
 }
 
-export function parse(language, filename, code, query, serverUrl) {
+export function parse(mode, language, filename, code, query, serverUrl) {
   return fetch(apiUrl('/parse'), {
     method: 'POST',
     headers: {
@@ -25,6 +25,7 @@ export function parse(language, filename, code, query, serverUrl) {
     },
     body: JSON.stringify({
       server_url: serverUrl,
+      mode,
       language,
       filename,
       content: code,

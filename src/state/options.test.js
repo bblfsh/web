@@ -5,6 +5,7 @@ import {
   CUSTOM_SERVER_URL_SET,
   CUSTOM_SERVER_TOGGLE,
   SET_UAST_QUERY,
+  SET_PARSE_MODE,
 } from './options';
 
 describe('options/reducer', () => {
@@ -42,6 +43,12 @@ describe('options/reducer', () => {
   it('SET_UAST_QUERY', () => {
     expect(
       reducer(initialState, { type: SET_UAST_QUERY, query: 'test' })
+    ).toMatchSnapshot();
+  });
+
+  it('SET_PARSE_MODE', () => {
+    expect(
+      reducer(initialState, { type: SET_PARSE_MODE, mode: 'annotated' })
     ).toMatchSnapshot();
   });
 });

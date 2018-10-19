@@ -36,6 +36,7 @@ exports[`render with errors 1`] = `
       <styled.div>
         <Connect(Options) />
         <Connect(SearchPanel) />
+        <Connect(ParseModeSwitcher) />
         <UASTViewer />
       </styled.div>
     </SplitPane>
@@ -82,6 +83,7 @@ exports[`renders without crashing 1`] = `
       <styled.div>
         <Connect(Options) />
         <Connect(SearchPanel) />
+        <Connect(ParseModeSwitcher) />
         <UASTViewer />
       </styled.div>
     </SplitPane>

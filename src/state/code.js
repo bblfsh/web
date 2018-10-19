@@ -83,7 +83,7 @@ export const runParserWithQuery = () => (dispatch, getState) => {
   const state = getState();
   const {
     code: { code, filename },
-    options: { customServer, customServerUrl, uastQuery },
+    options: { customServer, customServerUrl, parseMode, uastQuery },
     languages: { selected: languageSelected },
   } = state;
 
@@ -96,6 +96,7 @@ export const runParserWithQuery = () => (dispatch, getState) => {
 
   return api
     .parse(
+      parseMode,
       languageSelected,
       filename,
       code,

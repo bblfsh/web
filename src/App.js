@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Spinner from './components/Spinner';
 import Options from './components/Options';
 import SearchPanel from './components/SearchPanel';
+import ParseModeSwitcher from './components/ParseModeSwitcher';
 import UASTViewer from './components/UASTViewer';
 import { Notifications, Error } from './components/Notifications';
 import { connect } from 'react-redux';
@@ -93,6 +94,7 @@ export class App extends Component {
         <RightPanel>
           <Options />
           <SearchPanel />
+          <ParseModeSwitcher />
           <UASTViewer
             uastViewerProps={uastViewerProps}
             showLocations={showLocation}
