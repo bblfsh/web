@@ -9,6 +9,7 @@ import (
 
 	"github.com/bblfsh/web/server"
 	"github.com/stretchr/testify/require"
+	bblfsh "gopkg.in/bblfsh/client-go.v3"
 	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/protocol"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
@@ -46,7 +47,7 @@ func TestHandleParseSuccess(t *testing.T) {
 		},
 	}
 
-	input := `{"language": "python", "filename": "file.py", "content": "foo = 1"}`
+	input := `{"mode": "semantic", "language": "python", "filename": "file.py", "content": "foo = 1"}`
 	w, err := requestParse(s, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
@@ -54,6 +55,7 @@ func TestHandleParseSuccess(t *testing.T) {
 	require.Equal("python", req.Language)
 	require.Equal("file.py", req.Filename)
 	require.Equal("foo = 1", req.Content)
+	require.Equal(bblfsh.Semantic, req.Mode)
 	// check resp transformation
 	require.JSONEq(`{
 		"language": "python",
@@ -79,7 +81,7 @@ func TestHandleParseWithQuerySuccess(t *testing.T) {
 		},
 	}
 
-	input := `{"filename": "file.py", "content": "foo = 1", "query": "//uast:String"}`
+	input := `{"mode": "semantic", "filename": "file.py", "content": "foo = 1", "query": "//uast:String"}`
 	w, err := requestParse(s, "POST", "/api/parse", strings.NewReader(input))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
