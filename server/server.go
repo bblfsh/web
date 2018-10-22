@@ -56,6 +56,7 @@ type request struct {
 
 type parseRequest struct {
 	request
+	Mode     string `json:"mode"`
 	Language string `json:"language"`
 	Filename string `json:"filename"`
 	Content  string `json:"content"`
@@ -67,10 +68,22 @@ type parseResponse struct {
 	Lang string     `json:"language"`
 }
 
+var modesMap = map[string]bblfsh.Mode{
+	"semantic":  bblfsh.Semantic,
+	"annotated": bblfsh.Annotated,
+	"native":    bblfsh.Native,
+}
+
 func (s *Server) handleParse(ctx *gin.Context) {
 	var req parseRequest
 	if err := ctx.BindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, jsonError("unable to read request: %s", err))
+		return
+	}
+
+	mode, ok := modesMap[req.Mode]
+	if !ok {
+		ctx.JSON(http.StatusBadRequest, jsonError("incorrect parsing mode: %s", req.Mode))
 		return
 	}
 
@@ -84,6 +97,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		Language(req.Language).
 		Filename(req.Filename).
 		Content(req.Content).
+		Mode(mode).
 		UAST()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))

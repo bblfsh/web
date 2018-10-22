@@ -3,12 +3,14 @@ export const initialState = {
   customServer: false,
   customServerUrl: '',
   uastQuery: '',
+  parseMode: 'semantic',
 };
 
 export const LOCATIONS_TOGGLE = 'bblfsh/options/LOCATIONS_TOGGLE';
 export const CUSTOM_SERVER_URL_SET = 'bblfsh/options/CUSTOM_SERVER_URL_SET';
 export const CUSTOM_SERVER_TOGGLE = 'bblfsh/options/CUSTOM_SERVER_TOGGLE';
 export const SET_UAST_QUERY = 'bblfsh/options/SET_UAST_QUERY';
+export const SET_PARSE_MODE = 'bblfsh/options/SET_PARSE_MODE';
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -33,6 +35,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         uastQuery: action.query,
       };
+    case SET_PARSE_MODE:
+      return {
+        ...state,
+        parseMode: action.mode,
+      };
     default:
       return state;
   }
@@ -48,6 +55,11 @@ export const customServerToggle = () => ({ type: CUSTOM_SERVER_TOGGLE });
 export const setUastQuery = query => ({
   type: SET_UAST_QUERY,
   query,
+});
+
+export const setParseMode = mode => ({
+  type: SET_PARSE_MODE,
+  mode,
 });
 
 export const isUrl = url => /^[a-zA-Z0-9][^/]+$/.test(url);

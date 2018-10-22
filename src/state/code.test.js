@@ -76,7 +76,7 @@ describe('code/actions', () => {
 
     const store = mockStore({
       code: { code: 'foo = 1', filename: 'test.py', query: 'test-query' },
-      options: { customServer: false, customServerUrl: '' },
+      options: { mode: 'semantic', customServer: false, customServerUrl: '' },
       languages: { selected: '' },
       versions: { loadedFrom: undefined },
     });
@@ -98,7 +98,7 @@ describe('code/actions', () => {
 
     const store = mockStore({
       code: { code: 'foo = 1', filename: 'test.py' },
-      options: { customServer: false, customServerUrl: '' },
+      options: { mode: 'semantic', customServer: false, customServerUrl: '' },
       languages: { selected: '' },
       versions: { loadedFrom: undefined },
     });
