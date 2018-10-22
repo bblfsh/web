@@ -35,7 +35,7 @@ func TestDriversSuccess(t *testing.T) {
 		},
 	}
 
-	w, err := request(s, "POST", "/api/drivers", strings.NewReader("{}"))
+	w, err := requestV1(s, "POST", "/api/drivers", strings.NewReader("{}"))
 	require.Nil(err)
 	require.Equal(http.StatusOK, w.Code)
 	require.JSONEq(fmt.Sprintf("[%s,%s]", driver1_exp, driver2_exp), w.Body.String())
@@ -47,14 +47,14 @@ func TestDriversError(t *testing.T) {
 		SupportedLanguagesFunc: func(*protocol.SupportedLanguagesRequest) *protocol.SupportedLanguagesResponse {
 			return &protocol.SupportedLanguagesResponse{
 				Response: protocol.Response{
-					Status: protocol.Error,
+					Status: protocol.Fatal,
 					Errors: []string{"error"},
 				},
 			}
 		},
 	}
 
-	w, err := request(s, "POST", "/api/drivers", strings.NewReader("{}"))
+	w, err := requestV1(s, "POST", "/api/drivers", strings.NewReader("{}"))
 	require.Nil(err)
-	require.Equal(http.StatusBadRequest, w.Code)
+	require.Equal(http.StatusInternalServerError, w.Code)
 }

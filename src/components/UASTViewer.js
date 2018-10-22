@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Viewer from 'uast-viewer';
+import { nodeSchema as schema } from 'uast-viewer/lib/uast-v2';
 import styled from 'styled-components';
 
 const ROOT_ID = 1;
-export const SEARCH_RESULTS_TYPE = 'Dashboard: Search results';
 
 export const getSearchResults = uast => {
   if (!uast) {
@@ -15,8 +15,8 @@ export const getSearchResults = uast => {
     return null;
   }
 
-  if (rootNode.InternalType === SEARCH_RESULTS_TYPE) {
-    return rootNode.Children;
+  if (Array.isArray(rootNode.n)) {
+    return rootNode.n.map(c => c.id);
   }
 
   return null;
@@ -50,6 +50,7 @@ class UASTViewer extends Component {
         rootIds={rootIds}
         showLocations={showLocations}
         style={{ overflow: 'auto' }}
+        schema={schema}
       />
     );
   }

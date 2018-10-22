@@ -2,9 +2,7 @@ import { parse } from './api';
 
 describe('api/parse', () => {
   it('should return the UAST and language when the request is successful', () => {
-    fetch.mockResponse(
-      JSON.stringify({ uast: 'ok', language: 'python', status: 0 })
-    );
+    fetch.mockResponse(JSON.stringify({ uast: 'ok', language: 'python' }));
 
     const promise = parse(
       'python',
@@ -15,14 +13,11 @@ describe('api/parse', () => {
   });
 
   it('should return error when the request is not successful', () => {
-    fetch.mockResponse(
-      JSON.stringify({
-        status: 'error',
-        errors: ['nok', { message: 'err' }],
-      })
-    );
+    fetch.mockReject('some err');
 
     const promise = parse('python', '', '');
-    expect(promise).rejects.toEqual(['nok', 'err']);
+    expect(promise).rejects.toEqual([
+      'Unexpected error contacting babelfish server. Please, try again.',
+    ]);
   });
 });
