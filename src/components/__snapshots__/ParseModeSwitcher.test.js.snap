@@ -12,6 +12,7 @@ exports[`it renders correctly 1`] = `
     style={
       Object {
         "marginRight": "20px",
+        "textTransform": "capitalize",
       }
     }
   >
@@ -28,6 +29,7 @@ exports[`it renders correctly 1`] = `
     style={
       Object {
         "marginRight": "20px",
+        "textTransform": "capitalize",
       }
     }
   >
@@ -44,6 +46,7 @@ exports[`it renders correctly 1`] = `
     style={
       Object {
         "marginRight": "20px",
+        "textTransform": "capitalize",
       }
     }
   >

@@ -9,7 +9,10 @@ export function ParseModeSwitcher({ mode, onChange }) {
   return (
     <div style={{ padding: '20px' }}>
       {modes.map(m => (
-        <label key={m} style={{ marginRight: '20px' }}>
+        <label
+          key={m}
+          style={{ marginRight: '20px', textTransform: 'capitalize' }}
+        >
           <input
             type="radio"
             value={m}
