@@ -6,4 +6,4 @@ RUN apt-get update && \
     libxml2 \
     && apt-get clean
 ADD bin/bblfsh-web /bin/bblfsh-web
-ENTRYPOINT ["/bin/bblfsh-web", "-addr", ":80"]
+ENTRYPOINT ["/bin/bblfsh-web", "-addr", ":8080"]
