@@ -30,14 +30,18 @@ function error(obj, type) {
   };
 }
 
+function convertErrors(errors, type) {
+  return errors.filter(e => !!e).map(e => error(e, type));
+}
+
 export const add = (errors, type) => ({
   type: ADD,
-  errors: type ? errors.map(e => error(e, type)) : errors,
+  errors: convertErrors(errors, type),
 });
 
 export const set = (errors, type) => ({
   type: SET,
-  errors: type ? errors.map(e => error(e, type)) : errors,
+  errors: convertErrors(errors, type),
 });
 
 export const remove = idx => ({
