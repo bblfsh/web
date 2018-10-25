@@ -99,6 +99,12 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		Content(req.Content).
 		Mode(mode).
 		UAST()
+
+	// bblfsh returns ErrDriverFailure when you feed python driver with java code for example
+	if bblfsh.ErrSyntax.Is(err) || bblfsh.ErrDriverFailure.Is(err) {
+		ctx.JSON(http.StatusBadRequest, jsonError("error parsing UAST: %s", err))
+		return
+	}
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))
 		return

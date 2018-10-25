@@ -243,15 +243,15 @@
   version = "v1.15.0"
 
 [[projects]]
-  digest = "1:f6eeb7c0ff86a7cdddc20574e9ab6325203820c6a6b01f1a63b77286c9d37db1"
+  digest = "1:eba695f96ba6e41be194d11b78981af7c4a3f3d8a0ede3c59160a0cef8b280e6"
   name = "gopkg.in/bblfsh/client-go.v3"
   packages = [
     ".",
     "tools",
   ]
   pruneopts = "NUT"
-  revision = "1169333c454a21a989546a2c4b9e49aacecabc3c"
-  version = "v3.0.0"
+  revision = "675e9da023b6645dcfd9dd39393d1e20541052df"
+  version = "v3.1.0"
 
 [[projects]]
   digest = "1:85ce4b06f191dd616ad7f4377843ea08db7db003757bd0a67e1b3ac4cbd5c2ef"
@@ -266,10 +266,11 @@
   version = "v1.16.0"
 
 [[projects]]
-  digest = "1:46c5d7472b34b784759050d7af9fef59497882fd9f45f4af9cccb97f92b0b1ea"
+  digest = "1:5166e4d339268a5b203719502801a8e879402a109476fb98b294b7d45f2dcc76"
   name = "gopkg.in/bblfsh/sdk.v2"
   packages = [
     "driver",
+    "driver/errors",
     "driver/manifest",
     "protocol",
     "uast",
@@ -282,8 +283,8 @@
     "uast/transformer",
   ]
   pruneopts = "NUT"
-  revision = "fab3b62f674a6845167c004dcc11f9143209da2a"
-  version = "v2.2.4"
+  revision = "422edc29a23d6d79d6f8fbe0a6f9dffcc3ff9ab2"
+  version = "v2.4.1"
 
 [[projects]]
   digest = "1:0215407129c5f116ae8f6d3af64df59c39d3f606a72ef77a1e6ed874f92a8d9c"
