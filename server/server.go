@@ -99,6 +99,10 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		Content(req.Content).
 		Mode(mode).
 		UAST()
+	if bblfsh.ErrSyntax.Is(err) || bblfsh.ErrDriverFailure.Is(err) {
+		ctx.JSON(http.StatusBadRequest, jsonError("error parsing UAST: %s", err))
+		return
+	}
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, jsonError("error parsing UAST: %s", err))
 		return
