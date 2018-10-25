@@ -8,6 +8,11 @@ const apiUrl = url => `${defaultServerUrl}${url}`;
 const unexpectedErrorMsg =
   'Unexpected error contacting babelfish server. Please, try again.';
 
+function returnUnexpectedError(err) {
+  log.error(err);
+  throw [unexpectedErrorMsg];
+}
+
 function checkStatus(resp) {
   if (resp.status < 200 || resp.status >= 300) {
     const error = new Error(resp.statusText);
@@ -15,6 +20,21 @@ function checkStatus(resp) {
     throw error;
   }
   return resp;
+}
+
+function parseError(resp) {
+  // Bad Request, try to read error message
+  if (resp.status === 400) {
+    return resp
+      .json()
+      .then(json => json.errors.map(e => e.message))
+      .catch(returnUnexpectedError)
+      .then(errors => {
+        throw errors;
+      });
+  }
+
+  return checkStatus(resp);
 }
 
 export function parse(mode, language, filename, code, query, serverUrl) {
@@ -32,12 +52,9 @@ export function parse(mode, language, filename, code, query, serverUrl) {
       query,
     }),
   })
-    .then(checkStatus)
-    .then(resp => resp.json())
-    .catch(err => {
-      log.error(err);
-      throw [unexpectedErrorMsg];
-    });
+    .catch(returnUnexpectedError)
+    .then(parseError)
+    .then(resp => resp.json().catch(returnUnexpectedError));
 }
 
 function normalizeError(err) {
