@@ -6,15 +6,15 @@ services:
 sudo: required
 
 go:
-  - 1.9
+  - 1.11.x
 
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
+      - ubuntu-toolchain-r-test
     packages:
-    - gcc-6
-    - g++-6
+      - gcc-6
+      - g++-6
 
 install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
@@ -47,7 +47,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    go: 1.9
+    go: 1.11.x
 
 after_deploy:
   - make docker-push-latest
