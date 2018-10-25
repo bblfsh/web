@@ -8,7 +8,7 @@ It's a user-friendly tool for testing and studying how Babelfish parses source c
 
 ## Installation
 
-Babelfish server (v2.5.0 or newer) is required.
+Babelfish server (v2.9.1 or newer) is required.
 If you don't have it running please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-started.html) guide. You will learn how to use and deploy a bblfsh server.
 
 ### Recomended way (using Docker)
