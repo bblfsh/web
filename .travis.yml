@@ -26,28 +26,31 @@ before_install:
   - nvm use 8
   - npm install -g yarn
 
-script:
-  - make validate-commit
-  - make lint
-  - make test-frontend
-  - make test-coverage
+stages:
+  - name: test
+  - name: release
+    if: tag IS present
 
-before_deploy:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
-  - make packages
-
-deploy:
-  provider: releases
-  api_key: $GITHUB_TOKEN
-  file_glob: true
-  file: build/*.tar.gz
-  skip_cleanup: true
-  on:
-    tags: true
-    go: 1.11.x
-
-after_deploy:
-  - make docker-push-latest
+jobs:
+  include:
+    - name: 'Tests'
+      stage: test
+      script:
+        - make validate-commit
+        - make lint
+        - make test-frontend
+        - make test-coverage
+    - name: 'Release'
+      stage: release
+      script:
+        - make packages
+        - DOCKER_PUSH_LATEST=true make docker-push
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: build/*.tar.gz
+        skip_cleanup: true
+        on:
+          tags: true
+          go: 1.11.x
