@@ -9,9 +9,6 @@ DEPENDENCIES_DIRECTORY := ./vendor
 BASE_PATH := $(shell pwd)
 ASSETS_PATH := $(BASE_PATH)/build
 
-# Use cgo during build because client-go needs it
-CGO_ENABLED = 1
-
 # Cross compilation doesn't work with cgo
 PKG_OS = linux
 
