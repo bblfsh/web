@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Viewer from 'uast-viewer';
-import { nodeSchema as schema } from 'uast-viewer/lib/uast-v2';
 import styled from 'styled-components';
 
 const ROOT_ID = 1;
@@ -50,7 +49,6 @@ class UASTViewer extends Component {
         rootIds={rootIds}
         showLocations={showLocations}
         style={{ overflow: 'auto' }}
-        schema={schema}
       />
     );
   }
