@@ -10,6 +10,7 @@ const unexpectedErrorMsg =
 
 function returnUnexpectedError(err) {
   log.error(err);
+  // eslint-disable-next-line
   throw [unexpectedErrorMsg];
 }
 
