@@ -115,7 +115,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 			ctx.JSON(http.StatusInternalServerError, jsonError("error filtering UAST: %s", err))
 			return
 		}
-		var results nodes.Array
+		results := nodes.Array{}
 		for iter.Next() {
 			results = append(results, iter.Node().(nodes.Node))
 		}
