@@ -43,7 +43,7 @@ lint: dependencies-frontend
 fix-lint-errors: dependencies-frontend
 	$(YARN) fix-lint-errors
 
-assets: build
+assets:
 	chmod -R go=r $(ASSETS_PATH); \
 	$(BINDATA) \
 		-pkg asset \
@@ -51,8 +51,11 @@ assets: build
 		-prefix $(BASE_PATH) \
 		$(ASSETS_PATH)/...
 
-build: dependencies-frontend
+front-build: dependencies-frontend
 	GENERATE_SOURCEMAP=false REACT_APP_SERVER_URL=$(SERVER_URL) $(YARN) build
+
+build: front-build assets
+	@echo
 
 validate-commit: fix-lint-errors no-changes-in-commit
 
