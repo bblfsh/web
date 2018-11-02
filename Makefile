@@ -9,9 +9,6 @@ DEPENDENCIES_DIRECTORY := ./vendor
 BASE_PATH := $(shell pwd)
 ASSETS_PATH := $(BASE_PATH)/build
 
-# Cross compilation doesn't work with cgo
-PKG_OS = linux
-
 # Tools
 YARN = yarn
 REMOVE = rm -rf
