@@ -9,27 +9,27 @@ nodeSelector:
 
 bblfshd-sidecar:
   image:
-    tag: v2.9.1
+    tag: v2.9.2
   drivers:
     languages:
       python:
         repository: bblfsh/python-driver
-        tag: v2.4.0
+        tag: v2.5.0
       java:
         repository: bblfsh/java-driver
-        tag: v2.3.0
+        tag: v2.4.2
       javascript:
         repository: bblfsh/javascript-driver
-        tag: v2.3.0
+        tag: v2.4.1
       bash:
         repository: bblfsh/bash-driver
-        tag: v2.1.0
+        tag: v2.2.0
       ruby:
         repository: bblfsh/ruby-driver
-        tag: v2.4.0
+        tag: v2.5.0
       go:
         repository: bblfsh/go-driver
-        tag: v2.3.0
+        tag: v2.4.0
       php:
         repository: bblfsh/php-driver
-        tag: v2.4.0
+        tag: v2.5.0
