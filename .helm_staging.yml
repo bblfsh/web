@@ -1,0 +1,35 @@
+ingress:
+  globalStaticIpName: bblfsh-play-staging
+  hostname: play-staging.bblf.sh
+
+replicaCount: 2
+
+nodeSelector:
+  cloud.google.com/gke-nodepool: default-pool
+
+bblfshd-sidecar:
+  image:
+    tag: v2.9.1
+  drivers:
+    languages:
+      python:
+        repository: bblfsh/python-driver
+        tag: v2.4.0
+      java:
+        repository: bblfsh/java-driver
+        tag: v2.3.0
+      javascript:
+        repository: bblfsh/javascript-driver
+        tag: v2.3.0
+      bash:
+        repository: bblfsh/bash-driver
+        tag: v2.1.0
+      ruby:
+        repository: bblfsh/ruby-driver
+        tag: v2.4.0
+      go:
+        repository: bblfsh/go-driver
+        tag: v2.3.0
+      php:
+        repository: bblfsh/php-driver
+        tag: v2.4.0
