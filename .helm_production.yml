@@ -1,3 +1,7 @@
+service:
+    type: NodePort
+    port: 8080
+
 ingress:
   globalStaticIpName: bblfsh-play-production
   hostname: play.bblf.sh
