@@ -1,6 +1,6 @@
 service:
     type: NodePort
-    port: 8080
+    port: 80
 
 ingress:
   globalStaticIpName: bblfsh-play-production
