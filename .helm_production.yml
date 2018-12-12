@@ -6,6 +6,18 @@ ingress:
   globalStaticIpName: bblfsh-play-production
   hostname: play.bblf.sh
 
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+       matchExpressions:
+        - key: app
+          operator: In
+          values:
+            #This value depends of the HELM_RELEASE defined in .travis.yml should be ${HELM_RELEASE}-${CHART_NAME}
+          - bblfsh-web-bblfsh-web
+      topologyKey: kubernetes.io/hostname
+
 replicaCount: 2
 
 nodeSelector:
