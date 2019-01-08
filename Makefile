@@ -15,7 +15,7 @@ REMOVE = rm -rf
 BINDATA = go-bindata
 GODEP = dep
 
-SERVER_URL ?= /api
+SERVER_URL ?= api
 BBLFSH_PORT ?= 9432
 API_PORT ?= 9999
 

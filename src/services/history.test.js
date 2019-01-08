@@ -33,7 +33,7 @@ describe('history/parse', () => {
   });
 
   it('should return gist and lang when presented', () => {
-    mockLocation = 'http://localhost/path/to/gist?lang=python';
+    mockLocation = 'http://localhost/?lang=python#path/to/gist';
 
     const { gistUrl, lang } = history.parse();
 
@@ -42,7 +42,7 @@ describe('history/parse', () => {
   });
 
   it('should return gist when presented', () => {
-    mockLocation = 'http://localhost/path/to/gist';
+    mockLocation = 'http://localhost/#path/to/gist';
 
     const { gistUrl, lang } = history.parse();
 
