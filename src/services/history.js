@@ -8,7 +8,7 @@ const history = createHistory();
 
 export function setExample() {
   // we can actually set example name but it's out of scope for current task
-  history.replace('/');
+  history.replace('.');
 }
 
 export function setLanguage(lang) {
@@ -21,7 +21,7 @@ export function setLanguage(lang) {
 export function setGist(url) {
   history.replace({
     ...history.location,
-    pathname: '/' + url,
+    hash: '#' + url,
   });
 }
 
@@ -29,8 +29,8 @@ export function parse() {
   const loc = history.location;
 
   let gistUrl;
-  if (loc.pathname && loc.pathname.length > 1) {
-    gistUrl = loc.pathname.slice(1);
+  if (loc.hash && loc.hash.length > 1) {
+    gistUrl = loc.hash.slice(1);
   }
 
   let lang;

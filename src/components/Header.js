@@ -173,7 +173,9 @@ export class Header extends Component {
   }
 
   getSharableUrl() {
-    return `${window.location.origin}/${this.props.gist}`;
+    return `${window.location.origin}${window.location.pathname}#${
+      this.props.gist
+    }`;
   }
 
   render() {
