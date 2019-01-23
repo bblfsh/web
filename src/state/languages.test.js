@@ -74,7 +74,11 @@ describe('languages/actions', () => {
         type: LOADED,
         languages: {
           java: { mode: 'text/x-java', name: 'Java', url: 'java-driver' },
-          python: { mode: 'python', name: 'Python', url: 'python-driver' },
+          python: {
+            mode: 'text/x-python',
+            name: 'Python',
+            url: 'python-driver',
+          },
         },
       },
     ];
