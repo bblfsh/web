@@ -12,6 +12,7 @@ import { php_example_2 } from '../examples/phpv7.php.js';
 import { javascript_example_1 } from '../examples/javascript.js.js';
 import { ruby_example_1 } from '../examples/ruby.rb.js';
 import { bash_example_1 } from '../examples/bash.sh.js';
+import { csharp_example_1 } from '../examples/csharp.cs.js';
 
 export const DEFAULT_EXAMPLE = 'java_example_1';
 const LANG_JAVA = 'java';
@@ -21,6 +22,7 @@ const LANG_PHP = 'php';
 const LANG_JS = 'javascript';
 const LANG_RUBY = 'ruby';
 const LANG_BASH = 'bash';
+const LANG_CSHARP = 'csharp';
 
 const examples = {
   java_example_1: {
@@ -73,6 +75,11 @@ const examples = {
     language: LANG_BASH,
     code: bash_example_1,
     driver: LANG_BASH,
+  },
+  csharp_example_1: {
+    name: 'csharp.cs',
+    language: LANG_CSHARP,
+    code: csharp_example_1,
   },
 };
 
