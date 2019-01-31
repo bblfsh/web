@@ -1,6 +1,6 @@
 service:
-    type: NodePort
-    port: 80
+  type: NodePort
+  port: 80
 
 ingress:
   globalStaticIpName: bblfsh-play-production
@@ -9,14 +9,14 @@ ingress:
 affinity:
   podAntiAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
-    - labelSelector:
-       matchExpressions:
-        - key: app
-          operator: In
-          values:
-            #This value depends of the HELM_RELEASE defined in .travis.yml should be ${HELM_RELEASE}-${CHART_NAME}
-          - bblfsh-web-bblfsh-web
-      topologyKey: kubernetes.io/hostname
+      - labelSelector:
+          matchExpressions:
+            - key: app
+              operator: In
+              values:
+                #This value depends of the HELM_RELEASE defined in .travis.yml should be ${HELM_RELEASE}-${CHART_NAME}
+                - bblfsh-web-bblfsh-web
+        topologyKey: kubernetes.io/hostname
 
 replicaCount: 2
 
@@ -49,3 +49,6 @@ bblfshd-sidecar:
       php:
         repository: bblfsh/php-driver
         tag: v2.5.0
+      csharp:
+        repository: bblfsh/csharp-driver
+        tag: v1.0.0
