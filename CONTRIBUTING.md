@@ -70,7 +70,7 @@ For production usage, all static files are served from the go server after being
 
 ## Development
 
-The web client is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
+The web client is a Golang application, so in order for all further instructions to work please make sure it's under `$GOPATH` in your filesystem.
 
 The web client uses an intermediate API that connects to the bblfsh server and serves frontend assets.
 
