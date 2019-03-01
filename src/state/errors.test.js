@@ -13,6 +13,18 @@ describe('errors/reducer', () => {
     ).toMatchSnapshot();
   });
 
+  it('ADD single error', () => {
+    expect(
+      reducer(initialState, { type: ADD, errors: 'error1' })
+    ).toMatchSnapshot();
+    expect(
+      reducer(initialState.concat(['error1']), {
+        type: ADD,
+        errors: ['error2'],
+      })
+    ).toMatchSnapshot();
+  });
+
   it('SET', () => {
     expect(
       reducer(initialState.concat(['error1']), {

@@ -31,6 +31,10 @@ function error(obj, type) {
 }
 
 function convertErrors(errors, type) {
+  // it's hard to make sure that errors is an array on higher level
+  if (!Array.isArray(errors)) {
+    errors = [errors];
+  }
   return errors.filter(e => !!e).map(e => error(e, type));
 }
 
