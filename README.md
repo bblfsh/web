@@ -11,10 +11,10 @@ It's a user-friendly tool for testing and studying how Babelfish parses source c
 Babelfish server (v2.9.1 or newer) is required.
 If you don't have it running please read the [getting started](https://doc.bblf.sh/using-babelfish/getting-started.html) guide. You will learn how to use and deploy a bblfsh server.
 
-### Recomended way (using Docker)
+### Recommended way (using Docker)
 
 ```sh
-docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/bblfshd
+docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/bblfshd:latest-drivers
 docker run -p 8080:8080 --link bblfsh bblfsh/web -bblfsh-addr bblfsh:9432
 ```
 
