@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Viewer from 'uast-viewer';
+import FlatUASTViewer from 'uast-viewer';
 import styled from 'styled-components';
 
 const ROOT_ID = 1;
@@ -30,13 +30,13 @@ const NotFound = styled.div`
 class UASTViewer extends Component {
   render() {
     const { uastViewerProps, showLocations } = this.props;
-    const { uast } = uastViewerProps;
+    const { flatUast } = uastViewerProps;
 
-    if (!uast) {
+    if (!flatUast) {
       return null;
     }
 
-    const searchResults = getSearchResults(uast);
+    const searchResults = getSearchResults(flatUast);
     let rootIds = searchResults || [ROOT_ID];
 
     if (searchResults && !searchResults.length) {
@@ -44,7 +44,7 @@ class UASTViewer extends Component {
     }
 
     return (
-      <Viewer
+      <FlatUASTViewer
         {...uastViewerProps}
         rootIds={rootIds}
         showLocations={showLocations}
