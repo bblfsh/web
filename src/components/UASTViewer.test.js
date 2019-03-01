@@ -9,7 +9,7 @@ const shouldMatchSnapshot = comp => {
 };
 
 it('empty render', () => {
-  shouldMatchSnapshot(<UASTViewer uastViewerProps={{ uast: {} }} />);
+  shouldMatchSnapshot(<UASTViewer uastViewerProps={{ flatUast: {} }} />);
 });
 
 const posValue = {
@@ -28,7 +28,7 @@ const posValue = {
 
 it('tree render', () => {
   const uastViewerProps = {
-    uast: {
+    flatUast: {
       1: { id: 1, expanded: true, n: { '@pos': posValue } },
     },
   };
@@ -40,7 +40,7 @@ it('tree render', () => {
 
 it('tree render with locations', () => {
   const uastViewerProps = {
-    uast: {
+    flatUast: {
       1: { id: 1, expanded: true, n: { '@pos': posValue } },
     },
   };
@@ -53,7 +53,7 @@ it('tree render with locations', () => {
 describe('search results', () => {
   it('render', () => {
     const uastViewerProps = {
-      uast: {
+      flatUast: {
         1: { id: 1, n: [{ id: 2 }] },
         2: { id: 2, n: { '@type': 'TestType' } },
       },
@@ -64,7 +64,7 @@ describe('search results', () => {
 
   it('empty', () => {
     const uastViewerProps = {
-      uast: {
+      flatUast: {
         1: { id: 1, n: [] },
       },
     };
