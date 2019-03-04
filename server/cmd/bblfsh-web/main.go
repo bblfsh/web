@@ -3,15 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/bblfsh/web/server"
-	"github.com/bblfsh/web/server/asset"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/cors"
 	"github.com/sirupsen/logrus"
@@ -55,27 +51,12 @@ func main() {
 	r.Use(gin.RecoveryWithWriter(w))
 	r.Use(gin.LoggerWithWriter(w))
 
-	dir, err := mountAssets()
-	if err != nil {
-		logrus.Fatalf("unable to mount assets: %s", err)
-	}
-
-	assets, err := asset.AssetDir("build")
-	if err != nil {
-		logrus.Fatalf("cannot list assets: %s", err)
-	}
-
-	for _, a := range assets {
-		if a != "static" {
-			r.StaticFile("/"+a, filepath.Join(dir, a))
-		}
-	}
-	indexPath := filepath.Join(dir, "index.html")
-	r.StaticFile("/", indexPath)
-	r.Static("/static", filepath.Join(dir, "static"))
 	server.Mount(s, r.Group("/api"))
-	// we handle urls on frontend
-	r.NoRoute(func(c *gin.Context) { c.File(indexPath) })
+
+	// TODO(@smacker): add configuration for ServerURL and FooterHTML
+	static := server.NewStatic("/build", "", "")
+	// use static http.Handler for unknown urls, because we do routing on frontend
+	r.NoRoute(func(c *gin.Context) { static.ServeHTTP(c.Writer, c.Request) })
 
 	logrus.WithField("addr", addr).Info("starting REST server")
 
@@ -90,19 +71,6 @@ func main() {
 	if err := server.ListenAndServe(); err != nil {
 		logrus.Fatal(err)
 	}
-}
-
-func mountAssets() (string, error) {
-	dir, err := ioutil.TempDir(os.TempDir(), "bblfsh-web-assets")
-	if err != nil {
-		return "", err
-	}
-
-	if err := asset.RestoreAssets(dir, "build"); err != nil {
-		return "", err
-	}
-
-	return filepath.Join(dir, "build"), nil
 }
 
 func withCORS(handler http.Handler) http.Handler {
