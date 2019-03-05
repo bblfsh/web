@@ -1,4 +1,4 @@
-export const javascript_example_1 = `  // Set variables
+export const javascript_example_1 = `// Set variables
 var user = { firstname: "Homer", surname: "Rubble", email: "doh@example.com" };
 var output = "";
 
