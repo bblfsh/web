@@ -52,6 +52,7 @@ fix-lint-errors: dependencies-frontend
 	$(YARN) fix-lint-errors
 
 assets:
+	mkdir -p ./server/asset; \
 	chmod -R go=r $(ASSETS_PATH); \
 	$(ESC_BIN) \
 		-pkg asset \
