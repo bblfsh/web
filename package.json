@@ -19,7 +19,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "styled-components": "^3.3.3",
-    "uast-viewer": "^0.3.0"
+    "uast-viewer": "^0.4.0"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
@@ -42,7 +42,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.js' && prettier -l 'src/**/*.js'",
-    "fix-lint-errors":
-      "eslint --fix 'src/**/*.js'; prettier --write 'src/**/*.js'"
+    "fix-lint-errors": "eslint --fix 'src/**/*.js'; prettier --write 'src/**/*.js'"
   }
 }
