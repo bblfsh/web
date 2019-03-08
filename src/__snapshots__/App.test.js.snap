@@ -6,7 +6,9 @@ exports[`render while loading 1`] = `
   <styled.div>
     <styled.div />
   </styled.div>
-  <Footer />
+  <Footer
+    languages={Object {}}
+  />
 </styled.div>
 `;
 
@@ -41,7 +43,9 @@ exports[`render with errors 1`] = `
       </styled.div>
     </SplitPane>
   </styled.div>
-  <Footer />
+  <Footer
+    languages={Object {}}
+  />
   <Notifications>
     <Error
       key="0"
@@ -88,6 +92,26 @@ exports[`renders without crashing 1`] = `
       </styled.div>
     </SplitPane>
   </styled.div>
-  <Footer />
+  <Footer
+    languages={
+      Object {
+        "": Object {
+          "name": "(auto)",
+        },
+        "bash": Object {
+          "mode": "text/x-sh",
+          "name": "Bash",
+          "url": "https://github.com/bblfsh/bash-driver",
+          "version": "v2.4.0",
+        },
+        "cpp": Object {
+          "mode": "text/x-c++src",
+          "name": "C++",
+          "url": "https://github.com/bblfsh/cpp-driver",
+          "version": "v1.1.0",
+        },
+      }
+    }
+  />
 </styled.div>
 `;

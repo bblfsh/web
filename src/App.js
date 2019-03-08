@@ -104,14 +104,18 @@ export class App extends Component {
   }
 
   render() {
-    const { code, errors, versions, errorsRemove } = this.props;
+    const { code, errors, versions, errorsRemove, languages } = this.props;
+    let langList = {};
+    if (languages !== undefined) {
+      langList = languages.languages;
+    }
 
     return (
       <Wrap>
         <Header />
         <Content>{code !== null ? this.renderContent() : <Spinner />}</Content>
 
-        <Footer versionsState={versions} />
+        <Footer versionsState={versions} languages={langList} />
 
         {errors.length > 0 ? (
           <Notifications>
