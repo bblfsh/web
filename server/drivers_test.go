@@ -18,14 +18,14 @@ func TestDriversSuccess(t *testing.T) {
 		Language: "python",
 		Version:  "v.1",
 	}
-	driver1_exp := `{"id":"python","name":"Python","url":"https://github.com/bblfsh/python-driver"}`
+	driver1_exp := `{"id":"python","name":"Python","url":"https://github.com/bblfsh/python-driver","version":"v.1"}`
 
 	driver2 := protocol.DriverManifest{
 		Name:     "Java",
 		Language: "java",
 		Version:  "v.2",
 	}
-	driver2_exp := `{"id":"java","name":"Java","url":"https://github.com/bblfsh/java-driver"}`
+	driver2_exp := `{"id":"java","name":"Java","url":"https://github.com/bblfsh/java-driver","version":"v.2"}`
 
 	s := &bblfshServiceMock{
 		SupportedLanguagesFunc: func(*protocol.SupportedLanguagesRequest) *protocol.SupportedLanguagesResponse {

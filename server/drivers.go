@@ -11,9 +11,10 @@ import (
 
 // Driver as it will be seen in the frontend
 type Driver struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	ID      string `json:"id"`
+	Name    string `json:"name"`
+	URL     string `json:"url"`
+	Version string `json:"version"`
 }
 
 type supportedLanguagesRequest struct {
@@ -51,9 +52,10 @@ func driverManifestToDrivers(drivers []bblfsh.DriverManifest) []Driver {
 
 	for i, driver := range drivers {
 		result[i] = Driver{
-			ID:   driver.Language,
-			Name: driver.Name,
-			URL:  driverRepoURL(driver.Language),
+			ID:      driver.Language,
+			Name:    driver.Name,
+			URL:     driverRepoURL(driver.Language),
+			Version: driver.Version,
 		}
 	}
 
