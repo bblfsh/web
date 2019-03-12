@@ -37,6 +37,7 @@ jobs:
       script:
         - make packages
         - ./build/bin/bblfsh-web &
+        - sleep 5 # give bblfsh-web some time to start
         - curl 127.0.0.1:9999 | grep 'Babelfish Web'
     - name: 'Release'
       stage: release
