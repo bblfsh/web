@@ -17,7 +17,34 @@ const toJsonFixed = wrapper =>
   });
 
 it('renders without crashing', () => {
-  const wrapper = shallow(<App errors={[]} code="foo = 1" init={noop} />);
+  const wrapper = shallow(
+    <App
+      errors={[]}
+      code="foo = 1"
+      init={noop}
+      languages={{
+        loading: false,
+        languages: {
+          '': { name: '(auto)' },
+          bash: {
+            name: 'Bash',
+            url: 'https://github.com/bblfsh/bash-driver',
+            mode: 'text/x-sh',
+            version: 'v2.4.0',
+          },
+          cpp: {
+            name: 'C++',
+            url: 'https://github.com/bblfsh/cpp-driver',
+            mode: 'text/x-c++src',
+            version: 'v1.1.0',
+          },
+        },
+        actual: 'java',
+        selected: '',
+        loadedFrom: undefined,
+      }}
+    />
+  );
   expect(toJsonFixed(wrapper)).toMatchSnapshot();
 });
 
