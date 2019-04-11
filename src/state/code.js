@@ -35,7 +35,7 @@ export const reducer = (state = initialState, action) => {
     case PARSE:
       return {
         ...state,
-        ast: {},
+        uastJson: null,
         posIndex: null,
         parsing: true,
       };
