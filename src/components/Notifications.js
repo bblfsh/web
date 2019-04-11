@@ -53,6 +53,12 @@ const Title = styled.h5`
   font-size: 1.2rem;
 `;
 
+// max-height = 100vh - height(header) - 10px of padding
+const Body = styled.div`
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+`;
+
 export function Notifications({ children }) {
   return <NotificationList>{children}</NotificationList>;
 }
@@ -66,7 +72,7 @@ export function Error({ message, onRemove }) {
     <ErrorNotification>
       <CloseButton onClick={onRemove}>×</CloseButton>
       <Title>Error</Title>
-      {lines}
+      <Body>{lines}</Body>
     </ErrorNotification>
   );
 }

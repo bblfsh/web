@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error should render correctly 1`] = `
-.c4 {
+.c5 {
   padding: 0;
   margin: 0;
 }
 
-.c4 + .c4 {
+.c5 + .c5 {
   margin-top: 0.5rem;
 }
 
@@ -42,6 +42,11 @@ exports[`Error should render correctly 1`] = `
   font-size: 1.2rem;
 }
 
+.c4 {
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+}
+
 <div
   className="c0"
 >
@@ -56,15 +61,19 @@ exports[`Error should render correctly 1`] = `
   >
     Error
   </h5>
-  <p
+  <div
     className="c4"
   >
-    Foo bar
-  </p>
-  <p
-    className="c4"
-  >
-    Baz qux
-  </p>
+    <p
+      className="c5"
+    >
+      Foo bar
+    </p>
+    <p
+      className="c5"
+    >
+      Baz qux
+    </p>
+  </div>
 </div>
 `;
