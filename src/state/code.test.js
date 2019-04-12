@@ -36,7 +36,7 @@ describe('code/reducer', () => {
       reducer(
         {
           ...initialState,
-          ast: { 1: { id: 1 } },
+          uastJson: { 1: { id: 1 } },
           posIndex: 'index',
           parsing: false,
         },
