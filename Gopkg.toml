@@ -8,5 +8,5 @@
   version = "^1.16.0"
 
 [[constraint]]
-  name = "gopkg.in/bblfsh/client-go.v3"
-  version = "^3.1.0"
+  name = "github.com/bblfsh/go-client"
+  version = "^4.0.0"

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"regexp"
 
+	bblfsh "github.com/bblfsh/go-client"
 	"github.com/gin-gonic/gin"
-	bblfsh "gopkg.in/bblfsh/client-go.v3"
 )
 
 // Driver as it will be seen in the frontend
