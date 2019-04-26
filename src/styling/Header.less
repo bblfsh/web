@@ -1,7 +1,7 @@
 .bblfsh-header {
     &__container {
         height: 70px;
-        padding: 0 1rem;
+        padding: 0 16px;
         display: flex;
         align-items: center;
         background: @background-light;
@@ -13,13 +13,13 @@
     &__title {
         display: flex;
         align-items: center;
-        font-size: 1.5rem;
+        font-size: 24px;
         font-weight: normal;
         padding: 0;
         margin: 0;
         height: 100%;
         border-right: 1px solid @border-smooth;
-        padding-right: 1rem;
+        padding-right: 16px;
     }
 
     &__title-image {
@@ -27,20 +27,20 @@
     }
 
     &__app-title {
-        margin-left: 0.8rem;
+        margin-left: c;
     }
 
     &__actions {
         width: 100%;
         display: flex;
-        margin-left: 1rem;
+        margin-left: 16px;
         height: 100%;
     }
 
     &__label {
         color: grey;
         margin-right: 1em;
-        font-size: 0.8rem;
+        font-size: 12.8px;
         font-weight: bold;
         text-transform: uppercase;
         color: #636262;
@@ -51,10 +51,10 @@
         align-items: center;
         height: 100%;
         border-right: 1px solid @border-smooth;
-        padding-right: 1rem;
+        padding-right: 16px;
 
         & + & {
-            margin-left: 1rem;
+            margin-left: 16px;
         }
 
         &:last-child {
@@ -74,14 +74,14 @@
         border: none;
 
         & + & {
-            margin-left: 0.7rem;
+            margin-left: 11.2px;
         }
     }
 
     &__run-button {
         .bblfsh-button();
 
-        padding: 0.7rem 1.8rem;
+        padding: 11.2px 28.8px;
         background: @background-accent;
         color: @font-color-white;
         white-space: nowrap;
@@ -94,13 +94,13 @@
     &__driver-code-box {
         display: flex;
         align-items: center;
-        margin-left: 0.5rem;
+        margin-left: 8px;
     }
 
     &__driver-code-icon {
         width: 20px;
         opacity: 0.7;
-        margin-right: 0.3rem;
+        margin-right: 4.8px;
     }
 
     &__driver-code-link {
@@ -108,7 +108,7 @@
         align-items: center;
         color: black;
         text-decoration: none;
-        font-size: 0.9rem;
+        font-size: 14.4px;
 
         &:hover {
             color: @font-color-accentDark;
@@ -123,10 +123,10 @@
         border-radius: 3px;
         border: 1px solid @border-smooth;
         background: white;
-        padding: 0.5em 0.5em;
+        padding: 8px 8px;
         text-transform: uppercase;
         font-weight: bold;
-        font-size: 0.8rem;
+        font-size: 12.8px;
 
         & + button {
             margin-left: 3px;
@@ -135,7 +135,7 @@
 
     &__select {
         .css-input();
-        font-size: 0.7rem;
+        font-size: 11.2px;
         text-transform: uppercase;
     }
 
