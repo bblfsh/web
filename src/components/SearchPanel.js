@@ -1,43 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { background, border } from '../styling/variables';
-import { CssButton } from './Button';
 import { connect } from 'react-redux';
 import { setUastQuery } from '../state/options';
 import { runParserWithQuery } from '../state/code';
-
-const Container = styled.form`
-  padding: 0.5rem 1rem;
-  display: flex;
-  background: ${background.light};
-  border-bottom: 1px solid ${border.smooth};
-  min-height: 2.5rem;
-`;
-
-const Field = styled.div`
-  display: flex;
-  align-items: center;
-
-  & + & {
-    margin-left: 1rem;
-  }
-`;
-
-const TextInput = styled.input`
-  width: 100%;
-  background: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid ${border.smooth};
-  outline: none;
-  font-size: 0.8rem;
-  padding: 0.1rem 0.5rem;
-`;
-
-const Button = styled.input`
-  ${CssButton} border: none;
-`;
 
 export function SearchPanel({ query, loading, onChange, onSearch }) {
   const onSubmit = e => {
@@ -49,9 +13,10 @@ export function SearchPanel({ query, loading, onChange, onSearch }) {
   };
 
   return (
-    <Container onSubmit={onSubmit}>
-      <Field style={{ width: '100%' }}>
-        <TextInput
+    <form className="bblfsh-search-panel__container" onSubmit={onSubmit}>
+      <div className="bblfsh-search-panel__field" style={{ width: '100%' }}>
+        <input
+          className="bblfsh-search-panel__text-input"
           type="text"
           name="query"
           value={query}
@@ -59,11 +24,16 @@ export function SearchPanel({ query, loading, onChange, onSearch }) {
           disabled={loading}
           placeholder="UAST Query"
         />
-      </Field>
-      <Field>
-        <Button type="submit" value="Search" disabled={loading || !query} />
-      </Field>
-      <Field>
+      </div>
+      <div className="bblfsh-search-panel__field">
+        <input
+          className="bblfsh-search-panel__button"
+          type="submit"
+          value="Search"
+          disabled={loading || !query}
+        />
+      </div>
+      <div className="bblfsh-search-panel__field">
         <a
           href="https://doc.bblf.sh/using-babelfish/uast-querying.html"
           target="_blank"
@@ -71,8 +41,8 @@ export function SearchPanel({ query, loading, onChange, onSearch }) {
         >
           Help
         </a>
-      </Field>
-    </Container>
+      </div>
+    </form>
   );
 }
 

@@ -1,0 +1,41 @@
+.bblfsh-options {
+    &__container {
+        padding: 0.5rem 1rem;
+        display: flex;
+        background: @background-light;
+        border-bottom: 1px solid @border-smooth;
+        min-height: 2.5rem;
+    }
+
+    &__field {
+        display: flex;
+        align-items: center;
+
+        & + & {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__label {
+        color: @font-color-dark;
+        padding-left: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    &__text-input {
+        margin-left: 0.5rem;
+        background: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid @border-smooth;
+        outline: none;
+        font-size: 0.8rem;
+        padding: 0.1rem 0.5rem;
+    }
+
+    &__text-input.invalid {
+        color: red;
+        border-bottom-color: red;
+    }
+}

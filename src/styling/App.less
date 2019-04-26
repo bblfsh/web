@@ -1,0 +1,35 @@
+.bblfsh-app {
+    &__wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__content {
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        position: relative;
+    }
+
+    &__right-panel {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        position: relative;
+    }
+}
+
+.ReactCodeMirror,
+.CodeMirror {
+    height: 100%;
+}
+
+.CodeMirror {
+    font-family: @font-family-code;
+    font-size: @font-size-large;
+}

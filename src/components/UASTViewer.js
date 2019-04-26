@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import FlatUASTViewer from 'uast-viewer';
-import styled from 'styled-components';
 
 const ROOT_ID = 1;
 
@@ -21,12 +20,6 @@ export const getSearchResults = uast => {
   return null;
 };
 
-const NotFound = styled.div`
-  width: 100%;
-  padding: 1rem 0;
-  text-align: center;
-`;
-
 class UASTViewer extends Component {
   render() {
     const { uastViewerProps, showLocations } = this.props;
@@ -40,7 +33,7 @@ class UASTViewer extends Component {
     let rootIds = searchResults || [ROOT_ID];
 
     if (searchResults && !searchResults.length) {
-      return <NotFound>Nothing found</NotFound>;
+      return <div className="bblfsh-uast-viewer__not-found">Nothing found</div>;
     }
 
     return (

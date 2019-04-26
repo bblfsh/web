@@ -1,0 +1,146 @@
+.bblfsh-header {
+    &__container {
+        height: 70px;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        background: @background-light;
+        border-bottom: 1px solid @border-smooth;
+        z-index: 9999;
+        box-shadow: 0 5px 25px @shadow-topbar;
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        border-right: 1px solid @border-smooth;
+        padding-right: 1rem;
+    }
+
+    &__title-image {
+        height: 40px;
+    }
+
+    &__app-title {
+        margin-left: 0.8rem;
+    }
+
+    &__actions {
+        width: 100%;
+        display: flex;
+        margin-left: 1rem;
+        height: 100%;
+    }
+
+    &__label {
+        color: grey;
+        margin-right: 1em;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #636262;
+    }
+
+    &__input-group {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        border-right: 1px solid @border-smooth;
+        padding-right: 1rem;
+
+        & + & {
+            margin-left: 1rem;
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    &__input-group.right {
+        flex-grow: 1;
+        flex-direction: row-reverse;
+        padding-right: 0;
+    }
+
+    &__button {
+        .bblfsh-button();
+
+        border: none;
+
+        & + & {
+            margin-left: 0.7rem;
+        }
+    }
+
+    &__run-button {
+        .bblfsh-button();
+
+        padding: 0.7rem 1.8rem;
+        background: @background-accent;
+        color: @font-color-white;
+        white-space: nowrap;
+
+        &:hover {
+            box-shadow: 0 5px 15px @shadow-primaryButton;
+        }
+    }
+
+    &__driver-code-box {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5rem;
+    }
+
+    &__driver-code-icon {
+        width: 20px;
+        opacity: 0.7;
+        margin-right: 0.3rem;
+    }
+
+    &__driver-code-link {
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none;
+        font-size: 0.9rem;
+
+        &:hover {
+            color: @font-color-accentDark;
+        }
+
+        &:hover .header__driver-code-icon {
+            opacity: 1;
+        }
+    }
+
+    .css-input {
+        border-radius: 3px;
+        border: 1px solid @border-smooth;
+        background: white;
+        padding: 0.5em 0.5em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.8rem;
+
+        & + button {
+            margin-left: 3px;
+        }
+    }
+
+    &__select {
+        .css-input();
+        font-size: 0.7rem;
+        text-transform: uppercase;
+    }
+
+    &__input {
+        .css-input();
+        text-transform: none;
+    }
+}
