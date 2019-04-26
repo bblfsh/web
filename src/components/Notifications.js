@@ -6,9 +6,9 @@ export function Notifications({ children }) {
 
 export function Error({ message, onRemove }) {
   const lines = message.split('\n').map((line, i) => (
-    <div className="bblfsh-notification__line" key={i}>
+    <p className="bblfsh-notification__line" key={i}>
       {line}
-    </div>
+    </p>
   ));
 
   return (

@@ -1,75 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error should render correctly 1`] = `
-.c5 {
-  padding: 0;
-  margin: 0;
-}
-
-.c5 + .c5 {
-  margin-top: 0.5rem;
-}
-
-.c2 {
-  font-size: 1.5rem;
-  position: absolute;
-  right: 0.5rem;
-  top: 0.2rem;
-  padding: 0.3rem 0.5rem;
-  margin: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.c0 {
-  position: relative;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 0 1rem 1rem 1rem;
-  background: #f44336;
-  color: white;
-  box-shadow: 0 4px 20px rgba(148,12,12,0.38);
-}
-
-.c0 .c1 {
-  color: white;
-}
-
-.c3 {
-  padding: 0;
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.c4 {
-  max-height: calc(100vh - 80px);
-  overflow: auto;
-}
-
 <div
-  className="c0"
+  className="bblfsh-notification__error"
 >
   <button
-    className="c1 c2"
+    className="bblfsh-notification__close-button"
   >
     ×
   </button>
   <h5
-    className="c3"
+    className="bblfsh-notification__title"
   >
     Error
   </h5>
   <div
-    className="c4"
+    className="bblfsh-notification__body"
   >
     <p
-      className="c5"
+      className="bblfsh-notification__line"
     >
       Foo bar
     </p>
     <p
-      className="c5"
+      className="bblfsh-notification__line"
     >
       Baz qux
     </p>

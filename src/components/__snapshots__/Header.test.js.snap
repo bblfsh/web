@@ -1,58 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.c3 {
-  width: 20px;
-  opacity: 0.7;
-  margin-right: 0.3rem;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.c1:hover {
-  color: #EB7422;
-}
-
-.c1:hover .c2 {
-  opacity: 1;
-}
-
 <div
-  className="c0"
+  className="bblfsh-header__driver-code-box"
 >
   <a
-    className="c1"
+    className="bblfsh-header__driver-code-link"
     href="Python.driver"
+    rel="noopener noreferrer"
     target="_blank"
   >
     <img
       alt="Driver code repository on GitHub"
-      className="c2 c3"
+      className="bblfsh-header__driver-code-icon"
       src="github.svg"
       title="Driver code repository on GitHub"
     />
@@ -61,58 +21,18 @@ exports[`DriverCode contains the actualLanguage URL if is auto 1`] = `
 `;
 
 exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] = `
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.c3 {
-  width: 20px;
-  opacity: 0.7;
-  margin-right: 0.3rem;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.c1:hover {
-  color: #EB7422;
-}
-
-.c1:hover .c2 {
-  opacity: 1;
-}
-
 <div
-  className="c0"
+  className="bblfsh-header__driver-code-box"
 >
   <a
-    className="c1"
+    className="bblfsh-header__driver-code-link"
     href="Java.driver"
+    rel="noopener noreferrer"
     target="_blank"
   >
     <img
       alt="Driver code repository on GitHub"
-      className="c2 c3"
+      className="bblfsh-header__driver-code-icon"
       src="github.svg"
       title="Driver code repository on GitHub"
     />
@@ -121,290 +41,37 @@ exports[`DriverCode contains the driver URL if selectedLanguage is not auto 1`] 
 `;
 
 exports[`Header has the button disabled if canParse is false 1`] = `
-.c13 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.c13[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c13:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c13 + .c13 {
-  margin-left: 0.7rem;
-}
-
-.c0 {
-  height: 70px;
-  padding: 0 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #f9f7f5;
-  border-bottom: 1px solid #dad7d0;
-  z-index: 9999;
-  box-shadow: 0 5px 25px rgba(138,128,115,0.14);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: normal;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c2 {
-  height: 40px;
-}
-
-.c3 {
-  margin-left: 0.8rem;
-}
-
-.c4 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 1rem;
-  height: 100%;
-}
-
-.c6 {
-  color: grey;
-  margin-right: 1em;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #636262;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c5 + .c5 {
-  margin-left: 1rem;
-}
-
-.c5:last-child {
-  border-right: none;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  padding-right: 0;
-}
-
-.c14 + .c14 {
-  margin-left: 1rem;
-}
-
-.c14:last-child {
-  border-right: none;
-}
-
-.c7 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  font-size: .7rem;
-  text-transform: uppercase;
-}
-
-.c7 + button {
-  margin-left: 3px;
-}
-
-.c12 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-transform: none;
-}
-
-.c12 + button {
-  margin-left: 3px;
-}
-
-.c15 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  padding: .7rem 1.8rem;
-  background: #EB7422;
-  color: #FFFFFF;
-  white-space: nowrap;
-}
-
-.c15[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(191,76,50,0.48);
-}
-
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.c11 {
-  width: 20px;
-  opacity: 0.7;
-  margin-right: 0.3rem;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.c9:hover {
-  color: #EB7422;
-}
-
-.c9:hover .c10 {
-  opacity: 1;
-}
-
 <header
-  className="c0"
+  className="bblfsh-header__container"
 >
   <h1
-    className="c1"
+    className="bblfsh-header__title"
   >
     <img
       alt="bblfsh"
-      className="c2"
+      className="bblfsh-header__title-image"
       src="babelfish_logo.svg"
     />
     <span
-      className="c3"
+      className="bblfsh-header__app-title"
     >
       Web
     </span>
   </h1>
   <div
-    className="c4"
+    className="bblfsh-header__actions"
   >
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -426,16 +93,17 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         </option>
       </select>
       <div
-        className="c8"
+        className="bblfsh-header__driver-code-box"
       >
         <a
-          className="c9"
+          className="bblfsh-header__driver-code-link"
           href="Python.driver"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="c10 c11"
+            className="bblfsh-header__driver-code-icon"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -443,16 +111,16 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </div>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="examples-selector"
         onChange={[Function]}
       >
@@ -470,22 +138,22 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </select>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <input
-        className="c12"
+        className="bblfsh-header__input"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
       />
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
       >
         load
       </button>
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
         onClick={[Function]}
       >
@@ -493,10 +161,10 @@ exports[`Header has the button disabled if canParse is false 1`] = `
       </button>
     </div>
     <div
-      className="c14"
+      className="bblfsh-header__input-group right"
     >
       <button
-        className="c15"
+        className="bblfsh-header__run-button"
         disabled={true}
         id="run-parser"
       >
@@ -508,290 +176,37 @@ exports[`Header has the button disabled if canParse is false 1`] = `
 `;
 
 exports[`Header has the button enabled if canParse is true 1`] = `
-.c13 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.c13[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c13:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c13 + .c13 {
-  margin-left: 0.7rem;
-}
-
-.c0 {
-  height: 70px;
-  padding: 0 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #f9f7f5;
-  border-bottom: 1px solid #dad7d0;
-  z-index: 9999;
-  box-shadow: 0 5px 25px rgba(138,128,115,0.14);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: normal;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c2 {
-  height: 40px;
-}
-
-.c3 {
-  margin-left: 0.8rem;
-}
-
-.c4 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 1rem;
-  height: 100%;
-}
-
-.c6 {
-  color: grey;
-  margin-right: 1em;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #636262;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c5 + .c5 {
-  margin-left: 1rem;
-}
-
-.c5:last-child {
-  border-right: none;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  padding-right: 0;
-}
-
-.c14 + .c14 {
-  margin-left: 1rem;
-}
-
-.c14:last-child {
-  border-right: none;
-}
-
-.c7 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  font-size: .7rem;
-  text-transform: uppercase;
-}
-
-.c7 + button {
-  margin-left: 3px;
-}
-
-.c12 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-transform: none;
-}
-
-.c12 + button {
-  margin-left: 3px;
-}
-
-.c15 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  padding: .7rem 1.8rem;
-  background: #EB7422;
-  color: #FFFFFF;
-  white-space: nowrap;
-}
-
-.c15[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(191,76,50,0.48);
-}
-
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.c11 {
-  width: 20px;
-  opacity: 0.7;
-  margin-right: 0.3rem;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.c9:hover {
-  color: #EB7422;
-}
-
-.c9:hover .c10 {
-  opacity: 1;
-}
-
 <header
-  className="c0"
+  className="bblfsh-header__container"
 >
   <h1
-    className="c1"
+    className="bblfsh-header__title"
   >
     <img
       alt="bblfsh"
-      className="c2"
+      className="bblfsh-header__title-image"
       src="babelfish_logo.svg"
     />
     <span
-      className="c3"
+      className="bblfsh-header__app-title"
     >
       Web
     </span>
   </h1>
   <div
-    className="c4"
+    className="bblfsh-header__actions"
   >
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -813,16 +228,17 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         </option>
       </select>
       <div
-        className="c8"
+        className="bblfsh-header__driver-code-box"
       >
         <a
-          className="c9"
+          className="bblfsh-header__driver-code-link"
           href="Python.driver"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="c10 c11"
+            className="bblfsh-header__driver-code-icon"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -830,16 +246,16 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </div>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="examples-selector"
         onChange={[Function]}
       >
@@ -857,22 +273,22 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </select>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <input
-        className="c12"
+        className="bblfsh-header__input"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
       />
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
       >
         load
       </button>
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
         onClick={[Function]}
       >
@@ -880,10 +296,10 @@ exports[`Header has the button enabled if canParse is true 1`] = `
       </button>
     </div>
     <div
-      className="c14"
+      className="bblfsh-header__input-group right"
     >
       <button
-        className="c15"
+        className="bblfsh-header__run-button"
         disabled={false}
         id="run-parser"
       >
@@ -895,290 +311,37 @@ exports[`Header has the button enabled if canParse is true 1`] = `
 `;
 
 exports[`Header renders correctly 1`] = `
-.c13 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  border: none;
-}
-
-.c13[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c13:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c13 + .c13 {
-  margin-left: 0.7rem;
-}
-
-.c0 {
-  height: 70px;
-  padding: 0 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: #f9f7f5;
-  border-bottom: 1px solid #dad7d0;
-  z-index: 9999;
-  box-shadow: 0 5px 25px rgba(138,128,115,0.14);
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: normal;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c2 {
-  height: 40px;
-}
-
-.c3 {
-  margin-left: 0.8rem;
-}
-
-.c4 {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: 1rem;
-  height: 100%;
-}
-
-.c6 {
-  color: grey;
-  margin-right: 1em;
-  font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #636262;
-}
-
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-}
-
-.c5 + .c5 {
-  margin-left: 1rem;
-}
-
-.c5:last-child {
-  border-right: none;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  border-right: 1px solid #dad7d0;
-  padding-right: 1rem;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  padding-right: 0;
-}
-
-.c14 + .c14 {
-  margin-left: 1rem;
-}
-
-.c14:last-child {
-  border-right: none;
-}
-
-.c7 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  font-size: .7rem;
-  text-transform: uppercase;
-}
-
-.c7 + button {
-  margin-left: 3px;
-}
-
-.c12 {
-  border-radius: 3px;
-  border: 1px solid #dad7d0;
-  background: white;
-  padding: 0.5em 0.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8rem;
-  text-transform: none;
-}
-
-.c12 + button {
-  margin-left: 3px;
-}
-
-.c15 {
-  padding: 0.5em 0.5em;
-  border: 1px solid #B1B1B1;
-  border-radius: 3px;
-  cursor: pointer;
-  background: #B1B1B1;
-  color: #212121;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  -webkit-transition: box-shadow 300ms ease-in-out;
-  transition: box-shadow 300ms ease-in-out;
-  padding: .7rem 1.8rem;
-  background: #EB7422;
-  color: #FFFFFF;
-  white-space: nowrap;
-}
-
-.c15[disabled] {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(138,128,115,0.8);
-}
-
-.c15:hover {
-  box-shadow: 0 5px 15px rgba(191,76,50,0.48);
-}
-
-.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.c11 {
-  width: 20px;
-  opacity: 0.7;
-  margin-right: 0.3rem;
-}
-
-.c9 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: black;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.c9:hover {
-  color: #EB7422;
-}
-
-.c9:hover .c10 {
-  opacity: 1;
-}
-
 <header
-  className="c0"
+  className="bblfsh-header__container"
 >
   <h1
-    className="c1"
+    className="bblfsh-header__title"
   >
     <img
       alt="bblfsh"
-      className="c2"
+      className="bblfsh-header__title-image"
       src="babelfish_logo.svg"
     />
     <span
-      className="c3"
+      className="bblfsh-header__app-title"
     >
       Web
     </span>
   </h1>
   <div
-    className="c4"
+    className="bblfsh-header__actions"
   >
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="language-selector"
       >
         Language
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="language-selector"
         onChange={[Function]}
         value=""
@@ -1200,16 +363,17 @@ exports[`Header renders correctly 1`] = `
         </option>
       </select>
       <div
-        className="c8"
+        className="bblfsh-header__driver-code-box"
       >
         <a
-          className="c9"
+          className="bblfsh-header__driver-code-link"
           href="Java.driver"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <img
             alt="Driver code repository on GitHub"
-            className="c10 c11"
+            className="bblfsh-header__driver-code-icon"
             src="github.svg"
             title="Driver code repository on GitHub"
           />
@@ -1217,16 +381,16 @@ exports[`Header renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <label
-        className="c6"
+        className="bblfsh-header__label"
         htmlFor="examples-selector"
       >
         Examples
       </label>
       <select
-        className="c7"
+        className="bblfsh-header__select"
         id="examples-selector"
         onChange={[Function]}
       >
@@ -1244,22 +408,22 @@ exports[`Header renders correctly 1`] = `
       </select>
     </div>
     <div
-      className="c5"
+      className="bblfsh-header__input-group"
     >
       <input
-        className="c12"
+        className="bblfsh-header__input"
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
       />
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
       >
         load
       </button>
       <button
-        className="c13"
+        className="bblfsh-header__button"
         disabled={true}
         onClick={[Function]}
       >
@@ -1267,10 +431,10 @@ exports[`Header renders correctly 1`] = `
       </button>
     </div>
     <div
-      className="c14"
+      className="bblfsh-header__input-group right"
     >
       <button
-        className="c15"
+        className="bblfsh-header__run-button"
         disabled={true}
         id="run-parser"
       >

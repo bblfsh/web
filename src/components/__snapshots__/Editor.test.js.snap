@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Editor renders without crashing 1`] = `
-<styled.div>
+<div
+  className="bblfsh-editor__container"
+>
   <Controlled
     autoFocus={true}
     onBeforeChange={[Function]}
@@ -15,8 +17,8 @@ exports[`Editor renders without crashing 1`] = `
     }
     value="foo = 1"
   />
-  <styled.div
-    innerRef={[Function]}
+  <div
+    className="bblfsh-editor__bookmark"
   />
-</styled.div>
+</div>
 `;

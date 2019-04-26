@@ -1,43 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it renders correctly 1`] = `
-.c0 {
-  padding: 0.5rem 1rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background: #f9f7f5;
-  border-bottom: 1px solid #dad7d0;
-  min-height: 2.5rem;
-}
-
-.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c1 + .c1 {
-  margin-left: 1.5rem;
-}
-
-.c2 {
-  color: #212121;
-  padding-left: 0.5rem;
-  font-size: 0.8rem;
-}
-
 <div
-  className="c0"
+  className="bblfsh-options__container"
 >
   <div
-    className="c1"
+    className="bblfsh-options__field"
   >
     <input
       id="show-locations"
@@ -45,14 +13,14 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="c2"
+      className="bblfsh-options__label"
       htmlFor="show-locations"
     >
       Show locations
     </label>
   </div>
   <div
-    className="c1"
+    className="bblfsh-options__field"
   >
     <input
       id="custom-server"
@@ -60,7 +28,7 @@ exports[`it renders correctly 1`] = `
       type="checkbox"
     />
     <label
-      className="c2"
+      className="bblfsh-options__label"
       htmlFor="custom-server"
     >
       Custom babelfish server
