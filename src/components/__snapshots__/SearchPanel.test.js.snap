@@ -194,12 +194,10 @@ exports[`renders correctly 1`] = `
   >
     <input
       className="c2"
-      disabled={undefined}
       name="query"
       onChange={[Function]}
       placeholder="UAST Query"
       type="text"
-      value={undefined}
     />
   </div>
   <div
@@ -307,7 +305,6 @@ exports[`renders correctly with value 1`] = `
   >
     <input
       className="c2"
-      disabled={undefined}
       name="query"
       onChange={[Function]}
       placeholder="UAST Query"

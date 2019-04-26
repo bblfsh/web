@@ -40,10 +40,8 @@ exports[`it renders correctly 1`] = `
     className="c1"
   >
     <input
-      checked={undefined}
       id="show-locations"
       name="show-locations"
-      onChange={undefined}
       type="checkbox"
     />
     <label
@@ -57,10 +55,8 @@ exports[`it renders correctly 1`] = `
     className="c1"
   >
     <input
-      checked={undefined}
       id="custom-server"
       name="custom-server"
-      onChange={undefined}
       type="checkbox"
     />
     <label

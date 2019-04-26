@@ -455,7 +455,6 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         className="c7"
         id="examples-selector"
         onChange={[Function]}
-        value={undefined}
       >
         <option
           value=""
@@ -478,12 +477,10 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value={undefined}
       />
       <button
         className="c13"
         disabled={true}
-        onClick={undefined}
       >
         load
       </button>
@@ -502,7 +499,6 @@ exports[`Header has the button disabled if canParse is false 1`] = `
         className="c15"
         disabled={true}
         id="run-parser"
-        onClick={undefined}
       >
         Run parser
       </button>
@@ -846,7 +842,6 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         className="c7"
         id="examples-selector"
         onChange={[Function]}
-        value={undefined}
       >
         <option
           value=""
@@ -869,12 +864,10 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value={undefined}
       />
       <button
         className="c13"
         disabled={true}
-        onClick={undefined}
       >
         load
       </button>
@@ -893,7 +886,6 @@ exports[`Header has the button enabled if canParse is true 1`] = `
         className="c15"
         disabled={false}
         id="run-parser"
-        onClick={undefined}
       >
         Run parser
       </button>
@@ -1237,7 +1229,6 @@ exports[`Header renders correctly 1`] = `
         className="c7"
         id="examples-selector"
         onChange={[Function]}
-        value={undefined}
       >
         <option
           value=""
@@ -1260,12 +1251,10 @@ exports[`Header renders correctly 1`] = `
         onChange={[Function]}
         placeholder="raw gist url"
         type="url"
-        value={undefined}
       />
       <button
         className="c13"
         disabled={true}
-        onClick={undefined}
       >
         load
       </button>
@@ -1284,7 +1273,6 @@ exports[`Header renders correctly 1`] = `
         className="c15"
         disabled={true}
         id="run-parser"
-        onClick={undefined}
       >
         Run parser
       </button>
