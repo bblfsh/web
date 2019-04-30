@@ -1,29 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { background, border, font } from '../styling/variables';
 import ReactTooltip from 'react-tooltip';
-
-const Container = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  border-top: 1px solid ${border.smooth};
-  background: ${background.light};
-`;
-
-const Link = styled.a`
-  color: ${font.color.dark};
-`;
-
-const PaddedRight = styled.span`
-  padding-right: 40px;
-`;
-
-const DriversVersions = styled.span`
-  white-space: nowrap;
-  border-bottom: 1px dashed;
-`;
 
 export function Versions({ versionsState, languages }) {
   const { loading, error, bblfshdVersion, webClientVersion } = versionsState;
@@ -56,12 +32,15 @@ export function Versions({ versionsState, languages }) {
 
   return (
     <div>
-      <PaddedRight>
+      <span className="bblfsh-footer__padded_right">
         Babelfish server: {bblfshdVersion}. Web client: {webClientVersion}
-      </PaddedRight>{' '}
-      <DriversVersions data-tip="drivers versions">
+      </span>{' '}
+      <span
+        className="bblfsh-footer__drivers_versions"
+        data-tip="drivers versions"
+      >
         Installed Drivers Versions
-      </DriversVersions>
+      </span>
       <ReactTooltip place="top" type="dark" effect="solid">
         {languageVersions}
       </ReactTooltip>
@@ -71,34 +50,61 @@ export function Versions({ versionsState, languages }) {
 
 export default function Footer({ versionsState, languages }) {
   return (
-    <Container>
+    <div className="bblfsh-footer__container">
       <Versions versionsState={versionsState} languages={languages} />
       <span>
         Built with{' '}
-        <Link href="https://github.com/bblfsh" target="_blank">
+        <a
+          className="bblfsh-footer__link"
+          href="https://github.com/bblfsh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Babelfish
-        </Link>{' '}
+        </a>{' '}
         (see{' '}
-        <Link href="https://doc.bblf.sh" target="_blank">
+        <a
+          className="bblfsh-footer__link"
+          href="https://doc.bblf.sh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           documentation
-        </Link>),{' '}
-        <Link href="http://codemirror.net/" target="_blank">
+        </a>),{' '}
+        <a
+          className="bblfsh-footer__link"
+          href="http://codemirror.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           CodeMirror
-        </Link>, and{' '}
-        <Link href="https://facebook.github.io/react" target="_blank">
+        </a>, and{' '}
+        <a
+          className="bblfsh-footer__link"
+          href="https://facebook.github.io/react"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           React
-        </Link>{' '}
+        </a>{' '}
         under GPLv3 license. Fork{' '}
-        <Link
+        <a
+          className="bblfsh-footer__link"
           href="https://github.com/bblfsh/web/#fork-destination-box"
           target="_blank"
+          rel="noopener noreferrer"
         >
           this demo
-        </Link>. Coded by{' '}
-        <Link href="https://sourced.tech" target="_blank">
+        </a>. Coded by{' '}
+        <a
+          className="bblfsh-footer__link"
+          href="https://sourced.tech"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {'source{d}'}
-        </Link>.
+        </a>.
       </span>
-    </Container>
+    </div>
   );
 }

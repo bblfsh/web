@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import 'jest-styled-components';
 import { Header, DriverCode } from './Header';
 import renderer from 'react-test-renderer';
 

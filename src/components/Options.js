@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import { font, background, border } from '../styling/variables';
 import { connect } from 'react-redux';
 import {
   locationsToggle,
@@ -8,43 +6,6 @@ import {
   customServerToggle,
   isUrl,
 } from '../state/options';
-
-const Container = styled.div`
-  padding: 0.5rem 1rem;
-  display: flex;
-  background: ${background.light};
-  border-bottom: 1px solid ${border.smooth};
-  min-height: 2.5rem;
-`;
-
-const Field = styled.div`
-  display: flex;
-  align-items: center;
-
-  & + & {
-    margin-left: 1.5rem;
-  }
-`;
-
-const Label = styled.label`
-  color: ${font.color.dark};
-  padding-left: 0.5rem;
-  font-size: 0.8rem;
-`;
-
-const TextInput = styled.input`
-  margin-left: 0.5rem;
-  background: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid ${border.smooth};
-  outline: none;
-  font-size: 0.8rem;
-  padding: 0.1rem 0.5rem;
-  color: ${props => (props.valid ? 'inherit' : 'red')};
-  border-bottom: 1px solid ${props => (props.valid ? border.smooth : 'red')};
-`;
 
 export function Options({
   showLocations,
@@ -56,8 +17,8 @@ export function Options({
   onCustomServerUrlChange,
 }) {
   return (
-    <Container>
-      <Field>
+    <div className="bblfsh-options__container">
+      <div className="bblfsh-options__field">
         <input
           type="checkbox"
           id="show-locations"
@@ -65,10 +26,12 @@ export function Options({
           checked={showLocations}
           onChange={onLocationsToggle}
         />
-        <Label htmlFor="show-locations">Show locations</Label>
-      </Field>
+        <label className="bblfsh-options__label" htmlFor="show-locations">
+          Show locations
+        </label>
+      </div>
 
-      <Field>
+      <div className="bblfsh-options__field">
         <input
           type="checkbox"
           id="custom-server"
@@ -76,19 +39,24 @@ export function Options({
           checked={customServer}
           onChange={onCustomServerToggle}
         />
-        <Label htmlFor="custom-server">Custom babelfish server</Label>
+        <label className="bblfsh-options__label" htmlFor="custom-server">
+          Custom babelfish server
+        </label>
         {customServer ? (
-          <TextInput
+          <input
+            className={
+              'bblfsh-options__text-input' +
+              (serverUrlIsValid ? '' : ' invalid')
+            }
             type="url"
             name="custom-server-url"
             value={customServerUrl}
             onChange={e => onCustomServerUrlChange(e.target.value)}
             disabled={!customServer}
-            valid={serverUrlIsValid}
           />
         ) : null}
-      </Field>
-    </Container>
+      </div>
+    </div>
   );
 }
 

@@ -1,0 +1,41 @@
+.bblfsh-options {
+    &__container {
+        padding: 8px 16px;
+        display: flex;
+        background: @background-light;
+        border-bottom: 1px solid @border-smooth;
+        min-height: 40px;
+    }
+
+    &__field {
+        display: flex;
+        align-items: center;
+
+        & + & {
+            margin-left: 24px;
+        }
+    }
+
+    &__label {
+        color: @font-color-dark;
+        padding-left: 8px;
+        font-size: 12.8px;
+    }
+
+    &__text-input {
+        margin-left: 8px;
+        background: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid @border-smooth;
+        outline: none;
+        font-size: 12.8px;
+        padding: 1.6px 8px;
+    }
+
+    &__text-input.invalid {
+        color: red;
+        border-bottom-color: red;
+    }
+}

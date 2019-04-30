@@ -1,0 +1,148 @@
+.bblfsh-header {
+    &__container {
+        height: 70px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        background: @background-light;
+        border-bottom: 1px solid @border-smooth;
+        z-index: 9999;
+        box-shadow: 0 5px 25px @shadow-topbar;
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        border-right: 1px solid @border-smooth;
+        padding-right: 16px;
+    }
+
+    &__title-image {
+        height: 40px;
+    }
+
+    &__app-title {
+        margin-left: c;
+    }
+
+    &__actions {
+        width: 100%;
+        display: flex;
+        margin-left: 16px;
+        height: 100%;
+    }
+
+    &__label {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: grey;
+        margin-right: 1em;
+        font-size: 12.8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #636262;
+    }
+
+    &__input-group {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        border-right: 1px solid @border-smooth;
+        padding-right: 16px;
+
+        & + & {
+            margin-left: 16px;
+        }
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    &__input-group.right {
+        flex-grow: 1;
+        flex-direction: row-reverse;
+        padding-right: 0;
+    }
+
+    &__button {
+        .bblfsh-button();
+
+        border: none;
+
+        & + & {
+            margin-left: 11.2px;
+        }
+    }
+
+    &__run-button {
+        .bblfsh-button();
+
+        padding: 11.2px 28.8px;
+        background: @background-accent;
+        color: @font-color-white;
+        white-space: nowrap;
+
+        &:hover {
+            box-shadow: 0 5px 15px @shadow-primaryButton;
+        }
+    }
+
+    &__driver-code-box {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+    }
+
+    &__driver-code-icon {
+        width: 20px;
+        opacity: 0.7;
+        margin-right: 4.8px;
+    }
+
+    &__driver-code-link {
+        display: flex;
+        align-items: center;
+        color: black;
+        text-decoration: none;
+        font-size: 14.4px;
+
+        &:hover {
+            color: @font-color-accentDark;
+        }
+
+        &:hover .header__driver-code-icon {
+            opacity: 1;
+        }
+    }
+
+    .css-input {
+        border-radius: 3px;
+        border: 1px solid @border-smooth;
+        background: white;
+        padding: 8px 8px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12.8px;
+
+        & + button {
+            margin-left: 3px;
+        }
+    }
+
+    &__select {
+        .css-input();
+        font-size: 11.2px;
+        text-transform: uppercase;
+    }
+
+    &__input {
+        .css-input();
+        text-transform: none;
+    }
+}

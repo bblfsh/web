@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Error, CloseButton } from './Notifications';
+import { Error } from './Notifications';
 import renderer from 'react-test-renderer';
-import 'jest-styled-components';
 
 describe('Error', () => {
   it('should render correctly', () => {
@@ -16,7 +15,7 @@ describe('Error', () => {
     const spy = jest.fn();
     const wrapper = shallow(<Error message="foo" onRemove={spy} />);
 
-    wrapper.find(CloseButton).simulate('click');
+    wrapper.find('.bblfsh-notification__close-button').simulate('click');
     expect(spy.mock.calls.length).toBe(1);
   });
 });

@@ -12,9 +12,8 @@
     "prettier/react"
   ],
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 9,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
       "jsx": true
     },
     "sourceType": "module"
@@ -23,5 +22,10 @@
   "rules": {
     "react/prop-types": 0,
     "no-case-declarations": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
