@@ -125,7 +125,15 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		}
 		results := nodes.Array{}
 		for iter.Next() {
-			results = append(results, iter.Node().(nodes.Node))
+			n := iter.Node()
+			if nodes.KindOf(n) == nodes.KindArray {
+				for _, child := range n.(nodes.Array) {
+					results = append(results, child)
+				}
+			} else {
+				results = append(results, n.(nodes.Node))
+			}
+
 		}
 		resp = results
 	}
