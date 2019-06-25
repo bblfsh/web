@@ -59,7 +59,7 @@ jobs:
         - make packages
         - DOCKER_PUSH_MASTER=true make docker-push
         #HELM_RELEASE name is also harcoded in the .helm_staging file in order to use the AntiAffinity Rules.
-        - HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/stable/ --version 0.8.0 --set image.tag=dev-$(git rev-parse --short HEAD)-dirty -f .helm_staging.yml" make deploy
+        - HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/stable/ --version 0.8.0 --set image.tag=dev-$(git rev-parse --short HEAD) -f .helm_staging.yml" make deploy
     - name: 'Deploy to production'
       stage: release-helm
       script:

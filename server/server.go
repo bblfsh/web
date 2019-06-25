@@ -1,14 +1,15 @@
 package server
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
 
+	bblfsh "github.com/bblfsh/go-client"
+	"github.com/bblfsh/go-client/tools"
 	"github.com/gin-gonic/gin"
-	"gopkg.in/bblfsh/client-go.v3"
-	"gopkg.in/bblfsh/client-go.v3/tools"
 	"gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"
 )
@@ -94,6 +95,7 @@ func (s *Server) handleParse(ctx *gin.Context) {
 	}
 
 	resp, lang, err := cli.NewParseRequest().
+		Context(ctx.Request.Context()). // pass request context to stop parsing when request is cancelled
 		Language(req.Language).
 		Filename(req.Filename).
 		Content(req.Content).
@@ -102,6 +104,12 @@ func (s *Server) handleParse(ctx *gin.Context) {
 
 	if bblfsh.ErrSyntax.Is(err) {
 		ctx.JSON(http.StatusBadRequest, jsonError("error parsing UAST: %s", err))
+		return
+	}
+	// current version of go-client doesn't have any default timeout
+	// but better to handle it anyway
+	if err == context.DeadlineExceeded {
+		ctx.JSON(http.StatusRequestTimeout, jsonError("error parsing UAST: timeout"))
 		return
 	}
 	if err != nil {
@@ -117,7 +125,15 @@ func (s *Server) handleParse(ctx *gin.Context) {
 		}
 		results := nodes.Array{}
 		for iter.Next() {
-			results = append(results, iter.Node().(nodes.Node))
+			n := iter.Node()
+			if nodes.KindOf(n) == nodes.KindArray {
+				for _, child := range n.(nodes.Array) {
+					results = append(results, child)
+				}
+			} else {
+				results = append(results, n.(nodes.Node))
+			}
+
 		}
 		resp = results
 	}

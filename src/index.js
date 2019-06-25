@@ -6,28 +6,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './state';
 import 'normalize.css';
-import { injectGlobal } from 'styled-components';
 import App from './App';
 import { unregister } from './registerServiceWorker';
 
 import './vendor.css';
 import { polyfill as es6PromisesPolyfill } from 'es6-promise';
 import 'isomorphic-fetch';
-import { font } from './styling/variables';
 
 es6PromisesPolyfill();
 
-// eslint-disable-next-line
-injectGlobal`
-  * {
-    box-sizing: border-box;
-  }
-
-  body, html {
-    font-size: ${font.size.html};
-    font-family: ${font.family.prose};
-  }
-`;
+import './styling/index.less';
 
 const store = createStore(
   rootReducer,

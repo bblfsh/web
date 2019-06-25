@@ -12,7 +12,6 @@ Object {
 
 exports[`code/reducer PARSE 1`] = `
 Object {
-  "ast": Object {},
   "code": null,
   "dirty": false,
   "filename": undefined,

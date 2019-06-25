@@ -1,0 +1,54 @@
+.bblfsh-notification {
+    &__list {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-width: 50%;
+        z-index: 9999;
+    }
+
+    &__line {
+        padding: 0;
+        margin: 0;
+
+        & + & {
+            margin-top: 8px;
+        }
+    }
+
+    &__error {
+        position: relative;
+        border-radius: 5px;
+        padding: 16px;
+        margin: 0 16px 16px 16px;
+
+        background: #f44336;
+        color: white;
+        box-shadow: 0 4px 20px rgba(148, 12, 12, 0.38);
+    }
+
+    &__close-button {
+        font-size: 24px;
+        position: absolute;
+        right: 8px;
+        top: 3.2px;
+        padding: 4.8px 8px;
+        margin: 0;
+        border: none;
+        color: white;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    &__title {
+        padding: 0;
+        margin: 0;
+        font-size: 19.2px;
+    }
+
+    &__body {
+        // max-height = 100vh - height(header) - 10px of padding
+        max-height: calc(100vh - 80px);
+        overflow: auto;
+    }
+}

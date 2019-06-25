@@ -13,14 +13,8 @@ exports[`empty render 1`] = `
 `;
 
 exports[`search results empty 1`] = `
-.c0 {
-  width: 100%;
-  padding: 1rem 0;
-  text-align: center;
-}
-
 <div
-  className="c0"
+  className="bblfsh-uast-viewer__not-found"
 >
   Nothing found
 </div>

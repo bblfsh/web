@@ -1,21 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render while loading 1`] = `
-<styled.div>
+<div
+  className="bblfsh-app__wrap"
+>
   <Connect(Header) />
-  <styled.div>
-    <styled.div />
-  </styled.div>
+  <div
+    className="bblfsh-app__content"
+  >
+    <Spinner />
+  </div>
   <Footer
     languages={Object {}}
   />
-</styled.div>
+</div>
 `;
 
 exports[`render with errors 1`] = `
-<styled.div>
+<div
+  className="bblfsh-app__wrap"
+>
   <Connect(Header) />
-  <styled.div>
+  <div
+    className="bblfsh-app__content"
+  >
     <SplitPane
       allowResize={true}
       defaultSize="50%"
@@ -35,14 +43,16 @@ exports[`render with errors 1`] = `
         }
         theme="solarized light"
       />
-      <styled.div>
+      <div
+        className="bblfsh-app__right-panel"
+      >
         <Connect(Options) />
         <Connect(SearchPanel) />
         <Connect(ParseModeSwitcher) />
         <UASTViewer />
-      </styled.div>
+      </div>
     </SplitPane>
-  </styled.div>
+  </div>
   <Footer
     languages={Object {}}
   />
@@ -58,13 +68,17 @@ exports[`render with errors 1`] = `
       onRemove={[Function]}
     />
   </Notifications>
-</styled.div>
+</div>
 `;
 
 exports[`renders without crashing 1`] = `
-<styled.div>
+<div
+  className="bblfsh-app__wrap"
+>
   <Connect(Header) />
-  <styled.div>
+  <div
+    className="bblfsh-app__content"
+  >
     <SplitPane
       allowResize={true}
       defaultSize="50%"
@@ -84,14 +98,16 @@ exports[`renders without crashing 1`] = `
         }
         theme="solarized light"
       />
-      <styled.div>
+      <div
+        className="bblfsh-app__right-panel"
+      >
         <Connect(Options) />
         <Connect(SearchPanel) />
         <Connect(ParseModeSwitcher) />
         <UASTViewer />
-      </styled.div>
+      </div>
     </SplitPane>
-  </styled.div>
+  </div>
   <Footer
     languages={
       Object {
@@ -113,5 +129,5 @@ exports[`renders without crashing 1`] = `
       }
     }
   />
-</styled.div>
+</div>
 `;

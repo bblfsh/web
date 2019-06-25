@@ -1,0 +1,36 @@
+.bblfsh-search-panel {
+    &__container {
+        margin-bottom: 0;
+        padding: 8px 16px;
+        display: flex;
+        background: @background-light;
+        border-bottom: 1px solid @border-smooth;
+        min-height: 40px;
+    }
+
+    &__field {
+        display: flex;
+        align-items: center;
+
+        & + & {
+            margin-left: 16px;
+        }
+    }
+
+    &__text-input {
+        width: 100%;
+        background: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid @border-smooth;
+        outline: none;
+        font-size: 12.8px;
+        padding: 1.6px 8px;
+    }
+
+    &__button {
+        .bblfsh-button();
+        border: none;
+    }
+}

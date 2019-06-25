@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
+	bblfsh "github.com/bblfsh/go-client"
 	"github.com/bblfsh/web/server"
 	"github.com/stretchr/testify/require"
-	bblfsh "gopkg.in/bblfsh/client-go.v3"
 	protocol1 "gopkg.in/bblfsh/sdk.v1/protocol"
 	"gopkg.in/bblfsh/sdk.v2/protocol"
 	"gopkg.in/bblfsh/sdk.v2/uast/nodes"

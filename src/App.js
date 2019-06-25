@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import styled, { injectGlobal } from 'styled-components';
-import 'normalize.css';
 import SplitPane from 'react-split-pane';
 import { withUASTEditor, Editor } from 'uast-viewer';
 import 'uast-viewer/dist/default-theme.css';
@@ -18,44 +16,6 @@ import { remove as errorsRemove } from './state/errors';
 import { init } from './state';
 import { getLanguageMode } from './state/languages';
 import { change as changeCode } from './state/code';
-
-import { font } from './styling/variables';
-
-const Wrap = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Content = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: row;
-  position: relative;
-`;
-
-const RightPanel = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  position: relative;
-`;
-
-// eslint-disable-next-line
-injectGlobal`
-  .ReactCodeMirror, .CodeMirror {
-    height: 100%;
-  }
-
-  .CodeMirror {
-    font-family: ${font.family.code};
-    font-size: ${font.size.large};
-  }
-`;
 
 export class App extends Component {
   componentDidMount() {
@@ -90,7 +50,7 @@ export class App extends Component {
           style={{ height: '100%' }}
         />
 
-        <RightPanel>
+        <div className="bblfsh-app__right-panel">
           <Options />
           <SearchPanel />
           <ParseModeSwitcher />
@@ -98,7 +58,7 @@ export class App extends Component {
             uastViewerProps={uastViewerProps}
             showLocations={showLocation}
           />
-        </RightPanel>
+        </div>
       </SplitPane>
     );
   }
@@ -111,9 +71,11 @@ export class App extends Component {
     }
 
     return (
-      <Wrap>
+      <div className="bblfsh-app__wrap">
         <Header />
-        <Content>{code !== null ? this.renderContent() : <Spinner />}</Content>
+        <div className="bblfsh-app__content">
+          {code !== null ? this.renderContent() : <Spinner />}
+        </div>
 
         <Footer versionsState={versions} languages={langList} />
 
@@ -130,7 +92,7 @@ export class App extends Component {
             })}
           </Notifications>
         ) : null}
-      </Wrap>
+      </div>
     );
   }
 }

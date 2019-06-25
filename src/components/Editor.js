@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import styled, { injectGlobal } from 'styled-components';
 import { Controlled as CodeMirror } from 'react-codemirror2';
-import { background } from '../styling/variables';
-import { font, border } from '../styling/variables';
 import { connect } from 'react-redux';
 import { getLanguageMode } from '../state/languages';
 import { change as changeCode, selectNodeByPos } from '../state/code';
@@ -16,41 +13,6 @@ import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/go/go';
 import 'codemirror/mode/shell/shell';
-
-// eslint-disable-next-line
-injectGlobal`
-  .ReactCodeMirror, .CodeMirror {
-    height: 100%;
-  }
-
-  .CodeMirror {
-    font-family: ${font.family.code};
-    font-size: ${font.size.large};
-  }
-`;
-
-const Container = styled.div`
-  height: 100%;
-`;
-
-const BookMark = styled.div`
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: -3px;
-    width: 3px;
-    height: 19px;
-    border: 1px solid ${border.accent};
-    border-right-width: 0 !important;
-    border-left-width: 2px !important;
-  }
-`;
 
 export class Editor extends Component {
   get document() {
@@ -75,7 +37,7 @@ export class Editor extends Component {
 
     if (from && to) {
       this.mark = this.document.markText(from, to, {
-        css: 'background: ' + background.highlight,
+        className: 'bblfsh-editor__mark',
       });
     } else if (from) {
       this.mark = this.document.setBookmark(from, { widget: this.bookmark });
@@ -110,7 +72,7 @@ export class Editor extends Component {
     };
 
     return (
-      <Container>
+      <div className="bblfsh-editor__container">
         <CodeMirror
           ref={r => (this.codemirror = r)}
           autoFocus={true}
@@ -119,12 +81,13 @@ export class Editor extends Component {
           onBeforeChange={(editor, data, v) => onChange(v)}
           onCursor={(_, pos) => this.onCursor(pos)}
         />
-        <BookMark
-          innerRef={elem => {
+        <div
+          className="bblfsh-editor__bookmark"
+          ref={elem => {
             this.bookmark = elem;
           }}
         />
-      </Container>
+      </div>
     );
   }
 }
