@@ -59,9 +59,9 @@ jobs:
         - make packages
         - DOCKER_PUSH_MASTER=true make docker-push
         #HELM_RELEASE name is also harcoded in the .helm_staging file in order to use the AntiAffinity Rules.
-        - HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/ --version 0.8.0 --set image.tag=dev-$(git rev-parse --short HEAD) -f .helm_staging.yml" make deploy
+        - HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/stable/ --version 0.8.0 --set image.tag=dev-$(git rev-parse --short HEAD) -f .helm_staging.yml" make deploy
     - name: 'Deploy to production'
       stage: release-helm
       script:
         #HELM_RELEASE name is also harcoded in the .helm_production file in order to use the AntiAffinity Rules.
-        - B64_CA_CRT=$B64_CA_CRT_PROD SERVICE_ACCOUNT_TOKEN=$SERVICE_ACCOUNT_TOKEN_PROD CLUSTER_ENDPOINT=$CLUSTER_ENDPOINT_PROD HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/ --version 0.8.0 --set image.tag=$TRAVIS_TAG -f .helm_production.yml" make deploy
+        - B64_CA_CRT=$B64_CA_CRT_PROD SERVICE_ACCOUNT_TOKEN=$SERVICE_ACCOUNT_TOKEN_PROD CLUSTER_ENDPOINT=$CLUSTER_ENDPOINT_PROD HELM_RELEASE=bblfsh-web HELM_CHART=bblfsh-web K8S_NAMESPACE=default HELM_ARGS="--repo https://src-d.github.io/charts/stable/ --version 0.8.0 --set image.tag=$TRAVIS_TAG -f .helm_production.yml" make deploy
