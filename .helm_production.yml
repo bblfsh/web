@@ -3,8 +3,18 @@ service:
   port: 80
 
 ingress:
-  globalStaticIpName: bblfsh-play-production
-  hostname: play.bblf.sh
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.global-static-ip-name: bblfsh-web-production
+    kubernetes.io/tls-acme: "true"
+  hosts:
+    - play.bblf.sh
+  tls:
+    - secretName: play-bblf-sh-tls
+      hosts:
+        - play.bblf.sh
+
 
 affinity:
   podAntiAffinity:
@@ -15,7 +25,7 @@ affinity:
               operator: In
               values:
                 #This value depends of the HELM_RELEASE defined in .travis.yml should be ${HELM_RELEASE}-${CHART_NAME}
-                - bblfsh-web-bblfsh-web
+                - play-bblfsh-web
         topologyKey: kubernetes.io/hostname
 
 replicaCount: 2
@@ -25,30 +35,4 @@ nodeSelector:
 
 bblfshd-sidecar:
   image:
-    tag: v2.11.8
-  drivers:
-    languages:
-      python:
-        repository: bblfsh/python-driver
-        tag: v2.8.0
-      java:
-        repository: bblfsh/java-driver
-        tag: v2.6.0
-      javascript:
-        repository: bblfsh/javascript-driver
-        tag: v2.6.0
-      bash:
-        repository: bblfsh/bash-driver
-        tag: v2.4.0
-      ruby:
-        repository: bblfsh/ruby-driver
-        tag: v2.5.0
-      go:
-        repository: bblfsh/go-driver
-        tag: v2.5.0
-      php:
-        repository: bblfsh/php-driver
-        tag: v2.7.0
-      csharp:
-        repository: bblfsh/csharp-driver
-        tag: v1.4.0
+    tag: v2.14.0-drivers
