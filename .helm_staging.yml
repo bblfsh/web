@@ -6,7 +6,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: gce
-    kubernetes.io/ingress.global-static-ip-name: bblfsh-web-staging
+    kubernetes.io/ingress.global-static-ip-name: bblfsh-play2-staging
     kubernetes.io/tls-acme: "true"
   hosts:
     - play-staging.bblf.sh
