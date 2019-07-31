@@ -33,5 +33,7 @@ nodeSelector:
   cloud.google.com/gke-nodepool: default-pool
 
 bblfshd-sidecar:
+  metrics:
+    enabled: true
   image:
     tag: v2.14.0-drivers
