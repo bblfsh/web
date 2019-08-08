@@ -13,7 +13,13 @@ export const getSearchResults = uast => {
     return null;
   }
 
-  if (Array.isArray(rootNode.n)) {
+  // for search server returns [result, result, result]
+  // in case when all the results are nodes we can ignore wrapper node
+  // and display only results for better UI/UX.
+  //
+  // for values (strings, ints, bool) we have to keep the wrapping node
+  // otherwise it's not a tree and uast-viewer wouldn't be able to display it
+  if (Array.isArray(rootNode.n) && rootNode.n.every(c => c.id !== undefined)) {
     return rootNode.n.map(c => c.id);
   }
 
