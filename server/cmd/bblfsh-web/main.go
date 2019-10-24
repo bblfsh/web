@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/bblfsh/web/server"
@@ -18,11 +19,18 @@ var version = "dev"
 func flags() (addr, bblfshAddr string, debug, version bool) {
 	flag.StringVar(&addr, "addr", ":9999", "address in which the server will run")
 	flag.StringVar(&bblfshAddr, "bblfsh-addr", "0.0.0.0:9432", "address of the babelfish server")
-	flag.BoolVar(&debug, "debug", false, "run in debug mode")
+	flag.BoolVar(&debug, "debug", false, "run the server in debug mode")
 	flag.BoolVar(&version, "version", false, "show version and exits")
 	flag.Parse()
 
 	return
+}
+
+var logLevels = map[string]logrus.Level{
+	"debug":   logrus.DebugLevel,
+	"info":    logrus.InfoLevel,
+	"warning": logrus.WarnLevel,
+	"error":   logrus.ErrorLevel,
 }
 
 func main() {
@@ -31,6 +39,10 @@ func main() {
 	if showVersion {
 		fmt.Printf("bblfsh-web %s\n", version)
 		return
+	}
+
+	if level, ok := logLevels[os.Getenv("LOG_LEVEL")]; ok {
+		logrus.SetLevel(level)
 	}
 
 	if !debug {
