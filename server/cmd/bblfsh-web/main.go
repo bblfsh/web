@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/bblfsh/web/server"
@@ -25,6 +26,13 @@ func flags() (addr, bblfshAddr string, debug, version bool) {
 	return
 }
 
+var logLevels = map[string]logrus.Level{
+	"debug":   logrus.DebugLevel,
+	"info":    logrus.InfoLevel,
+	"warning": logrus.WarnLevel,
+	"error":   logrus.ErrorLevel,
+}
+
 func main() {
 	addr, bblfshAddr, debug, showVersion := flags()
 
@@ -33,8 +41,14 @@ func main() {
 		return
 	}
 
+	if level, ok := logLevels[os.Getenv("LOG_LEVEL")]; ok {
+		logrus.SetLevel(level)
+	}
+
 	if !debug {
 		gin.SetMode(gin.ReleaseMode)
+	} else {
+		logrus.SetLevel(logrus.TraceLevel)
 	}
 
 	s, err := server.New(bblfshAddr, version)
