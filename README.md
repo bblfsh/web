@@ -30,6 +30,15 @@ If you don't want to run the **web client** using our *Docker* image you can dow
 ./bblfsh-web -bblfsh-addr <bblfsh-server-addr>
 ```
 
+You can also configure the server in debug mode passing `--debug` extra flag, and the logging level with the `LOG_LEVEL` environment value:
+
+```sh
+LOG_LEVEL={debug,info,warning error} ./bblfsh-web -bblfsh-addr <bblfsh-server-addr> --debug
+```
+
+If none are set, its default values will be logging level `info`, and server in `ReleaseMode`.
+
+
 ## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). There is information about the [application architecture](CONTRIBUTING.md#Architecture) and how to [build](CONTRIBUTING.md#Development) from sources.
