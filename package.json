@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "codemirror": "^5.32.0",
+    "codemirror": "^5.58.2",
     "es6-promise": "^4.1.0",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
